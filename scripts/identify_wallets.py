@@ -10,11 +10,12 @@ Run: python -m scripts.identify_wallets [--top N] [--force]
 """
 import argparse
 import json
-import re
+import os
 import time
 from pathlib import Path
 
 import requests
+from dotenv import load_dotenv
 
 from scripts.keccak import namehash
 from scripts.wallet_labeling import load_labels
@@ -94,13 +95,7 @@ def resolve_identity(addr: str, labels: dict, call_fn) -> dict:
 
 
 def _alchemy_key() -> str:
-    env = ROOT / ".env"
-    if env.exists():
-        for line in env.read_text().splitlines():
-            m = re.match(r"ALCHEMY_API_KEY=(.*)", line.strip())
-            if m and m.group(1).strip():
-                return m.group(1).strip()
-    import os
+    load_dotenv(ROOT / ".env")
     key = os.environ.get("ALCHEMY_API_KEY", "").strip()
     if not key:
         raise SystemExit("ALCHEMY_API_KEY not set (in .env or environment)")

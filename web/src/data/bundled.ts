@@ -27,10 +27,12 @@ export const usdAudit = UsdAudit.parse(usdAuditJson);
 export const coinStrip = z.array(z.object({ token_id: z.string(), image: z.string() }))
   .parse(coinStripJson);
 
-export const SLUGS = ["genesis_2021", "genesis_reissue_1155", "coin_tokens", "beasties_s1",
-  "pfp_2", "valentines", "wilderness", "tournament_prizes", "mothman_1of1", "sandbox"];
+export const SLUGS = collections.map((c) => c.collection);
 
 export function collectionBySlug(slug: string) { return collections.find((c) => c.collection === slug); }
+
+export const collectionNames: Record<string, string> =
+  Object.fromEntries(collections.map((c) => [c.collection, c.name]));
 
 const CONTENT: Record<string, unknown> = {
   genesis_2021: c_genesis_2021, genesis_reissue_1155: c_genesis_reissue_1155,

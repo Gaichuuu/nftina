@@ -9,7 +9,7 @@ import HoldersTable from "@/components/HoldersTable";
 import TokenGrid from "@/components/TokenGrid";
 import Sandbox3DGrid from "@/components/Sandbox3DGrid";
 import CollectionContentView from "@/components/CollectionContent";
-import { tabsFor, showFilterFor } from "@/data/collectionUiConfig";
+import { tabsFor, showFilterFor, isShowcase3d } from "@/data/collectionUiConfig";
 
 export default function CollectionPage() {
   const { slug = "" } = useParams();
@@ -18,7 +18,7 @@ export default function CollectionPage() {
   if (!c) return <div className="p-16 text-center text-dim">No such collection.</div>;
   const content = contentFor(slug);
   const TABS = tabsFor(slug, content.utility.length > 0);
-  const special = slug === "sandbox";
+  const special = isShowcase3d(slug);
   return (
     <div>
       {/* banner */}

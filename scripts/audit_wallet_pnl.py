@@ -11,7 +11,7 @@ from scripts.analyze import _load, is_subset_key, price_table
 from scripts.config import CONTRACTS, MINT_PRICES
 
 OUT_NAME = "wallet_pnl_audit"
-ZERO = "0x0000000000000000000000000000000000000000"
+ZERO = econ.ZERO
 
 EPS = 1e-6
 

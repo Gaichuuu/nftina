@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { fetchWalletProfile, type WalletProfile } from "@/data/runtime";
-import { collections, coinStrip } from "@/data/bundled";
+import { collectionNames, coinStrip } from "@/data/bundled";
 import { addrForName, loadIdentities, useWalletIdentities } from "@/data/identities";
 import WalletProfileView from "./WalletProfileView";
 
 type State = { status: "idle" | "loading" | "done"; profile?: WalletProfile | null };
-
-const NAMES = Object.fromEntries(collections.map((c) => [c.collection, c.name]));
 
 export default function WalletLookup() {
   const [q, setQ] = useState("");
@@ -19,7 +17,7 @@ export default function WalletLookup() {
     const query = raw.toLowerCase().startsWith("0x") ? raw : (addrForName(raw) ?? raw);
     setS({ status: "loading" });
     const [profile] = await Promise.all([
-      fetchWalletProfile(query, NAMES).catch(() => null),
+      fetchWalletProfile(query, collectionNames).catch(() => null),
       new Promise((r) => setTimeout(r, 1400)),
     ]);
     const found = profile && (profile.overall || profile.collections.some((c) => c.entry))

@@ -1,28 +1,17 @@
-import { useState } from "react";
 import type { TokenRow } from "@/data/schemas";
 import { usd, osAssetUrl, placeholderGradient } from "@/lib/format";
+import LoopMedia from "./LoopMedia";
 
 export default function TokenThumb({ t, contract }:
   { t: TokenRow; contract?: string }) {
-  const [failed, setFailed] = useState(false);
-  const [videoFailed, setVideoFailed] = useState(false);
   const osContract = t.contract ?? contract;
-  const showVideo = t.video && !videoFailed;
-  const showImg = t.image && !failed;
   const loss = t.floor_usd - t.last_paid_usd;
   const body = (
     <>
-      {showVideo ? (
-        <video src={t.video!} poster={t.image ?? undefined} autoPlay loop muted playsInline
-               preload="metadata" onError={() => setVideoFailed(true)}
-               aria-label={t.name ?? `token ${t.token_id}`}
-               className="aspect-square w-full object-cover" />
-      ) : showImg ? (
-        <img src={t.image!} alt={t.name ?? `token ${t.token_id}`} loading="lazy"
-             onError={() => setFailed(true)} className="aspect-square w-full object-cover" />
-      ) : (
-        <div className="aspect-square w-full" style={{ background: placeholderGradient(t.token_id) }} />
-      )}
+      <div className="aspect-square w-full" style={{ background: placeholderGradient(t.token_id) }}>
+        <LoopMedia image={t.image} video={t.video} alt={t.name ?? `token ${t.token_id}`}
+                   className="h-full w-full object-cover" />
+      </div>
       <div className="p-2">
         <div className="wrap-break-word text-[11px] font-bold text-ink">{t.name ?? `#${t.token_id}`}</div>
         <div className="flex items-baseline justify-between gap-1">

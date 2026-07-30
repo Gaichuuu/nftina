@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import type { Collection } from "@/data/schemas";
+import { hideLossPctFor } from "@/data/collectionUiConfig";
 import { pct, eth } from "@/lib/format";
 import LoopMedia from "./LoopMedia";
 
-const HIDE_LOSS_PCT = new Set(["valentines", "wilderness"]);
-
 export default function CollectionTile({ c }: { c: Collection }) {
-  const lossPct = HIDE_LOSS_PCT.has(c.collection) ? null : (c.loss_pct ?? null);
+  const lossPct = hideLossPctFor(c.collection) ? null : (c.loss_pct ?? null);
   return (
     <Link to={`/collections/${c.collection}`}
           className="block rounded-md border border-line bg-panel p-2.5 no-underline transition-colors hover:border-hypeB/50">

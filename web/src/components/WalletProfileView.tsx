@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
 import type { WalletProfile } from "@/data/runtime";
-import type { HolderEntry } from "@/data/schemas";
 import { usd, etherscanAddr } from "@/lib/format";
 import { collections } from "@/data/bundled";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
+import Bar from "./Bar";
 import NetPnl from "./NetPnl";
 import WalletAvatar from "./WalletAvatar";
+import XferCell from "./XferCell";
 
 function UsdNet({ usdv }: { usdv: number }) {
   const down = usdv < 0;
@@ -16,21 +17,11 @@ function UsdNet({ usdv }: { usdv: number }) {
   );
 }
 
-function XferCell({ e }: { e: HolderEntry }) {
-  const n = (e.tokens_received ?? 0) - (e.tokens_sent ?? 0);
-  if (n === 0) return <span className="text-muted">—</span>;
-  return <span className="text-dim">{n > 0 ? "+" : "−"}{Math.abs(n)}</span>;
-}
-
 function OwnedCell({ n, max }: { n: number; max: number }) {
   return (
     <div className="flex items-center gap-2">
       <span className="min-w-5 text-right font-bold text-ink">{n}</span>
-      <div className="h-1.5 w-12 shrink-0 overflow-hidden rounded-[3px]" style={{ background: "#1c1526" }}>
-        <span className="block h-full"
-              style={{ width: `${n > 0 ? Math.max(6, (n / max) * 100) : 0}%`,
-                       background: "linear-gradient(90deg,#8be9ff,#6bff9d)" }} />
-      </div>
+      <Bar value={n} max={max} gradient="held" min={6} className="h-1.5 w-12 shrink-0 rounded-[3px]" />
     </div>
   );
 }

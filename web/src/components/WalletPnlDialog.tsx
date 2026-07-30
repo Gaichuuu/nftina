@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWalletProfile, type WalletProfile } from "@/data/runtime";
-import { collections } from "@/data/bundled";
+import { collectionNames } from "@/data/bundled";
 import WalletProfileView from "./WalletProfileView";
-
-const NAMES = Object.fromEntries(collections.map((c) => [c.collection, c.name]));
 
 export default function WalletPnlDialog({ address, onClose }: { address: string; onClose: () => void }) {
   const [profile, setProfile] = useState<WalletProfile | null | "loading">("loading");
@@ -11,7 +9,7 @@ export default function WalletPnlDialog({ address, onClose }: { address: string;
   useEffect(() => {
     let ok = true;
     setProfile("loading");
-    fetchWalletProfile(address, NAMES)
+    fetchWalletProfile(address, collectionNames)
       .then((p) => { if (ok) setProfile(p); })
       .catch(() => { if (ok) setProfile(null); });
     return () => { ok = false; };

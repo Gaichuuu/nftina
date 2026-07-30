@@ -1,11 +1,15 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchHolders } from "@/data/runtime";
 import type { HolderEntry } from "@/data/schemas";
 import { etherscanAddr } from "@/lib/format";
+import useInfiniteScroll from "@/lib/useInfiniteScroll";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
+import Bar from "./Bar";
 import NetPnl from "./NetPnl";
+import PnlButton from "./PnlButton";
 import WalletAvatar from "./WalletAvatar";
 import WalletPnlDialog from "./WalletPnlDialog";
+import XferCell from "./XferCell";
 
 const PAGE = 50;
 
@@ -20,47 +24,22 @@ const SORT_LABELS: [SortKey, string][] = [
   ["lost", "Most lost"], ["gained", "Most gained"], ["owned", "Most owned"], ["minted", "Most minted"],
 ];
 
-function xfers(e: HolderEntry): number {
-  return (e.tokens_received ?? 0) - (e.tokens_sent ?? 0);
-}
-function XferCell({ e }: { e: HolderEntry }) {
-  const n = xfers(e);
-  if (n === 0) return <span className="text-muted">—</span>;
-  return <span className="text-dim">{n > 0 ? "+" : "−"}{Math.abs(n)}</span>;
-}
-
-function NetCell({ e }: { e: HolderEntry }) {
-  return <NetPnl ethv={e.net_pnl_eth} usdv={e.net_pnl_usd} />;
-}
-
 export default function HoldersTable({ slug }: { slug: string }) {
   const [rows, setRows] = useState<HolderEntry[] | null>(null);
-  const [shown, setShown] = useState(PAGE);
   const [sort, setSort] = useState<SortKey>("owned");
   const [pnlWallet, setPnlWallet] = useState<string | null>(null);
-  const io = useRef<IntersectionObserver | null>(null);
+  const { shown, reset, sentinelRef } = useInfiniteScroll(PAGE);
   useWalletIdentities();
 
   useEffect(() => {
     let ok = true;
-    setRows(null); setShown(PAGE);
+    setRows(null); reset();
     fetchHolders(slug).then((r) => { if (ok) setRows(r); }).catch(() => { if (ok) setRows([]); });
     return () => { ok = false; };
-  }, [slug]);
+  }, [slug, reset]);
 
   const sorted = useMemo(() => (rows ? [...rows].sort(SORTS[sort]) : []), [rows, sort]);
   const heldMax = useMemo(() => Math.max(1, ...(rows ?? []).map((r) => r.tokens_held)), [rows]);
-
-  const sentinelRef = useCallback((el: HTMLDivElement | null) => {
-    io.current?.disconnect();
-    io.current = null;
-    if (el && typeof IntersectionObserver !== "undefined") {
-      io.current = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) setShown((n) => n + PAGE);
-      }, { rootMargin: "600px" });
-      io.current.observe(el);
-    }
-  }, []);
 
   if (rows === null)
     return <div className="py-16 text-center font-mono text-[12px] text-muted">loading holders…</div>;
@@ -74,7 +53,7 @@ export default function HoldersTable({ slug }: { slug: string }) {
         <span className="flex items-center gap-2">
           <label htmlFor="holders-sort">sort</label>
           <select id="holders-sort" value={sort}
-                  onChange={(e) => { setSort(e.target.value as SortKey); setShown(PAGE); }}
+                  onChange={(e) => { setSort(e.target.value as SortKey); reset(); }}
                   className="rounded-sm border border-line bg-panel px-1.5 py-0.5 text-ink">
             {SORT_LABELS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
           </select>
@@ -116,31 +95,21 @@ export default function HoldersTable({ slug }: { slug: string }) {
                           </span>
                         </span>
                       </a>
-                      <button onClick={() => setPnlWallet(e.wallet)}
-                              className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold text-ink
-                                         transition-transform hover:scale-105"
-                              style={{ border: "2px solid transparent",
-                                       background: "linear-gradient(var(--color-bg),var(--color-bg)) padding-box,"
-                                         + " linear-gradient(90deg,#ff5cf0,#8be9ff) border-box" }}
-                              title="Show this wallet's profit & loss">P&amp;L</button>
+                      <PnlButton onClick={() => setPnlWallet(e.wallet)} />
                     </div>
                   </td>
                   <td className="px-3 py-2.5">
                     <div className="flex items-center gap-2">
                       <span className="min-w-6.5 text-right font-bold text-ink">{e.tokens_held}</span>
-                      <div className="h-1.5 w-16 shrink-0 overflow-hidden rounded-[3px]"
-                           style={{ background: "#1c1526" }}>
-                        <span className="block h-full"
-                              style={{ width: `${e.tokens_held > 0 ? Math.max(4, (e.tokens_held / heldMax) * 100) : 0}%`,
-                                       background: "linear-gradient(90deg,#8be9ff,#6bff9d)" }} />
-                      </div>
+                      <Bar value={e.tokens_held} max={heldMax} gradient="held" min={4}
+                           className="h-1.5 w-16 shrink-0 rounded-[3px]" />
                     </div>
                   </td>
                   <td className="px-3 py-2.5 text-right text-dim">{e.tokens_minted ?? 0}</td>
                   <td className="px-3 py-2.5 text-right text-dim">{e.tokens_bought}</td>
                   <td className="px-3 py-2.5 text-right text-dim">{e.tokens_sold}</td>
                   <td className="px-3 py-2.5 text-right"><XferCell e={e} /></td>
-                  <td className="px-3 py-2.5"><NetCell e={e} /></td>
+                  <td className="px-3 py-2.5"><NetPnl ethv={e.net_pnl_eth} usdv={e.net_pnl_usd} /></td>
                 </tr>
               );
             })}

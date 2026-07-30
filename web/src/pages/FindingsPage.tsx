@@ -8,10 +8,12 @@ import FlipperTable from "@/components/FlipperTable";
 import WalletAvatar from "@/components/WalletAvatar";
 import UsdAuditSection from "@/components/UsdAuditSection";
 
+const EXCHANGE_RE = /coinbase|ftx|binance|kraken/i;
+
 export default function FindingsPage() {
   const { legs, flippers, payout_ledger, acquisitions, insider } = findings;
   const insiderRows = payout_ledger.filter((r) => r.kind === "insider");
-  const cashedToExchange = insiderRows.filter((r) => /coinbase|ftx|binance|kraken/i.test(r.endpoint ?? "")).length;
+  const cashedToExchange = insiderRows.filter((r) => EXCHANGE_RE.test(r.endpoint ?? "")).length;
   return (
     <div>
       {/* hero  */}
@@ -124,7 +126,7 @@ export default function FindingsPage() {
                     {r.endpoint && (
                       <div className="mt-1.5 text-[10px] font-bold">
                         <span className="text-muted">cashed out → </span>
-                        <span className={/coinbase|ftx|binance|kraken/i.test(r.endpoint)
+                        <span className={EXCHANGE_RE.test(r.endpoint)
                           ? "text-hypeA" : "text-dim"}>{r.endpoint}</span>
                       </div>
                     )}

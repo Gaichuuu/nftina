@@ -19,6 +19,8 @@ def eth_to_usd(eth: float, timestamp: int, prices: dict) -> float:
     if eth == 0 or not prices:
         return 0.0
     d = datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime("%Y-%m-%d")
+    if d in prices:  # daily tables almost always hit exactly; skip the O(n) scan
+        return round(eth * prices[d], 2)
     target = datetime.strptime(d, "%Y-%m-%d")
     closest = min(prices, key=lambda k: abs(datetime.strptime(k, "%Y-%m-%d") - target))
     return round(eth * prices[closest], 2)
@@ -92,11 +94,11 @@ def normalize_sale_parties(sales: list, transfers: list) -> list:
 
     out = []
     for s in sales:
-        k = ((s["collection"], str(s["token_id"])), int(s.get("block", 0)))
-        if per_key[(s["collection"], str(s["token_id"]), int(s.get("block", 0)))] > 1:
+        coll, tid, blk = s["collection"], str(s["token_id"]), int(s.get("block", 0))
+        if per_key[(coll, tid, blk)] > 1:
             out.append(s)
             continue
-        chain = hops.get(k) or []
+        chain = hops.get(((coll, tid), blk)) or []
         froms = {t["from"] for t in chain}
         tos = {t["to"] for t in chain}
         starts = froms - tos - {ZERO}
@@ -132,16 +134,11 @@ def gas_by_wallet(transfers: list, sales: list) -> dict:
     mint_recipients = {h: r for h, r in mint_recipients.items() if len(r) == 1}
     charges = defaultdict(list)
     for h, g in gas_per_hash.items():
-        if h in sale_buyers:
-            buyers = sale_buyers[h]
-            share = g / len(buyers)
-            for b in buyers:
-                charges[b].append((share, hash_ts[h]))
-        elif h in mint_recipients:
-            minters = mint_recipients[h]
-            share = g / len(minters)
-            for m in minters:
-                charges[m].append((share, hash_ts[h]))
+        recipients = sale_buyers.get(h) or mint_recipients.get(h)
+        if recipients:
+            share = g / len(recipients)
+            for r in recipients:
+                charges[r].append((share, hash_ts[h]))
     return dict(charges)
 
 

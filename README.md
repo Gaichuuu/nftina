@@ -101,7 +101,7 @@ python -m scripts.fetch_chain          # transfers + mint tx values, dedicated c
 python -m scripts.fetch_shared         # the collections that live inside shared storefronts
 python -m scripts.fetch_sales          # Alchemy secondary sales + floor prices
 python -m scripts.validate_sales       # required: flag phantom (unsettled) sales
-python scripts/analyze.py              # wallet P&L + per-collection stats -> public/data/
+python -m scripts.analyze              # wallet P&L + per-collection stats -> public/data/
 python -m scripts.trace_flows          # treasury to Aoki money graph
 python -m scripts.trace_acquisitions   # what the Aoki-bound ETH bought
 python -m scripts.audit_treasury_usd   # per-date USD reconciliation of the 3 treasury wallets

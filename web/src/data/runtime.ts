@@ -2,31 +2,26 @@ import { z } from "zod";
 import { WalletRow, TokenRow, Holders } from "./schemas";
 import type { Holders as HoldersT, HolderEntry, WalletRow as WalletRowT } from "./schemas";
 
-let walletCache: WalletRow[] | null = null;
-export async function fetchWalletIndex(): Promise<WalletRow[]> {
-  if (walletCache) return walletCache;
-  const res = await fetch("/data/wallet_index.json");
-  if (!res.ok) throw new Error(`wallet_index ${res.status}`);
-  walletCache = z.array(WalletRow).parse(await res.json());
-  return walletCache;
+const cache: Record<string, unknown> = {};
+async function cachedFetch<T>(path: string, parse: (data: unknown) => T): Promise<T> {
+  if (path in cache) return cache[path] as T;
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`${path} ${res.status}`);
+  const val = parse(await res.json());
+  cache[path] = val;
+  return val;
 }
 
-const tokenCache: Record<string, TokenRow[]> = {};
-export async function fetchTokens(slug: string): Promise<TokenRow[]> {
-  if (tokenCache[slug]) return tokenCache[slug];
-  const res = await fetch(`/data/collections/${slug}/tokens.json`);
-  if (!res.ok) throw new Error(`tokens ${slug} ${res.status}`);
-  tokenCache[slug] = z.array(TokenRow).parse(await res.json());
-  return tokenCache[slug];
+export function fetchWalletIndex(): Promise<WalletRow[]> {
+  return cachedFetch("/data/wallet_index.json", (d) => z.array(WalletRow).parse(d));
 }
 
-const holdersCache: Record<string, HoldersT["holders"]> = {};
-export async function fetchHolders(slug: string): Promise<HoldersT["holders"]> {
-  if (holdersCache[slug]) return holdersCache[slug];
-  const res = await fetch(`/data/collections/${slug}/holders.json`);
-  if (!res.ok) throw new Error(`holders ${slug} ${res.status}`);
-  holdersCache[slug] = Holders.parse(await res.json()).holders;
-  return holdersCache[slug];
+export function fetchTokens(slug: string): Promise<TokenRow[]> {
+  return cachedFetch(`/data/collections/${slug}/tokens.json`, (d) => z.array(TokenRow).parse(d));
+}
+
+export function fetchHolders(slug: string): Promise<HoldersT["holders"]> {
+  return cachedFetch(`/data/collections/${slug}/holders.json`, (d) => Holders.parse(d).holders);
 }
 
 export const PROFILE_SLUGS = [
@@ -47,9 +42,10 @@ export type WalletProfile = {
 
 function rankIn<T extends { wallet: string; net_pnl_eth: number }>(
   rows: T[], addr: string,
-): { pos: number; total: number } {
+): { pos: number; total: number; entry: T | null } {
   const sorted = [...rows].sort((a, b) => b.net_pnl_eth - a.net_pnl_eth);
-  return { pos: sorted.findIndex((r) => r.wallet.toLowerCase() === addr), total: sorted.length };
+  const pos = sorted.findIndex((r) => r.wallet.toLowerCase() === addr);
+  return { pos, total: sorted.length, entry: pos >= 0 ? sorted[pos] : null };
 }
 
 export async function fetchWalletProfile(
@@ -61,14 +57,13 @@ export async function fetchWalletProfile(
   const overallSorted = [...idx].sort((x, y) => overall(y) - overall(x));
   const oPos = overallSorted.findIndex((r) => r.wallet.toLowerCase() === a);
 
-  const collections: WalletCollectionRow[] = [];
-  for (const slug of PROFILE_SLUGS) {
-    const holders = await fetchHolders(slug).catch(() => [] as HolderEntry[]);
-    const { pos, total } = rankIn(holders, a);
-    const entry = pos >= 0
-      ? [...holders].sort((x, y) => y.net_pnl_eth - x.net_pnl_eth)[pos] : null;
-    collections.push({ slug, name: names[slug] ?? slug, rank: pos >= 0 ? pos + 1 : null, total, entry });
-  }
+  const collections: WalletCollectionRow[] = await Promise.all(
+    PROFILE_SLUGS.map(async (slug) => {
+      const holders = await fetchHolders(slug).catch(() => [] as HolderEntry[]);
+      const { pos, total, entry } = rankIn(holders, a);
+      return { slug, name: names[slug] ?? slug, rank: pos >= 0 ? pos + 1 : null, total, entry };
+    }),
+  );
   return {
     address: addr, overall: oPos >= 0 ? overallSorted[oPos] : null,
     overallRank: oPos >= 0 ? oPos + 1 : null, overallTotal: idx.length, collections,

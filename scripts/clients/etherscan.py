@@ -193,19 +193,3 @@ class Etherscan:
             if i and i % 100 == 0:
                 print(f"    tx_values {i}/{len(hashes)}…")
         return vals
-
-    def outflows(self, address: str) -> list:
-        address = address.lower()
-        out = []
-        for action in ("txlist", "txlistinternal"):
-            res = self._get({"module": "account", "action": action,
-                             "address": address, "page": 1, "offset": 10000, "sort": "asc"})
-            for tx in (res.get("result") or []):
-                if not isinstance(tx, dict) or tx.get("from", "").lower() != address:
-                    continue
-                eth = int(tx.get("value", 0)) / 1e18
-                if eth == 0:
-                    continue
-                out.append({"to": tx.get("to", "").lower(), "eth": round(eth, 6),
-                            "hash": tx.get("hash", ""), "timestamp": int(tx.get("timeStamp", 0))})
-        return out

@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchTokens } from "@/data/runtime";
 import type { TokenRow } from "@/data/schemas";
+import useInfiniteScroll from "@/lib/useInfiniteScroll";
 import TokenThumb from "./TokenThumb";
 
 const PAGE = 48;
@@ -27,10 +28,9 @@ export default function TokenGrid(
   { slug: string; contract?: string; showFilter?: boolean },
 ) {
   const [rows, setRows] = useState<TokenRow[] | null>(null);
-  const [shown, setShown] = useState(PAGE);
   const [sort, setSort] = useState("high");
   const [selected, setSelected] = useState<Set<string>>(new Set());
-  const io = useRef<IntersectionObserver | null>(null);
+  const { shown, reset, sentinelRef } = useInfiniteScroll(PAGE);
 
   const toggleType = useCallback((v: string) => {
     setSelected((prev) => {
@@ -38,26 +38,15 @@ export default function TokenGrid(
       next.has(v) ? next.delete(v) : next.add(v);
       return next;
     });
-    setShown(PAGE);
-  }, []);
+    reset();
+  }, [reset]);
 
   useEffect(() => {
     let ok = true;
-    setRows(null); setShown(PAGE); setSelected(new Set());
+    setRows(null); reset(); setSelected(new Set());
     fetchTokens(slug).then((r) => { if (ok) setRows(r); }).catch(() => { if (ok) setRows([]); });
     return () => { ok = false; };
-  }, [slug]);
-
-  const sentinelRef = useCallback((el: HTMLDivElement | null) => {
-    io.current?.disconnect();
-    io.current = null;
-    if (el && typeof IntersectionObserver !== "undefined") {
-      io.current = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) setShown((n) => n + PAGE);
-      }, { rootMargin: "600px" });
-      io.current.observe(el);
-    }
-  }, []);
+  }, [slug, reset]);
 
   const { types, counts } = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -69,6 +58,7 @@ export default function TokenGrid(
     return selected.size === 0 ? r : r.filter((t) => selected.has(typeOf(t)));
   }, [rows, selected]);
   const sorted = useMemo(() => [...filtered].sort(SORTS[sort]), [filtered, sort]);
+  const alt = useMemo(() => (rows ?? []).filter((r) => r.contract), [rows]);
 
   if (rows === null) return <div className="p-6 text-center text-muted">loading tokens…</div>;
   if (rows.length === 0) return <div className="p-6 text-center text-muted">no token data.</div>;
@@ -82,7 +72,7 @@ export default function TokenGrid(
             <div className="mb-1.5 flex items-baseline justify-between font-mono text-[10px] text-muted">
               <span>FILTER</span>
               {selected.size > 0 && (
-                <button onClick={() => { setSelected(new Set()); setShown(PAGE); }}
+                <button onClick={() => { setSelected(new Set()); reset(); }}
                         className="text-hypeB hover:underline">clear</button>
               )}
             </div>
@@ -122,16 +112,12 @@ export default function TokenGrid(
           <div className="mt-3 text-center font-mono text-[10px] text-muted">
             {Math.min(shown, sorted.length)} / {sorted.length} tokens
           </div>
-          {(() => {
-            const alt = rows.filter((r) => r.contract);
-            if (alt.length === 0) return null;
-            const label = ALT_CONTRACT_LABELS[alt[0].contract!] ?? "a second contract";
-            return (
-              <div className="mt-1 text-center font-mono text-[10px] text-muted">
-                {rows.length - alt.length} tokens on the primary contract + {alt.length} on {label}
-              </div>
-            );
-          })()}
+          {alt.length > 0 && (
+            <div className="mt-1 text-center font-mono text-[10px] text-muted">
+              {rows.length - alt.length} tokens on the primary contract + {alt.length} on{" "}
+              {ALT_CONTRACT_LABELS[alt[0].contract!] ?? "a second contract"}
+            </div>
+          )}
           {shown < sorted.length && <div ref={sentinelRef} aria-hidden className="h-px" />}
         </div>
       </div>

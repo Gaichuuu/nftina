@@ -164,7 +164,6 @@ def analyze(top_n: int = 50) -> dict:
                     key=lambda w: w["eth_spent"], reverse=True)[:top_n]
     flippers = sorted((v for v in pnl.values() if v["realized_pnl_eth"] != 0),
                       key=lambda w: w["realized_pnl_eth"], reverse=True)[:top_n]
-    timeline = sorted(all_transfers, key=lambda t: t["timestamp"])
 
     has_floor = any(f > 0 for f in floor_by_collection.values())
     total_volume = round(sum(c["secondary_volume_eth"] for c in collections), 4)
@@ -198,7 +197,6 @@ def analyze(top_n: int = 50) -> dict:
 
     _save("summary", summary)
     _save("collections", collections)
-    _save("timeline", timeline)
     _save("whales", whales)
     _save("flippers", flippers)
     _save("wallet_pnl", list(pnl.values()))

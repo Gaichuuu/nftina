@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { collections, summary } from "@/data/bundled";
 import type { Collection } from "@/data/schemas";
+import { floorLabelFor } from "@/data/collectionUiConfig";
+import Bar from "@/components/Bar";
 import LoopMedia from "@/components/LoopMedia";
 import { eth, compactUsd } from "@/lib/format";
 import Container from "@/components/Container";
@@ -17,8 +19,7 @@ function Thumb({ c }: { c: Collection }) {
 }
 
 function floorLabel(c: Collection): string {
-  if (c.collection === "sandbox") return "off-chain";
-  return c.floor_eth > 0 ? `${c.floor_eth} Ξ` : "n/a";
+  return floorLabelFor(c.collection) ?? (c.floor_eth > 0 ? `${c.floor_eth} Ξ` : "n/a");
 }
 
 export default function CollectionsPage() {
@@ -90,11 +91,7 @@ export default function CollectionsPage() {
                   </td>
                   <td className="px-4.5 py-3.5">
                     <div className="flex items-center gap-2.5">
-                      <div className="h-1.75 flex-1 overflow-hidden rounded-[4px]" style={{ background: "#1c1526" }}>
-                        <span className="block h-full"
-                              style={{ width: `${c.secondary_volume_eth > 0 ? Math.max(1.5, (c.secondary_volume_eth / secMax) * 100) : 0}%`,
-                                       background: "linear-gradient(90deg,#ff5cf0,#8be9ff)" }} />
-                      </div>
+                      <Bar value={c.secondary_volume_eth} max={secMax} min={1.5} />
                       <span className="min-w-18.5 text-right text-dim2">
                         {c.secondary_volume_eth > 0 ? (
                           <><div>{eth(c.secondary_volume_eth)}</div>

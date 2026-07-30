@@ -1,16 +1,19 @@
 # metazoonfts.com - static, fully prerendered site
+#
+# NOTE: the live host serves this domain with nginx, which ignores
+# .htaccess entirely. This file is kept as the Apache equivalent so
+# the site stays portable.
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
   # www -> non-www (301). Sends straight to https, so an http://www request
-  # canonicalises in one hop rather than two.
+  # canonicalises in one hop rather than two
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-  # http -> https (301) for everything else. The X-Forwarded-Proto check keeps
-  # this from looping if TLS is ever terminated at a proxy in front of Apache.
+  # http -> https (301) for everything else
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

@@ -21,6 +21,7 @@ import requests
 
 from scripts.config import CONTRACTS, SITE_COLLECTIONS, MEDIA_CDN_BASE, SANDBOX_TOKEN_IDS
 from scripts.clients.alchemy import Alchemy, pick_image_url, normalize_ipfs
+from scripts.fetch_chain import is_shared_or_subset
 
 ROOT = Path(__file__).parent.parent
 MEDIA = ROOT / "data" / "media"
@@ -50,12 +51,10 @@ def img_filename(source: str, ext: str) -> str:
 
 
 def is_shared(slug: str) -> bool:
-    """Mirrors fetch_chain.is_shared_or_subset: True if the config entry is a
-    shared-storefront / token-ID-subset contract (e.g. genesis_reissue_1155's
-    OPENSTORE entry) that must NOT be whole-contract-fetched."""
-    meta = CONTRACTS[slug]
-    return bool(meta.get("distributor") or meta.get("token_id") or meta.get("token_ids")
-                or meta.get("shared"))
+    """True if the config entry is a shared-storefront / token-ID-subset contract
+    (e.g. genesis_reissue_1155's OPENSTORE entry) that must NOT be
+    whole-contract-fetched. Delegates to fetch_chain's canonical predicate."""
+    return is_shared_or_subset(CONTRACTS[slug])
 
 
 def token_ids_from_transfers(transfers: list) -> list:
@@ -101,17 +100,12 @@ def manifest_entries(nfts: list, ext_for) -> dict:
 def _download(url: str, dest: Path, retries: int = 3) -> bool:
     if dest.exists() and dest.stat().st_size > 0:
         return True
-    for attempt in range(retries):
-        try:
-            r = requests.get(url, timeout=45, headers=HDR)
-            r.raise_for_status()
-            if r.content:
-                dest.parent.mkdir(parents=True, exist_ok=True)
-                dest.write_bytes(r.content)
-                return True
-        except Exception:
-            time.sleep(0.5 * (attempt + 1))
-    return False
+    data = _download_bytes(url, retries)
+    if data is None:
+        return False
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_bytes(data)
+    return True
 
 
 def sniff_ext(data: bytes) -> str:

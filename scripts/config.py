@@ -540,14 +540,6 @@ LAWSUIT = {
 }
 
 # ---------------------------------------------------------------------------
-# APIs
-# ---------------------------------------------------------------------------
-
-ETHERSCAN_API = "https://api.etherscan.io/api"
-IMX_API       = "https://api.x.immutable.com/v1"   # for Mintable/IMX collections
-TWITTER_API   = "https://api.twitter.com/2"
-
-# ---------------------------------------------------------------------------
 # ETH price snapshots (for historical USD conversion)
 # ---------------------------------------------------------------------------
 
@@ -596,7 +588,6 @@ MEDIA_CDN_BASE = os.environ.get("MEDIA_CDN_BASE", "https://gaichu.b-cdn.net/nfti
 # --- GetXAPI (verified 2026-07: base + Bearer auth + these paths; search param is `q`) ---
 GETXAPI_API         = "https://api.getxapi.com"
 GETXAPI_SEARCH      = "/twitter/tweet/advanced_search"
-GETXAPI_USER_TWEETS = "/twitter/user/last_tweets"
 
 # ---------------------------------------------------------------------------
 # Site collection registry

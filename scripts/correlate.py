@@ -86,7 +86,7 @@ def build() -> dict:
     tweets = []
     tweets += _normalize(_load("tweets_influencers.json"), "influencer")
     tweets += _normalize(_load("tweets_metazoo.json"), "metazoo_live")
-    tweets += _normalize([t for t in _load("tweets_metazoo_archived.json")], "metazoo_archived")
+    tweets += _normalize(_load("tweets_metazoo_archived.json"), "metazoo_archived")
     tweets += _normalize([t for t in _load("tweets_aoki_deleted.json") if t.get("matched")], "aoki_deleted")
 
     timeline = _normalize(_load("tweets_timeline_recovered.json"), "timeline")

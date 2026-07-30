@@ -169,10 +169,9 @@ def build_collections(analyze_collections, eth_price_usd, per_slug_raw, art=None
                 base[f] = round(base[f] + extra[f], 6)
             base["mint_revenue_usd"] = round(base["mint_revenue_usd"]
                                              + extra["mint_revenue_eth"] * eth_price_usd, 2)
-            zero = "0x0000000000000000000000000000000000000000"
             own_pr = per_slug_raw.get(slug, {"transfers": []})
             minters = {t["to"] for t in own_pr["transfers"] + src_transfers
-                       if t.get("is_mint") or t.get("from") == zero} | claimers
+                       if t.get("is_mint") or t.get("from") == econ.ZERO} | claimers
             if minters:
                 base["unique_minters"] = len(minters)
         out.append(base)
@@ -404,9 +403,17 @@ def apply_offchain(holder_rows, unit_cost_usd, mint_count_by_wallet=None):
     return {"holders": out, "offchain_revenue_usd": round(revenue, 2)}
 
 
-VALENTINES_PROPER_IDS = ("1", "2", "3", "4", "5", "6")
+VALENTINES_PROPER_IDS = tuple(CONTRACTS["valentines"]["valentines_token_ids"])
 
 AIRDROP_DROPS = {"valentines", "wilderness"}
+
+
+def child_subset_ids(slug):
+    """Token IDs on `slug`'s contract that some child subset collection claims
+    (e.g. wilderness IDs 7-11 inside the valentines contract)."""
+    return {str(tid) for other in SITE_COLLECTIONS
+            if other.get("parent") == slug and other.get("token_ids")
+            for tid in other["token_ids"]}
 
 
 def offchain_scope_for(slug):
@@ -454,7 +461,7 @@ def build_tokens(transfers, sales, mint_values, floor_eth, block_month, daily_us
         if tid not in seen:
             seen.add(tid)
             order.append(tid)
-    ZERO = "0x0000000000000000000000000000000000000000"
+    ZERO = econ.ZERO
     placeholder_collection = slug or "_unknown"
     transfers_with_collection = []
     for t in transfers:
@@ -783,7 +790,6 @@ def build_utility(slug, products, media, daily_usd=None, eth_price_usd=None):
 def build_content(slug, authored, floor_usd=None, products=None, media=None,
                   daily_usd=None, eth_price_usd=None):
     content = dict(authored.get(slug) or {"overview": []})
-    content.pop("utility", None)
     content["utility"] = build_utility(slug, products, media, daily_usd, eth_price_usd)
     basis = content.get("off_chain_basis")
     if basis and floor_usd is not None:
@@ -1015,9 +1021,7 @@ def main():
         if not pr:
             continue
         ids = set(map(str, reg["token_ids"])) if reg.get("token_ids") else None
-        child_ids = {str(tid) for other in SITE_COLLECTIONS
-                     if other.get("parent") == s and other.get("token_ids")
-                     for tid in other["token_ids"]}
+        child_ids = child_subset_ids(s)
         ts = [t for t in pr["transfers"]
               if (ids is None or str(t.get("token_id")) in ids)
               and str(t.get("token_id")) not in child_ids]
@@ -1059,9 +1063,7 @@ def main():
         holders = {"holders": []}
         tokens = []
         pnls = []
-        child_ids = {str(tid) for other in SITE_COLLECTIONS
-                     if other.get("parent") == slug and other.get("token_ids")
-                     for tid in other["token_ids"]}
+        child_ids = child_subset_ids(slug)
         if src in ("own", "subset"):
             source_slug = slug if src == "own" else reg["parent"]
             pr = per_slug_raw.get(source_slug)

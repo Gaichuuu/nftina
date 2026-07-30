@@ -1,5 +1,6 @@
 import type { LedgerRow } from "@/data/schemas";
 import { eth, usd, shortAddr } from "@/lib/format";
+import Bar from "./Bar";
 
 export default function LedgerTable({ rows }: { rows: LedgerRow[] }) {
   const usdMax = Math.max(1, ...rows.map((r) => Math.abs(r.usd)));
@@ -25,11 +26,7 @@ export default function LedgerTable({ rows }: { rows: LedgerRow[] }) {
                 {noEth ? <span className="font-normal text-muted">{inKind ? "in-kind" : "off-chain"}</span> : eth(r.eth)}</td>
               <td className="px-4 py-3">
                 <div className="flex items-center gap-2">
-                  <div className="h-1.75 flex-1 overflow-hidden rounded-[4px]" style={{ background: "#1c1526" }}>
-                    <span className="block h-full"
-                          style={{ width: `${Math.max(2, (Math.abs(r.usd) / usdMax) * 100)}%`,
-                                   background: "linear-gradient(90deg,#ff5cf0,#8be9ff)" }} />
-                  </div>
+                  <Bar value={Math.abs(r.usd)} max={usdMax} />
                   <span className="min-w-15.5 whitespace-nowrap text-right text-muted">{usd(r.usd)}</span>
                 </div>
               </td>

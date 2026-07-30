@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Findings, TopItem } from "@/data/schemas";
 import { eth, usd, compactUsd, pct, placeholderGradient, osAssetUrl } from "@/lib/format";
+import Bar from "./Bar";
 
 type BlueChip = Findings["acquisitions"]["by_collection"][number];
 
@@ -96,11 +97,7 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
                 </td>
                 <td className="p-2 pl-6">
                   <div className="flex items-center gap-2">
-                    <div className="h-1.75 flex-1 overflow-hidden rounded-[4px]" style={{ background: "#1c1526" }}>
-                      <span className="block h-full"
-                            style={{ width: `${Math.max(2, (b.usd / usdMax) * 100)}%`,
-                                     background: "linear-gradient(90deg,#ff5cf0,#8be9ff)" }} />
-                    </div>
+                    <Bar value={b.usd} max={usdMax} />
                     <span className="min-w-14 whitespace-nowrap text-right text-dim">{usd(b.usd)}</span>
                   </div>
                 </td>

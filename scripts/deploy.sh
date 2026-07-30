@@ -36,13 +36,23 @@ echo "==> Building (data copy + typecheck + client + ssr + prerender)..."
 grep -q "Holders lost" "$WEB/dist/index.html" || {
   echo "error: dist/index.html has no prerendered hero copy - prerender did not run" >&2; exit 1; }
 
+NGINX_CONF="$ROOT/nginx/metazoonfts.com/nginx.conf"
+[[ -f "$NGINX_CONF" ]] || {
+  echo "error: $NGINX_CONF missing - the live host is nginx, so this is the real config" >&2; exit 1; }
+
 if [[ -n "${DRY_RUN:-}" ]]; then
   echo "==> DRY RUN: would deploy dist/ -> ${REMOTE}"
   rsync -avzn --delete --exclude=".DS_Store" "$WEB/dist/" "$REMOTE"
+  echo "==> DRY RUN: would deploy $(basename "$NGINX_CONF") ($(wc -l <"$NGINX_CONF" | tr -d ' ') lines)" \
+       "-> ${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/nginx.conf"
   exit 0
 fi
 
 echo "==> Deploying dist/ -> ${REMOTE}"
 rsync -avz --delete --exclude=".DS_Store" "$WEB/dist/" "$REMOTE"
+
+echo "==> Deploying nginx config -> ~/nginx/metazoonfts.com/"
+ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "mkdir -p ~/nginx/metazoonfts.com"
+rsync -avz "$NGINX_CONF" "${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/nginx.conf"
 
 echo "==> Done. https://metazoonfts.com/"

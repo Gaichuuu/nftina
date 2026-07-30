@@ -2,6 +2,8 @@ import { useState } from "react";
 import type { Flippers } from "@/data/schemas";
 import { eth, usd, compactUsd, etherscanAddr } from "@/lib/format";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
+import Bar from "./Bar";
+import PnlButton from "./PnlButton";
 import WalletAvatar from "./WalletAvatar";
 import WalletPnlDialog from "./WalletPnlDialog";
 
@@ -42,13 +44,7 @@ export default function FlipperTable({ flippers }: { flippers: Flippers }) {
                         <span className="block break-all font-mono text-[10px] text-dim">{f.wallet}</span>
                       </span>
                     </a>
-                    <button onClick={() => setPnlWallet(f.wallet)}
-                            className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold text-ink
-                                       transition-transform hover:scale-105"
-                            style={{ border: "2px solid transparent",
-                                     background: "linear-gradient(var(--color-bg),var(--color-bg)) padding-box,"
-                                       + " linear-gradient(90deg,#ff5cf0,#8be9ff) border-box" }}
-                            title="Show this wallet's profit & loss">P&amp;L</button>
+                    <PnlButton onClick={() => setPnlWallet(f.wallet)} />
                   </div>
                 </td>
                 <td className="p-2 text-right font-mono text-[10px] whitespace-nowrap text-dim">
@@ -57,11 +53,7 @@ export default function FlipperTable({ flippers }: { flippers: Flippers }) {
                 <td className="p-2 text-right font-bold whitespace-nowrap text-gain">+{eth(f.realized_pnl_eth)}</td>
                 <td className="p-2">
                   <div className="flex items-center gap-2">
-                    <div className="h-1.75 flex-1 overflow-hidden rounded-[4px]" style={{ background: "#1c1526" }}>
-                      <span className="block h-full"
-                            style={{ width: `${Math.max(2, (f.realized_pnl_usd / usdMax) * 100)}%`,
-                                     background: "linear-gradient(90deg,#6bff9d,#8be9ff)" }} />
-                    </div>
+                    <Bar value={f.realized_pnl_usd} max={usdMax} gradient="gain" />
                     <span className="min-w-15.5 whitespace-nowrap text-right text-dim">{usd(f.realized_pnl_usd)}</span>
                   </div>
                 </td>

@@ -1,6 +1,7 @@
 """Treasury USD audit: value every treasury inflow at its receipt date and every
 outflow at its spend date, then quantify what holding ETH through the crash cost.
 """
+from collections import defaultdict
 from datetime import datetime, timezone
 
 IN_CLS = {"nft_contract": "mint_proceeds", "marketplace": "royalties", "royalty": "royalties"}
@@ -59,12 +60,12 @@ def monthly_balances(ledger: list, daily: dict) -> list:
     """Cumulative treasury ETH balance at each month end × that month's last close."""
     if not ledger:
         return []
-    months = sorted({e["date"][:7] for e in ledger})
+    net_by_month = defaultdict(float)
+    for e in ledger:
+        net_by_month[e["date"][:7]] += e["eth"] if e["direction"] == "in" else -e["eth"]
     out, bal = [], 0.0
-    for month in months:
-        for e in ledger:
-            if e["date"][:7] == month:
-                bal += e["eth"] if e["direction"] == "in" else -e["eth"]
+    for month in sorted(net_by_month):
+        bal += net_by_month[month]
         closes = [d for d in daily if d[:7] <= month]
         mark = daily[max(closes)] if closes else 0.0
         out.append({"month": month, "eth_balance": round(bal, 6),
