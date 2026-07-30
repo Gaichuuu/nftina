@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
 @theme {
+  /* surfaces */
   --color-bg: #0c0912;          /* page */
-  --color-panel: #150f1d;       /* cards */
-  --color-panel2: #17121f;      /* stat cells */
-  --color-panel3: #0f0b16;      /* chart */
+  --color-panel: #150f1d;       /* cards, stat cells */
+  --color-panel2: #17121f;      /* table headers, note paragraphs */
+  --color-panel3: #0f0b16;      /* charts, insider cards */
+  --color-hover: #191223;       /* table row hover */
+  --color-total: #120d1a;       /* table total/footer row */
+
+  /* text */
   --color-ink: #ffffff;         /* primary text */
   --color-dim: #b9a7d0;         /* secondary */
   --color-dim2: #cbb8e0;        /* brighter secondary */
-  --color-muted: #7c728f;       /* meta */
-  --color-line: #ffffff1f;      /* hairline borders */
+  --color-muted: #7c728f;       /* meta, labels, footnotes */
+
+  /* lines */
+  --color-line: rgba(255,255,255,.12);
+
+  /* accents */
   --color-hypeA: #ff5cf0;       /* magenta */
   --color-hypeB: #8be9ff;       /* cyan */
   --color-loss: #ff6b6b;        /* losses */
-  --color-gain: #6bff9d;        /* flipper gains */
-  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  --radius-xs: 6px; --radius-sm: 8px; --radius-md: 12px;
-  --radius-lg: 14px; --radius-xl: 16px;
+  --color-gain: #6bff9d;        /* gains */
+
+  /* type */
+  --font-sans: Archivo, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* radius */
+  --radius-sm: 8px;             /* tiles, thumbnails, small cards */
+  --radius-md: 12px;            /* panels, tables, stat strips */
+  --radius-full: 999px;         /* pills, buttons, avatars */
 }
 
 @keyframes glowpulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes growbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 @layer base {
   html, body { @apply bg-bg text-dim; margin: 0; }
@@ -28,7 +45,21 @@
   h1, h2, h3 { color: var(--color-ink); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
   a { color: var(--color-hypeB); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+  .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em;
+             text-transform: uppercase; margin-bottom: 10px; }
   .hype-btn { background: linear-gradient(90deg, var(--color-hypeA), var(--color-hypeB));
-              color: #111; font-weight: 800; border-radius: 24px; }
+              color: #111; font-weight: 800; border-radius: 999px;
+              transition: transform .16s ease, box-shadow .16s ease, filter .16s ease; }
+  .hype-btn:hover { filter: brightness(1.08); }
+  /* note box */
+  .note-box { background: var(--color-panel2); border-radius: 12px; padding: 16px 20px;
+              font-size: 13px; line-height: 1.65; color: var(--color-dim); text-wrap: pretty; }
+  /* motion bars */
+  .anim-rise { animation: rise .5s ease-out both; }
+  .anim-rise-stagger { animation: rise .5s .12s ease-out both; }
+  .anim-rise-fast { animation: rise .4s ease-out both; }
+  .anim-growbar { animation: growbar .7s ease-out both; transform-origin: left; }
+  @media (prefers-reduced-motion: reduce) {
+    .anim-rise, .anim-rise-stagger, .anim-rise-fast, .anim-growbar { animation: none; }
+  }
 }

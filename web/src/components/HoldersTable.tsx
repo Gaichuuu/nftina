@@ -60,25 +60,26 @@ export default function HoldersTable({ slug }: { slug: string }) {
         </span>
       </div>
       <div className="overflow-x-auto rounded-md border border-line">
-        <table className="w-full text-[12px]">
-          <thead className="bg-panel2 font-mono text-[10px] tracking-[1px] text-muted">
+        <table className="w-full min-w-170 text-[12.5px] tabular-nums">
+          <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase -tracking-widest text-muted">
             <tr>
-              <th className="px-3 py-2.5 text-left font-semibold">WALLET</th>
-              <th className="px-3 py-2.5 text-left font-semibold">OWNS</th>
-              <th className="px-3 py-2.5 text-right font-semibold">MINTED</th>
-              <th className="px-3 py-2.5 text-right font-semibold">BOUGHT</th>
-              <th className="px-3 py-2.5 text-right font-semibold">SOLD</th>
-              <th className="px-3 py-2.5 text-right font-semibold"
+              <th className="px-4 py-3 text-left">WALLET</th>
+              <th className="px-4 py-3 text-left">OWNS</th>
+              <th className="px-4 py-3 text-right">MINTED</th>
+              <th className="px-4 py-3 text-right">BOUGHT</th>
+              <th className="px-4 py-3 text-right">SOLD</th>
+              <th className="px-4 py-3 text-right"
                   title="Net tokens moved in/out via non-sale transfer (airdrops, gifts)">TRANSFERS</th>
-              <th className="px-3 py-2.5 text-right font-semibold">NET LOST / GAINED</th>
+              <th className="px-4 py-3 text-right">NET LOST / GAINED</th>
             </tr>
           </thead>
           <tbody>
             {sorted.slice(0, shown).map((e) => {
               const named = hasWalletName(e.wallet);
               return (
-                <tr key={e.wallet} className="border-t border-line align-middle">
-                  <td className="px-3 py-2.5">
+                <tr key={e.wallet}
+                    className="border-t border-line align-middle transition-colors hover:bg-hover">
+                  <td className="px-4 py-3.25">
                     <div className="flex items-center gap-2.5">
                       <a href={etherscanAddr(e.wallet)} target="_blank" rel="noopener noreferrer"
                          className="flex min-w-0 items-center gap-2.5 no-underline hover:opacity-90"
@@ -98,18 +99,18 @@ export default function HoldersTable({ slug }: { slug: string }) {
                       <PnlButton onClick={() => setPnlWallet(e.wallet)} />
                     </div>
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-4 py-3.25">
                     <div className="flex items-center gap-2">
                       <span className="min-w-6.5 text-right font-bold text-ink">{e.tokens_held}</span>
-                      <Bar value={e.tokens_held} max={heldMax} gradient="held" min={4}
-                           className="h-1.5 w-16 shrink-0 rounded-[3px]" />
+                      <Bar value={e.tokens_held} max={heldMax} variant="own" min={4}
+                           className="w-16 shrink-0" />
                     </div>
                   </td>
-                  <td className="px-3 py-2.5 text-right text-dim">{e.tokens_minted ?? 0}</td>
-                  <td className="px-3 py-2.5 text-right text-dim">{e.tokens_bought}</td>
-                  <td className="px-3 py-2.5 text-right text-dim">{e.tokens_sold}</td>
-                  <td className="px-3 py-2.5 text-right"><XferCell e={e} /></td>
-                  <td className="px-3 py-2.5"><NetPnl ethv={e.net_pnl_eth} usdv={e.net_pnl_usd} /></td>
+                  <td className="px-4 py-3.25 text-right text-dim">{e.tokens_minted ?? 0}</td>
+                  <td className="px-4 py-3.25 text-right text-dim">{e.tokens_bought}</td>
+                  <td className="px-4 py-3.25 text-right text-dim">{e.tokens_sold}</td>
+                  <td className="px-4 py-3.25 text-right"><XferCell e={e} /></td>
+                  <td className="px-4 py-3.25"><NetPnl ethv={e.net_pnl_eth} usdv={e.net_pnl_usd} /></td>
                 </tr>
               );
             })}

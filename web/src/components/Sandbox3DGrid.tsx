@@ -5,7 +5,7 @@ export default function Sandbox3DGrid() {
   if (sandbox3d.length === 0)
     return <div className="p-6 text-center text-muted">no 3D assets.</div>;
   return (
-    <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-3 py-4 sm:grid-cols-2 sm:p-4 lg:grid-cols-3">
       {sandbox3d.map((a) => (
         <div key={a.token_id} className="rounded-sm border border-line bg-panel">
           <div className="aspect-square w-full">

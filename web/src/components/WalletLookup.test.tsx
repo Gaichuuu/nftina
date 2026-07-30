@@ -35,10 +35,10 @@ it("shows overall rank and a per-collection ranked row", async () => {
   expect(screen.getByText("#7")).toBeInTheDocument();
   expect(screen.getByText("/2,729")).toBeInTheDocument();
   expect(screen.getByText("+2")).toBeInTheDocument();
-  expect(screen.getByText(/\(off-chain\)/)).toBeInTheDocument();
+  expect(screen.getByText(/all-in/)).toBeInTheDocument();
   expect(screen.getByText(/\$1,135/)).toBeInTheDocument();
-  expect(screen.getByText("Wallet P&L")).toBeInTheDocument();
-  expect(screen.getByText("Overall (USD)")).toBeInTheDocument();
+  expect(screen.getByText("On-chain P&L")).toBeInTheDocument();
+  expect(screen.getByText("All-in (USD)")).toBeInTheDocument();
   expect(screen.getByText(/-\$13,100|−\$13,100/)).toBeInTheDocument();
   expect(screen.getByText(/of 1,837/)).toBeInTheDocument();
 });

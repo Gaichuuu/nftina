@@ -1,5 +1,5 @@
 import type { TokenRow } from "@/data/schemas";
-import { usd, osAssetUrl, placeholderGradient } from "@/lib/format";
+import { usd, osAssetUrl, tileGradient, cdnResized } from "@/lib/format";
 import LoopMedia from "./LoopMedia";
 
 export default function TokenThumb({ t, contract }:
@@ -8,8 +8,9 @@ export default function TokenThumb({ t, contract }:
   const loss = t.floor_usd - t.last_paid_usd;
   const body = (
     <>
-      <div className="aspect-square w-full" style={{ background: placeholderGradient(t.token_id) }}>
-        <LoopMedia image={t.image} video={t.video} alt={t.name ?? `token ${t.token_id}`}
+      <div className="aspect-square w-full" style={{ background: tileGradient }}>
+        <LoopMedia image={t.image && cdnResized(t.image, 420)} video={t.video}
+                   alt={t.name ?? `token ${t.token_id}`}
                    className="h-full w-full object-cover" />
       </div>
       <div className="p-2">

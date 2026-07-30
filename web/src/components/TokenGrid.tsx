@@ -65,7 +65,7 @@ export default function TokenGrid(
 
   const showFilter = showFilterProp ?? (types.length >= 2 && types.length <= 40);
   return (
-    <div className="p-4">
+    <div className="py-4 sm:p-4">
       <div className="flex flex-col gap-4 sm:flex-row">
         {showFilter && (
           <aside className="sm:w-52 sm:shrink-0" aria-label="filter by type">
@@ -76,8 +76,8 @@ export default function TokenGrid(
                         className="text-hypeB hover:underline">clear</button>
               )}
             </div>
-            <div className="flex flex-col gap-1 rounded-sm border border-line bg-panel/60 p-2
-                            sm:max-h-[70vh] sm:overflow-y-auto">
+            <div className="flex max-h-44 flex-col gap-1 overflow-y-auto rounded-sm border border-line
+                            bg-panel/60 p-2 sm:max-h-[70vh]">
               {types.map((v) => (
                 <label key={v} className="flex cursor-pointer items-start gap-1.5 text-[11px] text-ink">
                   <input type="checkbox" checked={selected.has(v)} onChange={() => toggleType(v)}
@@ -106,7 +106,7 @@ export default function TokenGrid(
               {SORT_LABELS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
             </select>
           </div>
-          <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
             {sorted.slice(0, shown).map((t) => <TokenThumb key={t.token_id} t={t} contract={contract} />)}
           </div>
           <div className="mt-3 text-center font-mono text-[10px] text-muted">

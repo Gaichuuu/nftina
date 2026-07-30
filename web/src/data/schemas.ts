@@ -16,6 +16,7 @@ export type Collection = z.infer<typeof Collection>;
 export const Sandbox3D = z.object({
   token_id: z.string(), name: z.string(),
   model: z.string(), image: z.string().nullable(),
+  model_bytes: z.number().nullable().optional(),
   supply: z.number().nullable().optional(),
 });
 export type Sandbox3D = z.infer<typeof Sandbox3D>;

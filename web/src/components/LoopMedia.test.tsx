@@ -18,7 +18,7 @@ it("shows the still when there is no loop", () => {
   expect(container.querySelector("video")).toBeNull();
 });
 
-it("renders nothing when there is neither, so the caller's placeholder shows", () => {
+it("renders nothing when there is neither, so the caller's gradient fill shows", () => {
   const { container } = render(<LoopMedia alt="none" />);
   expect(container).toBeEmptyDOMElement();
 });

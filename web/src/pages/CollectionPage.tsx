@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { collectionBySlug, contentFor } from "@/data/bundled";
-import { eth, compactUsd, shortAddr } from "@/lib/format";
+import { eth, compactUsd, shortAddr, cdnResized } from "@/lib/format";
 import Container from "@/components/Container";
 import { StatCell, StatStrip } from "@/components/StatCell";
 import Tabs from "@/components/Tabs";
@@ -22,7 +22,7 @@ export default function CollectionPage() {
   return (
     <div>
       {/* banner */}
-      <div className="relative h-55 overflow-hidden"
+      <div className="relative h-40 overflow-hidden sm:h-55"
            style={{ WebkitMaskImage: "linear-gradient(to bottom, #000 55%, transparent 100%)",
                     maskImage: "linear-gradient(to bottom, #000 55%, transparent 100%)" }}>
         {c.video ? (
@@ -36,7 +36,7 @@ export default function CollectionPage() {
         ) : (
           <div className="absolute inset-0 bg-cover bg-center"
                style={{ background: c.image
-                 ? `linear-gradient(180deg,rgba(59,29,110,.55),rgba(12,9,18,.85)), url(${c.image}) center/cover`
+                 ? `linear-gradient(180deg,rgba(59,29,110,.55),rgba(12,9,18,.85)), url(${cdnResized(c.image, 1600)}) center/cover`
                  : "linear-gradient(180deg,#3b1d6e,#0e2a63,#160a24)" }} />
         )}
       </div>
@@ -50,7 +50,7 @@ export default function CollectionPage() {
             <span className="px-1.5">/</span>
             <span className="text-dim">{c.name}</span>
           </nav>
-          <h1 className="text-[40px] font-black tracking-[-0.03em]">{c.name}</h1>
+          <h1 className="text-[30px] font-black tracking-[-0.03em] sm:text-[40px]">{c.name}</h1>
           <div className="mt-2 font-mono text-[12px] text-muted">
             {shortAddr(c.contract)} · {c.standard} · floor {eth(c.floor_eth)}
           </div>
@@ -64,28 +64,28 @@ export default function CollectionPage() {
 
         {/* stat row */}
         <div className="mt-7">
-          <StatStrip cols={5} className="grid-cols-2 sm:grid-cols-5">
-            <StatCell numClass="text-[24px]" big={c.total_mints.toLocaleString()} label="Mints" />
+          <StatStrip className="grid-cols-2 sm:grid-cols-5 max-sm:[&>*:last-child]:col-span-2">
+            <StatCell big={c.total_mints.toLocaleString()} label="Mints" />
             {(() => {
               const off = content.off_chain_basis?.unit_cost_usd;
               const avgEth = c.total_mints > 0 ? c.mint_revenue_eth / c.total_mints : 0;
               const avgUsd = c.total_mints > 0 ? c.mint_revenue_usd / c.total_mints : 0;
               const sold = content.primary_sale;
               return (
-                <StatCell numClass="text-[24px]"
+                <StatCell
                           big={off ? `$${off}` : avgEth > 0 ? eth(avgEth) : sold ? sold.label : "Free"}
                           sub={off ? "off-chain box"
                                : avgEth > 0 ? compactUsd(avgUsd) : sold?.sub}
                           label="Mint price" />
               );
             })()}
-            <StatCell numClass="text-[24px]" big={eth(c.mint_revenue_eth)}
+            <StatCell big={eth(c.mint_revenue_eth)}
                       sub={c.mint_revenue_usd > 0 ? compactUsd(c.mint_revenue_usd) : undefined}
                       label="Mint revenue" />
-            <StatCell numClass="text-[24px]" big={eth(c.secondary_volume_eth)}
+            <StatCell big={eth(c.secondary_volume_eth)}
                       sub={c.secondary_volume_usd != null ? compactUsd(c.secondary_volume_usd) : undefined}
                       label="Secondary vol" />
-            <StatCell numClass="text-[24px]" tone="hype" big={eth(c.royalty_eth)}
+            <StatCell tone="hype" big={eth(c.royalty_eth)}
                       sub={c.royalty_usd != null ? compactUsd(c.royalty_usd) : undefined}
                       label="→ MetaZoo royalties" />
           </StatStrip>

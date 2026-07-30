@@ -25,7 +25,7 @@ const acq: Findings["acquisitions"] = {
 
 test("renders one marquee NFT example per collection, linking to OpenSea", () => {
   render(<AcquisitionTable acq={acq} />);
-  const img = screen.getByAltText("CRYPTOPUNKS #8705") as HTMLImageElement;
+  const img = screen.getByAltText("CryptoPunks #8705") as HTMLImageElement;
   expect(img.src).toBe("https://cdn/punk8705.png");
   const link = img.closest("a") as HTMLAnchorElement;
   expect(link.href).toBe("https://opensea.io/assets/ethereum/0xabc/8705");
@@ -60,6 +60,6 @@ test("shows held-now count and marks multi-tenant contracts n/a", () => {
 
 test("renders the underwater blue-chip loss % (paid → floor)", () => {
   render(<AcquisitionTable acq={acq} />);
-  expect(screen.getByText("-66%")).toBeInTheDocument();
+  expect(screen.getByText("−66%")).toBeInTheDocument();
   expect(screen.getByText(/paid ~93\.26 Ξ → floor ~31\.99 Ξ/)).toBeInTheDocument();
 });

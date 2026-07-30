@@ -1,18 +1,24 @@
 import { useState } from "react";
 import type { Findings, TopItem } from "@/data/schemas";
-import { eth, usd, compactUsd, pct, placeholderGradient, osAssetUrl } from "@/lib/format";
+import { eth, usd, compactUsd, pct, placeholderGradient, osAssetUrl, cdnResized } from "@/lib/format";
 import Bar from "./Bar";
 
 type BlueChip = Findings["acquisitions"]["by_collection"][number];
+
+const DISPLAY_NAMES: Record<string, string> = {
+  CRYPTOPUNKS: "CryptoPunks",
+  BoredApeYachtClub: "Bored Ape Yacht Club",
+};
+const displayName = (name: string) => DISPLAY_NAMES[name] ?? name;
 
 function CollThumb({ b, size }: { b: BlueChip; size: string }) {
   const [failed, setFailed] = useState(false);
   const show = b.image && !failed;
   return show ? (
-    <img src={b.image!} alt={b.name} loading="lazy" onError={() => setFailed(true)}
-         className={`${size} shrink-0 rounded-sm object-cover`} />
+    <img src={cdnResized(b.image!, 64)} alt={displayName(b.name)} loading="lazy" onError={() => setFailed(true)}
+         className={`${size} shrink-0 rounded-[6px] object-cover`} />
   ) : (
-    <div className={`${size} shrink-0 rounded-sm`} style={{ background: placeholderGradient(b.name) }} />
+    <div className={`${size} shrink-0 rounded-[6px]`} style={{ background: placeholderGradient(b.name) }} />
   );
 }
 
@@ -21,18 +27,20 @@ function ExampleTile({ item }: { item: TopItem }) {
   const show = item.image && !failed;
   const href = item.contract ? osAssetUrl(item.contract, item.token_id) : undefined;
   const inner = (
-    <div className="overflow-hidden rounded-sm border border-line bg-panel transition-colors hover:border-hypeA">
+    <div className="overflow-hidden rounded-sm border border-line bg-panel
+                    transition-[border-color,transform,background] duration-[.18s]
+                    hover:-translate-y-0.75 hover:border-hypeA">
       <div className="aspect-square w-full">
         {show ? (
-          <img src={item.image!} alt={`${item.name} #${item.token_id}`} loading="lazy"
+          <img src={cdnResized(item.image!, 480)} alt={`${displayName(item.name)} #${item.token_id}`} loading="lazy"
                onError={() => setFailed(true)} className="h-full w-full object-cover" />
         ) : (
           <div className="h-full w-full" style={{ background: placeholderGradient(item.name + item.token_id) }} />
         )}
       </div>
       <div className="p-1.5">
-        <div className="truncate text-[10px] font-bold text-ink">{item.name} #{item.token_id}</div>
-        <div className="text-[9px] text-dim">{eth(item.eth)} / {usd(item.usd)}</div>
+        <div className="truncate text-[11px] font-bold text-ink">{displayName(item.name)} #{item.token_id}</div>
+        <div className="font-mono text-[10px] tabular-nums text-dim">{eth(item.eth)} / {usd(item.usd)}</div>
       </div>
     </div>
   );
@@ -54,10 +62,11 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
           <div className="mt-1 grid grid-cols-2 gap-2 sm:grid-cols-5">
             {underwater.map((b) => (
               <div key={b.contract}
-                   className="rounded-sm border border-loss/40 bg-panel p-2 text-center">
-                <div className="text-[26px] font-extrabold leading-none text-loss">{pct(b.loss_pct!)}</div>
-                <div className="mt-1 truncate text-[10px] font-bold text-ink">{b.name}</div>
-                <div className="text-[9px] text-dim">
+                   className="rounded-sm border bg-panel px-2.5 py-3.5 text-center"
+                   style={{ borderColor: "rgba(255,107,107,.35)" }}>
+                <div className="text-[26px] font-extrabold leading-none tabular-nums text-loss">{pct(b.loss_pct!)}</div>
+                <div className="mt-1 truncate text-[11px] font-bold text-ink">{displayName(b.name)}</div>
+                <div className="font-mono text-[9.5px] tabular-nums text-muted">
                   paid ~{eth(b.avg_paid_eth!)} → floor ~{eth(b.floor_eth!)}</div>
               </div>
             ))}
@@ -74,41 +83,42 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
           </div>
         </div>
       )}
-      <div className="mt-3 overflow-x-auto rounded-sm border border-line">
-        <table className="w-full text-[11.5px]">
-          <thead className="bg-panel2 font-mono text-[10px] text-muted">
-            <tr><th className="p-2 text-left">COLLECTION</th><th className="p-2 text-right">BOUGHT</th>
-              <th className="p-2 pr-6 text-right">HOLDS</th>
-              <th className="w-[34%] p-2 pl-6 text-left">USD</th><th className="p-2 text-right">ETH</th></tr>
+      <div className="mt-3.5 overflow-x-auto rounded-md border border-line">
+        <table className="w-full min-w-135 text-[12.5px] tabular-nums">
+          <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
+            <tr><th className="px-4 py-3 text-left">COLLECTION</th><th className="px-4 py-3 text-right">BOUGHT</th>
+              <th className="px-4 py-3 text-right">HOLDS</th>
+              <th className="w-[34%] px-4 py-3 text-left">USD</th><th className="px-4 py-3 text-right">ETH</th></tr>
           </thead>
           <tbody>
             {rows.map((b) => (
-              <tr key={b.contract} className="border-t border-line align-middle">
-                <td className="p-2">
+              <tr key={b.contract}
+                  className="border-t border-line align-middle transition-colors hover:bg-hover">
+                <td className="px-4 py-3.25">
                   <div className="flex items-center gap-2.5">
                     <CollThumb b={b} size="h-7 w-7" />
-                    <span className="min-w-0 truncate">{b.name}</span>
+                    <span className="min-w-0 truncate">{displayName(b.name)}</span>
                   </div>
                 </td>
-                <td className="p-2 text-right text-dim">{b.purchases}</td>
-                <td className="p-2 pr-6 text-right">
+                <td className="px-4 py-3.25 text-right text-dim">{b.purchases}</td>
+                <td className="px-4 py-3.25 text-right">
                   {b.held_now == null ? <span className="text-muted">n/a</span>
                     : <span className={b.held_now === 0 ? "text-muted" : "text-gain"}>{b.held_now}</span>}
                 </td>
-                <td className="p-2 pl-6">
+                <td className="px-4 py-3.25">
                   <div className="flex items-center gap-2">
                     <Bar value={b.usd} max={usdMax} />
                     <span className="min-w-14 whitespace-nowrap text-right text-dim">{usd(b.usd)}</span>
                   </div>
                 </td>
-                <td className="p-2 text-right whitespace-nowrap">{eth(b.eth)}</td>
+                <td className="px-4 py-3.25 text-right whitespace-nowrap">{eth(b.eth)}</td>
               </tr>
             ))}
-            <tr className="border-t border-line text-muted">
-              <td className="p-2">…{acq.total_purchases} buys total</td>
-              <td className="p-2"></td><td className="p-2"></td>
-              <td className="p-2 text-right whitespace-nowrap">{compactUsd(acq.total_usd)}</td>
-              <td className="p-2 text-right whitespace-nowrap">{eth(acq.total_eth)}</td>
+            <tr className="border-t border-line bg-total text-muted">
+              <td className="px-4 py-3.25">…{acq.total_purchases} buys total</td>
+              <td className="px-4 py-3.25"></td><td className="px-4 py-3.25"></td>
+              <td className="px-4 py-3.25 text-right whitespace-nowrap">{compactUsd(acq.total_usd)}</td>
+              <td className="px-4 py-3.25 text-right whitespace-nowrap">{eth(acq.total_eth)}</td>
             </tr>
           </tbody>
         </table>

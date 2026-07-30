@@ -24,7 +24,7 @@ export default function WalletPnlDialog({ address, onClose }: { address: string;
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-3 sm:p-8"
          role="dialog" aria-modal="true" aria-label="Wallet profit and loss" onClick={onClose}>
-      <div className="w-full max-w-5xl rounded-xl border border-line bg-bg p-5 shadow-2xl"
+      <div className="w-full max-w-5xl rounded-md border border-line bg-bg p-5 shadow-2xl"
            onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center justify-between">
           <div className="font-mono text-[11px] uppercase tracking-[1px] text-muted">Wallet profit &amp; loss</div>
@@ -33,7 +33,8 @@ export default function WalletPnlDialog({ address, onClose }: { address: string;
         </div>
         {profile === "loading" && (
           <div className="flex flex-col items-center gap-3 py-12">
-            <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-hypeB" />
+            <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-hypeB
+                             [animation-duration:.8s]" />
             <span className="font-mono text-[12px] text-muted">Loading…</span>
           </div>
         )}

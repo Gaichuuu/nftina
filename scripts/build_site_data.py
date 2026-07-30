@@ -586,13 +586,17 @@ def raw_slugs_for(site_collections):
 
 
 def build_sandbox3d(entries):
-    """Filter out any entry with `model: None`"""
+    """Filter out any entry with `model: None`. `model_bytes` is the local
+    file's size, letting the frontend prefer light models for the home hero;
+    None when the local copy is absent (pruned checkout)."""
     out = []
     for e in entries:
         if e.get("model") is None:
             continue
-        model = "/sandbox3d/" + e["model"].rsplit("/", 1)[-1]
-        out.append({**e, "model": model,
+        name = e["model"].rsplit("/", 1)[-1]
+        local = ROOT / "data" / "media" / "sandbox3d" / name
+        out.append({**e, "model": "/sandbox3d/" + name,
+                    "model_bytes": local.stat().st_size if local.exists() else None,
                     "supply": SANDBOX_ASSET_SUPPLY.get(e["token_id"])})
     return out
 

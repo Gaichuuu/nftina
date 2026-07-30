@@ -26,19 +26,22 @@ export default function UsdAuditSection() {
       + `in ${peak.month}, ending at ${compactUsd(last.usd_mark)} in ${last.month}`
     : "Monthly treasury balance, marked to market";
   return (
-    <section className="mt-13">
-      <div className="eyebrow mb-4">Where the treasury’s money came from</div>
-      <StatStrip cols={3} className="grid-cols-1 sm:grid-cols-3">
+    <section className="mt-16">
+      <div className="eyebrow text-hypeB">Treasury audit</div>
+      <h2 className="mb-5 text-[28px] font-black tracking-tight">
+        Where the treasury’s money came from
+      </h2>
+      <StatStrip className="grid-cols-1 sm:grid-cols-3">
         {inRows.map((r) => {
           const c = by_class.in[r.key];
           return (
-            <StatCell key={r.key} numClass="text-[24px]" big={eth(c.eth)}
+            <StatCell key={r.key} big={eth(c.eth)}
                       sub={`${compactUsd(c.usd)} · ${Math.round((c.eth / inTotal) * 100)}%`}
                       label={r.label} />
           );
         })}
       </StatStrip>
-      <p className="mt-3.5 rounded-md bg-panel2 px-4.5 py-4 text-[13px] leading-relaxed text-dim">
+      <p className="note-box mt-3.5">
         Of the <span className="font-bold text-ink">{eth(h.received_eth)}</span> the treasury ever took in,
         roughly four-fifths was primary <span className="font-bold text-ink">NFT mint sales</span>. The{" "}
         <span className="font-bold text-ink">royalties</span> slice reached MetaZoo mostly through OpenSea’s
@@ -59,15 +62,19 @@ export default function UsdAuditSection() {
         ].filter((c) => c.eth > 0);
         return (
           <>
-            <div className="eyebrow mb-4 mt-10">Where the treasury’s money went</div>
-            <StatStrip cols={cells.length} className="grid-cols-2 sm:grid-cols-5">
+            <h2 className="mb-5 mt-11 text-[28px] font-black tracking-tight">
+              Where the treasury’s money went
+            </h2>
+            <StatStrip className={`grid-cols-2 max-sm:[&>*:nth-child(odd):last-child]:col-span-2 ${
+              ["sm:grid-cols-1", "sm:grid-cols-1", "sm:grid-cols-2", "sm:grid-cols-3",
+               "sm:grid-cols-4", "sm:grid-cols-5"][cells.length]}`}>
               {cells.map((c) => (
-                <StatCell key={c.label} numClass="text-[24px]" tone={c.tone} big={eth(c.eth)}
+                <StatCell key={c.label} tone={c.tone} big={eth(c.eth)}
                           sub={`${compactUsd(c.usd)} · ${Math.round((c.eth / outTotal) * 100)}%`}
                           label={c.label} />
               ))}
             </StatStrip>
-            <p className="mt-3.5 rounded-md bg-panel2 px-4.5 py-4 text-[13px] leading-relaxed text-dim">
+            <p className="note-box mt-3.5">
               Most of what left the treasury went to <span className="font-bold text-ink">insider cash-outs</span>{" "}
               (to Coinbase/FTX) and <span className="font-bold text-ink">Steve Aoki</span>. The rest is{" "}
               <span className="font-bold text-ink">project costs</span> (gas for contract deploys and reward
@@ -76,21 +83,23 @@ export default function UsdAuditSection() {
               On-chain is a floor: the bulk of real project costs (physical card printing, fiat operations) never
               touched these wallets.
             </p>
-            <div className="eyebrow mb-4 mt-10 text-loss">The USD reconciliation · what holding ETH cost</div>
+            <h2 className="mb-5 mt-11 text-[28px] font-black tracking-tight">
+              The USD reconciliation
+            </h2>
           </>
         );
       })()}
-      <StatStrip cols={4} className="grid-cols-2 sm:grid-cols-4">
-        <StatCell numClass="text-[24px]" big={eth(h.received_eth)}
+      <StatStrip className="grid-cols-2 sm:grid-cols-4">
+        <StatCell big={eth(h.received_eth)}
                   sub={compactUsd(h.received_usd_at_receipt)} label="received at receipt" />
-        <StatCell numClass="text-[24px]" big={eth(h.paid_eth)}
+        <StatCell big={eth(h.paid_eth)}
                   sub={compactUsd(h.paid_usd_at_spend)} label="paid out at spend" />
-        <StatCell numClass="text-[24px]" big={eth(h.gas_eth)}
+        <StatCell big={eth(h.gas_eth)}
                   sub={compactUsd(h.gas_usd_at_spend)} label="burned as gas fees" />
-        <StatCell numClass="text-[24px]" tone="gain" big={eth(h.still_held_eth)}
+        <StatCell tone="gain" big={eth(h.still_held_eth)}
                   sub={compactUsd(h.still_held_usd_now)} label="still held on-chain today" />
       </StatStrip>
-      <p className="mt-3.5 rounded-md bg-panel2 px-4.5 py-4 text-[13px] leading-relaxed text-dim">
+      <p className="note-box mt-3.5">
         It balances: received = paid + gas + still-held. The treasury is essentially{" "}
         <span className="font-bold text-ink">empty today ({eth(h.still_held_eth)} ≈ {compactUsd(h.still_held_usd_now)})</span>.
         The received−paid gap was almost all gas, not ETH sitting in a wallet. Because the money left
@@ -103,7 +112,7 @@ export default function UsdAuditSection() {
         {monthly.map((m) => (
           <div key={m.month} title={`${m.month}: ${m.eth_balance} Ξ ≈ ${compactUsd(m.usd_mark)}`}
                className="flex h-full flex-1 flex-col justify-end">
-            <span className="block w-full rounded-t-[2px]"
+            <span className="block w-full rounded-t-xs"
                   style={{ height: `${Math.max(2, (m.usd_mark / max) * 100)}%`,
                            background: "rgba(255,107,107,.6)" }} />
           </div>

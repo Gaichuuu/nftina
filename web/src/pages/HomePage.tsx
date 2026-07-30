@@ -9,12 +9,19 @@ import WalletLookup from "@/components/WalletLookup";
 import CollectionTile from "@/components/CollectionTile";
 import ModelViewer from "@/components/ModelViewer";
 
-const DEFAULT_HERO = sandbox3d.find((a) => a.name.toLowerCase().includes("space penguins")) ?? sandbox3d[0];
+/* 3D asset load */
+const HERO_LIMIT_BYTES = 4_000_000;
+const HERO_POOL = (() => {
+  const small = sandbox3d.filter((a) => (a.model_bytes ?? Infinity) <= HERO_LIMIT_BYTES);
+  return small.length ? small : sandbox3d;
+})();
+const DEFAULT_HERO =
+  HERO_POOL.find((a) => a.name.toLowerCase().includes("space penguins")) ?? HERO_POOL[0];
 
 export default function HomePage() {
-  const [hero, setHero] = useState(DEFAULT_HERO);
+  const [hero, setHero] = useState<(typeof HERO_POOL)[number] | null>(null);
   useEffect(() => {
-    if (sandbox3d.length) setHero(sandbox3d[Math.floor(Math.random() * sandbox3d.length)]);
+    if (HERO_POOL.length) setHero(HERO_POOL[Math.floor(Math.random() * HERO_POOL.length)]);
   }, []);
 
   return (
@@ -22,54 +29,60 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden"
                style={{ background: "radial-gradient(90% 120% at 78% 20%, #241238, #0c0912 64%)" }}>
-        {hero && (
-          <div className="pointer-events-none absolute z-1 hidden lg:block"
-               style={{ top: -70, right: 10, width: 760, height: 640 }}>
-            <div className="absolute inset-0"
-                 style={{ background: "radial-gradient(50% 45% at 55% 42%, rgba(139,233,255,.16), transparent 70%)",
-                          animation: "glowpulse 7s ease-in-out infinite" }} />
-            <div className="pointer-events-auto h-full w-full">
-              <ModelViewer src={hero.model} poster={hero.image ?? undefined} alt={hero.name} randomAnimation />
-            </div>
-          </div>
-        )}
-        <Container className="relative z-5 py-13 pt-12">
-          <div className="max-w-170">
-            <h1 className="mt-5 text-[44px] font-black leading-[0.97] tracking-[-0.035em] text-ink sm:text-[72px]">
+        <Container className="relative z-5 pt-14">
+          <div className="anim-rise max-w-170">
+            <div className="eyebrow text-hypeB">On-chain post-mortem</div>
+            <h1 className="text-balance text-[44px] font-black leading-[0.97] tracking-[-0.035em] text-ink sm:text-[72px]">
               MetaZoo raised <span className="text-hypeB">{compactUsd(summary.total_mint_revenue_usd)}</span>.
             </h1>
-            <h1 className="mt-1.5 text-[44px] font-black leading-[0.97] tracking-[-0.035em] text-loss sm:text-[72px]">
+            <h1 className="mt-1.5 text-balance text-[44px] font-black leading-[0.97] tracking-[-0.035em] text-loss sm:text-[72px]">
               Holders lost {compactUsdDown(summary.total_loss_usd)}.
             </h1>
-            <p className="mt-6 max-w-120 text-[16px] leading-[1.55] text-dim2">
+            <p className="mt-6 max-w-120 text-pretty text-[16px] leading-[1.55] text-dim2">
               {Math.round(summary.total_loss_eth).toLocaleString()} Ξ vanished across {collections.length} collections
               and {summary.total_wallets.toLocaleString()} wallets.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4.5">
               <Link to="/where-did-the-money-go"
-                    className="hype-btn rounded-full px-7.5 py-3.5 text-[15px] no-underline">
+                    className="hype-btn px-7.5 py-3.5 text-[15px] no-underline
+                               hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,92,240,.28)]">
                 See the findings →
               </Link>
-              {/* <span className="max-w-60 font-mono text-[11px] leading-normal text-muted">
-                USD valued when each amount moved.
-              </span> */}
             </div>
           </div>
         </Container>
+        {/* HERO MODEL */}
+        {DEFAULT_HERO && (
+          <div className="pointer-events-none relative z-1 mx-auto mt-4 h-65 w-full max-w-90
+                          lg:absolute lg:right-2.5 lg:top-17.5 lg:mx-0 lg:mt-0 lg:h-160 lg:w-190 lg:max-w-none">
+            <div className="absolute inset-0"
+                 style={{ background: "radial-gradient(50% 45% at 55% 42%, rgba(139,233,255,.16), transparent 70%)",
+                          animation: "glowpulse 7s ease-in-out infinite" }} />
+            <div className="pointer-events-auto h-full w-full">
+              {hero ? (
+                <ModelViewer src={hero.model} poster={hero.image ?? undefined} alt={hero.name} randomAnimation />
+              ) : DEFAULT_HERO.image && (
+                <img src={DEFAULT_HERO.image} alt={DEFAULT_HERO.name}
+                     className="h-full w-full object-contain" />
+              )}
+            </div>
+          </div>
+        )}
         {/* STATS */}
-        <div className="relative z-5">
-          <Container className="py-0">
-            <StatStrip cols={4} className="grid-cols-2 sm:grid-cols-4">
-              <StatCell numClass="text-[24px]" tone="hype" big={eth(findings.legs.aoki_eth)}
-                        sub={compactUsd(findings.legs.aoki_usd)} label="→ Funds sent to Aoki" />
-              <StatCell numClass="text-[24px]" big={eth(findings.legs.royalties_eth)}
-                        sub={compactUsd(findings.legs.royalties_usd)} label="royalties taken by MetaZoo" />
-              <StatCell numClass="text-[24px]" tone="gain" big={eth(findings.flippers.total_gains_eth)}
+        <div className="relative z-5 pb-14">
+          <Container className="pt-11">
+            <StatStrip className="anim-rise-stagger grid-cols-2 sm:grid-cols-4">
+              <StatCell bg="bg-bg" tone="hype" big={eth(findings.legs.aoki_eth)}
+                        sub={compactUsd(findings.legs.aoki_usd)} label="Sent to Aoki" />
+              <StatCell bg="bg-bg" big={eth(findings.legs.royalties_eth)}
+                        sub={compactUsd(findings.legs.royalties_usd)} label="Royalties to MetaZoo" />
+              <StatCell bg="bg-bg" tone="gain" big={eth(findings.flippers.total_gains_eth)}
                         sub={compactUsd(findings.flippers.total_gains_usd)}
-                        label="flippers selling the top" />
-              <StatCell numClass="text-[24px]" tone="loss"
+                        label="Taken by flippers" />
+              <StatCell bg="bg-bg" tone="loss"
                         big={summary.wallets_net_loss.toLocaleString()}
-                        label="wallets net underwater" />
+                        sub={`of ${summary.total_wallets.toLocaleString()}`}
+                        label="Wallets net underwater" />
             </StatStrip>
           </Container>
         </div>
@@ -95,8 +108,11 @@ export default function HomePage() {
       </Container> */}
 
       {/* COLLECTIONS */}
-      <Container className="pb-12 pt-8">
-        <h2 className="mb-5.5 mt-3 text-[30px] font-black tracking-tight">MetaZoo NFT Collections</h2>
+      <Container className="pb-18 pt-8">
+        <div className="mt-3">
+          <div className="eyebrow text-hypeB">Ten collections</div>
+          <h2 className="mb-5.5 text-[28px] font-black tracking-tight">MetaZoo NFT collections</h2>
+        </div>
         <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-5">
           {SLUGS.map((s) => {
             const c = collections.find((x) => x.collection === s);

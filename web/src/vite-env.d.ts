@@ -13,6 +13,7 @@ declare module "react" {
         "camera-controls"?: boolean;
         "camera-orbit"?: string;
         "interaction-prompt"?: string;
+        "touch-action"?: string;
         "tone-mapping"?: string;
         exposure?: string;
         "shadow-intensity"?: string;

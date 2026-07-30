@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { CollectionContent, UtilityProduct } from "@/data/schemas";
-import { usd, ethUsd, placeholderGradient } from "@/lib/format";
+import { usd, ethUsd, placeholderGradient, cdnResized } from "@/lib/format";
 
 function OverviewBlocks({ blocks }: { blocks: string[] }) {
   return (
@@ -30,7 +30,7 @@ function ProductTile({ p }: { p: UtilityProduct }) {
     <div className="overflow-hidden rounded-md border border-line bg-panel">
       <div className="flex h-40 w-full items-center justify-center bg-bg">
         {show ? (
-          <img src={p.image!} alt={p.name} loading="lazy" onError={() => setFailed(true)}
+          <img src={cdnResized(p.image!, 400)} alt={p.name} loading="lazy" onError={() => setFailed(true)}
                className="max-h-full max-w-full object-contain" />
         ) : (
           <div className="h-full w-full" style={{ background: placeholderGradient(p.name) }} />
@@ -64,8 +64,8 @@ export default function CollectionContentView(
           </div>
           {img && (
             <figure className="lg:sticky lg:top-6 lg:w-[38%] lg:shrink-0">
-              <img src={img} alt={content.overview_image_caption ?? "Collection art"} loading="lazy"
-                   className="w-full rounded-lg border border-line" />
+              <img src={cdnResized(img, 1000)} alt={content.overview_image_caption ?? "Collection art"} loading="lazy"
+                   className="w-full rounded-md border border-line" />
               {content.overview_image_caption && (
                 <figcaption className="mt-2 font-mono text-[10px] leading-normal text-muted">
                   {content.overview_image_caption}

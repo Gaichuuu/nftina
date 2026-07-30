@@ -9,16 +9,19 @@ export default function ModelViewer(
   const [anims, setAnims] = useState<string[]>([]);
   const [current, setCurrent] = useState("");
   const [open, setOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const sortedAnims = useMemo(() => [...anims].sort((a, b) => a.localeCompare(b)), [anims]);
   const rotate = autoRotate && !picker;
 
   useEffect(() => {
     let mounted = true;
+    setLoaded(false);
     import("@google/model-viewer").then(() => {
       const el = ref.current as any;
       if (!el || !mounted) return;
       const onLoad = () => {
         if (!mounted) return;
+        setLoaded(true);
         const list: string[] = el.availableAnimations ?? [];
         setAnims(list);
         const idle = list.find((n) => /idle/i.test(n)) || list[0] || "";
@@ -66,10 +69,17 @@ export default function ModelViewer(
         auto-rotate={rotate || undefined}
         auto-rotate-delay={rotate ? 0 : undefined}
         rotation-per-second={rotate ? "24deg" : undefined}
-        interaction-prompt="none" loading="eager"
+        interaction-prompt="none" loading="eager" touch-action="pan-y"
         camera-orbit="180deg 75deg auto"
         style={{ width: "100%", height: "100%", background: "transparent",
                  ["--poster-color" as any]: "transparent" }} />
+      {!loaded && (
+        <div role="status" aria-label="Loading 3D model"
+             className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+          <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-hypeB
+                           [animation-duration:.8s]" />
+        </div>
+      )}
       {picker && anims.length > 1 && (
         <div ref={boxRef} className="absolute left-2 top-2 z-20 max-w-[85%] font-mono text-[10px]">
           <button type="button" onClick={() => setOpen((o) => !o)} aria-label="animation"

@@ -30,7 +30,7 @@ it("links to OpenSea and shows only the negative dollar amount", () => {
   render(<TokenThumb t={t} contract="0x2d366be8fa4d15c289964dd4adf7be6cc5e896e8" />);
   expect(screen.getByRole("link")).toHaveAttribute("href",
     "https://opensea.io/assets/ethereum/0x2d366be8fa4d15c289964dd4adf7be6cc5e896e8/83");
-  expect(screen.getByText("-$21,447")).toBeInTheDocument(); 
+  expect(screen.getByText("−$21,447")).toBeInTheDocument();
   expect(screen.queryByText(/Ξ/)).toBeNull();
 });
 

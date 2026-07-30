@@ -32,7 +32,7 @@ export default function VolumeChart(
         {points.map((p) => (
           <div key={p.month} title={`${fmtMonth(p.month)}: ${eth(p.eth)} · ${usd(p.usd)}`}
                className="flex h-full flex-1 flex-col justify-end">
-            <span className="block w-full rounded-t-[2px]"
+            <span className="block w-full rounded-t-xs"
                   style={{ height: `${Math.max(2, (p.eth / max) * 100)}%`,
                            background: "linear-gradient(var(--color-hypeA),var(--color-hypeB))" }} />
           </div>

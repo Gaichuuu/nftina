@@ -40,7 +40,7 @@ const firstTile = () => screen.getAllByText(/#\d+/)[0].textContent;
 it("renders a token tile with its dollar loss", async () => {
   render(<TokenGrid slug="coin_tokens" />);
   await waitFor(() => expect(screen.getByText(/#83/)).toBeInTheDocument());
-  expect(screen.getByText("-$21,447")).toBeInTheDocument();
+  expect(screen.getByText("−$21,447")).toBeInTheDocument();
 });
 
 it("lazy-loads more tiles when the sentinel intersects (no Load more button)", async () => {

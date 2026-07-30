@@ -13,3 +13,9 @@ it("omits autoplay when disabled", () => {
   const html = renderToString(<ModelViewer src="https://cdn/x.gltf" autoplay={false} />);
   expect(html).not.toContain("autoplay");
 });
+
+it("shows a loading spinner until the model's load event fires", () => {
+  const html = renderToString(<ModelViewer src="https://cdn/x.glb" />);
+  expect(html).toContain('aria-label="Loading 3D model"');
+  expect(html).toContain("animate-spin");
+});
