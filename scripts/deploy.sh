@@ -17,7 +17,6 @@ ENV_FILE="$ROOT/.deploy.env"
 WEB="$ROOT/web"
 
 [[ -f "$ENV_FILE" ]] || { echo "error: $ENV_FILE not found (needs DEPLOY_USER/HOST/PATH)" >&2; exit 1; }
-# shellcheck disable=SC1090
 set -a; source "$ENV_FILE"; set +a
 
 : "${DEPLOY_USER:?set DEPLOY_USER in .deploy.env}"
@@ -39,11 +38,11 @@ grep -q "Holders lost" "$WEB/dist/index.html" || {
 
 if [[ -n "${DRY_RUN:-}" ]]; then
   echo "==> DRY RUN: would deploy dist/ -> ${REMOTE}"
-  rsync -avzn --delete "$WEB/dist/" "$REMOTE"
+  rsync -avzn --delete --exclude=".DS_Store" "$WEB/dist/" "$REMOTE"
   exit 0
 fi
 
 echo "==> Deploying dist/ -> ${REMOTE}"
-rsync -avz --delete "$WEB/dist/" "$REMOTE"
+rsync -avz --delete --exclude=".DS_Store" "$WEB/dist/" "$REMOTE"
 
 echo "==> Done. https://metazoonfts.com/"

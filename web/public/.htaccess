@@ -4,9 +4,16 @@
   RewriteEngine On
   RewriteBase /
 
-  # www -> non-www (301)
+  # www -> non-www (301). Sends straight to https, so an http://www request
+  # canonicalises in one hop rather than two.
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  # http -> https (301) for everything else. The X-Forwarded-Proto check keeps
+  # this from looping if TLS is ever terminated at a proxy in front of Apache.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # Prerendered directories serve their own index.html
@@ -26,17 +33,20 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Fingerprinted build assets are immutable - cache hard.
-  <FilesMatch "\.(js|css|svg|woff2?|ico)$">
+  # Fingerprinted build assets are immutable - cache hard. Only the extensions
+  # Vite hashes belong here: an unfingerprinted file cached for a year cannot be
+  # updated, since its URL never changes.
+  <FilesMatch "\.(js|css|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   # HTML must revalidate so a new deploy is picked up immediately.
   <FilesMatch "\.html$">
     Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
-  # Data and models are unfingerprinted and change with each pipeline run, so
-  # they revalidate too rather than caching for a year under a stale name.
-  <FilesMatch "\.(json|gltf)$">
+  # Everything served under a fixed name: data and models change with each
+  # pipeline run, and the favicon and share card change with a redesign. All
+  # revalidate rather than caching for a year under a stale name.
+  <FilesMatch "\.(json|gltf|svg|ico|png|jpe?g|webp)$">
     Header set Cache-Control "public, max-age=3600, must-revalidate"
   </FilesMatch>
 </IfModule>

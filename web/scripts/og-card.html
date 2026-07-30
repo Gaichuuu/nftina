@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; }
+      body {
+        background: radial-gradient(90% 130% at 82% 18%, #241238 0%, #0c0912 64%);
+        font-family: system-ui, -apple-system, sans-serif;
+        color: #b9a7d0;
+        padding: 72px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -webkit-font-smoothing: antialiased;
+      }
+      .brand {
+        font-size: 27px; font-weight: 900; letter-spacing: -0.01em; color: #fff;
+      }
+      .brand .n { color: #8be9ff; }
+      .brand .d { color: #7c728f; }
+      h1 {
+        font-size: 92px; font-weight: 900; letter-spacing: -0.03em;
+        line-height: 1.02; color: #fff;
+      }
+      h1 .raised { color: #8be9ff; }
+      h1 .lost { color: #ff6b6b; }
+      .strip { display: flex; gap: 1px; background: #ffffff1f; border: 1px solid #ffffff1f; border-radius: 14px; overflow: hidden; }
+      .cell { flex: 1; background: #150f1d; padding: 20px 24px; }
+      .cell .k { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #7c728f; font-family: ui-monospace, Menlo, monospace; }
+      .cell .v { font-size: 30px; font-weight: 900; color: #fff; margin-top: 6px; }
+      .foot { font-size: 19px; color: #7c728f; }
+    </style>
+  </head>
+  <body>
+    <div class="brand">METAZOO<span class="n">NFTS</span><span class="d">.com</span></div>
+
+    <h1>
+      MetaZoo raised <span class="raised">$1.6M</span>.<br />
+      Holders lost <span class="lost">$4.3M</span>.
+    </h1>
+
+    <div class="strip">
+      <div class="cell"><div class="k">To Steve Aoki</div><div class="v">$488K</div></div>
+      <div class="cell"><div class="k">Insider cash-out</div><div class="v">$759K</div></div>
+      <div class="cell"><div class="k">Flippers took</div><div class="v">$1.9M</div></div>
+      <div class="cell"><div class="k">Wallets underwater</div><div class="v">2,048</div></div>
+    </div>
+
+    <div class="foot">Independent on-chain research. Every figure reconstructed from public Ethereum data.</div>
+  </body>
+</html>
