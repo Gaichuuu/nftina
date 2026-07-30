@@ -1,0 +1,15 @@
+{
+ "overview": [
+  "A small Valentine's-themed ERC-1155 set (token IDs 1 to 6). The same contract also holds the Wilderness Pinclub tokens (IDs 7 to 11), so the two drops share an address but are counted separately here.",
+  "**The physical set and the NFT are a year apart.** MetaZoo released the 2022 Chibi Valentine's mini-set on 7 February 2022 with a print run of 25,000 boxes, and Coin Token holders who bought a $30 box were promised a Valentines NFT for each purchase. Roughly 1,200 of the 2,305 Coin Tokens were redeemed against those boxes. The NFTs themselves were not minted on-chain until February 2023.",
+  "Economically negligible: roughly 0.4 ETH (a few hundred dollars) of lifetime volume across the whole contract."
+ ],
+ "off_chain_basis": {
+  "unit_cost_usd": 30,
+  "unit_label": "off-chain Valentines mint",
+  "note": "MetaZoo Valentines was sold off-chain: holders paid about $30 to mint, with only a trivial on-chain fee ever recorded. Measured from that real $30 price against the current floor, a Valentines piece is far underwater on what holders actually paid, not the near-zero the on-chain mint fee implies.",
+  "floor_usd": 35.81,
+  "loss_pct": 19.4
+ },
+ "utility": []
+}

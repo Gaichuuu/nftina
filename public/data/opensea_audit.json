@@ -1,0 +1,652 @@
+{
+ "collections": [
+  {
+   "slug": "genesis_2021",
+   "os_slug": "metazoo-games",
+   "comparable": true,
+   "royalty_pct": 0.0,
+   "royalty_recipient": null,
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0 ETH captured",
+     "opensea": "none configured",
+     "delta_pct": null,
+     "status": "info",
+     "note": ""
+    },
+    {
+     "metric": "supply",
+     "ours": 595,
+     "opensea": 593,
+     "delta_pct": 0.0033613445378151263,
+     "status": "ok",
+     "note": ""
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": 315.04,
+     "opensea": 190.3,
+     "delta_pct": 0.3959497206703911,
+     "status": "ok",
+     "note": "ours >= OpenSea-only (expected: we include Blur/LooksRare/etc.)"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": 488,
+     "opensea": 350,
+     "delta_pct": 0.2827868852459016,
+     "status": "info",
+     "note": "counts differ by marketplace coverage"
+    },
+    {
+     "metric": "current_owners",
+     "ours": 288,
+     "opensea": 221,
+     "delta_pct": 0.2326388888888889,
+     "status": "diverge",
+     "note": ""
+    },
+    {
+     "metric": "floor_eth",
+     "ours": 0.05,
+     "opensea": 0.0,
+     "delta_pct": 1.0,
+     "status": "info",
+     "note": "OpenSea reported no floor (0/none)"
+    }
+   ],
+   "flags": [
+    "owners 288 vs OpenSea 221"
+   ],
+   "address": "0xa0529c325e2594dcc599ba6e39aa4d6b28834c53"
+  },
+  {
+   "slug": "genesis_reissue_1155",
+   "os_slug": "untitled-collection-252906009",
+   "comparable": false,
+   "royalty_pct": 0.0,
+   "royalty_recipient": null,
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "1.7888 ETH captured",
+     "opensea": "none configured",
+     "delta_pct": null,
+     "status": "info",
+     "note": ""
+    },
+    {
+     "metric": "supply",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "current_owners",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "floor_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    }
+   ],
+   "flags": [],
+   "address": "0x495f947276749ce646f68ac8c248420045cb7b5e"
+  },
+  {
+   "slug": "coin_tokens",
+   "os_slug": "metazoo-games-tokens",
+   "comparable": true,
+   "royalty_pct": 10.0,
+   "royalty_recipient": "0xcbbecd9d102299ef022adee17daae3dcb779aa43",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "79.616 ETH captured",
+     "opensea": "10.0% -> 0xcbbecd9d102299ef022adee17daae3dcb779aa43",
+     "delta_pct": null,
+     "status": "info",
+     "note": ""
+    },
+    {
+     "metric": "supply",
+     "ours": 2305,
+     "opensea": 2305,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": 958.93,
+     "opensea": 920.72,
+     "delta_pct": 0.03984649557319087,
+     "status": "ok",
+     "note": "ours >= OpenSea-only (expected: we include Blur/LooksRare/etc.)"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": 2243,
+     "opensea": 2255,
+     "delta_pct": 0.005321507760532151,
+     "status": "info",
+     "note": "counts differ by marketplace coverage"
+    },
+    {
+     "metric": "current_owners",
+     "ours": 971,
+     "opensea": 971,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    },
+    {
+     "metric": "floor_eth",
+     "ours": 0.00487,
+     "opensea": 0.0,
+     "delta_pct": 1.0,
+     "status": "info",
+     "note": "OpenSea reported no floor (0/none)"
+    }
+   ],
+   "flags": [
+    "royalty recipient 0xcbbecd9d102299ef022adee17daae3dcb779aa43 is UNLABELED (trace lead)"
+   ],
+   "address": "0x2d366be8fa4d15c289964dd4adf7be6cc5e896e8"
+  },
+  {
+   "slug": "beasties_s1",
+   "os_slug": "metazoo-games-beasties",
+   "comparable": true,
+   "royalty_pct": 5.0,
+   "royalty_recipient": "0x88524a9b2c23d869cba3466d1ce6457fb102e214",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "15.1031 ETH captured",
+     "opensea": "5.0% -> 0x88524a9b2c23d869cba3466d1ce6457fb102e214",
+     "delta_pct": null,
+     "status": "info",
+     "note": ""
+    },
+    {
+     "metric": "royalty_recipient_id",
+     "ours": "0x88524a9b2c23d869cba3466d1ce6457fb102e214",
+     "opensea": "PercentSplitETH (beasties_s1 mint funnel)",
+     "delta_pct": null,
+     "status": "info",
+     "note": "recipient is a known wallet"
+    },
+    {
+     "metric": "supply",
+     "ours": 5000,
+     "opensea": 5960,
+     "delta_pct": 0.1610738255033557,
+     "status": "diverge",
+     "note": ""
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": 310.36,
+     "opensea": 333.15,
+     "delta_pct": 0.06840762419330622,
+     "status": "ok",
+     "note": "ours >= OpenSea-only (expected: we include Blur/LooksRare/etc.)"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": 2080,
+     "opensea": 2247,
+     "delta_pct": 0.07432131731197152,
+     "status": "info",
+     "note": "counts differ by marketplace coverage"
+    },
+    {
+     "metric": "current_owners",
+     "ours": 1357,
+     "opensea": 1434,
+     "delta_pct": 0.05369595536959554,
+     "status": "ok",
+     "note": ""
+    },
+    {
+     "metric": "floor_eth",
+     "ours": 0.0019,
+     "opensea": 0.0019,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    }
+   ],
+   "flags": [
+    "supply 5000 vs OpenSea 5960"
+   ],
+   "address": "0x44a46fc706798e203c405667e70802e5b18a2867"
+  },
+  {
+   "slug": "pfp_2",
+   "os_slug": "metazoo-games-pfp-2-0",
+   "comparable": true,
+   "royalty_pct": 7.5,
+   "royalty_recipient": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0935 ETH captured",
+     "opensea": "7.5% -> 0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+     "delta_pct": null,
+     "status": "info",
+     "note": ""
+    },
+    {
+     "metric": "royalty_recipient_id",
+     "ours": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+     "opensea": "MetaZoo: Deployer",
+     "delta_pct": null,
+     "status": "info",
+     "note": "recipient is a known wallet"
+    },
+    {
+     "metric": "supply",
+     "ours": 2381,
+     "opensea": 2381,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": 5.23,
+     "opensea": 4.76,
+     "delta_pct": 0.08986615678776302,
+     "status": "ok",
+     "note": "ours >= OpenSea-only (expected: we include Blur/LooksRare/etc.)"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": 177,
+     "opensea": 170,
+     "delta_pct": 0.03954802259887006,
+     "status": "info",
+     "note": "counts differ by marketplace coverage"
+    },
+    {
+     "metric": "current_owners",
+     "ours": 480,
+     "opensea": 480,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    },
+    {
+     "metric": "floor_eth",
+     "ours": 0.0019,
+     "opensea": 0.0019,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    }
+   ],
+   "flags": [],
+   "address": "0xf279e4d18aa013143bb8242e0d65bcc62acbbb5a"
+  },
+  {
+   "slug": "valentines",
+   "os_slug": "metazoo-valentines",
+   "comparable": true,
+   "royalty_pct": 5.0,
+   "royalty_recipient": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0 ETH captured",
+     "opensea": "5.0% configured -> 0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+     "delta_pct": null,
+     "status": "diverge",
+     "note": "OpenSea has a creator royalty configured but our sales captured 0 ETH of it (check EIP-2981 vs marketplace-registry enforcement)."
+    },
+    {
+     "metric": "royalty_recipient_id",
+     "ours": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+     "opensea": "MetaZoo: Deployer",
+     "delta_pct": null,
+     "status": "info",
+     "note": "recipient is a known wallet"
+    },
+    {
+     "metric": "supply",
+     "ours": 1314,
+     "opensea": 2254,
+     "delta_pct": 0.417036379769299,
+     "status": "diverge",
+     "note": ""
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": 0.41,
+     "opensea": 0.4,
+     "delta_pct": 0.02439024390243891,
+     "status": "ok",
+     "note": "ours >= OpenSea-only (expected: we include Blur/LooksRare/etc.)"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": 23,
+     "opensea": 23,
+     "delta_pct": 0.0,
+     "status": "info",
+     "note": "counts differ by marketplace coverage"
+    },
+    {
+     "metric": "current_owners",
+     "ours": 8,
+     "opensea": 731,
+     "delta_pct": 0.9890560875512996,
+     "status": "diverge",
+     "note": ""
+    },
+    {
+     "metric": "floor_eth",
+     "ours": 0.019,
+     "opensea": 0.019,
+     "delta_pct": 0.0,
+     "status": "ok",
+     "note": ""
+    }
+   ],
+   "flags": [
+    "royalty configured (5.0%) but 0 captured",
+    "supply 1314 vs OpenSea 2254",
+    "owners 8 vs OpenSea 731"
+   ],
+   "address": "0xa986559aacf60a82fab3ef59940febea8027be0c"
+  },
+  {
+   "slug": "wilderness",
+   "os_slug": "metazoo-valentines",
+   "comparable": false,
+   "royalty_pct": 5.0,
+   "royalty_recipient": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0 ETH captured",
+     "opensea": "5.0% configured -> 0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+     "delta_pct": null,
+     "status": "diverge",
+     "note": "OpenSea has a creator royalty configured but our sales captured 0 ETH of it (check EIP-2981 vs marketplace-registry enforcement)."
+    },
+    {
+     "metric": "royalty_recipient_id",
+     "ours": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+     "opensea": "MetaZoo: Deployer",
+     "delta_pct": null,
+     "status": "info",
+     "note": "recipient is a known wallet"
+    },
+    {
+     "metric": "supply",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "current_owners",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "floor_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    }
+   ],
+   "flags": [
+    "royalty configured (5.0%) but 0 captured"
+   ],
+   "address": "0xa986559aacf60a82fab3ef59940febea8027be0c"
+  },
+  {
+   "slug": "tournament_prizes",
+   "os_slug": "untitled-collection-252906009",
+   "comparable": false,
+   "royalty_pct": 0.0,
+   "royalty_recipient": null,
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0 ETH captured",
+     "opensea": "none configured",
+     "delta_pct": null,
+     "status": "info",
+     "note": ""
+    },
+    {
+     "metric": "supply",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "current_owners",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "floor_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    }
+   ],
+   "flags": [],
+   "address": "0x495f947276749ce646f68ac8c248420045cb7b5e"
+  },
+  {
+   "slug": "mothman_1of1",
+   "os_slug": "steve-aoki",
+   "comparable": false,
+   "royalty_pct": 10.0,
+   "royalty_recipient": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0 ETH captured",
+     "opensea": "10.0% configured -> 0xa6d3a33a1c66083859765b9d6e407d095a908193",
+     "delta_pct": null,
+     "status": "diverge",
+     "note": "OpenSea has a creator royalty configured but our sales captured 0 ETH of it (check EIP-2981 vs marketplace-registry enforcement)."
+    },
+    {
+     "metric": "royalty_recipient_id",
+     "ours": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+     "opensea": "Steve Aoki (config AOKI_WALLETS)",
+     "delta_pct": null,
+     "status": "info",
+     "note": "recipient is a known wallet"
+    },
+    {
+     "metric": "supply",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "current_owners",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "floor_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    }
+   ],
+   "flags": [
+    "royalty configured (10.0%) but 0 captured"
+   ],
+   "address": "0x01ba93514e5eb642ec63e95ef7787b0edd403add"
+  },
+  {
+   "slug": "sandbox",
+   "os_slug": "the-sandbox-nori-sale",
+   "comparable": false,
+   "royalty_pct": 5.0,
+   "royalty_recipient": "0x7a9fe22691c811ea339d9b73150e6911a5343dca",
+   "checks": [
+    {
+     "metric": "royalty",
+     "ours": "0.0 ETH captured",
+     "opensea": "5.0% configured -> 0x7a9fe22691c811ea339d9b73150e6911a5343dca",
+     "delta_pct": null,
+     "status": "diverge",
+     "note": "OpenSea has a creator royalty configured but our sales captured 0 ETH of it (check EIP-2981 vs marketplace-registry enforcement)."
+    },
+    {
+     "metric": "supply",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_volume_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "secondary_sales",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "current_owners",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    },
+    {
+     "metric": "floor_eth",
+     "ours": null,
+     "opensea": null,
+     "delta_pct": null,
+     "status": "not_comparable",
+     "note": "subset/shared collection \u2014 OpenSea stats aggregate other tokens/tenants"
+    }
+   ],
+   "flags": [
+    "royalty configured (5.0%) but 0 captured",
+    "royalty recipient 0x7a9fe22691c811ea339d9b73150e6911a5343dca is UNLABELED (trace lead)"
+   ],
+   "address": "0xa342f5d851e866e18ff98f351f2c6637f4478db5"
+  }
+ ],
+ "diverging_count": 7
+}

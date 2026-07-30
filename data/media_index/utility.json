@@ -1,0 +1,107 @@
+{
+  "beasties_allowlist_mint": {
+    "file": "beasties_allowlist_mint.webp",
+    "hash": "58cb14a3",
+    "source_name": "data/media/overview/ws_3aeeb54f6445c9ef.webp"
+  },
+  "beasties_free_mint": {
+    "file": "beasties_free_mint.webp",
+    "hash": "58cb14a3",
+    "source_name": "data/media/overview/ws_3aeeb54f6445c9ef.webp"
+  },
+  "cn2_booster_box": {
+    "file": "cn2_booster_box.jpg",
+    "hash": "7569c5c8",
+    "source_name": "CN1 box.jpg"
+  },
+  "dim_mak_box": {
+    "file": "dim_mak_box.jpg",
+    "hash": "5e709b9a",
+    "source_name": "dim-mak-hq.jpg"
+  },
+  "genesis_reissue_airdrop": {
+    "file": "genesis_reissue_airdrop.gif",
+    "hash": "e8bf43b2",
+    "source_name": "data/media/tokens/genesis_reissue_1155/afbb443f6efb396d.gif"
+  },
+  "genesis_token_presale": {
+    "file": "genesis_token_presale.gif",
+    "hash": "ab0b797c",
+    "source_name": "data/media/tokens/coin_tokens/b5226f053fc0637a.gif"
+  },
+  "july4_promo_card": {
+    "file": "july4_promo_card.jpg",
+    "hash": "1b38b644",
+    "source_name": "4th-july-crop.jpg"
+  },
+  "manta_ray_airdrop": {
+    "file": "manta_ray_airdrop.gif",
+    "hash": "00bfcd52",
+    "source_name": "data/media/tokens/coin_tokens/b867049a78650f37.gif"
+  },
+  "mothman_promo_card": {
+    "file": "mothman_promo_card.webp",
+    "hash": "cfae0c50",
+    "source_name": "mothman-promo.webp"
+  },
+  "native_booster_box": {
+    "file": "native_booster_box.webp",
+    "hash": "6c1e0a6d",
+    "source_name": "Native-box-crop.webp"
+  },
+  "neo_genesis_promo": {
+    "file": "neo_genesis_promo.webp",
+    "hash": "fb8594fc",
+    "source_name": "genesis-promo.webp"
+  },
+  "nft_gilding": {
+    "file": "nft_gilding.webp",
+    "hash": "091ad270",
+    "source_name": "gilded-decks.webp"
+  },
+  "nft_pfp_box": {
+    "file": "nft_pfp_box.webp",
+    "hash": "a2a589a2",
+    "source_name": "nft-box-hq.webp"
+  },
+  "seance_booster_box": {
+    "file": "seance_booster_box.jpg",
+    "hash": "56ce3c4f",
+    "source_name": "Seance-box-crop.jpg"
+  },
+  "software_malfunction": {
+    "file": "software_malfunction.gif",
+    "hash": "1f117399",
+    "source_name": "Mysterious Software Malfunction.gif"
+  },
+  "ufo_booster_box": {
+    "file": "ufo_booster_box.jpg",
+    "hash": "855400fa",
+    "source_name": "UFO box.jpg"
+  },
+  "ufo_pin_club": {
+    "file": "ufo_pin_club.jpg",
+    "hash": "9c2ae24d",
+    "source_name": "UFO pin club.jpg"
+  },
+  "valentines_box": {
+    "file": "valentines_box.gif",
+    "hash": "24d0cacc",
+    "source_name": "data/media/tokens/valentines/e92714928b0a0794.png"
+  },
+  "valentines_plush_2023": {
+    "file": "valentines_plush_2023.png",
+    "hash": "e569ce12",
+    "source_name": "Valentines-gold-crop.png"
+  },
+  "wilderness_booster_box": {
+    "file": "wilderness_booster_box.jpg",
+    "hash": "5325d104",
+    "source_name": "WN box.jpg"
+  },
+  "wilderness_pin_club": {
+    "file": "wilderness_pin_club.gif",
+    "hash": "382e76c8",
+    "source_name": "data/media/tokens/wilderness/0e6f8dae9e747d8a.png"
+  }
+}

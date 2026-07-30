@@ -1,0 +1,18 @@
+{
+ "overview": [
+  "The MetaZoo Mothman is a one-of-one (token #1017) from the Steve Aoki x Gal Yosef collaboration, created 20 September 2021. It was MetaZoo's second NFT project and became the most valuable object in the ecosystem.",
+  "It sold in a Sotheby's auction running 14 to 21 October 2021, the first NFT ever sold on Sotheby's then-new Metaverse platform. The winner also received a matching one-of-one Mothman promo card, the only one ever printed, and 100 booster boxes of Cryptid Nation: Nightfall 1st Edition.",
+  "The Sotheby's lot page pins the numbers: a final bid of $170,000 (bidder ak09) plus Sotheby's 26% buyer's premium, for a sold price of $214,200. Sotheby's kept the premium, roughly $44,200, plus any negotiated seller's commission.",
+  "The auction settled off-chain: every on-chain transfer of the token, including the move to the winner, carried no ETH, so no price is recorded on the blockchain itself."
+ ],
+ "utility": [
+  {
+   "id": "mothman_promo_card",
+   "name": "Mothman 1/1 promo card",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "Exclusive Mothman 1/1 promo card, plus 100 Nightfall booster boxes.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/mothman_promo_card.webp?v=cfae0c50"
+  }
+ ]
+}

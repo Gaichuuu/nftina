@@ -1,0 +1,8 @@
+{
+  "_comment": "Curated, presentation-only wallet identities. Highest precedence in build_wallet_names/build_wallet_avatars, above OpenSea usernames and verified ENS. Deliberately NOT scripts/labels.json: that file's `type` drives trace_core/trace_flows recursion, and these entries carry no claim about wallet class. `avatar_file` names a file in data/media/wallets/, served from the CDN under nftina/wallets/.",
+  "0xfdb120707feab4215117267a0269fec1a28ec4f7": {
+    "name": "Argos Anon",
+    "avatar_file": "argos_anon.jpg",
+    "note": "Holds exactly 87 MetaZoo Coin Tokens, matching the count Argos stated publicly for the Tribe's shared holdings ('The Tribe currently has 87 coins'). OpenSea reports the username 'AI_ChatBot' for this address; the curated name is used instead."
+  }
+}

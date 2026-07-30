@@ -1,0 +1,115 @@
+[
+  {
+    "date": "2021-10-26",
+    "eth": 0,
+    "usd": 214200,
+    "recipient": "Aoki (Sotheby's, off-chain)",
+    "recipient_addr": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+    "kind": "aoki_offchain",
+    "note": "Mothman 1/1 sold at Sotheby's (Natively Digital, Lot 52): $170,000 final bid + 26% buyer's premium"
+  },
+  {
+    "date": "2021-12-06",
+    "eth": 104.45,
+    "usd": 454098,
+    "recipient": "insider / distribution",
+    "recipient_addr": "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+    "kind": "insider",
+    "endpoint": "Coinbase",
+    "note": "days after the Coin Tokens raise; 60% to Coinbase 44, 10% to Coinbase 3, the rest recycled inside the insider cluster"
+  },
+  {
+    "date": "2021-12-06",
+    "eth": 17.93,
+    "usd": 57969,
+    "recipient": "insider / cluster",
+    "recipient_addr": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+    "kind": "insider",
+    "endpoint": "Coinbase + FTX",
+    "note": "paid twice (10.56 ETH on 2021-12-06, then 7.37 ETH on 2022-07-27); cashed out to Coinbase 54 and FTX/Blockfolio"
+  },
+  {
+    "date": "2021-12-18",
+    "eth": 0,
+    "usd": 792,
+    "recipient": "Aoki (in-kind, 1 Coin Token)",
+    "recipient_addr": "",
+    "kind": "aoki_inkind",
+    "note": "Sent the same day MetaZoo opened public sales of the MetaZoo x Dim Mak limited-edition boxes (@MetaZooGames, 2021-12-18 17:25 UTC, archived); Dim Mak is Aoki's own label. 0-ETH transfer from the MetaZoo treasury 0x77b94a55. Marked at the December median 0.20 \u039e (~0.2 \u039e total). Not counted in the MetaZoo->Aoki ETH total."
+  },
+  {
+    "date": "2021-12-24",
+    "eth": 16.0,
+    "usd": 64741,
+    "recipient": "splitter contract",
+    "recipient_addr": "0xd909681f",
+    "kind": "splitter",
+    "note": "revenue machinery"
+  },
+  {
+    "date": "2022-01-11",
+    "eth": 89.77,
+    "usd": 290824,
+    "recipient": "Aoki (main)",
+    "recipient_addr": "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4",
+    "kind": "aoki",
+    "note": "The single largest MetaZoo->Aoki transfer, tx 0xe8fe9524. It landed 3 days after a celebrity poker night Aoki is publicly reported to have hosted at his home on 2022-01-08, at which the Coin Tokens were discussed. The transfer is verified on-chain; the poker night itself is outside what our data can confirm."
+  },
+  {
+    "date": "2022-01-11",
+    "eth": 0,
+    "usd": 12684,
+    "recipient": "Aoki (in-kind, 9 Coin Tokens)",
+    "recipient_addr": "",
+    "kind": "aoki_inkind",
+    "note": "SAME DAY as the 89.77 \u039e payment above. 0-ETH transfers from 0x77b94a55, IDs 994-998/1000-1001/1003-1004; all 9 are still unsold in the Aoki hub. Marked at the January median 0.435 \u039e (~3.9 \u039e total). Not counted in the MetaZoo->Aoki ETH total."
+  },
+  {
+    "date": "2022-07-18",
+    "eth": 0,
+    "usd": 5943,
+    "recipient": "Aoki (in-kind, 21 Beasties)",
+    "recipient_addr": "",
+    "kind": "aoki_inkind",
+    "note": "0-ETH transfers from 0x77b94a55. 20 of the 21 left the hub the NEXT DAY to a giveaway wallet that distributed 50 Beasties to 49 wallets and sold none, so this leg reads as promo inventory routed through Aoki, not retained pay. Marked at the July median 0.179 \u039e (~3.8 \u039e total)."
+  },
+  {
+    "date": "2022-07-27",
+    "eth": 130.0,
+    "usd": 212646,
+    "recipient": "insider / cash-out",
+    "recipient_addr": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+    "kind": "insider",
+    "endpoint": "Coinbase",
+    "note": "after the Beasties mint; forwarded via 0x3c3308e3 to Coinbase deposit addresses"
+  },
+  {
+    "date": "2022-07-27",
+    "eth": 7.37,
+    "usd": 12055,
+    "recipient": "insider / cluster",
+    "recipient_addr": "0x08b96fad98c2366f6e483de584167dd695d30c27",
+    "kind": "insider",
+    "endpoint": "active trading wallet",
+    "note": "forwarded to an active DeFi-trading wallet where it commingled; no clean single-exchange endpoint"
+  },
+  {
+    "date": "2022-07-27",
+    "eth": 120.6,
+    "usd": 197270,
+    "recipient": "Aoki (hub)",
+    "recipient_addr": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+    "kind": "aoki",
+    "note": ""
+  },
+  {
+    "date": "2024-01-29",
+    "eth": 9.5,
+    "usd": 22017,
+    "recipient": "insider / shutdown-day",
+    "recipient_addr": "0x2f7eb4f5d083c5607f1f1ec278728323a84acc6b",
+    "kind": "insider",
+    "endpoint": "Coinbase",
+    "note": "MetaZoo shutdown day; sent straight to Coinbase 10"
+  }
+]

@@ -1,0 +1,42 @@
+# metazoonfts.com - static, fully prerendered site
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # www -> non-www (301)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# Prerendered directories serve their own index.html
+DirectoryIndex index.html
+
+# Anything with no prerendered file -> the prerendered 404 page
+ErrorDocument 404 /404.html
+
+# The Sandbox models are served same-origin
+<IfModule mod_mime.c>
+  AddType model/gltf+json .gltf
+</IfModule>
+
+# Without this the home hero ships uncompressed
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE model/gltf+json application/json text/html text/css application/javascript
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Fingerprinted build assets are immutable - cache hard.
+  <FilesMatch "\.(js|css|svg|woff2?|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # HTML must revalidate so a new deploy is picked up immediately.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  # Data and models are unfingerprinted and change with each pipeline run, so
+  # they revalidate too rather than caching for a year under a stale name.
+  <FilesMatch "\.(json|gltf)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>

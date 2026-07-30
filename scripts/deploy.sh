@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#
+# Run `deploy.sh` to build the site and rsync it to the server root.
+#
+# Credentials in .deploy.env (gitignored):
+#   DEPLOY_USER, DEPLOY_HOST
+#   DEPLOY_PATH
+#
+# Usage:  bash scripts/deploy.sh          build + deploy
+#         DRY_RUN=1 bash scripts/deploy.sh   show what would transfer, send nothing
+#
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+ENV_FILE="$ROOT/.deploy.env"
+WEB="$ROOT/web"
+
+[[ -f "$ENV_FILE" ]] || { echo "error: $ENV_FILE not found (needs DEPLOY_USER/HOST/PATH)" >&2; exit 1; }
+# shellcheck disable=SC1090
+set -a; source "$ENV_FILE"; set +a
+
+: "${DEPLOY_USER:?set DEPLOY_USER in .deploy.env}"
+: "${DEPLOY_HOST:?set DEPLOY_HOST in .deploy.env}"
+: "${DEPLOY_PATH:?set DEPLOY_PATH in .deploy.env (web root, e.g. ~/metazoonfts.com/)}"
+
+REMOTE="${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
+
+[[ -f "$ROOT/site/data/summary.json" ]] || {
+  echo "error: site/data/summary.json missing - run 'python -m scripts.build_site_data' first" >&2; exit 1; }
+
+echo "==> Building (data copy + typecheck + client + ssr + prerender)..."
+(cd "$WEB" && npm run build)
+
+[[ -f "$WEB/dist/.htaccess" ]] || {
+  echo "error: dist/.htaccess missing - did public/.htaccess get copied?" >&2; exit 1; }
+grep -q "Holders lost" "$WEB/dist/index.html" || {
+  echo "error: dist/index.html has no prerendered hero copy - prerender did not run" >&2; exit 1; }
+
+if [[ -n "${DRY_RUN:-}" ]]; then
+  echo "==> DRY RUN: would deploy dist/ -> ${REMOTE}"
+  rsync -avzn --delete "$WEB/dist/" "$REMOTE"
+  exit 0
+fi
+
+echo "==> Deploying dist/ -> ${REMOTE}"
+rsync -avz --delete "$WEB/dist/" "$REMOTE"
+
+echo "==> Done. https://metazoonfts.com/"

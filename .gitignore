@@ -1,0 +1,47 @@
+# Environment
+.env
+.deploy.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Data (raw API responses)
+data/raw/
+
+# Node (for future frontend)
+node_modules/
+.next/
+
+# Local files
+.DS_Store
+Thumbs.db
+.vscode/
+.superpowers/
+CLAUDE.md
+docs/
+
+# Downloaded media. Excluded EXCEPT the Sandbox .gltf models
+data/media/*
+!data/media/sandbox3d/
+
+# Vite/React frontend
+web/node_modules/
+web/dist/
+web/public/data/
+web/public/sandbox3d/
+
+# pytest cache
+.pytest_cache/
+
+# Transfer dump
+public/data/timeline.json
+
+# Some evidence excluded
+data/evidence/recovered_tweets_metazoo.json
+data/evidence/manifold_metazoo.json
+data/evidence/manifold_metazoo/

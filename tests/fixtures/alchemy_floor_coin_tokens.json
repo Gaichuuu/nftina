@@ -1,0 +1,16 @@
+{
+  "openSea": {
+    "floorPrice": 0.00487,
+    "priceCurrency": "ETH",
+    "collectionUrl": "https://opensea.io/collection/metazoo-games-tokens",
+    "retrievedAt": "2026-06-30T09:31:28.706Z",
+    "error": null
+  },
+  "looksRare": {
+    "floorPrice": 0.02,
+    "priceCurrency": "ETH",
+    "collectionUrl": "https://looksrare.org/collections/0x2d366be8fa4d15c289964dd4adf7be6cc5e896e8",
+    "retrievedAt": "2024-03-22T02:40:12.175Z",
+    "error": null
+  }
+}

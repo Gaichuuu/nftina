@@ -1,0 +1,27 @@
+{
+ "overview": [
+  "The second PFP generation, and the collection this project is named after ('Nftina', the electric cat MetaZoo introduced as its NFT mascot alongside this drop).",
+  "**It was claimed, not sold.** The PFP boxes that shipped from 11 December 2022 contained black booster packs holding scratch-off cards, and the codes on those cards were what unlocked a PFP 2.0. The claim itself ran on Manifold as a free mint, so buyers paid only gas, and on-chain primary revenue is just 1.19 ETH (roughly $2,000) in mint fees. The real cost was the $100 box.",
+  "The artwork drew on the Seance, UFO and Native sets, and 2,381 were claimed before the redemption window closed in August 2023.",
+  "MetaZoo never wrote a real description for it. The official copy on the mint page reads, in full: \"Welcome to MetaZoo's PFP 2.0 Seri- ... *Meow* ...\"",
+  "It arrived as MetaZoo's on-chain activity was already contracting, and it trades today at a floor far below what the boxes cost."
+ ],
+ "overview_image": "https://gaichu.b-cdn.net/nftina/overview/w_640.webp",
+ "off_chain_basis": {
+  "unit_cost_usd": 100,
+  "unit_label": "MetaZoo NFT PFP Box",
+  "note": "PFP 2.0 was not a normal on-chain mint. Holders first ordered a $100 physical 'MetaZoo NFT PFP Box'; inside was a redemption for the PFP plus a small on-chain mint fee. The on-chain primary revenue (about $2k) captures only that mint fee, so it badly understates what holders actually paid. Measured from the real $100 box price against the current floor, a PFP 2.0 is far deeper underwater than the on-chain number suggests.",
+  "floor_usd": 3.58,
+  "loss_pct": -96.4
+ },
+ "utility": [
+  {
+   "id": "software_malfunction",
+   "name": "Mysterious Software Malfunction!",
+   "price_usd": 8,
+   "price_eth": null,
+   "note": "Exclusive NFT booster packs.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/software_malfunction.gif?v=1f117399"
+  }
+ ]
+}

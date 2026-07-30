@@ -1,0 +1,83 @@
+import { useState } from "react";
+import type { Flippers } from "@/data/schemas";
+import { eth, usd, compactUsd, etherscanAddr } from "@/lib/format";
+import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
+import WalletAvatar from "./WalletAvatar";
+import WalletPnlDialog from "./WalletPnlDialog";
+
+export default function FlipperTable({ flippers }: { flippers: Flippers }) {
+  const [pnlWallet, setPnlWallet] = useState<string | null>(null);
+  useWalletIdentities();
+  const usdMax = Math.max(1, ...flippers.top.map((f) => f.realized_pnl_usd));
+  return (
+    <>
+    <div className="overflow-x-auto rounded-sm border border-line">
+      <table className="w-full text-[11.5px]">
+        <thead className="bg-panel2 font-mono text-[10px] text-muted">
+          <tr>
+            <th className="p-2 text-left">TRADER</th>
+            <th className="p-2 text-right">ETH IN → OUT</th>
+            <th className="p-2 text-right">REALIZED GAIN</th>
+            <th className="w-[30%] p-2 text-left">USD</th>
+          </tr>
+        </thead>
+        <tbody>
+          {flippers.top.map((f) => {
+            const named = hasWalletName(f.wallet);
+            return (
+              <tr key={f.wallet} className="border-t border-line align-middle">
+                <td className="p-2">
+                  <div className="flex items-center gap-2.5">
+                    <a href={etherscanAddr(f.wallet)} target="_blank" rel="noopener noreferrer"
+                       className="flex min-w-0 items-center gap-2.5 no-underline hover:opacity-90"
+                       title={`${f.wallet} · view on Etherscan`}>
+                      <WalletAvatar addr={f.wallet} />
+                      <span className="min-w-0">
+                        {named && (
+                          <span className="block truncate font-bold text-ink">
+                            {walletName(f.wallet)}
+                            {f.ens && f.ens_verified && <span className="ml-1 text-[9px] text-gain">✦ ENS</span>}
+                          </span>
+                        )}
+                        <span className="block break-all font-mono text-[10px] text-dim">{f.wallet}</span>
+                      </span>
+                    </a>
+                    <button onClick={() => setPnlWallet(f.wallet)}
+                            className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold text-ink
+                                       transition-transform hover:scale-105"
+                            style={{ border: "2px solid transparent",
+                                     background: "linear-gradient(var(--color-bg),var(--color-bg)) padding-box,"
+                                       + " linear-gradient(90deg,#ff5cf0,#8be9ff) border-box" }}
+                            title="Show this wallet's profit & loss">P&amp;L</button>
+                  </div>
+                </td>
+                <td className="p-2 text-right font-mono text-[10px] whitespace-nowrap text-dim">
+                  {eth(f.eth_spent)} → {eth(f.eth_received)}
+                </td>
+                <td className="p-2 text-right font-bold whitespace-nowrap text-gain">+{eth(f.realized_pnl_eth)}</td>
+                <td className="p-2">
+                  <div className="flex items-center gap-2">
+                    <div className="h-1.75 flex-1 overflow-hidden rounded-[4px]" style={{ background: "#1c1526" }}>
+                      <span className="block h-full"
+                            style={{ width: `${Math.max(2, (f.realized_pnl_usd / usdMax) * 100)}%`,
+                                     background: "linear-gradient(90deg,#6bff9d,#8be9ff)" }} />
+                    </div>
+                    <span className="min-w-15.5 whitespace-nowrap text-right text-dim">{usd(f.realized_pnl_usd)}</span>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+          <tr className="border-t border-line text-muted">
+            <td className="p-2">…{flippers.count_profitable.toLocaleString()} profitable wallets total</td>
+            <td className="p-2"></td>
+            <td className="p-2 text-right font-bold whitespace-nowrap">+{eth(flippers.total_gains_eth)}</td>
+            <td className="p-2 text-right whitespace-nowrap">{compactUsd(flippers.total_gains_usd)}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {pnlWallet && <WalletPnlDialog address={pnlWallet} onClose={() => setPnlWallet(null)} />}
+    </>
+  );
+}

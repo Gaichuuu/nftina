@@ -1,0 +1,122 @@
+{
+  "item": "MetaZoo Mothman 1/1 (Steve Aoki x Gal Yosef)",
+  "event": "Sotheby's 'Natively Digital' sale, Lot 52, October 2021",
+  "sale_price_usd": 214200,
+  "sale_price_source": "Sotheby's lot page (Natively Digital, Lot 52): final bid $170,000 + 26% buyer's premium = $214,200 sold. Corroborated by PSA ($214,000 at close, rounded).",
+  "winner_handle": "ak09 (per the Sotheby's bid feed and Aoki's since-deleted congrats tweet)",
+  "lot_composition": [
+    "The NFT: animated Steve Aoki x Gal Yosef MetaZoo Mothman",
+    "A physical PSA-graded 1/1 MetaZoo Mothman card (the reason PSA tweeted about it in 2022)",
+    "Nightfall booster boxes (per recollection; UNVERIFIED — not stated in either tweet)"
+  ],
+  "note": "One event: the Oct-2021 Sotheby's close ($214k). PSA's 2022 tweet is about the physical graded card that accompanied the NFT lot, not a second sale. Independent third parties (Sotheby's, PSA) still have their posts live, while Aoki's own announcements of the same sale are deleted (recovered in tweets_aoki_deleted.json).",
+  "price_note": "Price CONFIRMED from the Sotheby's lot page: final bid $170,000 (bidder ak09) plus Sotheby's 26% buyer's premium (25% premium + 1% overhead) equals the $214,200 sold price. PSA's 'climbed to $214,000 at close' is the same figure rounded. Earlier repo notes marked this disputed because the price was not in the 6 Wayback lot-page snapshots and is not on-chain (Sotheby's settled off-chain; all token transfers carry 0 ETH); the lot page resolves it.",
+  "onchain": {
+    "contract": "0x01ba93514e5eb642ec63e95ef7787b0edd403add",
+    "token_id": "1017",
+    "settlement": "Sotheby's auctions settle off-chain; the NFT shipped to the winner as a zero-value transfer. No sale price is recorded on-chain (contrast: OpenSea sales carry ETH value).",
+    "royalty": {
+      "standard": "EIP-2981",
+      "rate": "10%",
+      "receiver": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+      "note": "royaltyInfo(1017, 1e18) -> 0.1 ETH to 0xa6d3...; this wallet is ALSO the minter of #1017 and the Sotheby's consignor/seller (Aoki creator/royalty wallet). Collection-wide observed royalty avg 9.95% across 786 secondary sales.",
+      "mothman_secondary_sales": "0 (Alchemy getNFTSales) -> $0 secondary royalty earned on #1017; post-auction transfers were private/non-market moves"
+    },
+    "auction_split_estimate": {
+      "assumption": "CONFIRMED premium-inclusive: hammer $170,000, buyer paid $214,200 all-in (26% buyer's premium = 25% premium + 1% overhead). Aoki's consignor gross is the hammer minus any seller's commission, minus the private split with Gal Yosef.",
+      "sothebys": "~$44,200 (26% buyer's premium on the $170,000 hammer: $170,000 x 0.26). A seller's commission (negotiable, unknown) would add to this, so ~$44,200 is a floor on Sotheby's take.",
+      "buyer_paid_total": "$214,200",
+      "aoki_consignor_gross": "~$170,000 hammer, minus unknown seller's commission and minus private payment to Gal Yosef",
+      "gal_yosef_artist": "unknown (private collaboration agreement, off-chain)",
+      "correction_note": "An earlier version of this block double-counted the premium (treated $214,200 as the hammer and added another 26%, giving Sotheby's ~$55,640 / buyer ~$269,640). The lot page confirms $214,200 is the all-in sold price, so Sotheby's premium is ~$44,200, not ~$55,640."
+    },
+    "transfers": [
+      {
+        "date": "2021-09-21",
+        "type": "mint",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+        "eth": 0,
+        "note": "mint to creator; matches lot createdAt"
+      },
+      {
+        "date": "2021-10-30",
+        "type": "settlement_to_winner",
+        "from": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+        "to": "0x2ffbfe97126261b600ae6771f13556cc6104c1dd",
+        "eth": 0,
+        "tx": "0x15ac39db99757ec16d00f6718f77faf25db698ed169c680b69995c4dd1f7e364",
+        "note": "4 days after Oct-26 close; the on-chain record of the sale (winner AK09)"
+      },
+      {
+        "date": "2021-12-28",
+        "type": "transfer",
+        "from": "0x2ffbfe97126261b600ae6771f13556cc6104c1dd",
+        "to": "0x7ef082b9a971f198f9dde7f3c331b16a43d76eff",
+        "eth": 0
+      },
+      {
+        "date": "2022-02-22",
+        "type": "transfer",
+        "from": "0x7ef082b9a971f198f9dde7f3c331b16a43d76eff",
+        "to": "0x94b9928652576671f798c02d9398f30e0903d038",
+        "eth": 0
+      }
+    ]
+  },
+  "tweets": [
+    {
+      "id": "1446233243284606976",
+      "author": "Sothebys",
+      "date": "2021-10-07T21:57:29.000Z",
+      "url": "https://x.com/Sothebys/status/1446233243284606976",
+      "text": "From the collection of @steveaoki\n🔲  MetaZoo Mothman by Steve Aoki x Gal Yosef\n\n#NativelyDigital https://t.co/BQsVYwu3dC",
+      "media": [
+        "https://pbs.twimg.com/ext_tw_video_thumb/1446233078175784969/pu/img/_IoFBP2YB9qKVxEl.jpg"
+      ],
+      "status": "live",
+      "role": "auction house promoting the sale",
+      "source": "twitter syndication CDN"
+    },
+    {
+      "id": "1549083260130471936",
+      "author": "PSAcard",
+      "date": "2022-07-18T17:26:44.000Z",
+      "url": "https://x.com/PSAcard/status/1549083260130471936",
+      "text": "A Sotheby’s auction for this @steveaoki x @GalyArtist NFT + accompanying PSA-graded 1/1 Metazoo Mothman piece climbed to $214,000 at close. \n\nHere’s a closer look at this historic TCG item. 👀 https://t.co/ZAFcPp6BV1",
+      "media": [
+        "https://pbs.twimg.com/media/FX9y-vvUUAAhsqn.jpg"
+      ],
+      "status": "live",
+      "role": "grader corroborating final price + physical card",
+      "source": "twitter syndication CDN"
+    }
+  ],
+  "related_deleted_aoki_tweets": [
+    {
+      "id": "1446306833321189380",
+      "date": "2021-10-08",
+      "status": "deleted",
+      "text": "Combining NFT, fine art and the TCG community into one kaboom moment💥 Let’s make history on this one. Sale takes place October 14-21. @MetaZooGames"
+    },
+    {
+      "id": "1453061497098285070",
+      "date": "2021-10-26",
+      "status": "deleted",
+      "text": "Congrats to the winner AK09 on the #MetazooMothman 1/1 from our @Sothebys sale! We have an incredible roadmap for all things Aoki & @MetaZooGames in the NFT space."
+    }
+  ],
+  "hammer_bid_usd": 170000,
+  "buyer_premium_pct": 26,
+  "lot_page": {
+    "source": "Sotheby's Natively Digital, Lot 52 bid page (screenshot supplied 2026-07-26)",
+    "title": "MetaZoo Mothman",
+    "created_by": "Steve Aoki x Gal Yosef",
+    "created": "2021-09-20",
+    "collected_by": "Steve Aoki",
+    "contract_short": "0x...3add",
+    "final_bid_usd": 170000,
+    "final_bidder": "ak09",
+    "sold_for_usd": 214200
+  }
+}

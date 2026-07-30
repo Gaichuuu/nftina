@@ -1,0 +1,171 @@
+{
+ "overview": [
+  "Presale for whitelisted addresses: 29 Nov, 11am EST to 2 Dec, 11am EST.",
+  "Public Sale: 2 Dec, 12pm EST to 12am EST.",
+  "- 5,000 items",
+  "- 0.1 ETH mint price",
+  "**Blockchain platform powered by Ether Cards**",
+  "Follow MetaZoo Games on Twitter, Instagram, and stay up to date by following us on Discord for news about new drops happening weekly!",
+  "# About the collection",
+  "**The MetaZoo Token**",
+  "Use your MetaZoo Games tokens to gain exclusive and early access to MetaZoo products before the rest of the community. Tokens may also be used to gain access to the whitelist for other MetaZoo NFT drops! The first of such offers include the highly anticipated MetaZoo x Dim Mak t-shirt drop and early access to MetaZoo: Cryptid Nation Base Set 2nd Edition in mid-December.",
+  "**A token-based NFT collection**",
+  "With the Veil between our world and all things magical mysteriously shattered, it is up to you to become a powerful enough Caster to fight the menacing Indrid Cold and his powerful Cryptids... or join their ranks! Will you form a Contract with the benevolent Bigfoot and Fearsome Critters to protect our forests, or embrace the flying catastrophe that is The Mothman? The choice is yours in MetaZoo: Cryptid Nation! This collection features 6 unique tokens which are the currency in the MetaZoo lore, each of which is representative of a special item or character in the MetaZoo universe.",
+  "**Errors and Bonuses**",
+  "During the minting process, certain errors occurred! These error tokens include a damaged Jersey Devil Purple token, a double stamped Mothman Gold token, and other eccentricities that are significantly rarer than their properly minted counterparts. These error tokens will only be circulated during the presale event.",
+  "**Long Term Utility**",
+  "These tokens are not one-time use! They can be redeemed at many future MetaZoo Games exclusive releases. Think of these tokens as your ticket into the VIP lounge at any major MetaZoo product release event. For product releases that usually sell out in minutes or even seconds, this exclusive access to product at MSRP or discounts to MSRP is essential for the true MetaZoo fan!",
+  "**A Look into the MetaZoo x Dim Mak Collab**",
+  "On 12.15.2021, MetaZoo Games token holders will have exclusive access to a presale at a discount to MSRP of the MetaZoo x Dim Mak collab drop! Each box contains a random MetaZoo Dim Mak design, a holographic promo card, and several hundred boxes will be randomly seeded with Nightfall 1st Edition, Base Set 1st Edition, and even Kickstarter booster packs! Available only on the Dim Mak Marketplace.",
+  "**A Look into MetaZoo: Cryptid Nation Second Edition**",
+  "On 12.31.2021, we finish 2021 strong with an exclusive presale of MetaZoo: Cryptid Nation Base Set Second Edition at a massive discount to MetaZoo Games token owners! This presale will be available only on the MetaZoo Marketplace. In 2022, MetaZoo Games will see the release of three core sets of its trading card game (TCG) plus mini-releases across dozens of other product verticals including a new Kickstarter launched in Q1, plushies, jewelry, figurines, more Topps products, and PinClub pins! MetaZoo Games token owners can expect to gain exclusive and early access to almost every drop! The value in these tokens is truly incredible for MetaZoo collectors of every variety!",
+  "# Roadmap",
+  "- 11.29.2021 11am EST \u00b7 Whitelist presale",
+  "- 12.2.2021 11am EST \u00b7 Public release",
+  "- 12.2.2021 \u00b7 Token Unlock",
+  "- 12.15.2021 \u00b7 MetaZoo x Dim Mak collab presale drop",
+  "- 12.31.2021 \u00b7 MetaZoo: Cryptid Nation Base Set Second Edition presale drop",
+  "# Minting Instructions",
+  "**Presale \u00b7 29 Nov, 11am EST to 2 Dec, 11am EST**",
+  "When the Presale Event starts, the connect-wallet functionality will be available on the website. You will need to connect your wallet by clicking the connect wallet button and, if you are part of the whitelist, you will be able to click the mint button and get MetaZoo Games Tokens. Detailed steps below:",
+  "- Step 1: Connect your MetaMask wallet to https://nft.metazoogames.com",
+  "- Step 2: Press the connect button and you'll be prompted to sign.",
+  "- Step 3: Select up to two tokens to mint depending on your whitelist eligibility.",
+  "- Step 4: Press Mint and you'll be prompted to sign your wallet address and confirm payment.",
+  "- Step 5: Once you confirm your payment you can follow the transaction on Etherscan; it can take up to 30 seconds and sometimes a little bit longer.",
+  "- Step 6: Congratulations! Once a successful purchase has been made you will be able to view them in your wallet or on OpenSea.io.",
+  "**Public Sale \u00b7 2 Dec, 12pm EST to 12am EST**",
+  "The Public Sale had a decreasing-price model and was available to everyone. The price started at 5 ETH and decreased by 0.1 ETH every 15 minutes for 12 hours. You could choose to mint anytime, as long as tokens were still available and the sale had not ended. Detailed steps below:",
+  "- Step 1: Connect your MetaMask wallet to https://nft.metazoogames.com",
+  "- Step 2: Press the connect button and you'll be prompted to sign.",
+  "- Step 3: Select the number of tokens you would like to mint at the current price.",
+  "- Step 4: Press Mint and you'll be prompted to sign your wallet address and confirm payment.",
+  "- Step 5: Once you confirm your payment you can follow the transaction on Etherscan; it can take up to 30 seconds and sometimes a little bit longer.",
+  "- Step 6: Congratulations! Once a successful purchase has been made you will be able to view them in your wallet or on OpenSea.io.",
+  "# Our reconstruction",
+  "On-chain primary revenue reconstructs to roughly 280 ETH (about $1.23M at the time), notably below the widely-cited '~408 ETH / $1.836M'; most buyers paid the 0.1 ETH whitelist price rather than the high end of the Dutch auction. Today the floor sits near 0.005 ETH (about $15)."
+ ],
+ "overview_image": "https://gaichu.b-cdn.net/nftina/tokens/coin_tokens/b4c6e59bdd356297.gif",
+ "utility": [
+  {
+   "id": "manta_ray_airdrop",
+   "name": "Flying Manta Ray Blue tokens",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "111 Flying Manta Ray NFTs airdropped to random Token holders.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/manta_ray_airdrop.gif?v=00bfcd52"
+  },
+  {
+   "id": "dim_mak_box",
+   "name": "MetaZoo x Dim Mak box",
+   "price_usd": 50,
+   "price_eth": null,
+   "note": "Randomly seeded with Nightfall, Cryptid Nation 1st Edition, and Kickstarter booster packs.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/dim_mak_box.jpg?v=5e709b9a"
+  },
+  {
+   "id": "cn2_booster_box",
+   "name": "Cryptid Nation 2nd Edition booster box",
+   "price_usd": 100,
+   "price_eth": null,
+   "note": "Blue NFT sticker on top of the shrink wrap.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/cn2_booster_box.jpg?v=7569c5c8"
+  },
+  {
+   "id": "valentines_box",
+   "name": "MetaZoo Valentine's Day box",
+   "price_usd": 30,
+   "price_eth": null,
+   "note": "A Valentines NFT was airdropped for every box purchased.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/valentines_box.gif?v=24d0cacc"
+  },
+  {
+   "id": "wilderness_pin_club",
+   "name": "Wilderness Pin Club case",
+   "price_usd": 150,
+   "price_eth": null,
+   "note": "Exclusive \"The Wild Ones\" promo card, and a Wilderness NFT airdropped for every case purchased.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_pin_club.gif?v=382e76c8"
+  },
+  {
+   "id": "wilderness_booster_box",
+   "name": "Wilderness 1st Edition booster box",
+   "price_usd": 100,
+   "price_eth": null,
+   "note": "Gold NFT sticker on top of the shrink wrap.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_booster_box.jpg?v=5325d104"
+  },
+  {
+   "id": "nft_gilding",
+   "name": "NFT Gilding",
+   "price_usd": 15,
+   "price_eth": null,
+   "note": "Exclusive rainbow gilding for USPCC playing cards.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/nft_gilding.webp?v=091ad270"
+  },
+  {
+   "id": "ufo_pin_club",
+   "name": "UFO Pin Club case",
+   "price_usd": 150,
+   "price_eth": null,
+   "note": "Exclusive \"The Far Out Bunch\" promo card, a unique security sticker featuring the coin NFTs, and variant case artwork with the UFO printed on the side.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/ufo_pin_club.jpg?v=9c2ae24d"
+  },
+  {
+   "id": "july4_promo_card",
+   "name": "4th of July 2022 promo card",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "A free promo card for each Token.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/july4_promo_card.jpg?v=1b38b644"
+  },
+  {
+   "id": "beasties_allowlist_mint",
+   "name": "MetaZoo Games Beasties allowlist mint",
+   "price_usd": 123.12,
+   "price_eth": 0.1,
+   "note": "Token holders got an allowlist place for the Beasties mint.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/beasties_allowlist_mint.webp?v=58cb14a3"
+  },
+  {
+   "id": "beasties_free_mint",
+   "name": "MetaZoo Games Beasties free mint",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "A free Beasties mint for each Token held.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/beasties_free_mint.webp?v=58cb14a3"
+  },
+  {
+   "id": "ufo_booster_box",
+   "name": "UFO 1st Edition booster box",
+   "price_usd": 100,
+   "price_eth": null,
+   "note": "Silver NFT sticker underneath the shrink wrap, in place of the standard security stickers.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/ufo_booster_box.jpg?v=855400fa"
+  },
+  {
+   "id": "seance_booster_box",
+   "name": "Seance 1st Edition booster box",
+   "price_usd": 100,
+   "price_eth": null,
+   "note": "Colorized NFT sticker underneath the shrink wrap, in place of the standard security stickers.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/seance_booster_box.jpg?v=56ce3c4f"
+  },
+  {
+   "id": "valentines_plush_2023",
+   "name": "2023 Valentine Plush & Promo Set",
+   "price_usd": 50,
+   "price_eth": null,
+   "note": "Exclusive gold heart variant.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/valentines_plush_2023.png?v=e569ce12"
+  },
+  {
+   "id": "native_booster_box",
+   "name": "NFT Native booster box",
+   "price_usd": 100,
+   "price_eth": null,
+   "note": "Colorized NFT sticker underneath the shrink wrap, in place of the standard security stickers.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/native_booster_box.webp?v=6c1e0a6d"
+  }
+ ]
+}

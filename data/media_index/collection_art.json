@@ -1,0 +1,15 @@
+{
+  "genesis_2021": "https://gaichu.b-cdn.net/nftina/collections/genesis_2021.webp",
+  "genesis_reissue_1155": "https://gaichu.b-cdn.net/nftina/collections/genesis_reissue_1155.gif",
+  "coin_tokens": "https://gaichu.b-cdn.net/nftina/tokens/coin_tokens/b5226f053fc0637a.gif",
+  "beasties_s1": "https://gaichu.b-cdn.net/nftina/collections/beasties_s1.avif",
+  "pfp_2": "https://gaichu.b-cdn.net/nftina/collections/pfp_2.avif",
+  "valentines": "https://gaichu.b-cdn.net/nftina/tokens/valentines/e92714928b0a0794.png",
+  "wilderness": "https://gaichu.b-cdn.net/nftina/tokens/wilderness/0e6f8dae9e747d8a.png",
+  "tournament_prizes": "https://gaichu.b-cdn.net/nftina/collections/tournament_prizes.gif",
+  "mothman_1of1": {
+    "image": "https://gaichu.b-cdn.net/nftina/tokens/mothman_1of1/3fd959339ecd3764.jpg",
+    "video": "https://gaichu.b-cdn.net/nftina/collections/mothman_1of1.mp4"
+  },
+  "sandbox": "https://gaichu.b-cdn.net/nftina/collections/sandbox.png"
+}

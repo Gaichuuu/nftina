@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-07-24",
+  "method": "Current on-chain holdings of Aoki's two NFT wallets (0xa6d3a33a1c66083859765b9d6e407d095a908193, 0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4) per acquired collection, via Alchemy getNFTsForOwner filtered by contract (top 10 acquired collections). 'purchases' counts distinct buy events from the acquisitions ledger; 'held_now' is the live owned-count. held_now < purchases means some were sold; the ETH that reached Aoki was fungible, so no token is attributed to MetaZoo money.",
+  "wallets": [
+    "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+    "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4"
+  ],
+  "holdings": {
+    "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb": {
+      "name": "CRYPTOPUNKS",
+      "purchases": 7,
+      "held_now": 5,
+      "avg_paid_eth": 93.256,
+      "floor_eth": 31.99,
+      "loss_pct": -65.7
+    },
+    "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e": {
+      "name": "Doodles",
+      "purchases": 7,
+      "held_now": 5,
+      "avg_paid_eth": 42.983,
+      "floor_eth": 0.3836,
+      "loss_pct": -99.1
+    },
+    "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d": {
+      "name": "BoredApeYachtClub",
+      "purchases": 7,
+      "held_now": 7,
+      "avg_paid_eth": 42.429,
+      "floor_eth": 8.57,
+      "loss_pct": -79.8
+    },
+    "0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d": {
+      "name": "0N1 Force",
+      "purchases": 12,
+      "held_now": 0,
+      "avg_paid_eth": 13.887,
+      "floor_eth": 0.0597,
+      "loss_pct": -99.6
+    },
+    "0x22c36bfdcef207f9c0cc941936eff94d4246d14a": {
+      "name": "Bored Ape Chemistry Club",
+      "purchases": 6,
+      "held_now": 1,
+      "avg_paid_eth": 23.472,
+      "floor_eth": 2.19,
+      "loss_pct": -90.7
+    },
+    "0x23581767a106ae21c074b2276d25e5c3e136a68b": {
+      "name": "Moonbirds",
+      "purchases": 3,
+      "held_now": 2,
+      "avg_paid_eth": 33.167,
+      "floor_eth": 0.42,
+      "loss_pct": -98.7
+    },
+    "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb": {
+      "name": "VeeFriends",
+      "purchases": 4,
+      "held_now": 4,
+      "avg_paid_eth": 16.477,
+      "floor_eth": 1.685,
+      "loss_pct": -89.8
+    },
+    "0x495f947276749ce646f68ac8c248420045cb7b5e": {
+      "name": "OpenSea Shared Storefront",
+      "purchases": 16,
+      "held_now": null,
+      "note": "shared/multi-tenant contract: live owned-count (1034) spans all creators' tokens, not just this buyer's purchases \u2014 not comparable",
+      "avg_paid_eth": 3.441,
+      "floor_eth": 0.001,
+      "loss_pct": -100.0
+    },
+    "0x11739d7bd793543a6e83bd7d8601fcbcde04e798": {
+      "name": "Wrapped Strikers",
+      "purchases": 5,
+      "held_now": 1,
+      "avg_paid_eth": 10.3,
+      "floor_eth": 0.09,
+      "loss_pct": -99.1
+    },
+    "0x1a92f7381b9f03921564a437210bb9396471050c": {
+      "name": "Cool Cats",
+      "purchases": 3,
+      "held_now": 0,
+      "avg_paid_eth": 17.093,
+      "floor_eth": 0.152,
+      "loss_pct": -99.1
+    }
+  },
+  "floor_note": "floor_eth is a point-in-time snapshot (Alchemy getFloorPrice, min of OpenSea/LooksRare) taken 2026-07-24; avg_paid_eth = total ETH / purchases; loss_pct = (floor - avg_paid) / avg_paid. An estimate, not live."
+}

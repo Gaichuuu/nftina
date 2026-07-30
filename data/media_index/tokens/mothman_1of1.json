@@ -1,0 +1,10 @@
+{
+  "1017": {
+    "name": "MetaZoo Mothman",
+    "file": "3fd959339ecd3764.jpg",
+    "source": "https://nft2-cdn.alchemy.com/eth-mainnet/82d5442c20cb61e5365db1d7e6d2c635",
+    "video": "c09c0fd709abf2c3.mp4",
+    "video_source": "https://nft2-cdn.alchemy.com/eth-mainnet/82d5442c20cb61e5365db1d7e6d2c635_animation",
+    "note": "The token carries both an image and a 41s 1080p/40Mbps animation (arweave r4KO_QOT\u2026, 208 MB, cached by Alchemy). The arweave gateway 502s, so the master came from Alchemy's cache and was transcoded to a web loop with ffmpeg (960px, CRF 30, audio stripped, +faststart) = 2.9 MB. The still image remains the poster frame. The still was also stored as .png while its bytes are JPEG (ffd8), the same extension mislabel as the CryptoPunks SVGs; renamed to .jpg."
+  }
+}

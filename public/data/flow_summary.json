@@ -1,0 +1,33 @@
+{
+  "metazoo_to_aoki_eth": 210.3685,
+  "aoki_to_metazoo_eth": 0.0,
+  "aoki_wallet_inflow_eth": {
+    "0xa6d3a33a1c66083859765b9d6e407d095a908193": 494.91627,
+    "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4": 3658.710771
+  },
+  "aoki_outflow": {
+    "nft_marketplace_eth": 2630.716385,
+    "cash_out_eth": 0.0,
+    "by_exchange": {
+      "Kraken 4": 0.0
+    },
+    "internal_cluster_eth": 411.829447,
+    "unlabeled_endpoints": {
+      "count": 61,
+      "eth": 225.140836
+    }
+  },
+  "confirmed_aoki_wallets": [
+    "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+    "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4"
+  ],
+  "unproven_candidates": [
+    "0x50bb8c7c8b190fa43f085f95d1392339c935e875"
+  ],
+  "caps_hit": {
+    "max_depth": false,
+    "max_nodes": true,
+    "high_volume": true
+  },
+  "disclaimer": "Figures are estimates from public on-chain data. NFT-marketplace spend is not cash-out. Candidate wallets are unproven; Aoki allegations are unproven."
+}

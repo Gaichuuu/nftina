@@ -1,0 +1,23 @@
+{
+ "generated_at": "2026-07-29T14:55:54.721559+00:00",
+ "collections_count": 8,
+ "total_transfers": 25228,
+ "total_wallets": 3614,
+ "total_spent_eth": 2187.1179,
+ "total_mint_revenue_eth": 550.8905,
+ "total_mint_revenue_usd": 1560230.13,
+ "secondary_volume_eth": 1636.5113,
+ "royalties_to_metazoo_eth": 96.6014,
+ "realized_gains_eth": 937.4242,
+ "realized_gains_usd": 1949433.02,
+ "realized_losses_eth": 106.6137,
+ "unrealized_loss_eth": 1488.596,
+ "total_loss_eth": 1729.6148,
+ "gas_spent_eth": 134.4051,
+ "unrealized_loss_usd": 3492375.9,
+ "total_loss_usd": 4335097.33,
+ "gas_spent_usd": 478381.53,
+ "wallets_net_loss": 2048,
+ "floor_data_available": true,
+ "eth_price_usd": 1884.58
+}

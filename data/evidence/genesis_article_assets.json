@@ -1,0 +1,40 @@
+{
+  "source": {
+    "id": "article-38",
+    "title": "MetaZoo Tokens & NFTs",
+    "author": "MetaZoo HQ",
+    "url": "https://metazoohq.com/nfts",
+    "wayback": "https://web.archive.org/web/20250709071231/https://metazoohq.com/nfts",
+    "extracted_from": "metasued data/documents.json (article-38) + scratch/articles/",
+    "note": "Fan-made reference page archived on the Wayback Machine. Per-cryptid mint counts total 875 Genesis 2021 NFTs; the article notes 596 visible on OpenSea at time of writing; our on-chain genesis_2021 fetch holds 595 tokens carrying only 6 distinct Alchemy-recovered cryptid names."
+  },
+  "verification": {
+    "task": "6B",
+    "date": "2026-07-24",
+    "method": "Visually rendered candidate article GIFs and diffed against known on-chain Alchemy art for the same cryptid names (data/media/tokens/genesis_2021/), then confirmed with SHA-256 where a byte-identical copy existed.",
+    "findings": [
+      "The brief's draft mapping had mzq_f98357b7ba4c2c51.gif assigned to Hodag, but it is visually identical (resized/recompressed: 512x512 vs the on-chain 640x640) to the on-chain MZG Bigfoot art d2213e32e3a8a543.gif. Reassigned to Bigfoot.",
+      "The brief's draft mapping had mzq_3dd2b2675970f2eb.gif assigned to Bigfoot, but its SHA-256 (de08706dba4e2911...) is byte-identical to the on-chain MZG Chupacabra art 1d2e70b1666a2994.gif. Reassigned to Chupacabra.",
+      "No article GIF was found depicting the true Hodag art (the green dragon/dinosaur-faced creature seen on-chain as 303b46b279b488d1.gif) -- the remaining unassigned article GIFs (mzq_0dbe8c09d60d1f29, mzq_12391c07ccd9dcde, mzq_416241fd0fee73d3, mzq_53b0c4fc6b30e06f, mzq_dfb9c2166bea567c, mzq_efdb86baed3aa5d7) are non-cryptid page decoration (gold/silver/bronze 1st-edition coin badges, a New Year's tournament banner, an egg illustration). Hodag's file is therefore null; the fill script falls back to same-cryptid art reuse from the manifest (99 other on-chain Hodag tokens already carry real art), so this has no practical impact on Task 6B's fill."
+    ]
+  },
+  "cryptids": [
+    {"name": "Sinkhole Sam",      "minted": 10,  "file": "mzq_1bf8c35b635a0903.gif", "manifest_name": "MZG Sinkhole Sam"},
+    {"name": "Mothman",           "minted": 16,  "file": "mzq_dc5a5b876f5715c5.gif", "manifest_name": null},
+    {"name": "Sewer Gator",       "minted": 25,  "file": null,                       "manifest_name": null},
+    {"name": "Jersey Devil",      "minted": 25,  "file": "mzq_ffbd06bcd5257518.gif", "manifest_name": null},
+    {"name": "Quetzalcoathlus",   "minted": 25,  "file": null,                       "manifest_name": null},
+    {"name": "Flatwoods Monster", "minted": 25,  "file": "mzq_7fd89ccfccb888e7.gif", "manifest_name": null},
+    {"name": "Batsquatch",        "minted": 25,  "file": null,                       "manifest_name": null},
+    {"name": "Joint Snake",       "minted": 49,  "file": "mzq_93136128317546b0.gif", "manifest_name": null},
+    {"name": "Hoop Snake",        "minted": 50,  "file": "mzq_63b1b0149871b4b4.gif", "manifest_name": null},
+    {"name": "Squonk",            "minted": 50,  "file": null,                       "manifest_name": null},
+    {"name": "Gee-Gee Bird",      "minted": 50,  "file": "mzq_328bee325cddd657.gif", "manifest_name": null},
+    {"name": "Salem's Witches",   "minted": 50,  "file": null,                       "manifest_name": null},
+    {"name": "River Dino",        "minted": 75,  "file": null,                       "manifest_name": "MZG River Dino"},
+    {"name": "Piasa Bird",        "minted": 100, "file": null,                       "manifest_name": "MZG Piasa Bird"},
+    {"name": "Hodag",             "minted": 100, "file": null,                       "manifest_name": "MZG Hodag"},
+    {"name": "Bigfoot",           "minted": 100, "file": "mzq_f98357b7ba4c2c51.gif", "manifest_name": "MZG Bigfoot"},
+    {"name": "Chupacabra",        "minted": 100, "file": "mzq_3dd2b2675970f2eb.gif", "manifest_name": "MZG Chupacabra"}
+  ]
+}

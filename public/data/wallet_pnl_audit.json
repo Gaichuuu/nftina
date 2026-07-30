@@ -1,0 +1,447 @@
+{
+  "by_collection": {
+    "mintable_early": {
+      "wallets": 176,
+      "checks": {
+        "reconciles": 19,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 0,
+        "sign_divergence": 0
+      },
+      "samples": {
+        "reconciles": [
+          {
+            "wallet": "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6",
+            "held": 0,
+            "expected": -382,
+            "minted": 0,
+            "bought": 0,
+            "received": 3,
+            "sent": 385,
+            "sold": 0
+          },
+          {
+            "wallet": "0x28362cb5c23aa644702c9734510ccfbf67a7b215",
+            "held": 1,
+            "expected": 0,
+            "minted": 0,
+            "bought": 1,
+            "received": 0,
+            "sent": 0,
+            "sold": 1
+          },
+          {
+            "wallet": "0x724a4328efd1fda08a7804d6d9ca57e3ac03b9d1",
+            "held": 0,
+            "expected": -1,
+            "minted": 0,
+            "bought": 0,
+            "received": 0,
+            "sent": 0,
+            "sold": 1
+          },
+          {
+            "wallet": "0xd456d887a28bac23e74806c8a67df7f39af0b4c0",
+            "held": 0,
+            "expected": -1,
+            "minted": 0,
+            "bought": 1,
+            "received": 0,
+            "sent": 0,
+            "sold": 2
+          },
+          {
+            "wallet": "0x721264b6e5db32b2d3a25aad9d261a0512096367",
+            "held": 0,
+            "expected": -1,
+            "minted": 0,
+            "bought": 0,
+            "received": 0,
+            "sent": 0,
+            "sold": 1
+          }
+        ]
+      }
+    },
+    "genesis_2021": {
+      "wallets": 413,
+      "checks": {
+        "reconciles": 0,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 37,
+        "sign_divergence": 4
+      },
+      "samples": {
+        "loss_without_basis": [
+          {
+            "wallet": "0x9932a28267a593078ab44297dc18b47209d3a420",
+            "unrealized_loss": 1.65,
+            "received": 2
+          },
+          {
+            "wallet": "0x927d8d74b6f7105f37d1779fc5bc633679c25607",
+            "unrealized_loss": 0.73,
+            "received": 1
+          },
+          {
+            "wallet": "0x8c9af3c9066a41f7793f472d8894b92738052b38",
+            "unrealized_loss": 0.719,
+            "received": 2
+          },
+          {
+            "wallet": "0xc32ef4bf6e553edef96927373c0deb7ab21b808b",
+            "unrealized_loss": 0.7399,
+            "received": 2
+          },
+          {
+            "wallet": "0xc0f9e4362fcd790d2b3b08bb2eb90fa95ad414a7",
+            "unrealized_loss": 0.04,
+            "received": 1
+          }
+        ],
+        "sign_divergence": [
+          {
+            "wallet": "0xf22a7de1a3d351ccc892916f7d967232cf7ba8b2",
+            "realized_pnl_eth": 0.548,
+            "realized_pnl_usd": -643.93
+          },
+          {
+            "wallet": "0x7a055b989dafcb5fe49bd0832f538bf14adfae26",
+            "realized_pnl_eth": 0.23725,
+            "realized_pnl_usd": -308.43
+          },
+          {
+            "wallet": "0x1c7f4eb68dcf34408300464094955d5fc9af9eff",
+            "realized_pnl_eth": 0.336,
+            "realized_pnl_usd": -917.07
+          },
+          {
+            "wallet": "0x311e19313b2f9227071b9c0ea628ff1d7c37e33b",
+            "realized_pnl_eth": 0.04,
+            "realized_pnl_usd": -490.54
+          }
+        ]
+      }
+    },
+    "coin_tokens": {
+      "wallets": 2840,
+      "checks": {
+        "reconciles": 0,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 165,
+        "sign_divergence": 116
+      },
+      "samples": {
+        "loss_without_basis": [
+          {
+            "wallet": "0x98ddc4cb4eeead455adf4cbda6b30e91f4ad69ee",
+            "unrealized_loss": 0.15513,
+            "received": 1
+          },
+          {
+            "wallet": "0x7b98f129c59402b150a5b0e68058bfbd224fb97c",
+            "unrealized_loss": 0.15513,
+            "received": 1
+          },
+          {
+            "wallet": "0xaa8fbd819db3310d87bba49df5cc90e157100570",
+            "unrealized_loss": 0.09513,
+            "received": 1
+          },
+          {
+            "wallet": "0x34ece6d2143b737bdae7b96fdc84bff5f62c4fb9",
+            "unrealized_loss": 0.09513,
+            "received": 2
+          },
+          {
+            "wallet": "0x4a4330580b7a58da2d91a8b0484bd05db5423d8d",
+            "unrealized_loss": 0.09513,
+            "received": 1
+          }
+        ],
+        "sign_divergence": [
+          {
+            "wallet": "0x76540d566f40c553b3c2bde339207a1844502e8c",
+            "realized_pnl_eth": 0.074125,
+            "realized_pnl_usd": -211.89
+          },
+          {
+            "wallet": "0x7315f019b4b8010b2c3680ba70f497b4ec012223",
+            "realized_pnl_eth": 1.675625,
+            "realized_pnl_usd": -2101.31
+          },
+          {
+            "wallet": "0x2d228b99318c60e673c4f3baec7e714827db0b30",
+            "realized_pnl_eth": 0.04625,
+            "realized_pnl_usd": -176.5
+          },
+          {
+            "wallet": "0xf66d3230eb640be1c46086ea2043de1e45332c99",
+            "realized_pnl_eth": 0.0935,
+            "realized_pnl_usd": -234.08
+          },
+          {
+            "wallet": "0x34ece6d2143b737bdae7b96fdc84bff5f62c4fb9",
+            "realized_pnl_eth": 0.0393,
+            "realized_pnl_usd": -194.6
+          }
+        ]
+      }
+    },
+    "tournament_prizes": {
+      "wallets": 4,
+      "checks": {
+        "reconciles": 1,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 0,
+        "sign_divergence": 0
+      },
+      "samples": {
+        "reconciles": [
+          {
+            "wallet": "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6",
+            "held": 0,
+            "expected": -3,
+            "minted": 0,
+            "bought": 0,
+            "received": 0,
+            "sent": 3,
+            "sold": 0
+          }
+        ]
+      }
+    },
+    "valentines": {
+      "wallets": 754,
+      "checks": {
+        "reconciles": 0,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 0,
+        "sign_divergence": 0
+      },
+      "samples": {}
+    },
+    "beasties_s1": {
+      "wallets": 1749,
+      "checks": {
+        "reconciles": 0,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 170,
+        "sign_divergence": 15
+      },
+      "samples": {
+        "loss_without_basis": [
+          {
+            "wallet": "0x1f1169edfa8e18de771133b2a1735314cda7d6c0",
+            "unrealized_loss": 0.0681,
+            "received": 1
+          },
+          {
+            "wallet": "0xf8025292c031c2e78a29cefe0f63cd4d95d255e3",
+            "unrealized_loss": 1.0897,
+            "received": 15
+          },
+          {
+            "wallet": "0xc4a17d0a281f8bf8c2c18ecdff3103438a76af1d",
+            "unrealized_loss": 0.1552,
+            "received": 2
+          },
+          {
+            "wallet": "0xc32ef4bf6e553edef96927373c0deb7ab21b808b",
+            "unrealized_loss": 4.8911,
+            "received": 33
+          },
+          {
+            "wallet": "0x9e4759a32655a71af48473d2c495f1d958e308f3",
+            "unrealized_loss": 0.1061,
+            "received": 1
+          }
+        ],
+        "sign_divergence": [
+          {
+            "wallet": "0xb01c55b55329d5d6e832f80017488e84872e7b32",
+            "realized_pnl_eth": 0.000325,
+            "realized_pnl_usd": -46.52
+          },
+          {
+            "wallet": "0x1062a03e407e186284ba959cf3d206797419a509",
+            "realized_pnl_eth": -0.0124,
+            "realized_pnl_usd": 3.5
+          },
+          {
+            "wallet": "0xe20f04b2de8914d537b3e9a9b00f6a6d927352e9",
+            "realized_pnl_eth": 0.00416,
+            "realized_pnl_usd": -112.58
+          },
+          {
+            "wallet": "0xee9abacb82f9ea6496f0af34912e4018b44c33ca",
+            "realized_pnl_eth": -0.0475,
+            "realized_pnl_usd": 91.92
+          },
+          {
+            "wallet": "0xeb7f4475420cce87886c614acb15f881d38ed195",
+            "realized_pnl_eth": -0.0605,
+            "realized_pnl_usd": 3.69
+          }
+        ]
+      }
+    },
+    "pfp_2": {
+      "wallets": 511,
+      "checks": {
+        "reconciles": 0,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 3,
+        "sign_divergence": 1
+      },
+      "samples": {
+        "loss_without_basis": [
+          {
+            "wallet": "0xbacdee2c1165210111854c1a07f339b14d9010e1",
+            "unrealized_loss": 0.0731,
+            "received": 1
+          },
+          {
+            "wallet": "0x083e8ed7c9388794a5fb8b6bf1de3ff8d3b02da1",
+            "unrealized_loss": 0.0231,
+            "received": 1
+          },
+          {
+            "wallet": "0xe61662fecfa31e555d71860bd25411faee93d5d8",
+            "unrealized_loss": 0.1088,
+            "received": 4
+          }
+        ],
+        "sign_divergence": [
+          {
+            "wallet": "0x0cbdca8972ab4c4b3f85b464551023120ee333e2",
+            "realized_pnl_eth": -0.003,
+            "realized_pnl_usd": 12.66
+          }
+        ]
+      }
+    },
+    "genesis_reissue_1155": {
+      "wallets": 317,
+      "checks": {
+        "reconciles": 12,
+        "spent_without_position": 0,
+        "realized_without_sale": 0,
+        "transfer_sides_balance": 0,
+        "gas_without_activity": 0,
+        "held_exceeds_supply": 0,
+        "loss_without_basis": 1,
+        "sign_divergence": 0
+      },
+      "samples": {
+        "reconciles": [
+          {
+            "wallet": "0x2e8aee5c94ffb41e368bf6b0f952e9e2c944a38f",
+            "held": 0,
+            "expected": -1,
+            "minted": 0,
+            "bought": 0,
+            "received": 0,
+            "sent": 0,
+            "sold": 1
+          },
+          {
+            "wallet": "0xc9e28d786f13aff93b37edb31df37fff547aba9f",
+            "held": 0,
+            "expected": -2,
+            "minted": 0,
+            "bought": 0,
+            "received": 0,
+            "sent": 0,
+            "sold": 2
+          },
+          {
+            "wallet": "0x40a964cf938840249adbcd9de59424da5d3a251d",
+            "held": 0,
+            "expected": -22,
+            "minted": 0,
+            "bought": 0,
+            "received": 0,
+            "sent": 11,
+            "sold": 11
+          },
+          {
+            "wallet": "0xdbcf0d3aee2fde933f4033cd5c360a0ba025f200",
+            "held": 2,
+            "expected": 0,
+            "minted": 0,
+            "bought": 0,
+            "received": 2,
+            "sent": 0,
+            "sold": 2
+          },
+          {
+            "wallet": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+            "held": 0,
+            "expected": -872,
+            "minted": 0,
+            "bought": 1,
+            "received": 17,
+            "sent": 890,
+            "sold": 0
+          }
+        ],
+        "loss_without_basis": [
+          {
+            "wallet": "0x6b47040996872bf3cec9ef2336881746dc06f3c8",
+            "unrealized_loss": 0.15,
+            "received": 3
+          }
+        ]
+      }
+    }
+  },
+  "totals": {
+    "reconciles": 32,
+    "spent_without_position": 0,
+    "realized_without_sale": 0,
+    "transfer_sides_balance": 0,
+    "gas_without_activity": 0,
+    "held_exceeds_supply": 0,
+    "loss_without_basis": 376,
+    "sign_divergence": 136
+  },
+  "severity": {
+    "reconciles": "defect",
+    "spent_without_position": "defect",
+    "realized_without_sale": "defect",
+    "transfer_sides_balance": "defect",
+    "gas_without_activity": "defect",
+    "held_exceeds_supply": "defect",
+    "loss_without_basis": "review",
+    "sign_divergence": "review"
+  }
+}

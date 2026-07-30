@@ -1,0 +1,351 @@
+{
+  "payments": [
+    {
+      "addr": "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+      "eth": 104.448,
+      "date": "2021-12-06",
+      "classification": {
+        "verdict": "Coinbase (identity unknown)",
+        "venues": [
+          "Coinbase 44",
+          "Coinbase 3"
+        ],
+        "hit_coinbase": true
+      },
+      "edges": [
+        {
+          "from": "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+          "to": "0xb17e4d7de0c686b68178865e90834e69239a0237",
+          "eth": 62.669,
+          "hash": "0xe3a8dd8e68462644f7c5533ebe42efcf6f45ac80a071f7fe4143d0561b25bd30",
+          "ts": 1638829822
+        },
+        {
+          "from": "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+          "to": "0x18538c6ab85e50fb07c480cba02ff14de960b6f7",
+          "eth": 10.445,
+          "hash": "0x812113465af727ba60bad108413674f0bb9765dae0da5e461defa24adf2d8fcf",
+          "ts": 1638829262
+        },
+        {
+          "from": "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+          "to": "0x0d58d5fae1b1d400e9c9530e7caacc628315dd3d",
+          "eth": 10.445,
+          "hash": "0x568583ebd7f8d00dd1de8992443c938acf186f3a9188e0dc5d7ee48dd9c7042e",
+          "ts": 1639589134
+        },
+        {
+          "from": "0xb17e4d7de0c686b68178865e90834e69239a0237",
+          "to": "0xb5d85cbf7cb3ee0d56b3bb207d5fc4b82f43f511",
+          "eth": 62.664,
+          "hash": "0x61d53800a263c80ba13937d0c5eb653d5da7b244db45ed3052bf929f9129bfc6",
+          "ts": 1638829896
+        },
+        {
+          "from": "0x18538c6ab85e50fb07c480cba02ff14de960b6f7",
+          "to": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+          "eth": 10.442,
+          "hash": "0xc377dcdb81b950a9cde90241ee097316a7382f76a43b42d82c6d64010927d9d6",
+          "ts": 1639097086
+        },
+        {
+          "from": "0x0d58d5fae1b1d400e9c9530e7caacc628315dd3d",
+          "to": "0xddfabcdc4d8ffc6d5beaf154f18b778f892a0740",
+          "eth": 10.44,
+          "hash": "0x1c2fa0f352659e211bb50c9c3d0224c567ffbfe8fad54cef3a438ec072c70bdb",
+          "ts": 1639589266
+        }
+      ],
+      "endpoints": [
+        {
+          "addr": "0xb5d85cbf7cb3ee0d56b3bb207d5fc4b82f43f511",
+          "eth": 62.664,
+          "reason": "labeled_exchange",
+          "path": [
+            "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+            "0xb17e4d7de0c686b68178865e90834e69239a0237",
+            "0xb5d85cbf7cb3ee0d56b3bb207d5fc4b82f43f511"
+          ],
+          "label": "Coinbase 44"
+        },
+        {
+          "addr": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+          "eth": 10.442,
+          "reason": "commingled",
+          "path": [
+            "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+            "0x18538c6ab85e50fb07c480cba02ff14de960b6f7",
+            "0xe693fbc0df4db03d3b75017b7a423dd38d49487c"
+          ],
+          "label": "MetaZoo insider/cluster #3"
+        },
+        {
+          "addr": "0xddfabcdc4d8ffc6d5beaf154f18b778f892a0740",
+          "eth": 10.44,
+          "reason": "labeled_exchange",
+          "path": [
+            "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+            "0x0d58d5fae1b1d400e9c9530e7caacc628315dd3d",
+            "0xddfabcdc4d8ffc6d5beaf154f18b778f892a0740"
+          ],
+          "label": "Coinbase 3"
+        }
+      ]
+    },
+    {
+      "addr": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+      "eth": 17.931,
+      "date": "2021-12-06 / 2022-07-27",
+      "classification": {
+        "verdict": "Coinbase (identity unknown)",
+        "venues": [
+          "FTX",
+          "Coinbase 54"
+        ],
+        "hit_coinbase": true
+      },
+      "edges": [
+        {
+          "from": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+          "to": "0x21af3eb736365dfd7f2954dfefc3fa46cc144a6b",
+          "eth": 26.969,
+          "hash": "0x38009c8fa73811caeb2511efb9ed3ace07c8e7c0923b6334d15627969d9169c9",
+          "ts": 1659749904
+        },
+        {
+          "from": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+          "to": "0x2f0eefcaf381e0a140399cab3fe6386f01557465",
+          "eth": 21.107,
+          "hash": "0x3630e3187469010a5acc6c7535e173945625a8a042826c6753d3afca432ca2a6",
+          "ts": 1639347601
+        },
+        {
+          "from": "0x21af3eb736365dfd7f2954dfefc3fa46cc144a6b",
+          "to": "0xfb804840c3c05d721704a40a54a99a8e745a2c5a",
+          "eth": 26.969,
+          "hash": "0x9eefc2d36b43bc1ddb0aa4b1d1d7cdc48602f0a3abdbfd51a8142b29d12b91b0",
+          "ts": 1659750193
+        },
+        {
+          "from": "0x2f0eefcaf381e0a140399cab3fe6386f01557465",
+          "to": "0xeb2629a2734e272bcc07bda959863f316f4bd4cf",
+          "eth": 21.104,
+          "hash": "0x9fc20759ce7fa7f5e4eac7102ccca36c366dd68271582d927993c79ee27f24b2",
+          "ts": 1639347660
+        }
+      ],
+      "endpoints": [
+        {
+          "addr": "0xfb804840c3c05d721704a40a54a99a8e745a2c5a",
+          "eth": 17.931,
+          "reason": "commingled",
+          "path": [
+            "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+            "0x21af3eb736365dfd7f2954dfefc3fa46cc144a6b",
+            "0xfb804840c3c05d721704a40a54a99a8e745a2c5a"
+          ],
+          "label": "insider cash-out hop -> FTX"
+        },
+        {
+          "addr": "0xeb2629a2734e272bcc07bda959863f316f4bd4cf",
+          "eth": 17.931,
+          "reason": "labeled_exchange",
+          "path": [
+            "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+            "0x2f0eefcaf381e0a140399cab3fe6386f01557465",
+            "0xeb2629a2734e272bcc07bda959863f316f4bd4cf"
+          ],
+          "label": "Coinbase 54"
+        }
+      ]
+    },
+    {
+      "addr": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+      "eth": 130.0,
+      "date": "2022-07-27",
+      "classification": {
+        "verdict": "Coinbase (identity unknown)",
+        "venues": [
+          "Coinbase"
+        ],
+        "hit_coinbase": true
+      },
+      "edges": [
+        {
+          "from": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+          "to": "0x3c3308e34441c473e16147ee728e3235161afbf6",
+          "eth": 25.0,
+          "hash": "0x3fbe8968ad1973d9e5891a8d7d11ffed3ca907d1e97df165290dc44f0273d80a",
+          "ts": 1685639087
+        },
+        {
+          "from": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+          "to": "0x3c3308e34441c473e16147ee728e3235161afbf6",
+          "eth": 22.136,
+          "hash": "0xc369c1855486f61544f2f328e9798ff480510d8e2ccebac1b9b02210ee8e1ab9",
+          "ts": 1685017079
+        },
+        {
+          "from": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+          "to": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+          "eth": 13.4,
+          "hash": "0xc283b5aab57db39e2719df2b8eee300a59fe783ec8a4387928256caefe2e518d",
+          "ts": 1658940274
+        }
+      ],
+      "endpoints": [
+        {
+          "addr": "0x3c3308e34441c473e16147ee728e3235161afbf6",
+          "eth": 25.0,
+          "reason": "commingled",
+          "path": [
+            "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+            "0x3c3308e34441c473e16147ee728e3235161afbf6"
+          ],
+          "label": "MetaZoo cash-out hop -> Coinbase"
+        },
+        {
+          "addr": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+          "eth": 13.4,
+          "reason": "commingled",
+          "path": [
+            "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+            "0xe693fbc0df4db03d3b75017b7a423dd38d49487c"
+          ],
+          "label": "MetaZoo insider/cluster #3"
+        }
+      ]
+    },
+    {
+      "addr": "0x08b96fad98c2366f6e483de584167dd695d30c27",
+      "eth": 7.37,
+      "date": "2022-07-27",
+      "classification": {
+        "verdict": "commingled / DeFi (no clean exchange endpoint)",
+        "venues": [],
+        "hit_coinbase": false
+      },
+      "edges": [
+        {
+          "from": "0x08b96fad98c2366f6e483de584167dd695d30c27",
+          "to": "0x2818f798c7f062b6d09bce0276f9d48eab5d06ed",
+          "eth": 14.565,
+          "hash": "0x471c005cb1efbcc02cd4c6535c07c84648a63c01478e9b40cd91b243a96458ac",
+          "ts": 1660253908
+        }
+      ],
+      "endpoints": [
+        {
+          "addr": "0x2818f798c7f062b6d09bce0276f9d48eab5d06ed",
+          "eth": 7.37,
+          "reason": "commingled",
+          "path": [
+            "0x08b96fad98c2366f6e483de584167dd695d30c27",
+            "0x2818f798c7f062b6d09bce0276f9d48eab5d06ed"
+          ],
+          "label": "insider active-trading wallet (commingled)"
+        }
+      ]
+    },
+    {
+      "addr": "0x2f7eb4f5d083c5607f1f1ec278728323a84acc6b",
+      "eth": 9.5,
+      "date": "2024-01-29",
+      "classification": {
+        "verdict": "Coinbase (identity unknown)",
+        "venues": [
+          "Coinbase 10"
+        ],
+        "hit_coinbase": true
+      },
+      "edges": [
+        {
+          "from": "0x2f7eb4f5d083c5607f1f1ec278728323a84acc6b",
+          "to": "0xa9d1e08c7793af67e9d92fe308d5697fb81d3e43",
+          "eth": 9.499,
+          "hash": "0xe8a7bf46a2dd174241735f519c68059c07ecc5a163abbb9278676f791208cd64",
+          "ts": 1706567507
+        }
+      ],
+      "endpoints": [
+        {
+          "addr": "0xa9d1e08c7793af67e9d92fe308d5697fb81d3e43",
+          "eth": 9.499,
+          "reason": "labeled_exchange",
+          "path": [
+            "0x2f7eb4f5d083c5607f1f1ec278728323a84acc6b",
+            "0xa9d1e08c7793af67e9d92fe308d5697fb81d3e43"
+          ],
+          "label": "Coinbase 10"
+        }
+      ]
+    }
+  ],
+  "distinct_endpoints": {
+    "0xb5d85cbf7cb3ee0d56b3bb207d5fc4b82f43f511": {
+      "label": "Coinbase 44",
+      "reason": "labeled_exchange",
+      "total_eth": 62.664,
+      "hit_by": [
+        "0xccc55c38603ad1a1dc54db871166fa90f78edd11"
+      ]
+    },
+    "0xe693fbc0df4db03d3b75017b7a423dd38d49487c": {
+      "label": "MetaZoo insider/cluster #3",
+      "reason": "commingled",
+      "total_eth": 23.842,
+      "hit_by": [
+        "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+        "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3"
+      ]
+    },
+    "0xddfabcdc4d8ffc6d5beaf154f18b778f892a0740": {
+      "label": "Coinbase 3",
+      "reason": "labeled_exchange",
+      "total_eth": 10.44,
+      "hit_by": [
+        "0xccc55c38603ad1a1dc54db871166fa90f78edd11"
+      ]
+    },
+    "0xfb804840c3c05d721704a40a54a99a8e745a2c5a": {
+      "label": "insider cash-out hop -> FTX",
+      "reason": "commingled",
+      "total_eth": 17.931,
+      "hit_by": [
+        "0xe693fbc0df4db03d3b75017b7a423dd38d49487c"
+      ]
+    },
+    "0xeb2629a2734e272bcc07bda959863f316f4bd4cf": {
+      "label": "Coinbase 54",
+      "reason": "labeled_exchange",
+      "total_eth": 17.931,
+      "hit_by": [
+        "0xe693fbc0df4db03d3b75017b7a423dd38d49487c"
+      ]
+    },
+    "0x3c3308e34441c473e16147ee728e3235161afbf6": {
+      "label": "MetaZoo cash-out hop -> Coinbase",
+      "reason": "commingled",
+      "total_eth": 25.0,
+      "hit_by": [
+        "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3"
+      ]
+    },
+    "0x2818f798c7f062b6d09bce0276f9d48eab5d06ed": {
+      "label": "insider active-trading wallet (commingled)",
+      "reason": "commingled",
+      "total_eth": 7.37,
+      "hit_by": [
+        "0x08b96fad98c2366f6e483de584167dd695d30c27"
+      ]
+    },
+    "0xa9d1e08c7793af67e9d92fe308d5697fb81d3e43": {
+      "label": "Coinbase 10",
+      "reason": "labeled_exchange",
+      "total_eth": 9.499,
+      "hit_by": [
+        "0x2f7eb4f5d083c5607f1f1ec278728323a84acc6b"
+      ]
+    }
+  }
+}

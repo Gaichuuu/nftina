@@ -1,0 +1,36 @@
+{
+ "overview": [
+  "# MetaZoo is an IP",
+  "Starting as a trading card game (TCG) dealing with cryptids such as Bigfoot, Mothman, and the Chupacabra, MetaZoo has seen a meteoric rise in popularity in less than a year from the release of its first set of cards, Cryptid Nation. Since then, MetaZoo has been featured in Topps, Walmart, Pinclub, Sotheby's, and many other AAA brands!",
+  "# 5,000 PFPs...",
+  "... are just the beginning. MetaZoo already has hundreds of characters, and these first 5,000 PFPs are based on our first 3 sets.",
+  "With 3 sets being introduced each year, 1,000 new PFPs will be minted with each set, introducing our completely new characters. The catch? You can mint a new set's PFPs only if you own one of these original PFPs! What's our next set, you ask...?",
+  "# Utility is KING",
+  "MetaZoo Games has already trailblazed NFT backed utility with our unique tokens. From early access to exclusive product, to the Allow List for this very PFP drop, MetaZoo Tokens have provided some of the most consistent benefits in the industry... but we want to take it further. It's 2022, even PFPs should have an associated utility. So, once again, let's make history!",
+  "In collaboration with our partners, each year a new set of collectible cards will be released reflecting both the art of the PFPs, as well as their rarities. What's the catch? The catch is... these will only be available for purchase by those who own a PFP! Each year's set of collectible cards will reflect those PFPs released for that year's sets (for instance, the first set of collectible cards will have PFPs from Cryptid Nation Base Set, Nightfall, Wilderness, UFO, HiROQUEST, and Seance!).",
+  "# Roadmap",
+  "**Allow List Mint**",
+  "- 7/15/22 12pm EST to 7/16/22 11am EST \u00b7 Price: 0.1 ETH",
+  "For those who own MetaZoo Tokens (snapshot taken 5/15/22), select members of A0K1VERSE, and VIPs.",
+  "**Public Mint**",
+  "- 7/16/22 12pm EST to 7/17/22 11am EST \u00b7 Price: 0.11 ETH",
+  "**Free Mint**",
+  "- 7/18/22 12pm EST \u00b7 Price: Free + gas",
+  "For those who own MetaZoo Tokens (snapshot taken 5/15/22), they will receive the option to mint a free PFP, and only need to pay the gas!",
+  "**Reveal**",
+  "- 7/22/22 12pm EST",
+  "Up until this point, all MetaZoo PFPs will be hidden in the form of a Chaos Crystal.",
+  "- At 12pm EST on 7/22/22, all Chaos Crystals will reveal their hidden PFPs!"
+ ],
+ "overview_image": "https://gaichu.b-cdn.net/nftina/overview/ws_3aeeb54f6445c9ef.webp",
+ "utility": [
+  {
+   "id": "nft_pfp_box",
+   "name": "NFT PFP box",
+   "price_usd": 100,
+   "price_eth": null,
+   "note": "Exclusive PFP boxes with redemption codes for the PFP 2.0 mint.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/nft_pfp_box.webp?v=a2a589a2"
+  }
+ ]
+}

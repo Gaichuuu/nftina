@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0912;          /* page */
+  --color-panel: #150f1d;       /* cards */
+  --color-panel2: #17121f;      /* stat cells */
+  --color-panel3: #0f0b16;      /* chart */
+  --color-ink: #ffffff;         /* primary text */
+  --color-dim: #b9a7d0;         /* secondary */
+  --color-dim2: #cbb8e0;        /* brighter secondary */
+  --color-muted: #7c728f;       /* meta */
+  --color-line: #ffffff1f;      /* hairline borders */
+  --color-hypeA: #ff5cf0;       /* magenta */
+  --color-hypeB: #8be9ff;       /* cyan */
+  --color-loss: #ff6b6b;        /* losses */
+  --color-gain: #6bff9d;        /* flipper gains */
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-xs: 6px; --radius-sm: 8px; --radius-md: 12px;
+  --radius-lg: 14px; --radius-xl: 16px;
+}
+
+@keyframes glowpulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+
+@layer base {
+  html, body { @apply bg-bg text-dim; margin: 0; }
+  body { font-family: var(--font-sans); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { color: var(--color-ink); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
+  a { color: var(--color-hypeB); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+  .hype-btn { background: linear-gradient(90deg, var(--color-hypeA), var(--color-hypeB));
+              color: #111; font-weight: 800; border-radius: 24px; }
+}

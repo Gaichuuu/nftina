@@ -1,0 +1,286 @@
+{
+  "headline": {
+    "received_eth": 543.995794,
+    "received_usd_at_receipt": 1617620.79,
+    "paid_eth": 515.487556,
+    "paid_usd_at_spend": 1361105.4,
+    "residual_eth": 28.508237,
+    "gas_eth": 28.429768,
+    "gas_usd_at_spend": 87928.01,
+    "still_held_eth": 0.080735,
+    "still_held_usd_now": 152.15,
+    "reconciles_eth": -0.002266,
+    "depreciation_gap_usd": 168435.23
+  },
+  "by_class": {
+    "in": {
+      "other_in": {
+        "eth": 47.889811,
+        "usd": 152718.52
+      },
+      "mint_proceeds": {
+        "eth": 423.298353,
+        "usd": 1255646.1
+      },
+      "royalties": {
+        "eth": 72.807656,
+        "usd": 209256.17
+      }
+    },
+    "out": {
+      "other_out": {
+        "eth": 16.713162,
+        "usd": 44164.19
+      },
+      "insider": {
+        "eth": 269.252575,
+        "usd": 758798.81
+      },
+      "intra_cluster": {
+        "eth": 16.0,
+        "usd": 64741.76
+      },
+      "aoki": {
+        "eth": 210.3685,
+        "usd": 488095.04
+      },
+      "project_costs": {
+        "eth": 3.15332,
+        "usd": 5305.6
+      }
+    }
+  },
+  "monthly": [
+    {
+      "month": "2021-08",
+      "eth_balance": 0.062,
+      "usd_mark": 212.61
+    },
+    {
+      "month": "2021-09",
+      "eth_balance": 5.2,
+      "usd_mark": 15603.17
+    },
+    {
+      "month": "2021-10",
+      "eth_balance": 5.95,
+      "usd_mark": 25508.9
+    },
+    {
+      "month": "2021-11",
+      "eth_balance": 104.465415,
+      "usd_mark": 483702.03
+    },
+    {
+      "month": "2021-12",
+      "eth_balance": 122.760853,
+      "usd_mark": 451297.13
+    },
+    {
+      "month": "2022-01",
+      "eth_balance": 60.730325,
+      "usd_mark": 163178.74
+    },
+    {
+      "month": "2022-02",
+      "eth_balance": 65.655542,
+      "usd_mark": 191776.55
+    },
+    {
+      "month": "2022-03",
+      "eth_balance": 72.576177,
+      "usd_mark": 238159.45
+    },
+    {
+      "month": "2022-04",
+      "eth_balance": 74.646301,
+      "usd_mark": 203535.08
+    },
+    {
+      "month": "2022-05",
+      "eth_balance": 80.615081,
+      "usd_mark": 156546.43
+    },
+    {
+      "month": "2022-06",
+      "eth_balance": 82.663556,
+      "usd_mark": 88533.5
+    },
+    {
+      "month": "2022-07",
+      "eth_balance": 28.086909,
+      "usd_mark": 47133.2
+    },
+    {
+      "month": "2022-08",
+      "eth_balance": 30.189262,
+      "usd_mark": 46917.13
+    },
+    {
+      "month": "2022-09",
+      "eth_balance": 30.997255,
+      "usd_mark": 41186.67
+    },
+    {
+      "month": "2022-10",
+      "eth_balance": 32.637607,
+      "usd_mark": 51328.84
+    },
+    {
+      "month": "2022-11",
+      "eth_balance": 35.455136,
+      "usd_mark": 45895.26
+    },
+    {
+      "month": "2022-12",
+      "eth_balance": 36.671775,
+      "usd_mark": 43864.21
+    },
+    {
+      "month": "2023-01",
+      "eth_balance": 37.032664,
+      "usd_mark": 58708.99
+    },
+    {
+      "month": "2023-02",
+      "eth_balance": 37.300628,
+      "usd_mark": 59876.09
+    },
+    {
+      "month": "2023-03",
+      "eth_balance": 37.637701,
+      "usd_mark": 68557.83
+    },
+    {
+      "month": "2023-04",
+      "eth_balance": 37.695652,
+      "usd_mark": 70494.26
+    },
+    {
+      "month": "2023-05",
+      "eth_balance": 37.751548,
+      "usd_mark": 70732.43
+    },
+    {
+      "month": "2023-06",
+      "eth_balance": 37.811365,
+      "usd_mark": 73119.24
+    },
+    {
+      "month": "2023-07",
+      "eth_balance": 37.920017,
+      "usd_mark": 70384.86
+    },
+    {
+      "month": "2023-08",
+      "eth_balance": 37.968332,
+      "usd_mark": 62486.76
+    },
+    {
+      "month": "2023-09",
+      "eth_balance": 37.982844,
+      "usd_mark": 63465.15
+    },
+    {
+      "month": "2023-10",
+      "eth_balance": 38.006878,
+      "usd_mark": 68969.94
+    },
+    {
+      "month": "2023-11",
+      "eth_balance": 38.050161,
+      "usd_mark": 78077.41
+    },
+    {
+      "month": "2023-12",
+      "eth_balance": 38.100909,
+      "usd_mark": 86941.32
+    },
+    {
+      "month": "2024-01",
+      "eth_balance": 28.601129,
+      "usd_mark": 65300.38
+    },
+    {
+      "month": "2024-02",
+      "eth_balance": 28.602365,
+      "usd_mark": 95534.47
+    },
+    {
+      "month": "2024-03",
+      "eth_balance": 28.50073,
+      "usd_mark": 103893.43
+    },
+    {
+      "month": "2024-05",
+      "eth_balance": 28.501998,
+      "usd_mark": 107232.78
+    },
+    {
+      "month": "2024-09",
+      "eth_balance": 28.50219,
+      "usd_mark": 74169.25
+    },
+    {
+      "month": "2024-11",
+      "eth_balance": 28.502958,
+      "usd_mark": 105563.55
+    },
+    {
+      "month": "2024-12",
+      "eth_balance": 28.503142,
+      "usd_mark": 95137.22
+    },
+    {
+      "month": "2025-01",
+      "eth_balance": 28.50661,
+      "usd_mark": 94100.04
+    },
+    {
+      "month": "2025-02",
+      "eth_balance": 28.507195,
+      "usd_mark": 63787.42
+    },
+    {
+      "month": "2025-03",
+      "eth_balance": 28.507495,
+      "usd_mark": 51952.91
+    },
+    {
+      "month": "2025-07",
+      "eth_balance": 28.507604,
+      "usd_mark": 105432.24
+    },
+    {
+      "month": "2026-02",
+      "eth_balance": 28.507702,
+      "usd_mark": 56003.66
+    },
+    {
+      "month": "2026-06",
+      "eth_balance": 28.508069,
+      "usd_mark": 44814.97
+    },
+    {
+      "month": "2026-07",
+      "eth_balance": 28.508237,
+      "usd_mark": 53726.05
+    }
+  ],
+  "method": {
+    "wallets": [
+      "0xec843e7364ca9234271efc12e7626a7a9bdc5400",
+      "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+      "0x79109a93db158f16f4c8936217ce46f21ed5dc2b"
+    ],
+    "valuation": "Binance daily close (data/raw/eth_usd_daily.json); inflows at receipt date, outflows (and gas) at spend date, still-held balance at current price $1,885/ETH",
+    "caveats": [
+      "On-chain NFT-side only: physical-card fiat revenue never touched these wallets.",
+      "exchange_deposit = plausibly converted; a deposit is not proof of a sale.",
+      "Unlabeled counterparties aggregate under other_in/other_out.",
+      "royalties (in) = NFT royalty / OpenSea creator-earnings reaching the treasury via the F36-traced distributor 0xd909 (Wyvern, from OpenSea payout 0x0b7a43) and the Seaport splitter 0xcbbec; ~80% of the ~79.6 ETH Coin Tokens royalty attributed at sale. A small part of the 0xd909 flow is non-royalty seed, so it is a close proxy.",
+      "mint_proceeds is ~20-30% below F19's full reconstructed mint revenue per collection; the remainder went to an unidentified payee outside this audit's 3-wallet treasury seed.",
+      "The received\u2212paid residual is almost entirely GAS (transaction fees the value-ledger doesn't track), not ETH still held: the wallets hold ~0.08 ETH on-chain today. Because the treasury spent ETH near-immediately (not held through the crash), the idle-depreciation loss is small."
+    ]
+  }
+}
