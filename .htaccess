@@ -1,8 +1,8 @@
 # metazoonfts.com - static, fully prerendered site
 #
-# NOTE: the live host serves this domain with nginx, which ignores
-# .htaccess entirely. This file is kept as the Apache equivalent so
-# the site stays portable.
+# NOTE: the live host serves this domain with nginx, which ignores 
+# .htaccess entirely: nginx/metazoonfts.com/nginx.conf
+# Keep the two in sync when changing either.
 
 <IfModule mod_rewrite.c>
   RewriteEngine On

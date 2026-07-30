@@ -6,8 +6,9 @@
 #   DEPLOY_USER, DEPLOY_HOST
 #   DEPLOY_PATH
 #
-# Usage:  bash scripts/deploy.sh          build + deploy
-#         DRY_RUN=1 bash scripts/deploy.sh   show what would transfer, send nothing
+# Usage:  bash scripts/deploy.sh              build + deploy (site + nginx config)
+#         DRY_RUN=1 bash scripts/deploy.sh    show what would transfer, send nothing
+#         SKIP_NGINX=1 bash scripts/deploy.sh site only, leave ~/nginx untouched
 #
 set -euo pipefail
 
@@ -31,8 +32,6 @@ REMOTE="${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
 echo "==> Building (data copy + typecheck + client + ssr + prerender)..."
 (cd "$WEB" && npm run build)
 
-[[ -f "$WEB/dist/.htaccess" ]] || {
-  echo "error: dist/.htaccess missing - did public/.htaccess get copied?" >&2; exit 1; }
 grep -q "Holders lost" "$WEB/dist/index.html" || {
   echo "error: dist/index.html has no prerendered hero copy - prerender did not run" >&2; exit 1; }
 
@@ -51,8 +50,12 @@ fi
 echo "==> Deploying dist/ -> ${REMOTE}"
 rsync -avz --delete --exclude=".DS_Store" "$WEB/dist/" "$REMOTE"
 
-echo "==> Deploying nginx config -> ~/nginx/metazoonfts.com/"
-ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "mkdir -p ~/nginx/metazoonfts.com"
-rsync -avz "$NGINX_CONF" "${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/nginx.conf"
+if [[ -n "${SKIP_NGINX:-}" ]]; then
+  echo "==> SKIP_NGINX set: leaving ~/nginx/metazoonfts.com alone"
+else
+  echo "==> Deploying nginx config -> ~/nginx/metazoonfts.com/"
+  ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "mkdir -p ~/nginx/metazoonfts.com"
+  rsync -avz "$NGINX_CONF" "${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/nginx.conf"
+fi
 
 echo "==> Done. https://metazoonfts.com/"
