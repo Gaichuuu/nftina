@@ -5,6 +5,7 @@ import { etherscanAddr } from "@/lib/format";
 import useInfiniteScroll from "@/lib/useInfiniteScroll";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
 import Bar from "./Bar";
+import TableScroller from "./TableScroller";
 import NetPnl from "./NetPnl";
 import PnlButton from "./PnlButton";
 import WalletAvatar from "./WalletAvatar";
@@ -59,7 +60,7 @@ export default function HoldersTable({ slug }: { slug: string }) {
           </select>
         </span>
       </div>
-      <div className="overflow-x-auto rounded-md border border-line">
+      <TableScroller>
         <table className="w-full min-w-170 text-[12.5px] tabular-nums">
           <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
             <tr>
@@ -116,7 +117,7 @@ export default function HoldersTable({ slug }: { slug: string }) {
             })}
           </tbody>
         </table>
-      </div>
+      </TableScroller>
       <div className="mt-2 text-center font-mono text-[10px] text-muted">
         {Math.min(shown, sorted.length).toLocaleString()} / {sorted.length.toLocaleString()} wallets
       </div>

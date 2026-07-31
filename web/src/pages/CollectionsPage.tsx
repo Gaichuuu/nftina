@@ -6,6 +6,7 @@ import Bar from "@/components/Bar";
 import LoopMedia from "@/components/LoopMedia";
 import { eth, compactUsd, tileGradient, cdnResized } from "@/lib/format";
 import Container from "@/components/Container";
+import TableScroller from "@/components/TableScroller";
 import { StatCell, StatStrip } from "@/components/StatCell";
 
 function Thumb({ c }: { c: Collection }) {
@@ -60,7 +61,7 @@ export default function CollectionsPage() {
 
       {/* ranked table */}
       <Container className="pb-18 pt-10">
-        <div className="overflow-x-auto rounded-md border border-line">
+        <TableScroller>
           <table className="w-full min-w-170 text-[12.5px] tabular-nums">
             <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
               <tr>
@@ -116,7 +117,7 @@ export default function CollectionsPage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroller>
       </Container>
     </div>
   );

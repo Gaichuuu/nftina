@@ -68,7 +68,7 @@ export default function TokenGrid(
     <div className="py-4 sm:p-4">
       <div className="flex flex-col gap-4 sm:flex-row">
         {showFilter && (
-          <aside className="sm:w-52 sm:shrink-0" aria-label="filter by type">
+          <aside className="max-sm:hidden sm:w-52 sm:shrink-0" aria-label="filter by type">
             <div className="mb-1.5 flex items-baseline justify-between font-mono text-[10px] text-muted">
               <span>FILTER</span>
               {selected.size > 0 && (
@@ -76,8 +76,8 @@ export default function TokenGrid(
                         className="text-hypeB hover:underline">clear</button>
               )}
             </div>
-            <div className="flex max-h-44 flex-col gap-1 overflow-y-auto rounded-sm border border-line
-                            bg-panel/60 p-2 sm:max-h-[70vh]">
+            <div className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto rounded-sm border border-line
+                            bg-panel/60 p-2">
               {types.map((v) => (
                 <label key={v} className="flex cursor-pointer items-start gap-1.5 text-[11px] text-ink">
                   <input type="checkbox" checked={selected.has(v)} onChange={() => toggleType(v)}

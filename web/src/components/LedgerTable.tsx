@@ -1,11 +1,12 @@
 import type { LedgerRow } from "@/data/schemas";
 import { eth, usd, shortAddr } from "@/lib/format";
 import Bar from "./Bar";
+import TableScroller from "./TableScroller";
 
 export default function LedgerTable({ rows }: { rows: LedgerRow[] }) {
   const usdMax = Math.max(1, ...rows.map((r) => Math.abs(r.usd)));
   return (
-    <div className="overflow-x-auto rounded-md border border-line">
+    <TableScroller>
       <table className="w-full min-w-175 text-[12.5px] tabular-nums">
         <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
           <tr><th className="px-4 py-3 text-left">DATE</th>
@@ -39,6 +40,6 @@ export default function LedgerTable({ rows }: { rows: LedgerRow[] }) {
           })}
         </tbody>
       </table>
-    </div>
+    </TableScroller>
   );
 }

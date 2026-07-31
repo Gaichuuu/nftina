@@ -63,7 +63,7 @@ export default function CollectionContentView(
             <OverviewBlocks blocks={content.overview} />
           </div>
           {img && (
-            <figure className="lg:sticky lg:top-6 lg:w-[38%] lg:shrink-0">
+            <figure className="order-first lg:order-none lg:sticky lg:top-6 lg:w-[38%] lg:shrink-0">
               <img src={cdnResized(img, 1000)} alt={content.overview_image_caption ?? "Collection art"} loading="lazy"
                    className="w-full rounded-md border border-line" />
               {content.overview_image_caption && (

@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Findings, TopItem } from "@/data/schemas";
 import { eth, usd, compactUsd, pct, placeholderGradient, osAssetUrl, cdnResized } from "@/lib/format";
 import Bar from "./Bar";
+import TableScroller from "./TableScroller";
 
 type BlueChip = Findings["acquisitions"]["by_collection"][number];
 
@@ -57,33 +58,37 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
   return (
     <div>
       {underwater.length > 0 && (
-        <div className="mb-3">
-          {/* stat tiles */}
-          <div className="mt-1 grid grid-cols-2 gap-2 sm:grid-cols-5">
-            {underwater.map((b) => (
-              <div key={b.contract}
-                   className="rounded-sm border bg-panel px-2.5 py-3.5 text-center"
+        <div className={`mb-3 mt-1 grid gap-2 ${examples.length > 0 ? "grid-cols-1 sm:grid-cols-5" : "grid-cols-2 sm:grid-cols-5"}`}>
+          {underwater.map((b, i) => {
+            const ex = examples.find((e) => e.contract === b.contract) ?? examples[i];
+            const stat = (
+              <div className="flex flex-col justify-center rounded-sm border bg-panel px-2.5 py-3.5 text-center"
                    style={{ borderColor: "rgba(255,107,107,.35)" }}>
                 <div className="text-[26px] font-extrabold leading-none tabular-nums text-loss">{pct(b.loss_pct!)}</div>
                 <div className="mt-1 truncate text-[11px] font-bold text-ink">{displayName(b.name)}</div>
                 <div className="font-mono text-[9.5px] tabular-nums text-muted">
                   paid ~{eth(b.avg_paid_eth!)} → floor ~{eth(b.floor_eth!)}</div>
               </div>
-            ))}
-          </div>
-          {/* aligned collection-image tiles */}
+            );
+            return ex ? (
+              <div key={b.contract} className="grid grid-cols-2 items-stretch gap-2 sm:flex sm:flex-col">
+                <div className="sm:order-last"><ExampleTile item={ex} /></div>
+                {stat}
+              </div>
+            ) : (
+              <div key={b.contract}>{stat}</div>
+            );
+          })}
         </div>
       )}
-      {examples.length > 0 && (
-        <div className="mb-3">
-          <div className="mt-1 grid grid-cols-2 gap-2 sm:grid-cols-5">
-            {examples.map((item) => (
-              <ExampleTile key={`${item.contract}_${item.token_id}`} item={item} />
-            ))}
-          </div>
+      {underwater.length === 0 && examples.length > 0 && (
+        <div className="mb-3 mt-1 grid grid-cols-2 gap-2 sm:grid-cols-5">
+          {examples.map((item) => (
+            <ExampleTile key={`${item.contract}_${item.token_id}`} item={item} />
+          ))}
         </div>
       )}
-      <div className="mt-3.5 overflow-x-auto rounded-md border border-line">
+      <TableScroller className="mt-3.5">
         <table className="w-full min-w-135 text-[12.5px] tabular-nums">
           <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
             <tr><th className="px-4 py-3 text-left">COLLECTION</th><th className="px-4 py-3 text-right">BOUGHT</th>
@@ -122,7 +127,7 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
             </tr>
           </tbody>
         </table>
-      </div>
+      </TableScroller>
     </div>
   );
 }

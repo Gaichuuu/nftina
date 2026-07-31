@@ -3,6 +3,7 @@ import type { Flippers } from "@/data/schemas";
 import { eth, usd, compactUsd, etherscanAddr } from "@/lib/format";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
 import Bar from "./Bar";
+import TableScroller from "./TableScroller";
 import PnlButton from "./PnlButton";
 import WalletAvatar from "./WalletAvatar";
 import WalletPnlDialog from "./WalletPnlDialog";
@@ -13,7 +14,7 @@ export default function FlipperTable({ flippers }: { flippers: Flippers }) {
   const usdMax = Math.max(1, ...flippers.top.map((f) => f.realized_pnl_usd));
   return (
     <>
-    <div className="overflow-x-auto rounded-md border border-line">
+    <TableScroller>
       <table className="w-full min-w-150 text-[12.5px] tabular-nums">
         <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
           <tr>
@@ -68,7 +69,7 @@ export default function FlipperTable({ flippers }: { flippers: Flippers }) {
           </tr>
         </tbody>
       </table>
-    </div>
+    </TableScroller>
     {pnlWallet && <WalletPnlDialog address={pnlWallet} onClose={() => setPnlWallet(null)} />}
     </>
   );
