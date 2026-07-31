@@ -18,9 +18,9 @@ export default function FindingsPage() {
     <div>
       {/* hero  */}
       <section style={{ background: "radial-gradient(90% 130% at 82% 20%, #241238, #0c0912 64%)" }}>
-        <Container className="pb-10 pt-14">
+        <Container className="pb-10 pt-12">
       <header className="max-w-180">
-        <div className="eyebrow text-loss">The investigation</div>
+        {/* <div className="eyebrow text-loss">The investigation</div> */}
         <h1 className="text-[40px] font-black leading-none tracking-[-0.03em] text-ink sm:text-[52px]">
           Where did the money go?
         </h1>
@@ -49,8 +49,8 @@ export default function FindingsPage() {
       <Container className="pb-12">
 
       {/* profited */}
-      <section className="mt-16">
-        <div className="eyebrow text-gain">Who profited</div>
+      <section className="mt-4">
+        {/* <div className="eyebrow text-gain">Who profited</div> */}
         <h2 className="mb-5 text-[28px] font-black tracking-tight">
           Flippers extracted {eth(flippers.total_gains_eth)} / {compactUsd(flippers.total_gains_usd)}
         </h2>
@@ -59,7 +59,7 @@ export default function FindingsPage() {
 
       {/* ledger */}
       <section className="mt-16">
-        <div className="eyebrow text-loss">Payout ledger</div>
+        {/* <div className="eyebrow text-loss">Payout ledger</div> */}
         <h2 className="mb-5 text-[28px] font-black tracking-tight">
           Every payment out of the treasury
         </h2>
@@ -73,18 +73,20 @@ export default function FindingsPage() {
 
       {/* acquisitions */}
       <section className="mt-16">
-        <div className="eyebrow text-hypeB">What the money became</div>
+        {/* <div className="eyebrow text-hypeB">What the money became</div> */}
         <h2 className="mb-5 text-[28px] font-black tracking-tight">
-          Aoki went on an {compactUsd(acquisitions.total_usd)} NFT buying spree
+          Aoki goes on a manic {compactUsd(acquisitions.total_usd)} NFT buying spree
         </h2>
         <AcquisitionTable acq={acquisitions} />
       </section>
 
       {/* insiders */}
-      <section className="mt-16 rounded-md bg-panel p-6"
+      <h2 className="mt-16 mb-5 text-[28px] font-black tracking-tight">
+      Insider cash-out</h2>
+      <section className="mt-0 rounded-md bg-panel p-6"
                style={{ border: "1px solid rgba(255,92,240,.4)" }}>
         <div className="eyebrow text-loss">
-          Insider cash-out · {eth(insider.eth)} → {insider.exchange} · <span className="text-ink">unknown</span> on-chain
+          {eth(insider.eth)} → {insider.exchange} · <span className="text-ink">unknown</span> on-chain
         </div>
         <p className="mt-3 max-w-225 text-pretty text-[13px] leading-[1.6] text-dim">{insider.note}</p>
         {insiderRows.length > 0 && (
@@ -126,7 +128,7 @@ export default function FindingsPage() {
                       </div>
                     )}
                     <div className="mt-2 text-[16px] font-extrabold leading-none tabular-nums text-loss">{eth(r.eth)}</div>
-                    <div className="mt-0.5 font-mono text-[11px] tabular-nums text-dim">{usd(r.usd)}</div>
+                    <div className="font-mono text-[11px] tabular-nums text-dim">{usd(r.usd)}</div>
                     {r.endpoint && (
                       <div className="mt-1.5 text-[10px] font-bold">
                         <span className="text-muted">cashed out → </span>

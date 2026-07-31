@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { vi } from "vitest";
 import WalletLookup from "./WalletLookup";
 
@@ -26,7 +27,7 @@ vi.mock("@/data/runtime", () => ({
 }));
 
 it("shows overall rank and a per-collection ranked row", async () => {
-  render(<WalletLookup />);
+  render(<MemoryRouter><WalletLookup /></MemoryRouter>);
   fireEvent.change(screen.getByPlaceholderText(/0x/i), { target: { value: "0xabc" } });
   fireEvent.click(screen.getByRole("button", { name: /check/i }));
   await waitFor(() => expect(screen.getAllByText("#42").length).toBeGreaterThan(0), { timeout: 3000 });
@@ -35,10 +36,10 @@ it("shows overall rank and a per-collection ranked row", async () => {
   expect(screen.getByText("#7")).toBeInTheDocument();
   expect(screen.getByText("/2,729")).toBeInTheDocument();
   expect(screen.getByText("+2")).toBeInTheDocument();
-  expect(screen.getByText(/all-in/)).toBeInTheDocument();
+  expect(screen.getByText(/\(off-chain\)/)).toBeInTheDocument();
   expect(screen.getByText(/\$1,135/)).toBeInTheDocument();
   expect(screen.getByText("On-chain P&L")).toBeInTheDocument();
-  expect(screen.getByText("All-in (USD)")).toBeInTheDocument();
+  expect(screen.getByText("Total USD")).toBeInTheDocument();
   expect(screen.getByText(/-\$13,100|−\$13,100/)).toBeInTheDocument();
   expect(screen.getByText(/of 1,837/)).toBeInTheDocument();
 });

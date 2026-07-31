@@ -29,9 +29,9 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden"
                style={{ background: "radial-gradient(90% 120% at 78% 20%, #241238, #0c0912 64%)" }}>
-        <Container className="relative z-5 pt-14">
+        <Container className="relative z-5 pt-12">
           <div className="anim-rise max-w-170">
-            <div className="eyebrow text-hypeB">On-chain post-mortem</div>
+            {/* <div className="eyebrow text-hypeB">On-chain post-mortem</div> */}
             <h1 className="text-balance text-[44px] font-black leading-[0.97] tracking-[-0.035em] text-ink sm:text-[72px]">
               MetaZoo raised <span className="text-hypeB">{compactUsd(summary.total_mint_revenue_usd)}</span>.
             </h1>
@@ -54,7 +54,7 @@ export default function HomePage() {
         {/* HERO MODEL */}
         {DEFAULT_HERO && (
           <div className="pointer-events-none relative z-1 mx-auto mt-4 h-65 w-full max-w-90
-                          lg:absolute lg:right-2.5 lg:top-17.5 lg:mx-0 lg:mt-0 lg:h-160 lg:w-190 lg:max-w-none">
+                          lg:absolute lg:right-2.5 lg:-top-17.5 lg:mx-0 lg:mt-0 lg:h-160 lg:w-190 lg:max-w-none">
             <div className="absolute inset-0"
                  style={{ background: "radial-gradient(50% 45% at 55% 42%, rgba(139,233,255,.16), transparent 70%)",
                           animation: "glowpulse 7s ease-in-out infinite" }} />
@@ -89,7 +89,7 @@ export default function HomePage() {
       </section>
 
       {/* WALLET LOOKUP */}
-      <Container className="pb-2 pt-12"><WalletLookup />
+      <Container className="pb-2 pt-0"><WalletLookup />
       </Container>
 
       {/* VOLUME CHART - removed for now */}
@@ -108,9 +108,9 @@ export default function HomePage() {
       </Container> */}
 
       {/* COLLECTIONS */}
-      <Container className="pb-18 pt-8">
+      <Container className="pb-12 pt-8">
         <div className="mt-3">
-          <div className="eyebrow text-hypeB">Ten collections</div>
+          {/* <div className="eyebrow text-hypeB">Ten collections</div> */}
           <h2 className="mb-5.5 text-[28px] font-black tracking-tight">MetaZoo NFT collections</h2>
         </div>
         <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-5">

@@ -17,7 +17,7 @@ export default function CollectionTile({ c }: { c: Collection }) {
                    className="h-full w-full object-cover" />
       </div>
       <div className="mt-2.5 truncate text-[12px] font-bold text-ink">{c.name}</div>
-      <div className="mt-0.5 flex items-baseline justify-between gap-1 font-mono text-[11px] tabular-nums">
+      <div className="flex items-baseline justify-between gap-1 font-mono text-[11px] tabular-nums">
         <span className="truncate text-dim">floor {eth(c.floor_eth)}</span>
         {lossPct != null && (
           <span className={lossPct < 0 ? "shrink-0 text-loss" : "shrink-0 text-gain"}>{pct(lossPct)}</span>

@@ -33,8 +33,8 @@ export default function CollectionsPage() {
     <div>
       {/* hero */}
       <section style={{ background: "radial-gradient(90% 130% at 82% 20%, #241238, #0c0912 64%)" }}>
-        <Container className="pt-14">
-          <div className="eyebrow text-hypeB">The catalogue</div>
+        <Container className="pt-12">
+          {/* <div className="eyebrow text-hypeB">The catalogue</div> */}
           <h1 className="text-[40px] font-black leading-none tracking-[-0.03em] text-ink sm:text-[52px]">
             MetaZoo NFT collections
           </h1>
@@ -60,7 +60,7 @@ export default function CollectionsPage() {
       </section>
 
       {/* ranked table */}
-      <Container className="pb-18 pt-10">
+      <Container className="pb-12 pt-10">
         <TableScroller>
           <table className="w-full min-w-170 text-[12.5px] tabular-nums">
             <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
@@ -82,7 +82,7 @@ export default function CollectionsPage() {
                       <Thumb c={c} />
                       <div>
                         <div className="text-[14px] font-bold text-ink">{c.name}</div>
-                        <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.06em] text-muted">
+                        <div className="font-mono text-[10px] uppercase tracking-[0.06em] text-muted">
                           {c.standard}</div>
                       </div>
                     </div>

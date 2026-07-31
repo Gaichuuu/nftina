@@ -27,7 +27,7 @@ export default function UsdAuditSection() {
     : "Monthly treasury balance, marked to market";
   return (
     <section className="mt-16">
-      <div className="eyebrow text-hypeB">Treasury audit</div>
+      {/* <div className="eyebrow text-hypeB">Treasury audit</div> */}
       <h2 className="mb-5 text-[28px] font-black tracking-tight">
         Where the treasury’s money came from
       </h2>
@@ -62,7 +62,7 @@ export default function UsdAuditSection() {
         ].filter((c) => c.eth > 0);
         return (
           <>
-            <h2 className="mb-5 mt-11 text-[28px] font-black tracking-tight">
+            <h2 className="mb-5 mt-14 text-[28px] font-black tracking-tight">
               Where the treasury’s money went
             </h2>
             <StatStrip className={`grid-cols-2 max-sm:[&>*:nth-child(odd):last-child]:col-span-2 ${
@@ -83,7 +83,7 @@ export default function UsdAuditSection() {
               On-chain is a floor: the bulk of real project costs (physical card printing, fiat operations) never
               touched these wallets.
             </p>
-            <h2 className="mb-5 mt-11 text-[28px] font-black tracking-tight">
+            <h2 className="mb-5 mt-14 text-[28px] font-black tracking-tight">
               The USD reconciliation
             </h2>
           </>

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import type { WalletProfile } from "@/data/runtime";
 import { eth, usd, etherscanAddr, tileGradient, cdnResized } from "@/lib/format";
 import { collections } from "@/data/bundled";
@@ -26,7 +27,7 @@ function RankScale({ rank, total, addr }: { rank: number; total: number; addr: s
   return (
     <div className="hidden shrink-0 flex-col items-center pl-1 sm:flex" style={{ width: 88 }}
          aria-label={`Overall rank ${rank} of ${total}`}>
-      <div className="mb-2 font-mono text-[9px] leading-none tracking-[0.08em] text-muted">#1</div>
+      <div className="mb-2 font-mono text-[9px] leading-none tracking-[0.08em] text-muted">RANK #1</div>
       <div className="relative w-1.5 flex-1 rounded-full"
            style={{ background: "linear-gradient(180deg,#8be9ff,#ff5cf0)", minHeight: 120 }}>
         <div className="absolute left-1/2 flex items-center gap-1"
@@ -81,11 +82,11 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
               <Signed v={o.net_pnl_eth} fmt={eth} className="text-[18px] font-extrabold" />
               <Signed v={o.net_pnl_usd ?? 0} fmt={usd} className="font-mono text-[11px] opacity-75" />
             </Metric>
-            <Metric label="All-in (USD)">
+            <Metric label="Total USD">
               <Signed v={allIn} fmt={usd} className="text-[18px] font-extrabold" />
               {(o.offchain_cost_usd ?? 0) > 0 && (
                 <div className="font-mono text-[11px] tabular-nums text-muted">
-                  incl. {usd(o.offchain_cost_usd!)} off-chain
+                  {usd(-o.offchain_cost_usd!)} off-chain
                 </div>
               )}
             </Metric>
@@ -136,14 +137,16 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
                         : <span className="text-muted">n/a</span>}
                     </td>
                     <td className="px-4 py-3.25">
-                      <div className="flex items-center gap-2">
+                      <Link to={`/collections/${c.slug}`}
+                            className="group flex items-center gap-2 no-underline">
                         <span className="inline-block h-6 w-6 shrink-0 overflow-hidden rounded-[6px]"
                               style={{ background: tileGradient }}>
                           <LoopMedia image={logos[c.slug] && cdnResized(logos[c.slug]!, 64)} alt={c.name}
                                      className="h-full w-full object-cover" />
                         </span>
-                        <span className={e ? "font-bold text-ink" : "font-bold text-muted"}>{c.name}</span>
-                      </div>
+                        <span className={`font-bold transition-colors group-hover:text-hypeB ${e ? "text-ink" : "text-muted"}`}>
+                          {c.name}</span>
+                      </Link>
                     </td>
                     <td className={`px-4 py-3.25 ${GROUP_L}`}>
                       <div className="flex items-center gap-2">
@@ -171,9 +174,9 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
                         ? <NetPnl ethv={e.net_pnl_eth} usdv={e.net_pnl_usd} />
                         : <div className="text-right text-muted">—</div>}
                       {e && typeof e.all_in_net_usd === "number" && (
-                        <div className="mt-0.5 text-right font-mono text-[10px] text-muted"
+                        <div className="text-right font-mono text-[10px] text-muted"
                              title="Includes the off-chain physical box, one per mint (not in the on-chain figures)">
-                          all-in {usd(e.all_in_net_usd)}
+                          (off-chain) {usd(e.all_in_net_usd)}
                         </div>
                       )}
                     </td>
@@ -186,7 +189,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
         {p.overallRank != null && <RankScale rank={p.overallRank} total={p.overallTotal} addr={p.address} />}
       </div>
       <p className="mt-2 max-w-205 font-mono text-[10px] leading-normal text-muted">
-        All-in USD includes off-chain physical box purchases required for certain mints:
+        Total USD includes off-chain physical box purchases required for certain mints:
         PFP 2.0 $100, Valentines $30, Wilderness $150.
       </p>
     </div>

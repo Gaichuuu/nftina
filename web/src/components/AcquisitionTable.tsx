@@ -29,8 +29,7 @@ function ExampleTile({ item }: { item: TopItem }) {
   const href = item.contract ? osAssetUrl(item.contract, item.token_id) : undefined;
   const inner = (
     <div className="overflow-hidden rounded-sm border border-line bg-panel
-                    transition-[border-color,transform,background] duration-[.18s]
-                    hover:-translate-y-0.75 hover:border-hypeA">
+                    transition-colors hover:border-hypeB/40">
       <div className="aspect-square w-full">
         {show ? (
           <img src={cdnResized(item.image!, 480)} alt={`${displayName(item.name)} #${item.token_id}`} loading="lazy"
@@ -46,7 +45,8 @@ function ExampleTile({ item }: { item: TopItem }) {
     </div>
   );
   return href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" title="View on OpenSea">{inner}</a>
+    <a href={href} target="_blank" rel="noopener noreferrer" title="View on OpenSea"
+       className="no-underline">{inner}</a>
   ) : inner;
 }
 

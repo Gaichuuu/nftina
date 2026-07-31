@@ -28,10 +28,10 @@ function ProductTile({ p }: { p: UtilityProduct }) {
   const show = p.image && !failed;
   return (
     <div className="overflow-hidden rounded-md border border-line bg-panel">
-      <div className="flex h-40 w-full items-center justify-center bg-bg">
+      <div className="h-40 w-full bg-bg">
         {show ? (
           <img src={cdnResized(p.image!, 400)} alt={p.name} loading="lazy" onError={() => setFailed(true)}
-               className="max-h-full max-w-full object-contain" />
+               className="h-full w-full object-cover" />
         ) : (
           <div className="h-full w-full" style={{ background: placeholderGradient(p.name) }} />
         )}
@@ -63,7 +63,7 @@ export default function CollectionContentView(
             <OverviewBlocks blocks={content.overview} />
           </div>
           {img && (
-            <figure className="order-first lg:order-none lg:sticky lg:top-6 lg:w-[38%] lg:shrink-0">
+            <figure className="order-first lg:order-none lg:sticky lg:top-7 lg:w-[38%] lg:shrink-0">
               <img src={cdnResized(img, 1000)} alt={content.overview_image_caption ?? "Collection art"} loading="lazy"
                    className="w-full rounded-md border border-line" />
               {content.overview_image_caption && (

@@ -10,7 +10,7 @@ export function StatCell(
   return (
     <div className={`${bg} px-4 py-4 sm:px-6 sm:py-5`}>
       <div className={`${numClass} font-extrabold tracking-[-0.02em] tabular-nums ${toneClass(tone)}`}>{big}</div>
-      {sub && <div className="mt-0.5 text-[12px] font-bold tabular-nums text-dim">{sub}</div>}
+      {sub && <div className="text-[12px] font-bold tabular-nums text-dim">{sub}</div>}
       <div className="mt-2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">{label}</div>
     </div>
   );

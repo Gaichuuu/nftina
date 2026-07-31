@@ -81,7 +81,7 @@ export default function TokenGrid(
               {types.map((v) => (
                 <label key={v} className="flex cursor-pointer items-start gap-1.5 text-[11px] text-ink">
                   <input type="checkbox" checked={selected.has(v)} onChange={() => toggleType(v)}
-                         className="mt-0.5 accent-hypeB" />
+                         className="accent-hypeB" />
                   <span className="flex-1 wrap-break-word leading-tight">{v}</span>
                   <span className="font-mono text-[10px] text-muted">{counts[v]}</span>
                 </label>
