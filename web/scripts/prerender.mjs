@@ -16,6 +16,20 @@ const template = readFileSync(join(DIST, "index.html"), "utf8");
 const collections = JSON.parse(
   readFileSync(join(SITE_DATA, "collections.json"), "utf8"),
 );
+const summary = JSON.parse(readFileSync(join(SITE_DATA, "summary.json"), "utf8"));
+
+const compactUsd = (n) => {
+  const a = Math.abs(n);
+  return a >= 1e6 ? `$${(a / 1e6).toFixed(1)}M`
+    : a >= 1e3 ? `$${Math.floor(a / 1e3)}K` : `$${Math.round(a)}`;
+};
+const compactUsdDown = (n) => {
+  const a = Math.abs(n);
+  return a >= 1e6 ? `$${(Math.floor(a / 1e5) / 10).toFixed(1)}M` : compactUsd(n);
+};
+const ogImageAlt =
+  `MetaZoo raised ${compactUsd(summary.total_mint_revenue_usd)}. ` +
+  `Holders lost ${compactUsdDown(summary.total_loss_usd)}.`;
 
 const escapeHtml = (s) =>
   String(s ?? "")
@@ -80,6 +94,10 @@ function pageFor(route) {
     .replace(
       /<meta\s+property="og:url"[^>]*>/,
       `<meta property="og:url" content="${canonical}" />\n    <link rel="canonical" href="${canonical}" />`,
+    )
+    .replace(
+      /<meta\s+property="og:image:alt"[^>]*>/,
+      `<meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}" />`,
     )
     .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 }

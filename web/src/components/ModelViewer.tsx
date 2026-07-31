@@ -37,6 +37,7 @@ export default function ModelViewer(
       };
       if (el.loaded) onLoad();
       el.addEventListener("load", onLoad, { once: true });
+      el.addEventListener("error", () => { if (mounted) setLoaded(true); }, { once: true });
     });
     return () => { mounted = false; };
   }, [autoplay, src, randomAnimation]);

@@ -56,6 +56,8 @@ else
   echo "==> Deploying nginx config -> ~/nginx/metazoonfts.com/"
   ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "mkdir -p ~/nginx/metazoonfts.com"
   rsync -avz "$NGINX_CONF" "${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/nginx.conf"
+  echo "==> NOTE: the config is staged, not live - nginx serves the old one until it reloads."
+  echo "    Trigger a reload from the DreamHost panel (or 'nginx -s reload' with root access)."
 fi
 
 echo "==> Done. https://metazoonfts.com/"

@@ -149,7 +149,7 @@ Vite, React 19, React Router, Tailwind v4, Zod, TypeScript and Vitest, in `web/`
 git clone <repo> && cd nftina/web && npm install && npm run build
 ```
 
-That works because two build outputs are tracked on purpose: `site/data/` (the frontend data contract) and `data/media/sandbox3d/` (the six Sandbox `.gltf` models, which the build copies into `web/public` and serves same-origin, since the CDN sends no CORS header for `.gltf`). Without them the data step exits with an error and the 3D hero 404s. They are about 42 MB of a 54 MB repo, and they buy a working site.
+That works because two build outputs are tracked on purpose: `site/data/` (the frontend data contract) and `data/media/sandbox3d/` (the six Sandbox models as Draco-compressed `.glb`, which the build copies into `web/public` and serves same-origin, since the CDN sends no CORS header for model files).
 
 `public/data/` is tracked for a different reason: it is the published result set, which is what makes a stated figure checkable by a reader who never runs the pipeline.
 

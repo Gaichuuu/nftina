@@ -61,7 +61,7 @@ export default function HoldersTable({ slug }: { slug: string }) {
       </div>
       <div className="overflow-x-auto rounded-md border border-line">
         <table className="w-full min-w-170 text-[12.5px] tabular-nums">
-          <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase -tracking-widest text-muted">
+          <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
             <tr>
               <th className="px-4 py-3 text-left">WALLET</th>
               <th className="px-4 py-3 text-left">OWNS</th>

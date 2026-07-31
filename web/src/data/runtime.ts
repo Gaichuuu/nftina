@@ -2,14 +2,18 @@ import { z } from "zod";
 import { WalletRow, TokenRow, Holders } from "./schemas";
 import type { Holders as HoldersT, HolderEntry, WalletRow as WalletRowT } from "./schemas";
 
-const cache: Record<string, unknown> = {};
-async function cachedFetch<T>(path: string, parse: (data: unknown) => T): Promise<T> {
-  if (path in cache) return cache[path] as T;
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${path} ${res.status}`);
-  const val = parse(await res.json());
-  cache[path] = val;
-  return val;
+const cache: Record<string, Promise<unknown>> = {};
+function cachedFetch<T>(path: string, parse: (data: unknown) => T): Promise<T> {
+  const hit = cache[path];
+  if (hit) return hit as Promise<T>;
+  const p = (async () => {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`${path} ${res.status}`);
+    return parse(await res.json());
+  })();
+  cache[path] = p;
+  p.catch(() => { delete cache[path]; });
+  return p;
 }
 
 export function fetchWalletIndex(): Promise<WalletRow[]> {

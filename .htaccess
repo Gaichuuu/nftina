@@ -25,14 +25,15 @@ DirectoryIndex index.html
 # Anything with no prerendered file -> the prerendered 404 page
 ErrorDocument 404 /404.html
 
-# The Sandbox models are served same-origin
+# The Sandbox models are served same-origin as Draco-compressed .glb
 <IfModule mod_mime.c>
-  AddType model/gltf+json .gltf
+  AddType model/gltf-binary .glb
 </IfModule>
 
-# Without this the home hero ships uncompressed
+# Without this the runtime JSON (holders/tokens files run to hundreds of KB)
+# and the JS bundle ship uncompressed.
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE model/gltf+json application/json text/html text/css application/javascript
+  AddOutputFilterByType DEFLATE application/json text/html text/css application/javascript image/svg+xml
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -49,7 +50,7 @@ ErrorDocument 404 /404.html
   # Everything served under a fixed name: data and models change with each
   # pipeline run, and the favicon and share card change with a redesign. All
   # revalidate rather than caching for a year under a stale name.
-  <FilesMatch "\.(json|gltf|svg|ico|png|jpe?g|webp)$">
+  <FilesMatch "\.(json|glb|svg|ico|png|jpe?g|webp)$">
     Header set Cache-Control "public, max-age=3600, must-revalidate"
   </FilesMatch>
 </IfModule>

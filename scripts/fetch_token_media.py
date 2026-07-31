@@ -14,6 +14,7 @@ import time
 import shutil
 import hashlib
 import argparse
+import subprocess
 import concurrent.futures as cf
 from pathlib import Path
 
@@ -348,10 +349,28 @@ def sandbox_assets(meta: dict) -> dict | None:
     return {"name": meta.get("name") or "Asset", "model_ipfs": model, "image_url": image}
 
 
+MODEL_SUFFIXES = {".gltf", ".glb"}
+
+
+def _to_glb(gltf_path: Path):
+    """Draco-compress a downloaded .gltf to the .glb the site actually ships
+    (see the 2026-07-31 perf pass). Needs node; returns the .glb Path, or None
+    when npx/gltf-pipeline is unavailable or the conversion fails."""
+    glb = gltf_path.with_suffix(".glb")
+    try:
+        subprocess.run(
+            ["npx", "-y", "gltf-pipeline", "-i", str(gltf_path), "-o", str(glb), "-d"],
+            check=True, capture_output=True, timeout=600)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return glb if glb.exists() and glb.stat().st_size > 0 else None
+
+
 def fetch_sandbox_3d(client: Alchemy) -> list:
-    """Download the 6 Sandbox characters' .gltf model + poster image to
-    data/media/sandbox3d/, write data/media_index/sandbox3d.json = list of
-    {"token_id","name","model","image"} CDN urls"""
+    """Download the 6 Sandbox characters' source .gltf model, convert it to the
+    Draco .glb the site ships, download the poster image, and write
+    data/media_index/sandbox3d.json = list of {"token_id","name","model","image"}
+    CDN urls (model urls point at .glb)."""
     (MEDIA / "sandbox3d").mkdir(parents=True, exist_ok=True)
     entries = []
     model_ok = image_ok = 0
@@ -361,17 +380,26 @@ def fetch_sandbox_3d(client: Alchemy) -> list:
             continue
         base = _slugify_name(a["name"])
 
-        model_dest = MEDIA / "sandbox3d" / f"{base}.gltf"
-        if _download(normalize_ipfs(a["model_ipfs"]), model_dest):
+        gltf_dest = MEDIA / "sandbox3d" / f"{base}.gltf"
+        glb_dest = gltf_dest.with_suffix(".glb")
+        model_url = None
+        if glb_dest.exists() and glb_dest.stat().st_size > 0:
             model_ok += 1
-            model_url = f"{MEDIA_CDN_BASE}/sandbox3d/{base}.gltf"
-        else:
-            model_url = None
+            model_url = f"{MEDIA_CDN_BASE}/sandbox3d/{glb_dest.name}"
+        elif _download(normalize_ipfs(a["model_ipfs"]), gltf_dest):
+            if _to_glb(gltf_dest):
+                gltf_dest.unlink()  # the site ships .glb only
+                model_ok += 1
+                model_url = f"{MEDIA_CDN_BASE}/sandbox3d/{glb_dest.name}"
+            else:
+                print(f"[sandbox3d] WARNING: could not convert {gltf_dest.name} to .glb "
+                      "(needs node + gltf-pipeline); left out of the manifest - convert "
+                      "manually with 'npx gltf-pipeline -i in.gltf -o out.glb -d' and re-run")
 
         image_url = None
         if a["image_url"]:
             existing = [p for p in (MEDIA / "sandbox3d").glob(f"{base}.*")
-                        if p.suffix != ".gltf" and p.stat().st_size > 0]
+                        if p.suffix not in MODEL_SUFFIXES and p.stat().st_size > 0]
             if existing:
                 image_ok += 1
                 image_url = f"{MEDIA_CDN_BASE}/sandbox3d/{existing[0].name}"

@@ -5,7 +5,7 @@ import { collections } from "@/data/bundled";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
 import Bar from "./Bar";
 import LoopMedia from "./LoopMedia";
-import NetPnl from "./NetPnl";
+import NetPnl, { Signed } from "./NetPnl";
 import WalletAvatar from "./WalletAvatar";
 import XferCell from "./XferCell";
 
@@ -13,26 +13,10 @@ import XferCell from "./XferCell";
 function Metric({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="bg-panel2 px-4.5 py-3 text-left">
-      <div className="mb-1 font-mono text-[9px] font-semibold uppercase -tracking-widest text-muted">
+      <div className="mb-1 font-mono text-[9px] font-semibold uppercase tracking-widest text-muted">
         {label}
       </div>
       {children}
-    </div>
-  );
-}
-
-function SignedEth({ v }: { v: number }) {
-  return (
-    <div className={`text-[18px] font-extrabold tabular-nums ${v < 0 ? "text-loss" : "text-gain"}`}>
-      {v < 0 ? "" : "+"}{eth(v)}
-    </div>
-  );
-}
-
-function SignedUsd({ v }: { v: number }) {
-  return (
-    <div className={`text-[18px] font-extrabold tabular-nums ${v < 0 ? "text-loss" : "text-gain"}`}>
-      {v < 0 ? "" : "+"}{usd(v)}
     </div>
   );
 }
@@ -78,7 +62,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
       <div className="flex flex-wrap items-center gap-5 rounded-md border border-line bg-panel px-5 py-4.5">
         <WalletAvatar addr={p.address} size={44} />
         <div className="min-w-0 flex-1">
-          <div className="font-mono text-[10px] font-semibold uppercase -tracking-widest text-muted">
+          <div className="font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
             Wallet
           </div>
           {hasWalletName(p.address) && (
@@ -94,14 +78,11 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
           <div className="grid w-full grid-cols-1 gap-px overflow-hidden rounded-[10px] border
                           border-line bg-line min-[480px]:grid-cols-3 lg:w-auto lg:min-w-90">
             <Metric label="On-chain P&L">
-              <SignedEth v={o.net_pnl_eth} />
-              <div className={`font-mono text-[11px] tabular-nums opacity-75
-                               ${(o.net_pnl_usd ?? 0) < 0 ? "text-loss" : "text-gain"}`}>
-                {(o.net_pnl_usd ?? 0) < 0 ? "" : "+"}{usd(o.net_pnl_usd ?? 0)}
-              </div>
+              <Signed v={o.net_pnl_eth} fmt={eth} className="text-[18px] font-extrabold" />
+              <Signed v={o.net_pnl_usd ?? 0} fmt={usd} className="font-mono text-[11px] opacity-75" />
             </Metric>
             <Metric label="All-in (USD)">
-              <SignedUsd v={allIn} />
+              <Signed v={allIn} fmt={usd} className="text-[18px] font-extrabold" />
               {(o.offchain_cost_usd ?? 0) > 0 && (
                 <div className="font-mono text-[11px] tabular-nums text-muted">
                   incl. {usd(o.offchain_cost_usd!)} off-chain
@@ -130,7 +111,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
       <div className="mt-3 flex items-stretch gap-3">
         <div className="min-w-0 flex-1 overflow-x-auto rounded-md border border-line">
           <table className="w-full min-w-150 text-[12.5px] tabular-nums">
-            <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase -tracking-widest text-muted">
+            <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
               <tr>
                 <th className="px-4 py-3 text-left">RANK</th>
                 <th className="px-4 py-3 text-left">COLLECTION</th>

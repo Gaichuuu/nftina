@@ -36,6 +36,10 @@
   <body>
     <div class="brand">METAZOO<span class="n">NFTS</span><span class="d">.com</span></div>
 
+    <!-- Figures must match site/data/summary.json: raised = compactUsd(total_mint_revenue_usd),
+         lost = compactUsdDown(total_loss_usd). Re-render the share-card PNG whenever a pipeline
+         regen moves the headline (prerender.mjs stamps og:image:alt from summary.json, but this
+         baked image cannot be stamped). -->
     <h1>
       MetaZoo raised <span class="raised">$1.6M</span>.<br />
       Holders lost <span class="lost">$4.3M</span>.
