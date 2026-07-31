@@ -1,5 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
+type NetworkInfo = { saveData?: boolean; effectiveType?: string };
+
+export function skipForConnection(conn?: NetworkInfo): boolean {
+  if (!conn) return false;
+  if (conn.saveData) return true;
+  return conn.effectiveType === "2g" || conn.effectiveType === "slow-2g";
+}
+
 export default function ModelViewer(
   { src, poster, alt, autoplay = true, autoRotate = true, picker = false, randomAnimation = false }:
   { src: string; poster?: string; alt?: string;
@@ -10,12 +18,19 @@ export default function ModelViewer(
   const [current, setCurrent] = useState("");
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [skipped, setSkipped] = useState(false);
   const sortedAnims = useMemo(() => [...anims].sort((a, b) => a.localeCompare(b)), [anims]);
   const rotate = autoRotate && !picker;
 
   useEffect(() => {
     let mounted = true;
     setLoaded(false);
+    if (poster && skipForConnection((navigator as any).connection)) {
+      setSkipped(true);
+      setLoaded(true);
+      return;
+    }
+    setSkipped(false);
     import("@google/model-viewer").then(() => {
       const el = ref.current as any;
       if (!el || !mounted) return;
@@ -40,7 +55,7 @@ export default function ModelViewer(
       el.addEventListener("error", () => { if (mounted) setLoaded(true); }, { once: true });
     });
     return () => { mounted = false; };
-  }, [autoplay, src, randomAnimation]);
+  }, [autoplay, src, poster, randomAnimation]);
 
   useEffect(() => {
     if (!open) return;
@@ -58,6 +73,14 @@ export default function ModelViewer(
     if (!el) return;
     el.animationName = name;
     try { el.play?.({ repetitions: Infinity }); } catch { /* no clips */ }
+  }
+
+  if (skipped && poster) {
+    return (
+      <div className="relative h-full w-full">
+        <img src={poster} alt={alt} className="h-full w-full object-contain" />
+      </div>
+    );
   }
 
   return (
