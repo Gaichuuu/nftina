@@ -56,6 +56,12 @@ else
   echo "==> Deploying nginx config -> ~/nginx/metazoonfts.com/"
   ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "mkdir -p ~/nginx/metazoonfts.com"
   rsync -avz "$NGINX_CONF" "${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/nginx.conf"
+
+  REDIRECTS_CONF="$ROOT/nginx/metazoonfts.com/redirects.conf"
+  if [[ -n "${DEPLOY_REDIRECTS:-}" && -f "$REDIRECTS_CONF" ]]; then
+    echo "==> Deploying redirects.conf (panel auto-redirect must be OFF)"
+    rsync -avz "$REDIRECTS_CONF" "${DEPLOY_USER}@${DEPLOY_HOST}:~/nginx/metazoonfts.com/redirects.conf"
+  fi
   echo "==> NOTE: the config is staged, not live - nginx serves the old one until it reloads."
   echo "    Trigger a reload from the DreamHost panel (or 'nginx -s reload' with root access)."
 fi
