@@ -4,5 +4,9 @@
     "name": "Argos Anon",
     "avatar_file": "argos_anon.jpg",
     "note": "Holds exactly 87 MetaZoo Coin Tokens, matching the count Argos stated publicly for the Tribe's shared holdings ('The Tribe currently has 87 coins'). OpenSea reports the username 'AI_ChatBot' for this address; the curated name is used instead."
+  },
+  "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6": {
+    "name": "MetaZoo Genesis deployer",
+    "note": "Created the Genesis 2021 contract 0xa0529c32 on 2021-03-13 (Etherscan getcontractcreation, via deploy factory 0x3e8b1732) and minted all 595 tokens in nine batches through 2021-11. Also the configured distributor for genesis_2021 and mintable_early. Has no OpenSea username, ENS or web3.bio identity: both profile fetches return empty for it. See F56."
   }
 }

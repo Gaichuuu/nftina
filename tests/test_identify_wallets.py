@@ -1,3 +1,5 @@
+import json
+
 from scripts import identify_wallets as idf
 
 RES = "0x000000000000000000000000000000000000d011"   # a fake resolver address
@@ -77,3 +79,31 @@ def test_decode_string_empty():
 def test_decode_addr_zero_is_none():
     assert idf._decode_addr("0x" + "0" * 64) is None
     assert idf._decode_addr(_pad_addr(ADDR)) == ADDR.lower()
+
+
+def test_graph_wallets_returns_flow_nodes_biggest_volume_first(tmp_path, monkeypatch):
+    """Flow-graph nodes were never resolved because displayed_wallets only read the
+    holders/flippers tables (F56/F57). They are the investigation-relevant wallets,
+    so they must be in the resolve set, highest-volume first."""
+    flows = tmp_path / "treasury_flows.json"
+    flows.write_text(json.dumps({"nodes": [
+        {"address": "0xSMALL", "total_in_eth": 1.0, "total_out_eth": 0.0},
+        {"address": "0xBIG", "total_in_eth": 900.0, "total_out_eth": 100.0},
+        {"address": "0xMID", "total_in_eth": 5.0, "total_out_eth": 5.0},
+    ]}))
+    monkeypatch.setattr(idf, "TREASURY_FLOWS", flows)
+    assert idf.graph_wallets() == ["0xbig", "0xmid", "0xsmall"]
+
+
+def test_graph_wallets_absent_file_degrades_to_empty(tmp_path, monkeypatch):
+    monkeypatch.setattr(idf, "TREASURY_FLOWS", tmp_path / "nope.json")
+    assert idf.graph_wallets() == []
+
+
+def test_displayed_wallets_appends_graph_nodes_without_duplicating(tmp_path, monkeypatch):
+    monkeypatch.setattr(idf, "FLIPPERS", tmp_path / "flippers.json")
+    idf.FLIPPERS.write_text(json.dumps([{"wallet": "0xAAA"}]))
+    monkeypatch.setattr(idf, "HOLDERS_GLOB", tmp_path / "collections")
+    monkeypatch.setattr(idf, "graph_wallets", lambda: ["0xaaa", "0xnew"])
+    out = idf.displayed_wallets(top=10)
+    assert out == ["0xaaa", "0xnew"]          # 0xaaa not repeated

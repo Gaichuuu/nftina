@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from scripts.audit_treasury_usd import (usd_at_date, build_ledger,
-                                        monthly_balances, reconcile)
+                                        weekly_balances, week_start, reconcile)
 
 DAILY = {"2021-11-01": 4000.0, "2021-12-01": 4500.0, "2022-06-01": 1000.0,
          "2022-07-01": 1100.0}
@@ -59,14 +59,30 @@ def test_build_ledger_dedups_same_tx_seen_twice():
     assert len(ledger) == 1
 
 
-def test_monthly_balances_marks_to_month_end():
+def test_week_start_snaps_to_monday():
+    assert week_start("2022-06-15") == "2022-06-13"   # Wednesday -> Monday
+    assert week_start("2022-06-13") == "2022-06-13"   # Monday is its own start
+    assert week_start("2022-06-19") == "2022-06-13"   # Sunday -> same week
+
+
+def test_weekly_balances_marks_to_week_end():
     txns = {"0xaaa": [_tx("0xzz", "0xaaa", 10.0, TS_NOV21, h="0x1"),
                       _tx("0xaaa", "0xyy", 4.0, TS_JUN22, h="0x2")]}
-    series = monthly_balances(build_ledger(txns, TREASURY, kind_of, DAILY), DAILY)
-    nov = next(m for m in series if m["month"] == "2021-11")
-    jun = next(m for m in series if m["month"] == "2022-06")
-    assert nov["eth_balance"] == 10.0 and nov["usd_mark"] == 40000.0
-    assert jun["eth_balance"] == 6.0 and jun["usd_mark"] == 6000.0
+    series = weekly_balances(build_ledger(txns, TREASURY, kind_of, DAILY), DAILY)
+    assert series[0]["eth_balance"] == 10.0 and series[0]["usd_mark"] == 40000.0
+    assert series[-1]["eth_balance"] == 6.0 and series[-1]["usd_mark"] == 6000.0
+
+
+def test_weekly_balances_emits_quiet_weeks_so_the_axis_is_even():
+    """A gap with no activity must still produce points, else the chart compresses
+    time and a long dormant stretch looks like a short one."""
+    txns = {"0xaaa": [_tx("0xzz", "0xaaa", 10.0, TS_NOV21, h="0x1"),
+                      _tx("0xaaa", "0xyy", 4.0, TS_JUN22, h="0x2")]}
+    series = weekly_balances(build_ledger(txns, TREASURY, kind_of, DAILY), DAILY)
+    weeks = [w["week"] for w in series]
+    assert len(weeks) == len(set(weeks)) and weeks == sorted(weeks)
+    assert len(series) > 25                       # ~7 months of weeks, not 2 points
+    assert all(series[i]["eth_balance"] == 10.0 for i in range(len(series) - 1))
 
 
 def test_reconcile_headline():
@@ -200,3 +216,17 @@ def test_insider_wallets_match_payout_ledger():
         "INSIDER_WALLETS drifted from the payout ledger's insider recipients; "
         "sync scripts/audit_treasury_usd.py::INSIDER_WALLETS with data/evidence/payout_ledger.json"
     )
+
+
+def test_treasury_set_is_the_three_eoas_not_every_metazoo_wallet():
+    """The USD audit reconciles received = paid + gas + still-held over the THREE
+    treasury EOAs. METAZOO_WALLETS is the display-flag/trace-seed list and grows
+    whenever any MetaZoo-controlled wallet is identified; deriving the treasury from
+    it silently broke the reconciliation to +2.48 ETH when the Genesis ops wallet
+    0x3dd341 was added. Keep the two lists independent."""
+    from scripts.config import TREASURY_WALLETS, METAZOO_DEPLOYER, METAZOO_WALLETS
+    assert len(TREASURY_WALLETS) == 3
+    assert METAZOO_DEPLOYER.lower() in {a.lower() for a in TREASURY_WALLETS}
+    genesis_ops = "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6"
+    assert genesis_ops in {a.lower() for a in METAZOO_WALLETS}       # flagged on the site
+    assert genesis_ops not in {a.lower() for a in TREASURY_WALLETS}  # but not a treasury EOA

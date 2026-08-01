@@ -9,12 +9,15 @@
     "nft_marketplace_eth": 2630.716385,
     "cash_out_eth": 0.0,
     "by_exchange": {
-      "Kraken 4": 0.0
+      "Coinbase 3": 0.0,
+      "Kraken 4": 0.0,
+      "Coinbase 44": 0.0,
+      "Coinbase 54": 0.0
     },
     "internal_cluster_eth": 411.829447,
     "unlabeled_endpoints": {
-      "count": 61,
-      "eth": 225.140836
+      "count": 54,
+      "eth": 195.140836
     }
   },
   "confirmed_aoki_wallets": [

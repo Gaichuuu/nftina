@@ -2,7 +2,7 @@
 outflow at its spend date, then quantify what holding ETH through the crash cost.
 """
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 IN_CLS = {"nft_contract": "mint_proceeds", "marketplace": "royalties", "royalty": "royalties"}
 OUT_CLS = {"aoki": "aoki", "exchange": "exchange_deposit", "insider": "insider",
@@ -56,20 +56,31 @@ def build_ledger(txns_by_wallet: dict, treasury: set, kind_of, daily: dict) -> l
     return ledger
 
 
-def monthly_balances(ledger: list, daily: dict) -> list:
-    """Cumulative treasury ETH balance at each month end × that month's last close."""
+def week_start(date_str: str) -> str:
+    """ISO date of the Monday beginning the week containing `date_str`."""
+    d = datetime.strptime(date_str[:10], "%Y-%m-%d").date()
+    return (d - timedelta(days=d.weekday())).isoformat()
+
+
+def weekly_balances(ledger: list, daily: dict) -> list:
+    """Cumulative treasury ETH balance at each week end × that week's last close."""
     if not ledger:
         return []
-    net_by_month = defaultdict(float)
+    net_by_week = defaultdict(float)
     for e in ledger:
-        net_by_month[e["date"][:7]] += e["eth"] if e["direction"] == "in" else -e["eth"]
-    out, bal = [], 0.0
-    for month in sorted(net_by_month):
-        bal += net_by_month[month]
-        closes = [d for d in daily if d[:7] <= month]
+        net_by_week[week_start(e["date"])] += e["eth"] if e["direction"] == "in" else -e["eth"]
+    first = datetime.strptime(min(net_by_week), "%Y-%m-%d").date()
+    last = datetime.strptime(max(net_by_week), "%Y-%m-%d").date()
+    out, bal, wk = [], 0.0, first
+    while wk <= last:
+        key = wk.isoformat()
+        bal += net_by_week.get(key, 0.0)
+        end = (wk + timedelta(days=6)).isoformat()
+        closes = [d for d in daily if d <= end]
         mark = daily[max(closes)] if closes else 0.0
-        out.append({"month": month, "eth_balance": round(bal, 6),
+        out.append({"week": key, "eth_balance": round(bal, 6),
                     "usd_mark": round(bal * mark, 2)})
+        wk += timedelta(days=7)
     return out
 
 
@@ -194,14 +205,13 @@ def main() -> None:
     from dotenv import load_dotenv
     root = Path(__file__).parent.parent
     load_dotenv(root / ".env")
-    from scripts.config import METAZOO_DEPLOYER, METAZOO_WALLETS, AOKI_WALLETS, CONTRACTS
+    from scripts.config import TREASURY_WALLETS, AOKI_WALLETS, CONTRACTS
     from scripts.wallet_labeling import load_labels
     from scripts.trace_acquisitions import eth_daily_usd
     from scripts.clients.etherscan import Etherscan
 
     raw = root / "data" / "raw"
-    treasury = list(dict.fromkeys(
-        a.lower() for a in [METAZOO_DEPLOYER, *METAZOO_WALLETS] if a))
+    treasury = list(dict.fromkeys(a.lower() for a in TREASURY_WALLETS if a))
     daily = eth_daily_usd()
     labels = {k.lower(): v for k, v in load_labels().items()}
     nft_contracts = ({m["address"].lower() for m in CONTRACTS.values() if m.get("address")}
@@ -247,7 +257,7 @@ def main() -> None:
         side[e["cls"]]["usd"] = round(side[e["cls"]]["usd"] + e["usd"], 2)
 
     out = {"headline": headline, "by_class": by_class,
-           "monthly": monthly_balances(ledger, daily),
+           "weekly": weekly_balances(ledger, daily),
            "method": {
                "wallets": treasury,
                "valuation": "Binance daily close (data/raw/eth_usd_daily.json); "

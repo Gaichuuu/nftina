@@ -23,6 +23,7 @@ from scripts.wallet_labeling import load_labels
 ROOT = Path(__file__).resolve().parent.parent
 FLIPPERS = ROOT / "public" / "data" / "flippers.json"
 HOLDERS_GLOB = ROOT / "site" / "data" / "collections"
+TREASURY_FLOWS = ROOT / "public" / "data" / "treasury_flows.json"
 OUT = ROOT / "data" / "evidence" / "wallet_identities.json"
 
 ENS_REGISTRY = "0x00000000000c2e074ec69a0dfb2997ba6c7d2e1e"
@@ -123,10 +124,19 @@ def _make_call_fn(rate_delay: float = 0.1):
     return call_fn
 
 
+def graph_wallets() -> list:
+    """Every node in the flow-trace graph, biggest total volume first."""
+    if not TREASURY_FLOWS.exists():
+        return []
+    nodes = json.loads(TREASURY_FLOWS.read_text()).get("nodes", [])
+    nodes = sorted(nodes, key=lambda n: -(n.get("total_in_eth", 0.0) + n.get("total_out_eth", 0.0)))
+    return [n["address"].lower() for n in nodes if n.get("address")]
+
+
 def displayed_wallets(top: int) -> list:
-    """Union (dedup, order-preserving) of the wallets the site shows: the top
-    ecosystem flippers, then every wallet in each collection's holders.json
-    (the single ranked holders table)."""
+    """Union (dedup, order-preserving) of the wallets worth naming: the top
+    ecosystem flippers, every wallet in each collection's holders.json (the
+    single ranked holders table), then every flow-trace graph node."""
     seen, out = set(), []
 
     def add(addr):
@@ -142,6 +152,8 @@ def displayed_wallets(top: int) -> list:
         doc = json.loads(hp.read_text())
         for e in doc.get("holders", []):
             add(e["wallet"])
+    for a in graph_wallets():
+        add(a)
     return out
 
 
