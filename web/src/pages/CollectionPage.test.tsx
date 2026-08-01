@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import CollectionPage from "./CollectionPage";
 import { tabsFor } from "@/data/collectionUiConfig";
+import { contentFor } from "@/data/bundled";
 
 function renderAt(slug: string) {
   return render(
@@ -27,15 +28,17 @@ it("handles an unknown slug", () => {
   expect(screen.getByText(/no such collection/i)).toBeInTheDocument();
 });
 
-it("renders the tournament trophies overview when the Overview tab is selected", () => {
+it("renders the authored overview when the Overview tab is selected", () => {
   renderAt("tournament_prizes");
   fireEvent.click(screen.getByText("Overview"));
-  expect(screen.getAllByText(/trophy|trophies/i).length).toBeGreaterThan(0);
+  expect(screen.getByText(contentFor("tournament_prizes").overview[0])).toBeInTheDocument();
 });
 
-it("shows the sandbox off-chain-economics banner without needing a tab click", () => {
+it("shows the sandbox banner without needing a tab click", () => {
   renderAt("sandbox");
-  expect(screen.getByText(/off the ETH pipeline/i)).toBeInTheDocument();
+  const banner = contentFor("sandbox").banner!;
+  expect(banner).toBeTruthy();
+  expect(screen.getByText(banner)).toBeInTheDocument();
 });
 
 test("the Utility tab appears only for a collection with products", () => {

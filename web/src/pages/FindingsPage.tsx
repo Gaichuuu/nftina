@@ -13,7 +13,6 @@ const EXCHANGE_RE = /coinbase|ftx|binance|kraken/i;
 export default function FindingsPage() {
   const { legs, flippers, payout_ledger, acquisitions, insider } = findings;
   const insiderRows = payout_ledger.filter((r) => r.kind === "insider");
-  const cashedToExchange = insiderRows.filter((r) => EXCHANGE_RE.test(r.endpoint ?? "")).length;
   return (
     <div>
       {/* hero  */}
@@ -31,15 +30,15 @@ export default function FindingsPage() {
       </header>
 
       {/* stats */}
-      <StatStrip className="mt-9 grid-cols-2 sm:grid-cols-4">
+      <StatStrip className="mt-8 grid-cols-2 sm:grid-cols-4">
         <StatCell big={eth(legs.secondary_volume_eth)}
                   sub={compactUsd(legs.secondary_volume_usd)} label="Secondary volume in" />
         <StatCell big={eth(legs.royalties_eth)}
-                  sub={compactUsd(legs.royalties_usd)} label="Royalties to MetaZoo" />
+                  sub={compactUsd(legs.royalties_usd)} label="→ MetaZoo Royalties" />
         <StatCell tone="hype" big={eth(legs.aoki_eth)}
-                  sub={compactUsd(legs.aoki_usd)} label="Sent to Aoki" />
+                  sub={compactUsd(legs.aoki_usd)} label="→ Sent to Aoki" />
         <StatCell tone="loss" big={eth(legs.insider_eth)}
-                  sub={compactUsd(legs.insider_usd)} label="Insiders cashed out" />
+                  sub={compactUsd(legs.insider_usd)} label="→ Insiders cashed out" />
       </StatStrip>
       <p className="mt-3 max-w-180 font-mono text-[10px] leading-normal text-muted">
         USD valued when each amount moved.
@@ -61,13 +60,12 @@ export default function FindingsPage() {
       <section className="mt-16">
         {/* <div className="eyebrow text-loss">Payout ledger</div> */}
         <h2 className="mb-5 text-[28px] font-black tracking-tight">
-          Every payment out of the treasury
+          Treasury payout ledger
         </h2>
         <LedgerTable rows={payout_ledger} />
         <p className="mt-2.5 max-w-225 font-mono text-[10px] leading-normal text-muted">
-          Rows marked in-kind or off-chain moved no ETH and are shown for completeness only:
-          they are not counted in the MetaZoo to Aoki total above. In-kind NFT transfers are
-          valued at the median secondary price in the month they moved.
+          in-kind and off-chain rows
+          are not counted in the AOKI total above. 
         </p>
       </section>
 
@@ -78,6 +76,9 @@ export default function FindingsPage() {
           Aoki goes on a manic {compactUsd(acquisitions.total_usd)} NFT buying spree
         </h2>
         <AcquisitionTable acq={acquisitions} />
+        <p className="mt-5 max-w-225 font-mono text-[11px] leading-[1.7] text-muted">
+          ETH is fungible. No specific NFT is claimed to be bought with MetaZoo money.
+        </p>
       </section>
 
       {/* insiders */}
@@ -91,17 +92,7 @@ export default function FindingsPage() {
         <p className="mt-3 max-w-225 text-pretty text-[13px] leading-[1.6] text-dim">{insider.note}</p>
         {insiderRows.length > 0 && (
           <>
-            <p className="mt-4 max-w-225 font-mono text-[10px] leading-[1.7] text-muted">
-              {insiderRows.length} on-chain insider payouts, each to a wallet with no ENS or public
-              identity. Each was traced forward until it reached an exchange or went cold:
-              {" "}{cashedToExchange} of {insiderRows.length} cashed out to a centralized exchange
-              (overwhelmingly Coinbase, one branch to FTX), where the personal account behind the
-              deposit is KYC-gated and not public. Dates show that two wallets were paid across
-              separate mints. Names like "Coinbase 44" or "Coinbase 3" are Etherscan's public
-              name-tags for separate wallets Coinbase itself operates; the number is just which
-              of those wallets received the deposit, not an account or a customer ID.
-            </p>
-            <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {insiderRows.map((r, i) => {
                 const full = /^0x[0-9a-fA-F]{40}$/.test(r.recipient_addr);
                 return (
@@ -146,10 +137,6 @@ export default function FindingsPage() {
       </section>
 
       <UsdAuditSection />
-
-      <p className="mt-14 max-w-225 font-mono text-[11px] leading-[1.7] text-muted">
-        ETH is fungible. No specific NFT is claimed to be bought with MetaZoo money. Estimates from public on-chain data.
-      </p>
       </Container>
     </div>
   );

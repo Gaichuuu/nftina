@@ -67,7 +67,8 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
                 <div className="text-[26px] font-extrabold leading-none tabular-nums text-loss">{pct(b.loss_pct!)}</div>
                 <div className="mt-1 truncate text-[11px] font-bold text-ink">{displayName(b.name)}</div>
                 <div className="font-mono text-[9.5px] tabular-nums text-muted">
-                  paid ~{eth(b.avg_paid_eth!)} → floor ~{eth(b.floor_eth!)}</div>
+                  paid ~{eth(b.avg_paid_eth!)}{" "}
+                  <span className="max-sm:block">→ floor ~{eth(b.floor_eth!)}</span></div>
               </div>
             );
             return ex ? (

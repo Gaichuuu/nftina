@@ -1,8 +1,10 @@
 {
  "overview": [
   "MetaZoo Wilderness (Pinclub) is a small five-token ERC-1155 set (IDs 7 to 11) sharing its contract with the Valentines drop.",
-  "It accompanied the Wilderness set, released 14 March 2022, and the $150 Pin Club case that Coin Token holders could buy: each case came with an exclusive promo card and a Wilderness NFT airdropped per purchase. MetaZoo put the NFT-label Wilderness box run at around 2,800 to 3,000, and capped the token-holder presale at two boxes per Coin Token.",
-  "On-chain activity is minimal: the Wilderness tokens trade rarely and for small amounts, and combined Valentines plus Wilderness volume is roughly 0.4 ETH (a few hundred dollars)."
+  "# The Pin Club case",
+  "The $150 Pin Club case sold to NFT holders came with an exclusive **The Wild Ones** promo card and Wilderness NFT airdropped per purchase.",
+  "Roughly 0.4 ETH (a few hundred dollars) of lifetime volume across the whole contract.",
+  "**Mint platform: Manifold**"
  ],
  "off_chain_basis": {
   "unit_cost_usd": 150,
@@ -11,5 +13,6 @@
   "floor_usd": 35.81,
   "loss_pct": -76.1
  },
+ "overview_image": "https://gaichu.b-cdn.net/nftina/tokens/wilderness/0e6f8dae9e747d8a.png",
  "utility": []
 }

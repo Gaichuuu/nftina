@@ -35,7 +35,7 @@
     "recipient": "Aoki (in-kind, 1 Coin Token)",
     "recipient_addr": "",
     "kind": "aoki_inkind",
-    "note": "Sent the same day MetaZoo opened public sales of the MetaZoo x Dim Mak limited-edition boxes (@MetaZooGames, 2021-12-18 17:25 UTC, archived); Dim Mak is Aoki's own label. 0-ETH transfer from the MetaZoo treasury 0x77b94a55. Marked at the December median 0.20 \u039e (~0.2 \u039e total). Not counted in the MetaZoo->Aoki ETH total."
+    "note": "sent from the MetaZoo treasury 0x77b94a55 on the MetaZoo x Dim Mak collab release day. priced at the December median 0.20 \u039e (~0.2 \u039e total)."
   },
   {
     "date": "2021-12-24",
@@ -53,7 +53,7 @@
     "recipient": "Aoki (main)",
     "recipient_addr": "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4",
     "kind": "aoki",
-    "note": "The single largest MetaZoo->Aoki transfer, tx 0xe8fe9524. It landed 3 days after a celebrity poker night Aoki is publicly reported to have hosted at his home on 2022-01-08, at which the Coin Tokens were discussed. The transfer is verified on-chain; the poker night itself is outside what our data can confirm."
+    "note": "payment sent 3 days after a celebrity poker night hosted at Aoki home on 2022-01-08, where MetaZoo Coin Tokens were allegedly discussed (tx 0xe8fe9524)"
   },
   {
     "date": "2022-01-11",
@@ -62,16 +62,7 @@
     "recipient": "Aoki (in-kind, 9 Coin Tokens)",
     "recipient_addr": "",
     "kind": "aoki_inkind",
-    "note": "SAME DAY as the 89.77 \u039e payment above. 0-ETH transfers from 0x77b94a55, IDs 994-998/1000-1001/1003-1004; all 9 are still unsold in the Aoki hub. Marked at the January median 0.435 \u039e (~3.9 \u039e total). Not counted in the MetaZoo->Aoki ETH total."
-  },
-  {
-    "date": "2022-07-18",
-    "eth": 0,
-    "usd": 5943,
-    "recipient": "Aoki (in-kind, 21 Beasties)",
-    "recipient_addr": "",
-    "kind": "aoki_inkind",
-    "note": "0-ETH transfers from 0x77b94a55. 20 of the 21 left the hub the NEXT DAY to a giveaway wallet that distributed 50 Beasties to 49 wallets and sold none, so this leg reads as promo inventory routed through Aoki, not retained pay. Marked at the July median 0.179 \u039e (~3.8 \u039e total)."
+    "note": "same day as the 89.77 \u039e payment above. transfers from 0x77b94a55, IDs 994-998/1000-1001/1003-1004. priced at the January median 0.435 \u039e (~3.9 \u039e total)."
   },
   {
     "date": "2022-07-27",

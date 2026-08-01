@@ -56,9 +56,9 @@ export default function CollectionPage() {
           </div>
         </div>
 
-        {special && content.overview[1] && (
+        {special && content.banner && (
           <div className="mt-4 rounded-md border border-line bg-panel/50 p-4 text-[12px] leading-relaxed text-dim">
-            {content.overview[1]}
+            {content.banner}
           </div>
         )}
 
@@ -79,9 +79,9 @@ export default function CollectionPage() {
                           label="Mint price" />
               );
             })()}
-            <StatCell big={eth(c.mint_revenue_eth)}
+            <StatCell tone="gain" big={eth(c.mint_revenue_eth)}
                       sub={c.mint_revenue_usd > 0 ? compactUsd(c.mint_revenue_usd) : undefined}
-                      label="Mint revenue" />
+                      label="→ Mint revenue" />
             <StatCell big={eth(c.secondary_volume_eth)}
                       sub={c.secondary_volume_usd != null ? compactUsd(c.secondary_volume_usd) : undefined}
                       label="Secondary vol" />
@@ -97,7 +97,7 @@ export default function CollectionPage() {
         {tab === "Holders" && <HoldersTable slug={slug} />}
         {tab === "Tokens" && (special ? <Sandbox3DGrid />
           : <TokenGrid slug={slug} contract={c.contract} showFilter={showFilterFor(slug)} />)}
-        {tab === "Overview" && <CollectionContentView mode="Overview" content={content} />}
+        {tab === "Overview" && <CollectionContentView mode="Overview" content={content} slug={slug} />}
         {tab === "Utility" && <CollectionContentView mode="Utility" content={content} />}
       </Container>
     </div>

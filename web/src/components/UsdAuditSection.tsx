@@ -10,7 +10,7 @@ const IN_SOURCES: { key: string; label: string }[] = [
 
 export default function UsdAuditSection() {
   if (!usdAudit) return null;
-  const { headline: h, by_class, monthly, method } = usdAudit;
+  const { headline: h, by_class } = usdAudit;
   const inTotal = Object.values(by_class.in).reduce((s, c) => s + c.eth, 0) || 1;
   const inRows = [
     ...IN_SOURCES.filter((s) => by_class.in[s.key]),
@@ -18,13 +18,17 @@ export default function UsdAuditSection() {
       .filter((k) => !IN_SOURCES.some((s) => s.key === k))
       .map((k) => ({ key: k, label: k })),
   ];
-  const max = Math.max(1, ...monthly.map((m) => m.usd_mark));
-  const peak = monthly.reduce((a, b) => (b.usd_mark > a.usd_mark ? b : a), monthly[0]);
-  const last = monthly[monthly.length - 1];
-  const chartLabel = monthly.length
-    ? `Monthly treasury balance, marked to market: peaked at ${compactUsd(peak.usd_mark)} `
-      + `in ${peak.month}, ending at ${compactUsd(last.usd_mark)} in ${last.month}`
-    : "Monthly treasury balance, marked to market";
+  /* Disabled with the weekly chart below.
+  ---
+  const { weekly, method } = usdAudit;
+  const max = Math.max(1, ...weekly.map((m) => m.usd_mark));
+  const peak = weekly.reduce((a, b) => (b.usd_mark > a.usd_mark ? b : a), weekly[0]);
+  const last = weekly[weekly.length - 1];
+  const chartLabel = weekly.length
+    ? `Weekly treasury balance, marked to market: peaked at ${compactUsd(peak.usd_mark)} `
+      + `in the week of ${peak.week}, ending at ${compactUsd(last.usd_mark)} in the week of ${last.week}`
+    : "Weekly treasury balance, marked to market";
+  */
   return (
     <section className="mt-16">
       {/* <div className="eyebrow text-hypeB">Treasury audit</div> */}
@@ -41,12 +45,11 @@ export default function UsdAuditSection() {
           );
         })}
       </StatStrip>
-      <p className="note-box mt-3.5">
+      <p className="mt-4 max-w-225 text-pretty text-[13px] leading-[1.6] text-dim">
         Of the <span className="font-bold text-ink">{eth(h.received_eth)}</span> the treasury ever took in,
-        roughly four-fifths was primary <span className="font-bold text-ink">NFT mint sales</span>. The{" "}
+        ~80% was primary <span className="font-bold text-ink">NFT mint sales</span>. The{" "}
         <span className="font-bold text-ink">royalties</span> slice reached MetaZoo mostly through OpenSea’s
-        off-chain creator-earnings payout, not a direct on-chain stream: about 80% of the royalty buyers
-        generated on Coin Tokens, with roughly a quarter of the later Seaport royalties split to team wallets.
+        off-chain creator-earnings payout, not a direct on-chain stream.
       </p>
       {(() => {
         const o = by_class.out;
@@ -54,11 +57,11 @@ export default function UsdAuditSection() {
         const projUsd = (o.project_costs?.usd ?? 0) + h.gas_usd_at_spend;
         const outTotal = Object.values(o).reduce((s, c) => s + c.eth, 0) + h.gas_eth || 1;
         const cells: { eth: number; usd: number; label: string; tone?: "hype" | "loss" }[] = [
-          { eth: o.aoki?.eth ?? 0, usd: o.aoki?.usd ?? 0, label: "→ Aoki", tone: "hype" as const },
-          { eth: o.insider?.eth ?? 0, usd: o.insider?.usd ?? 0, label: "insiders → cashed out", tone: "loss" as const },
+          { eth: o.aoki?.eth ?? 0, usd: o.aoki?.usd ?? 0, label: "→ Sent to Aoki", tone: "hype" as const },
+          { eth: o.insider?.eth ?? 0, usd: o.insider?.usd ?? 0, label: "→ Insiders cashed out", tone: "loss" as const },
           { eth: projEth, usd: projUsd, label: "project costs · gas + ops" },
           { eth: o.intra_cluster?.eth ?? 0, usd: o.intra_cluster?.usd ?? 0, label: "intra-cluster · own contracts" },
-          { eth: o.other_out?.eth ?? 0, usd: o.other_out?.usd ?? 0, label: "unattributed payouts" },
+          { eth: o.other_out?.eth ?? 0, usd: o.other_out?.usd ?? 0, label: "→ Unattributed payouts" },
         ].filter((c) => c.eth > 0);
         return (
           <>
@@ -74,14 +77,12 @@ export default function UsdAuditSection() {
                           label={c.label} />
               ))}
             </StatStrip>
-            <p className="note-box mt-3.5">
+            <p className="mt-4 max-w-225 text-pretty text-[13px] leading-[1.6] text-dim">
               Most of what left the treasury went to <span className="font-bold text-ink">insider cash-outs</span>{" "}
               (to Coinbase/FTX) and <span className="font-bold text-ink">Steve Aoki</span>. The rest is{" "}
               <span className="font-bold text-ink">project costs</span> (gas for contract deploys and reward
               mints/airdrops, plus a few token swaps), money moved <span className="font-bold text-ink">between
               MetaZoo’s own contracts</span>, and a small tail of unattributed transfers to unlabeled wallets.
-              On-chain is a floor: the bulk of real project costs (physical card printing, fiat operations) never
-              touched these wallets.
             </p>
             <h2 className="mb-5 mt-14 text-[28px] font-black tracking-tight">
               The USD reconciliation
@@ -99,29 +100,29 @@ export default function UsdAuditSection() {
         <StatCell tone="gain" big={eth(h.still_held_eth)}
                   sub={compactUsd(h.still_held_usd_now)} label="still held on-chain today" />
       </StatStrip>
-      <p className="note-box mt-3.5">
-        It balances: received = paid + gas + still-held. The treasury is essentially{" "}
-        <span className="font-bold text-ink">empty today ({eth(h.still_held_eth)} ≈ {compactUsd(h.still_held_usd_now)})</span>.
-        The received−paid gap was almost all gas, not ETH sitting in a wallet. Because the money left
+      <p className="mt-4 max-w-225 text-pretty text-[13px] leading-[1.6] text-dim">
+        Because the money left
         near-immediately (not held through the crash), only{" "}
         <span className="font-bold text-loss">{compactUsd(h.depreciation_gap_usd)}</span> was lost to ETH’s
-        price falling between when it arrived and when it left, small relative to where the money went.
+        price falling between when it arrived and when it left.
       </p>
-      <div role="img" aria-label={chartLabel}
-           className="mt-4 flex h-30 items-end gap-0.5 rounded-md border border-line bg-panel3 p-3.5">
-        {monthly.map((m) => (
-          <div key={m.month} title={`${m.month}: ${m.eth_balance} Ξ ≈ ${compactUsd(m.usd_mark)}`}
-               className="flex h-full flex-1 flex-col justify-end">
-            <span className="block w-full rounded-t-xs"
-                  style={{ height: `${Math.max(2, (m.usd_mark / max) * 100)}%`,
-                           background: "rgba(255,107,107,.6)" }} />
-          </div>
-        ))}
+      {/* <div className="mt-4 overflow-x-auto rounded-md border border-line bg-panel3">
+        <div role="img" aria-label={chartLabel}
+             className="flex h-30 items-end gap-px p-3.5">
+          {weekly.map((m) => (
+            <div key={m.week} title={`week of ${m.week}: ${m.eth_balance} Ξ ≈ ${compactUsd(m.usd_mark)}`}
+                 className="flex h-full min-w-1 flex-1 flex-col justify-end sm:min-w-0.5">
+              <span className="block w-full rounded-t-xs"
+                    style={{ height: `${Math.max(2, (m.usd_mark / max) * 100)}%`,
+                             background: "rgba(255,107,107,.6)" }} />
+            </div>
+          ))}
+        </div>
       </div>
       <p className="mt-2.5 font-mono text-[10px] text-muted">
-        treasury balance, marked to market monthly · {method.valuation}
-      </p>
-      <p className="mt-1 max-w-xl text-[11px] text-dim">{method.caveats.join(" ")}</p>
+        treasury balance, marked to market weekly · {method.valuation}
+      </p> */}
+      {/* <p className="mt-1 max-w-xl text-[11px] text-dim">{method.caveats.join(" ")}</p> */}
     </section>
   );
 }

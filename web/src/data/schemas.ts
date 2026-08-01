@@ -130,6 +130,7 @@ export const UtilityProduct = z.object({
   price_eth: z.number().nullable().optional(),
   note: z.string(),
   image: z.string().nullable().optional(),
+  fit: z.boolean().optional(),
 });
 export type UtilityProduct = z.infer<typeof UtilityProduct>;
 export const PrimarySale = z.object({ label: z.string(), sub: z.string().optional() });
@@ -140,7 +141,9 @@ export const CollectionContent = z.object({
   off_chain_basis: OffChainBasis.optional(),
   primary_sale: PrimarySale.optional(),
   overview_image: z.string().nullable().optional(),
+  overview_video: z.string().nullable().optional(),
   overview_image_caption: z.string().nullable().optional(),
+  banner: z.string().nullable().optional(),
 });
 export type CollectionContent = z.infer<typeof CollectionContent>;
 
@@ -166,7 +169,7 @@ export const UsdAudit = z.object({
     depreciation_gap_usd: z.number(),
   }),
   by_class: z.object({ in: z.record(z.string(), UsdClass), out: z.record(z.string(), UsdClass) }),
-  monthly: z.array(z.object({ month: z.string(), eth_balance: z.number(), usd_mark: z.number() })),
+  weekly: z.array(z.object({ week: z.string(), eth_balance: z.number(), usd_mark: z.number() })),
   method: z.object({ wallets: z.array(z.string()), valuation: z.string(),
                      caveats: z.array(z.string()) }),
 }).nullable();

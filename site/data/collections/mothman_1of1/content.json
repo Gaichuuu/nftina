@@ -1,10 +1,15 @@
 {
  "overview": [
-  "The MetaZoo Mothman is a one-of-one (token #1017) from the Steve Aoki x Gal Yosef collaboration, created 20 September 2021. It was MetaZoo's second NFT project and became the most valuable object in the ecosystem.",
-  "It sold in a Sotheby's auction running 14 to 21 October 2021, the first NFT ever sold on Sotheby's then-new Metaverse platform. The winner also received a matching one-of-one Mothman promo card, the only one ever printed, and 100 booster boxes of Cryptid Nation: Nightfall 1st Edition.",
-  "The Sotheby's lot page pins the numbers: a final bid of $170,000 (bidder ak09) plus Sotheby's 26% buyer's premium, for a sold price of $214,200. Sotheby's kept the premium, roughly $44,200, plus any negotiated seller's commission.",
-  "The auction settled off-chain: every on-chain transfer of the token, including the move to the winner, carried no ETH, so no price is recorded on the blockchain itself."
+  "The MetaZoo Mothman is a 1/1 (token #1017) from the Steve Aoki x Gal Yosef collaboration, created September 20th, 2021.",
+  "# The Sotheby's sale",
+  "It sold in a Sotheby's auction running October 14th to 21st, 2021, **the first NFT ever sold on Sotheby's Metaverse platform**. The winner also received a matching 1/1 Mothman promo card, the only one ever printed, and 100 booster boxes of Cryptid Nation: Nightfall 1st Edition.",
+  "- Final bid **$170,000** (bidder ak09)",
+  "- Sotheby's **26% buyer's premium**",
+  "- Sold price **$214,200**, of which Sotheby's kept **~$44,200** in premium, plus any negotiated seller's commission",
+  "**Mint platform: Manifold**"
  ],
+ "overview_image": "https://gaichu.b-cdn.net/nftina/tokens/mothman_1of1/3fd959339ecd3764.jpg",
+ "overview_video": "https://gaichu.b-cdn.net/nftina/collections/mothman_1of1.mp4",
  "utility": [
   {
    "id": "mothman_promo_card",
@@ -12,7 +17,8 @@
    "price_usd": null,
    "price_eth": null,
    "note": "Exclusive Mothman 1/1 promo card, plus 100 Nightfall booster boxes.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/mothman_promo_card.webp?v=cfae0c50"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/mothman_promo_card.webp?v=cfae0c50",
+   "fit": false
   }
  ]
 }

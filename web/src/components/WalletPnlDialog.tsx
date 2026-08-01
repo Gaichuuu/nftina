@@ -22,9 +22,10 @@ export default function WalletPnlDialog({ address, onClose }: { address: string;
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-3 sm:p-8"
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 max-sm:p-0 sm:p-8"
          role="dialog" aria-modal="true" aria-label="Wallet profit and loss" onClick={onClose}>
-      <div className="w-full max-w-5xl rounded-md border border-line bg-bg p-5 shadow-2xl"
+      <div className="w-full max-w-5xl bg-bg p-4 shadow-2xl max-sm:min-h-full
+                      sm:rounded-md sm:border sm:border-line sm:p-5"
            onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center justify-between">
           <div className="font-mono text-[11px] uppercase tracking-[1px] text-muted">Wallet profit &amp; loss</div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { summary, findings, collections, sandbox3d, SLUGS } from "@/data/bundled";
+import { summary, findings, collections, SLUGS } from "@/data/bundled";
 import { eth, compactUsd, compactUsdDown } from "@/lib/format";
 import Container from "@/components/Container";
 import { StatCell, StatStrip } from "@/components/StatCell";
@@ -8,21 +8,11 @@ import WalletLookup from "@/components/WalletLookup";
 // import VolumeChart from "@/components/VolumeChart";
 import CollectionTile from "@/components/CollectionTile";
 import ModelViewer from "@/components/ModelViewer";
-
-/* 3D asset load */
-const HERO_LIMIT_BYTES = 4_000_000;
-const HERO_POOL = (() => {
-  const small = sandbox3d.filter((a) => (a.model_bytes ?? Infinity) <= HERO_LIMIT_BYTES);
-  return small.length ? small : sandbox3d;
-})();
-const DEFAULT_HERO =
-  HERO_POOL.find((a) => a.name.toLowerCase().includes("space penguins")) ?? HERO_POOL[0];
+import { DEFAULT_MODEL as DEFAULT_HERO, randomModel, type Model3d } from "@/lib/heroModel";
 
 export default function HomePage() {
-  const [hero, setHero] = useState<(typeof HERO_POOL)[number] | null>(null);
-  useEffect(() => {
-    if (HERO_POOL.length) setHero(HERO_POOL[Math.floor(Math.random() * HERO_POOL.length)]);
-  }, []);
+  const [hero, setHero] = useState<Model3d | null>(null);
+  useEffect(() => { setHero(randomModel()); }, []);
 
   return (
     <div>
@@ -54,6 +44,7 @@ export default function HomePage() {
         {/* HERO MODEL */}
         {DEFAULT_HERO && (
           <div className="pointer-events-none relative z-1 mx-auto mt-4 h-65 w-full max-w-90
+                          max-sm:mt-0 max-sm:h-50
                           lg:absolute lg:right-2.5 lg:-top-17.5 lg:mx-0 lg:mt-0 lg:h-160 lg:w-190 lg:max-w-none">
             <div className="absolute inset-0"
                  style={{ background: "radial-gradient(50% 45% at 55% 42%, rgba(139,233,255,.16), transparent 70%)",
@@ -73,12 +64,12 @@ export default function HomePage() {
           <Container className="pt-11">
             <StatStrip className="anim-rise-stagger grid-cols-2 sm:grid-cols-4">
               <StatCell bg="bg-bg" tone="hype" big={eth(findings.legs.aoki_eth)}
-                        sub={compactUsd(findings.legs.aoki_usd)} label="Sent to Aoki" />
+                        sub={compactUsd(findings.legs.aoki_usd)} label="→ Sent to Aoki" />
               <StatCell bg="bg-bg" big={eth(findings.legs.royalties_eth)}
-                        sub={compactUsd(findings.legs.royalties_usd)} label="Royalties to MetaZoo" />
+                        sub={compactUsd(findings.legs.royalties_usd)} label="→ MetaZoo Royalties" />
               <StatCell bg="bg-bg" tone="gain" big={eth(findings.flippers.total_gains_eth)}
                         sub={compactUsd(findings.flippers.total_gains_usd)}
-                        label="Taken by flippers" />
+                        label="→ Taken by flippers" />
               <StatCell bg="bg-bg" tone="loss"
                         big={summary.wallets_net_loss.toLocaleString()}
                         sub={`of ${summary.total_wallets.toLocaleString()}`}

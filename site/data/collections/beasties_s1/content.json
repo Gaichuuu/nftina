@@ -20,7 +20,8 @@
   "**Reveal**",
   "- 7/22/22 12pm EST",
   "Up until this point, all MetaZoo PFPs will be hidden in the form of a Chaos Crystal.",
-  "- At 12pm EST on 7/22/22, all Chaos Crystals will reveal their hidden PFPs!"
+  "- At 12pm EST on 7/22/22, all Chaos Crystals will reveal their hidden PFPs!",
+  "**Mint platform: Manifold**"
  ],
  "overview_image": "https://gaichu.b-cdn.net/nftina/overview/ws_3aeeb54f6445c9ef.webp",
  "utility": [
@@ -29,8 +30,9 @@
    "name": "NFT PFP box",
    "price_usd": 100,
    "price_eth": null,
-   "note": "Exclusive PFP boxes with redemption codes for the PFP 2.0 mint.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/nft_pfp_box.webp?v=a2a589a2"
+   "note": "Exclusive PFP boxes with redemption codes for the MetaZoo Games PFP 2.0 mint.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/nft_pfp_box.webp?v=a2a589a2",
+   "fit": false
   }
  ]
 }

@@ -13,7 +13,7 @@
     "date": "2021-12-02",
     "name": "MetaZoo Games Tokens presale",
     "price_eth": 0.1,
-    "note": "Genesis holders were allowed to mint 2 Coin Tokens during the whitelist presale.",
+    "note": "Whitelist to mint 2 MetaZoo Coin Tokens for each Genesis.",
     "image_file": "data/media/tokens/coin_tokens/b5226f053fc0637a.gif"
   },
   {
@@ -48,7 +48,7 @@
     "date": "2022-02-04",
     "name": "MetaZoo Valentine's Day box",
     "price_usd": 30,
-    "note": "A Valentines NFT was airdropped for every box purchased.",
+    "note": "Valentines NFT airdropped for every box purchase.",
     "image_file": "data/media/tokens/valentines/e92714928b0a0794.png"
   },
   {
@@ -57,7 +57,7 @@
     "date": "2022-02-13",
     "name": "Wilderness Pin Club case",
     "price_usd": 150,
-    "note": "Exclusive \"The Wild Ones\" promo card, and a Wilderness NFT airdropped for every case purchased.",
+    "note": "Exclusive \"The Wild Ones\" promo card, and Wilderness NFT airdropped for every case purchase.",
     "image_file": "data/media/tokens/wilderness/0e6f8dae9e747d8a.png"
   },
   {
@@ -92,7 +92,7 @@
     "collection": "coin_tokens",
     "date": "2022-07-14",
     "name": "4th of July 2022 promo card",
-    "note": "A free promo card for each Token.",
+    "note": "Free promo card for each Token.",
     "image_file": "4th-july-crop.jpg"
   },
   {
@@ -101,7 +101,7 @@
     "date": "2022-07-15",
     "name": "MetaZoo Games Beasties allowlist mint",
     "price_eth": 0.1,
-    "note": "Token holders got an allowlist place for the Beasties mint.",
+    "note": "MetaZoo Games Beasties mint allowlist for each Token.",
     "image_file": "data/media/overview/ws_3aeeb54f6445c9ef.webp"
   },
   {
@@ -109,7 +109,7 @@
     "collection": "coin_tokens",
     "date": "2022-07-18",
     "name": "MetaZoo Games Beasties free mint",
-    "note": "A free Beasties mint for each Token held.",
+    "note": "MetaZoo Games Beasties airdropped for each Token.",
     "image_file": "data/media/overview/ws_3aeeb54f6445c9ef.webp"
   },
   {
@@ -136,7 +136,7 @@
     "date": "2022-12-11",
     "name": "NFT PFP box",
     "price_usd": 100,
-    "note": "Exclusive PFP boxes with redemption codes for the PFP 2.0 mint.",
+    "note": "Exclusive PFP boxes with redemption codes for the MetaZoo Games PFP 2.0 mint.",
     "image_file": "nft-box-hq.webp"
   },
   {
@@ -144,7 +144,7 @@
     "collection": "genesis_2021",
     "date": "2023-01-01",
     "name": "MetaZoo Genesis re-issue",
-    "note": "Re-issued Genesis tokens, airdropped to holders.",
+    "note": "MetaZoo Genesis re-issue tokens airdropped to holders.",
     "image_file": "data/media/tokens/genesis_reissue_1155/afbb443f6efb396d.gif"
   },
   {
@@ -153,7 +153,7 @@
     "date": "2023-02-04",
     "name": "2023 Valentine Plush & Promo Set",
     "price_usd": 50,
-    "note": "Exclusive gold heart variant.",
+    "note": "Exclusive gold heart variant promo card and plush.",
     "image_file": "Valentines-gold-crop.png"
   },
   {

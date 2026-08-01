@@ -110,7 +110,8 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
 
       {/* per-collection ranked rows */}
       <div className="mt-3 flex items-stretch gap-3">
-        <div className="min-w-0 flex-1 overflow-x-auto rounded-md border border-line">
+        <div className="min-w-0 flex-1 overflow-x-auto border-line max-sm:-mx-4 max-sm:border-y
+                        sm:rounded-md sm:border">
           <table className="w-full min-w-150 text-[12.5px] tabular-nums">
             <thead className="bg-panel2 font-mono text-[10px] font-semibold uppercase tracking-widest text-muted">
               <tr>

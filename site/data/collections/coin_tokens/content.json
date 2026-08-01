@@ -4,7 +4,6 @@
   "Public Sale: 2 Dec, 12pm EST to 12am EST.",
   "- 5,000 items",
   "- 0.1 ETH mint price",
-  "**Blockchain platform powered by Ether Cards**",
   "Follow MetaZoo Games on Twitter, Instagram, and stay up to date by following us on Discord for news about new drops happening weekly!",
   "# About the collection",
   "**The MetaZoo Token**",
@@ -42,8 +41,7 @@
   "- Step 4: Press Mint and you'll be prompted to sign your wallet address and confirm payment.",
   "- Step 5: Once you confirm your payment you can follow the transaction on Etherscan; it can take up to 30 seconds and sometimes a little bit longer.",
   "- Step 6: Congratulations! Once a successful purchase has been made you will be able to view them in your wallet or on OpenSea.io.",
-  "# Our reconstruction",
-  "On-chain primary revenue reconstructs to roughly 280 ETH (about $1.23M at the time), notably below the widely-cited '~408 ETH / $1.836M'; most buyers paid the 0.1 ETH whitelist price rather than the high end of the Dutch auction. Today the floor sits near 0.005 ETH (about $15)."
+  "**Mint platform: Ether Cards**"
  ],
  "overview_image": "https://gaichu.b-cdn.net/nftina/tokens/coin_tokens/b4c6e59bdd356297.gif",
  "utility": [
@@ -53,7 +51,8 @@
    "price_usd": null,
    "price_eth": null,
    "note": "111 Flying Manta Ray NFTs airdropped to random Token holders.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/manta_ray_airdrop.gif?v=00bfcd52"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/manta_ray_airdrop.gif?v=00bfcd52",
+   "fit": true
   },
   {
    "id": "dim_mak_box",
@@ -61,7 +60,8 @@
    "price_usd": 50,
    "price_eth": null,
    "note": "Randomly seeded with Nightfall, Cryptid Nation 1st Edition, and Kickstarter booster packs.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/dim_mak_box.jpg?v=5e709b9a"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/dim_mak_box.jpg?v=5e709b9a",
+   "fit": false
   },
   {
    "id": "cn2_booster_box",
@@ -69,23 +69,26 @@
    "price_usd": 100,
    "price_eth": null,
    "note": "Blue NFT sticker on top of the shrink wrap.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/cn2_booster_box.jpg?v=7569c5c8"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/cn2_booster_box.jpg?v=7569c5c8",
+   "fit": false
   },
   {
    "id": "valentines_box",
    "name": "MetaZoo Valentine's Day box",
    "price_usd": 30,
    "price_eth": null,
-   "note": "A Valentines NFT was airdropped for every box purchased.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/valentines_box.gif?v=24d0cacc"
+   "note": "Valentines NFT airdropped for every box purchase.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/valentines_box.gif?v=24d0cacc",
+   "fit": true
   },
   {
    "id": "wilderness_pin_club",
    "name": "Wilderness Pin Club case",
    "price_usd": 150,
    "price_eth": null,
-   "note": "Exclusive \"The Wild Ones\" promo card, and a Wilderness NFT airdropped for every case purchased.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_pin_club.gif?v=382e76c8"
+   "note": "Exclusive \"The Wild Ones\" promo card, and Wilderness NFT airdropped for every case purchase.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_pin_club.gif?v=382e76c8",
+   "fit": true
   },
   {
    "id": "wilderness_booster_box",
@@ -93,7 +96,8 @@
    "price_usd": 100,
    "price_eth": null,
    "note": "Gold NFT sticker on top of the shrink wrap.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_booster_box.jpg?v=5325d104"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_booster_box.jpg?v=5325d104",
+   "fit": false
   },
   {
    "id": "nft_gilding",
@@ -101,7 +105,8 @@
    "price_usd": 15,
    "price_eth": null,
    "note": "Exclusive rainbow gilding for USPCC playing cards.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/nft_gilding.webp?v=091ad270"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/nft_gilding.webp?v=091ad270",
+   "fit": false
   },
   {
    "id": "ufo_pin_club",
@@ -109,31 +114,35 @@
    "price_usd": 150,
    "price_eth": null,
    "note": "Exclusive \"The Far Out Bunch\" promo card, a unique security sticker featuring the coin NFTs, and variant case artwork with the UFO printed on the side.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/ufo_pin_club.jpg?v=9c2ae24d"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/ufo_pin_club.jpg?v=9c2ae24d",
+   "fit": false
   },
   {
    "id": "july4_promo_card",
    "name": "4th of July 2022 promo card",
    "price_usd": null,
    "price_eth": null,
-   "note": "A free promo card for each Token.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/july4_promo_card.jpg?v=1b38b644"
+   "note": "Free promo card for each Token.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/july4_promo_card.jpg?v=1b38b644",
+   "fit": false
   },
   {
    "id": "beasties_allowlist_mint",
    "name": "MetaZoo Games Beasties allowlist mint",
    "price_usd": 123.12,
    "price_eth": 0.1,
-   "note": "Token holders got an allowlist place for the Beasties mint.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/beasties_allowlist_mint.webp?v=58cb14a3"
+   "note": "MetaZoo Games Beasties mint allowlist for each Token.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/beasties_allowlist_mint.webp?v=58cb14a3",
+   "fit": false
   },
   {
    "id": "beasties_free_mint",
    "name": "MetaZoo Games Beasties free mint",
    "price_usd": null,
    "price_eth": null,
-   "note": "A free Beasties mint for each Token held.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/beasties_free_mint.webp?v=58cb14a3"
+   "note": "MetaZoo Games Beasties airdropped for each Token.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/beasties_free_mint.webp?v=58cb14a3",
+   "fit": false
   },
   {
    "id": "ufo_booster_box",
@@ -141,7 +150,8 @@
    "price_usd": 100,
    "price_eth": null,
    "note": "Silver NFT sticker underneath the shrink wrap, in place of the standard security stickers.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/ufo_booster_box.jpg?v=855400fa"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/ufo_booster_box.jpg?v=855400fa",
+   "fit": false
   },
   {
    "id": "seance_booster_box",
@@ -149,15 +159,17 @@
    "price_usd": 100,
    "price_eth": null,
    "note": "Colorized NFT sticker underneath the shrink wrap, in place of the standard security stickers.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/seance_booster_box.jpg?v=56ce3c4f"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/seance_booster_box.jpg?v=56ce3c4f",
+   "fit": false
   },
   {
    "id": "valentines_plush_2023",
    "name": "2023 Valentine Plush & Promo Set",
    "price_usd": 50,
    "price_eth": null,
-   "note": "Exclusive gold heart variant.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/valentines_plush_2023.png?v=e569ce12"
+   "note": "Exclusive gold heart variant promo card and plush.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/valentines_plush_2023.png?v=e569ce12",
+   "fit": false
   },
   {
    "id": "native_booster_box",
@@ -165,7 +177,8 @@
    "price_usd": 100,
    "price_eth": null,
    "note": "Colorized NFT sticker underneath the shrink wrap, in place of the standard security stickers.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/native_booster_box.webp?v=6c1e0a6d"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/native_booster_box.webp?v=6c1e0a6d",
+   "fit": false
   }
  ]
 }

@@ -1,31 +1,38 @@
 {
  "overview": [
-  "MetaZoo's first venture into NFTs, marketed at the time as Genesis 2021: seventeen cryptids drawn in a 16-bit animated style and sold through a Mintable store across March 2021, months before the Coin Tokens drop.",
-  "The sale opened on 7 March 2021 with ten Mothman Contracts and ran cryptid by cryptid for the rest of the month. The format varied: some were seven-day auctions opening at $0.99 (Squonk Baby and the NYC Sewer Alligator, 25 each), others sold at a flat price, with the River Dino listed at $4.99. Supply ran from 10 of the scarcest up to 100 of the most common.",
-  "**These were not free mints, but the chain cannot price them.** Mintable settled the sales off-chain, so the tokens were minted to the store's own wallet and delivered to buyers in transactions carrying no ETH. Every claim transfer reads as 0 ETH, which is why no primary revenue appears here. Only the opening prices survive, in MetaZoo's own announcements; the amounts buyers actually paid are not recoverable from any public source.",
-  "947 Genesis tokens were minted on-chain (595 on the dedicated contract, 352 more inside the shared Mintable store), but **116 of them never left MetaZoo's own store wallet**, so roughly 831 reached collectors. Almost all of the unsold remainder is a single block of 110 Piasa Birds: MetaZoo advertised 100 of that cryptid and minted 210, and 104 of the extras are still sitting where they were minted. Every other cryptid sold through at 97% or better.",
-  "That gap is why the re-issue does not line up with the mint count. The 2023 airdrop sent 890 editions, close to the 875 MetaZoo advertised and to the 831 that actually sold, rather than to the 947 minted. Unsold inventory got no airdrop.",
-  "Genesis holders were the ecosystem's first adopters, and the collection later earned a re-issue and a serialized promo card of its own."
+  "MetaZoo's first venture into NFTs, marketed at the time as **Genesis 2021**, sold through the Mintable storefront.",
+  "# How the sale ran",
+  "The sale opened on March 7th, 2021 with ten Mothman Contracts. Supply ran from 10 of the scarcest up to 100 of the most common, and the format varied:",
+  "- **Seven-day auctions** opening at $0.99, for tokens such as Squonk Baby and the NYC Sewer Alligator",
+  "- **Flat price** listed at $4.99, for tokens such as River Dino",
+  "MetaZoo deployed the contract from its own wallet on March 13th, 2021 and minted the tokens itself, in nine batches through that November. Purchases were made off-chain via the Mintable storefront.",
+  "# 116 remaining",
+  "947 Genesis tokens were minted on-chain (595 on the dedicated contract, 352 more inside the shared Mintable store), but **116 of them never left MetaZoo's own deployer wallet**, so ~831 reached collectors.",
+  "Almost all remaining unsold is a single block of 110 Piasa Birds, still sitting in the deployer wallet. Every other cryptid sold through at ~97%.",
+  "**Mint platform: Mintable**"
  ],
  "primary_sale": {
   "label": "off-chain"
  },
+ "overview_image": "https://gaichu.b-cdn.net/nftina/tokens/mintable_early/d3c83da69b416c39.gif",
  "utility": [
   {
    "id": "genesis_token_presale",
    "name": "MetaZoo Games Tokens presale",
    "price_usd": 451.12,
    "price_eth": 0.1,
-   "note": "Genesis holders were allowed to mint 2 Coin Tokens during the whitelist presale.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/genesis_token_presale.gif?v=ab0b797c"
+   "note": "Whitelist to mint 2 MetaZoo Coin Tokens for each Genesis.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/genesis_token_presale.gif?v=ab0b797c",
+   "fit": true
   },
   {
    "id": "genesis_reissue_airdrop",
    "name": "MetaZoo Genesis re-issue",
    "price_usd": null,
    "price_eth": null,
-   "note": "Re-issued Genesis tokens, airdropped to holders.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/genesis_reissue_airdrop.gif?v=e8bf43b2"
+   "note": "MetaZoo Genesis re-issue tokens airdropped to holders.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/genesis_reissue_airdrop.gif?v=e8bf43b2",
+   "fit": true
   }
  ]
 }

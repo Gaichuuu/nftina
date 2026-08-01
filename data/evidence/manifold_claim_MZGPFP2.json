@@ -1,0 +1,90 @@
+{
+  "source": "https://apps.api.manifoldxyz.dev/public/instance/data?id=73296112 (backing API for the live claim page https://app.manifold.xyz/c/MZGPFP2), fetched 2026-08-01",
+  "about": "First-party Manifold claim-page record for MetaZoo Games PFP 2.0. This is the mint page's own data: the claim title, the description MetaZoo authored, the free mint price, the redemption window and the claim supply.",
+  "notes": {
+    "claim_title": "NFTina - the claim page is titled after the cat, not after the contract name 'MetaZoo Games PFP 2.0'.",
+    "description_verbatim": "The authored description is complete as stored: a sentence broken off mid-word ('Seri-'), then '...', then '*Meow*', then '...'. It is not truncated by our fetch.",
+    "corroborates_total_mints": "publicData.tokenSupply == 2381 == our on-chain total_mints for pfp_2.",
+    "corroborates_free_mint": "mintPrice 0 ETH confirms the on-chain primary revenue (~1.19 ETH) is gas/mint-fee only, not a sale price. The real cost was the physical box (see collection_content.json pfp_2.off_chain_basis).",
+    "claim_code_gating": "signatureAddress is set with walletMax 0 and mintingRestriction 'None', i.e. access was gated by signed claim codes rather than an allowlist. Matches Manifold's own Claim Codes case study (manifold_metazoo.json).",
+    "window_utc": "start 2023-08-18T20:00:00Z, end 2023-08-25T04:00:00Z"
+  },
+  "instance": {
+    "id": 73296112,
+    "creator": {
+      "id": 1275577745,
+      "name": "MetaZoo Games",
+      "slug": "metazoo-games",
+      "address": "0x77b94a55684c95d59a8f56a234b6e555fc79997c"
+    },
+    "slug": "MZGPFP2",
+    "publicData": {
+      "asset": {
+        "created_by": "MetaZoo Games",
+        "name": "NFTina",
+        "description": "Welcome to MetaZoo's PFP 2.0 Seri-\n\n...\n\n*Meow*\n\n...",
+        "attributes": [
+          {
+            "trait_type": "Artist",
+            "value": "MetaZoo Games"
+          }
+        ],
+        "image_details": {
+          "bytes": 34064,
+          "format": "GIF",
+          "sha256": "988b0725dc7c07f31f3aa4677f8c8a912a6a99aac1acaf84c7b39867e32f5597",
+          "width": 400,
+          "height": 400
+        },
+        "image": "https://arweave.net/WKj6c-SN1ockY81QJ82ZNsVeZnJqXGhAsNvU6zjoc_M",
+        "image_url": "https://arweave.net/WKj6c-SN1ockY81QJ82ZNsVeZnJqXGhAsNvU6zjoc_M",
+        "arweaveTransactionId": "Z91TlYo38sK81zgeUqsvchcYyk5Abzor6CyJGAtDlq8"
+      },
+      "endDate": 1692936000000,
+      "network": 1,
+      "contract": {
+        "id": 850264304,
+        "name": "MetaZoo Games PFP 2.0",
+        "symbol": "MZPFP",
+        "contractAddress": "0xf279e4d18aa013143bb8242e0d65bcc62acbbb5a",
+        "networkId": 1,
+        "spec": "ERC721"
+      },
+      "mintPrice": {
+        "value": "0",
+        "decimals": 18,
+        "currency": "ETH",
+        "erc20": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ether"
+      },
+      "startDate": 1692388800000,
+      "walletMax": 0,
+      "claimIndex": 73296112,
+      "clientTheme": {
+        "logos": {
+          "main": "https://metazoogames.com/cdn/shop/files/metazoogames_logo_d5348adb-10c6-4f85-b0f5-90f1089659ce_180x@2x.png?v=1621899860"
+        },
+        "background": {
+          "image": ""
+        },
+        "videoEmbed": {
+          "src": "",
+          "title": "",
+          "poster": ""
+        }
+      },
+      "description": "Welcome to MetaZoo's PFP 2.0 Seri-\n\n...\n\n*Meow*\n\n...",
+      "tokenSupply": 2381,
+      "signatureAddress": "0x0EDFc8A85002600ff589e99c6E047D0f227811d8",
+      "mintingRestriction": "None",
+      "extensionAddress721": {
+        "value": "0x56fe278ec785e8ae6dfb0fda0af4cc7a1b62baf1",
+        "version": 0
+      }
+    },
+    "appId": 2522713783,
+    "appName": "Edition page",
+    "appSlug": "c"
+  }
+}

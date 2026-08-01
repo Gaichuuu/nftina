@@ -3791,7 +3791,7 @@
    "realized_pnl_usd": 0.0,
    "eth_spent": 0.0,
    "eth_received": 0.0,
-   "metazoo": false,
+   "metazoo": true,
    "tokens_minted": 0,
    "tokens_received": 3,
    "tokens_sent": 0,

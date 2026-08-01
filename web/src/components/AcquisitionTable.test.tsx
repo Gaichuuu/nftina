@@ -61,5 +61,8 @@ test("shows held-now count and marks multi-tenant contracts n/a", () => {
 test("renders the underwater blue-chip loss % (paid → floor)", () => {
   render(<AcquisitionTable acq={acq} />);
   expect(screen.getByText("−66%")).toBeInTheDocument();
-  expect(screen.getByText(/paid ~93\.26 Ξ → floor ~31\.99 Ξ/)).toBeInTheDocument();
+  expect(screen.getByText((_, el) =>
+    /paid ~93\.26 Ξ\s*→ floor ~31\.99 Ξ/.test(el?.textContent ?? "")
+    && !Array.from(el?.children ?? []).some((c) => /paid ~93\.26/.test(c.textContent ?? ""))
+  )).toBeInTheDocument();
 });

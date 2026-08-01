@@ -5,7 +5,6 @@
       "Public Sale: 2 Dec, 12pm EST to 12am EST.",
       "- 5,000 items",
       "- 0.1 ETH mint price",
-      "**Blockchain platform powered by Ether Cards**",
       "Follow MetaZoo Games on Twitter, Instagram, and stay up to date by following us on Discord for news about new drops happening weekly!",
       "# About the collection",
       "**The MetaZoo Token**",
@@ -43,8 +42,7 @@
       "- Step 4: Press Mint and you'll be prompted to sign your wallet address and confirm payment.",
       "- Step 5: Once you confirm your payment you can follow the transaction on Etherscan; it can take up to 30 seconds and sometimes a little bit longer.",
       "- Step 6: Congratulations! Once a successful purchase has been made you will be able to view them in your wallet or on OpenSea.io.",
-      "# Our reconstruction",
-      "On-chain primary revenue reconstructs to roughly 280 ETH (about $1.23M at the time), notably below the widely-cited '~408 ETH / $1.836M'; most buyers paid the 0.1 ETH whitelist price rather than the high end of the Dutch auction. Today the floor sits near 0.005 ETH (about $15)."
+      "**Mint platform: Ether Cards**"
     ],
     "overview_image": "tokens/coin_tokens/b4c6e59bdd356297.gif"
   },
@@ -70,30 +68,43 @@
       "**Reveal**",
       "- 7/22/22 12pm EST",
       "Up until this point, all MetaZoo PFPs will be hidden in the form of a Chaos Crystal.",
-      "- At 12pm EST on 7/22/22, all Chaos Crystals will reveal their hidden PFPs!"
+      "- At 12pm EST on 7/22/22, all Chaos Crystals will reveal their hidden PFPs!",
+      "**Mint platform: Manifold**"
     ],
     "overview_image": "ws_3aeeb54f6445c9ef.webp"
   },
   "genesis_2021": {
     "overview": [
-      "MetaZoo's first venture into NFTs, marketed at the time as Genesis 2021: seventeen cryptids drawn in a 16-bit animated style and sold through a Mintable store across March 2021, months before the Coin Tokens drop.",
-      "The sale opened on 7 March 2021 with ten Mothman Contracts and ran cryptid by cryptid for the rest of the month. The format varied: some were seven-day auctions opening at $0.99 (Squonk Baby and the NYC Sewer Alligator, 25 each), others sold at a flat price, with the River Dino listed at $4.99. Supply ran from 10 of the scarcest up to 100 of the most common.",
-      "**These were not free mints, but the chain cannot price them.** Mintable settled the sales off-chain, so the tokens were minted to the store's own wallet and delivered to buyers in transactions carrying no ETH. Every claim transfer reads as 0 ETH, which is why no primary revenue appears here. Only the opening prices survive, in MetaZoo's own announcements; the amounts buyers actually paid are not recoverable from any public source.",
-      "947 Genesis tokens were minted on-chain (595 on the dedicated contract, 352 more inside the shared Mintable store), but **116 of them never left MetaZoo's own store wallet**, so roughly 831 reached collectors. Almost all of the unsold remainder is a single block of 110 Piasa Birds: MetaZoo advertised 100 of that cryptid and minted 210, and 104 of the extras are still sitting where they were minted. Every other cryptid sold through at 97% or better.",
-      "That gap is why the re-issue does not line up with the mint count. The 2023 airdrop sent 890 editions, close to the 875 MetaZoo advertised and to the 831 that actually sold, rather than to the 947 minted. Unsold inventory got no airdrop.",
-      "Genesis holders were the ecosystem's first adopters, and the collection later earned a re-issue and a serialized promo card of its own."
+      "MetaZoo's first venture into NFTs, marketed at the time as **Genesis 2021**, sold through the Mintable storefront.",
+      "# How the sale ran",
+      "The sale opened on March 7th, 2021 with ten Mothman Contracts. Supply ran from 10 of the scarcest up to 100 of the most common, and the format varied:",
+      "- **Seven-day auctions** opening at $0.99, for tokens such as Squonk Baby and the NYC Sewer Alligator",
+      "- **Flat price** listed at $4.99, for tokens such as River Dino",
+      "MetaZoo deployed the contract from its own wallet on March 13th, 2021 and minted the tokens itself, in nine batches through that November. Purchases were made off-chain via the Mintable storefront.",
+      "# 116 remaining",
+      "947 Genesis tokens were minted on-chain (595 on the dedicated contract, 352 more inside the shared Mintable store), but **116 of them never left MetaZoo's own deployer wallet**, so ~831 reached collectors.",
+      "Almost all remaining unsold is a single block of 110 Piasa Birds, still sitting in the deployer wallet. Every other cryptid sold through at ~97%.",
+      "**Mint platform: Mintable**"
     ],
     "primary_sale": {
       "label": "off-chain"
-    }
+    },
+    "overview_image": "tokens/mintable_early/d3c83da69b416c39.gif"
   },
   "pfp_2": {
     "overview": [
-      "The second PFP generation, and the collection this project is named after ('Nftina', the electric cat MetaZoo introduced as its NFT mascot alongside this drop).",
-      "**It was claimed, not sold.** The PFP boxes that shipped from 11 December 2022 contained black booster packs holding scratch-off cards, and the codes on those cards were what unlocked a PFP 2.0. The claim itself ran on Manifold as a free mint, so buyers paid only gas, and on-chain primary revenue is just 1.19 ETH (roughly $2,000) in mint fees. The real cost was the $100 box.",
-      "The artwork drew on the Seance, UFO and Native sets, and 2,381 were claimed before the redemption window closed in August 2023.",
-      "MetaZoo never wrote a real description for it. The official copy on the mint page reads, in full: \"Welcome to MetaZoo's PFP 2.0 Seri- ... *Meow* ...\"",
-      "It arrived as MetaZoo's on-chain activity was already contracting, and it trades today at a floor far below what the boxes cost."
+      "Welcome to MetaZoo's PFP 2.0 Seri-",
+      "...",
+      "Meow",
+      "...",
+      "**Mint ended 08/25/2023 @ 04:00 AM UTC**",
+      "- **Token Spec** ERC721",
+      "- **Start Date** 08/18/2023",
+      "- **End Date** 08/25/2023",
+      "- **Edition Limit** 2381",
+      "- **Network** ethereum",
+      "- **Contract** 0xf279...bb5a",
+      "**Mint platform: Manifold**"
     ],
     "overview_image": "w_640.webp",
     "off_chain_basis": {
@@ -105,63 +116,93 @@
   "valentines": {
     "overview": [
       "A small Valentine's-themed ERC-1155 set (token IDs 1 to 6). The same contract also holds the Wilderness Pinclub tokens (IDs 7 to 11), so the two drops share an address but are counted separately here.",
-      "**The physical set and the NFT are a year apart.** MetaZoo released the 2022 Chibi Valentine's mini-set on 7 February 2022 with a print run of 25,000 boxes, and Coin Token holders who bought a $30 box were promised a Valentines NFT for each purchase. Roughly 1,200 of the 2,305 Coin Tokens were redeemed against those boxes. The NFTs themselves were not minted on-chain until February 2023.",
-      "Economically negligible: roughly 0.4 ETH (a few hundred dollars) of lifetime volume across the whole contract."
+      "# Airdrop delays",
+      "MetaZoo released the 2022 Chibi Valentine's mini-set on February 7th, 2022, and Coin Token holders who bought a $30 box were promised a Valentines NFT for each purchase.",
+      "- Roughly **1,200 of the 2,305 Coin Tokens** were redeemed against those boxes",
+      "- The NFTs themselves were not minted on-chain until **February 2023**",
+      "Roughly 0.4 ETH (a few hundred dollars) of lifetime volume across the whole contract.",
+      "**Mint platform: Manifold**"
     ],
     "off_chain_basis": {
       "unit_cost_usd": 30,
       "unit_label": "off-chain Valentines mint",
       "note": "MetaZoo Valentines was sold off-chain: holders paid about $30 to mint, with only a trivial on-chain fee ever recorded. Measured from that real $30 price against the current floor, a Valentines piece is far underwater on what holders actually paid, not the near-zero the on-chain mint fee implies."
-    }
+    },
+    "overview_image": "tokens/valentines/e92714928b0a0794.png"
   },
   "genesis_reissue_1155": {
     "overview": [
-      "Seventeen updated-art cryptid tokens re-issued on OpenSea's shared storefront and airdropped to earlier holders, mirroring the seventeen cryptids of the original 2021 Genesis run (Mothman, Jersey Devil, Sinkhole Sam and the rest).",
-      "Nothing was sold: recipients paid nothing, so primary revenue is zero. Unlike the one-per-token original, these are ERC-1155 editions, and the 890 pieces here are edition counts rather than distinct artworks. That 890 tracks the roughly 875 Genesis tokens MetaZoo advertised and the 831 that actually reached collectors, not the 947 minted: the 116 Genesis tokens still sitting in MetaZoo's own store wallet received no airdrop.",
-      "The distribution ran for eleven months, from August 2022 to June 2023, rather than as a single snapshot: 638 sends to 265 wallets. Matched against what each recipient held at the moment their airdrop arrived, 824 of the 890 editions went to wallets holding Genesis at the time, another 26 to wallets that had held one earlier and sold in the meantime, and 40 to wallets that never held one, most of those holding Coin Tokens or Beasties instead. Only 13 editions reached wallets with no MetaZoo history at all.",
-      "About 38.9 ETH (roughly $62,000) of secondary volume and 1.79 ETH (about $4,500) of royalties have flowed through them since.",
-      "Holders of a re-issue token were later offered the Neo Genesis promo, an exclusive serialized physical card matching the Genesis NFT they held."
-    ]
+      "Updated tokens re-issued on OpenSea's shared storefront airdropped to og Genesis holders.",
+      "# The airdrop",
+      "The distribution ran for eleven months, from August 2022 to June 2023: 638 sends to 265 wallets. Matched against what each recipient held at the moment their airdrop arrived:",
+      "- **824 of the 890 editions** went to wallets holding Genesis at the time",
+      "- **26** went to wallets that had held one earlier and sold in the meantime",
+      "- **40** went to wallets that never held one, most of those holding Coin Tokens or Beasties instead",
+      "- Only **13** reached wallets with no MetaZoo history at all",
+      "About 38.9 ETH (~$62,000) secondary volume and 1.79 ETH (~$4,500) of royalties flowed through since.",
+      "Holders were able to redeem a Neo Genesis promo card, an exclusive serialized MetaZoo card matching the Genesis NFT they held.",
+      "**Mint platform: OpenSea shared storefront**"
+    ],
+    "overview_image": "tokens/genesis_reissue_1155/afbb443f6efb396d.gif"
   },
   "aoki": {
     "overview": [
-      "Steve Aoki's own creator contract (deployed 17 Jul 2021), included here because it holds the MetaZoo-linked 'Mothman' 1/1 (token #1017) that sold at Sotheby's for roughly $214k.",
-      "This is not a MetaZoo-issued collection; it is an Aoki artifact that intersects the MetaZoo story through the Mothman piece and its cryptid IP."
+      "Steve Aoki's own creator contract (deployed July 17th, 2021), included here because it holds the MetaZoo-linked 'Mothman' 1/1 (token #1017) that sold at Sotheby's for roughly $214k.",
+      "**This is not a MetaZoo-issued collection.** It is an Aoki artifact that intersects the MetaZoo story through the Mothman piece and its cryptid IP.",
+      "**Mint platform: Manifold**"
     ]
   },
   "wilderness": {
     "overview": [
       "MetaZoo Wilderness (Pinclub) is a small five-token ERC-1155 set (IDs 7 to 11) sharing its contract with the Valentines drop.",
-      "It accompanied the Wilderness set, released 14 March 2022, and the $150 Pin Club case that Coin Token holders could buy: each case came with an exclusive promo card and a Wilderness NFT airdropped per purchase. MetaZoo put the NFT-label Wilderness box run at around 2,800 to 3,000, and capped the token-holder presale at two boxes per Coin Token.",
-      "On-chain activity is minimal: the Wilderness tokens trade rarely and for small amounts, and combined Valentines plus Wilderness volume is roughly 0.4 ETH (a few hundred dollars)."
+      "# The Pin Club case",
+      "The $150 Pin Club case sold to NFT holders came with an exclusive **The Wild Ones** promo card and Wilderness NFT airdropped per purchase.",
+      "Roughly 0.4 ETH (a few hundred dollars) of lifetime volume across the whole contract.",
+      "**Mint platform: Manifold**"
     ],
     "off_chain_basis": {
       "unit_cost_usd": 150,
       "unit_label": "off-chain Wilderness mint",
       "note": "The Wilderness Pin Club drop carried an off-chain mint price around $150, far above the negligible on-chain fee. Against the current floor, that $150 cost basis leaves holders deeply underwater on what they actually paid."
-    }
+    },
+    "overview_image": "tokens/wilderness/0e6f8dae9e747d8a.png"
   },
   "tournament_prizes": {
     "overview": [
-      "Three gifted one-of-one trophies (first, second and third place) from the MetaZoo Games New Year's Tabletop Simulator tournament, minted on the shared OpenSea storefront.",
-      "The prizes changed shape before they shipped. MetaZoo first announced a spinning-coin token for third place, a one-of-one Bronze Snowman, in December 2021, then scrapped that design and gifted these trophies instead. Winners were announced on 2 January 2022, and the tokens were not minted until 1 February 2022.",
-      "As gifted prizes they had no public primary sale, so on-chain primary revenue is zero and secondary activity is minimal."
-    ]
+      "On January 1st, 2022, MetaZoo Games hosted the New Year's Tabletop Simulator tournament, where 1/1 NFT prizes were awarded:",
+      "- 1st Place: Gold 1-of-1 MetaZoo Games Token NFT",
+      "- 2nd Place: Silver 1-of-1 MetaZoo Games Token NFT",
+      "- 3rd Place: Bronze Snowman 1-of-1 Token NFT",
+      "# Original design",
+      "MetaZoo first announced a spinning-coin token for third place, a 1/1 Bronze Snowman, in December 2021, before scrapping that design.",
+      "- Winners announced **January 2nd, 2022**",
+      "- Tokens were minted on **February 1st, 2022**",
+      "No secondary activity for this collection.",
+      "**Mint platform: OpenSea shared storefront**"
+    ],
+    "overview_image": "mzq_416241fd0fee73d3.gif"
   },
   "mothman_1of1": {
     "overview": [
-      "The MetaZoo Mothman is a one-of-one (token #1017) from the Steve Aoki x Gal Yosef collaboration, created 20 September 2021. It was MetaZoo's second NFT project and became the most valuable object in the ecosystem.",
-      "It sold in a Sotheby's auction running 14 to 21 October 2021, the first NFT ever sold on Sotheby's then-new Metaverse platform. The winner also received a matching one-of-one Mothman promo card, the only one ever printed, and 100 booster boxes of Cryptid Nation: Nightfall 1st Edition.",
-      "The Sotheby's lot page pins the numbers: a final bid of $170,000 (bidder ak09) plus Sotheby's 26% buyer's premium, for a sold price of $214,200. Sotheby's kept the premium, roughly $44,200, plus any negotiated seller's commission.",
-      "The auction settled off-chain: every on-chain transfer of the token, including the move to the winner, carried no ETH, so no price is recorded on the blockchain itself."
-    ]
+      "The MetaZoo Mothman is a 1/1 (token #1017) from the Steve Aoki x Gal Yosef collaboration, created September 20th, 2021.",
+      "# The Sotheby's sale",
+      "It sold in a Sotheby's auction running October 14th to 21st, 2021, **the first NFT ever sold on Sotheby's Metaverse platform**. The winner also received a matching 1/1 Mothman promo card, the only one ever printed, and 100 booster boxes of Cryptid Nation: Nightfall 1st Edition.",
+      "- Final bid **$170,000** (bidder ak09)",
+      "- Sotheby's **26% buyer's premium**",
+      "- Sold price **$214,200**, of which Sotheby's kept **~$44,200** in premium, plus any negotiated seller's commission",
+      "**Mint platform: Manifold**"
+    ],
+    "overview_image": "tokens/mothman_1of1/3fd959339ecd3764.jpg",
+    "overview_video": "collections/mothman_1of1.mp4"
   },
   "sandbox": {
     "overview": [
-      "Six 3D voxel characters (Sam Sinclair, Space Penguins, Chupacabra, Mothman, Loveland Frogman and White Thang) built for The Sandbox, minted 22 July 2022 on The Sandbox's shared ASSET contract.",
-      "Primary sales settled in SAND on The Sandbox marketplace, off the ETH pipeline entirely. On-chain ETH secondary volume is negligible: only a couple of the six have ever changed hands, for a fraction of an ETH.",
-      "They did not ship alone. They arrived inside Steve Aoki's wider Sandbox collection, which went live on The Sandbox Marketplace on 25 September 2022 beside his own avatars, sneakers, gold records and jet, and buying any asset from it granted a Collector Badge worth 30 SAND. Aoki's Playhouse appeared in Sandbox Alpha Season 3 the same season.",
-      "The 1,050 pieces are edition counts across the six characters (200 each, except White Thang at 50), not 1,050 distinct artworks."
-    ]
+      "3D voxel characters (Sam Sinclair, Space Penguins, Chupacabra, Mothman, Loveland Frogman, and White Thang) built for The Sandbox, minted July 22nd, 2022 on The Sandbox's shared ASSET contract.",
+      "Primary sales settled in SAND on The Sandbox marketplace, off the ETH pipeline entirely. On-chain ETH secondary volume is negligible: only a couple sales for a fraction of an ETH.",
+      "# Aoki Sandbox collection",
+      "They arrived inside Steve Aoki's wider Sandbox collection, which went live on The Sandbox Marketplace on September 25th, 2022 beside his own avatars, sneakers, gold records and jet, and buying any asset from it granted a Collector Badge worth 30 SAND. Aoki's Playhouse appeared in Sandbox Alpha Season 3 the same season.",
+      "**Mint platform: The Sandbox**"
+    ],
+    "banner": "Primary sales settled in SAND on The Sandbox marketplace. On-chain ETH secondary volume is negligible: only a couple sales for a fraction of an ETH."
   }
 }

@@ -1,11 +1,17 @@
 {
  "overview": [
-  "Seventeen updated-art cryptid tokens re-issued on OpenSea's shared storefront and airdropped to earlier holders, mirroring the seventeen cryptids of the original 2021 Genesis run (Mothman, Jersey Devil, Sinkhole Sam and the rest).",
-  "Nothing was sold: recipients paid nothing, so primary revenue is zero. Unlike the one-per-token original, these are ERC-1155 editions, and the 890 pieces here are edition counts rather than distinct artworks. That 890 tracks the roughly 875 Genesis tokens MetaZoo advertised and the 831 that actually reached collectors, not the 947 minted: the 116 Genesis tokens still sitting in MetaZoo's own store wallet received no airdrop.",
-  "The distribution ran for eleven months, from August 2022 to June 2023, rather than as a single snapshot: 638 sends to 265 wallets. Matched against what each recipient held at the moment their airdrop arrived, 824 of the 890 editions went to wallets holding Genesis at the time, another 26 to wallets that had held one earlier and sold in the meantime, and 40 to wallets that never held one, most of those holding Coin Tokens or Beasties instead. Only 13 editions reached wallets with no MetaZoo history at all.",
-  "About 38.9 ETH (roughly $62,000) of secondary volume and 1.79 ETH (about $4,500) of royalties have flowed through them since.",
-  "Holders of a re-issue token were later offered the Neo Genesis promo, an exclusive serialized physical card matching the Genesis NFT they held."
+  "Updated tokens re-issued on OpenSea's shared storefront airdropped to og Genesis holders.",
+  "# The airdrop",
+  "The distribution ran for eleven months, from August 2022 to June 2023: 638 sends to 265 wallets. Matched against what each recipient held at the moment their airdrop arrived:",
+  "- **824 of the 890 editions** went to wallets holding Genesis at the time",
+  "- **26** went to wallets that had held one earlier and sold in the meantime",
+  "- **40** went to wallets that never held one, most of those holding Coin Tokens or Beasties instead",
+  "- Only **13** reached wallets with no MetaZoo history at all",
+  "About 38.9 ETH (~$62,000) secondary volume and 1.79 ETH (~$4,500) of royalties flowed through since.",
+  "Holders were able to redeem a Neo Genesis promo card, an exclusive serialized MetaZoo card matching the Genesis NFT they held.",
+  "**Mint platform: OpenSea shared storefront**"
  ],
+ "overview_image": "https://gaichu.b-cdn.net/nftina/tokens/genesis_reissue_1155/afbb443f6efb396d.gif",
  "utility": [
   {
    "id": "neo_genesis_promo",
@@ -13,7 +19,8 @@
    "price_usd": null,
    "price_eth": null,
    "note": "An exclusive serialized promo card of the corresponding Genesis NFT.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/neo_genesis_promo.webp?v=fb8594fc"
+   "image": "https://gaichu.b-cdn.net/nftina/utility/neo_genesis_promo.webp?v=fb8594fc",
+   "fit": false
   }
  ]
 }

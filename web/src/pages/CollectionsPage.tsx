@@ -39,14 +39,14 @@ export default function CollectionsPage() {
             MetaZoo NFT collections
           </h1>
           <p className="mt-4 max-w-140 text-pretty text-[15px] leading-[1.6] text-dim">
-            Every contract MetaZoo minted, ranked by the money that moved through it on secondary markets.
+            Every contract MetaZoo minted, ranked by the volume that moved through the secondary markets.
           </p>
-          <div className="mt-8.5">
+          <div className="mt-8">
             <StatStrip className="grid-cols-2 sm:grid-cols-4">
               <StatCell big={totalMints.toLocaleString()}
                         label="Total mints" />
-              <StatCell big={eth(summary.total_mint_revenue_eth)}
-                        sub={compactUsd(summary.total_mint_revenue_usd)} label="Mint revenue" />
+              <StatCell tone="gain" big={eth(summary.total_mint_revenue_eth)}
+                        sub={compactUsd(summary.total_mint_revenue_usd)} label="→ Mint revenue" />
               <StatCell big={eth(summary.secondary_volume_eth)}
                         sub={compactUsd(ranked.reduce((s, c) => s + (c.secondary_volume_usd ?? 0), 0))}
                         label="Secondary volume" />
@@ -91,7 +91,7 @@ export default function CollectionsPage() {
                     {c.total_mints > 0 ? c.total_mints.toLocaleString() : <span className="text-muted">n/a</span>}</td>
                   <td className="whitespace-nowrap px-4 py-3.25 text-right">
                     {c.mint_revenue_eth > 0 ? (
-                      <><div className="font-bold text-ink">{eth(c.mint_revenue_eth)}</div>
+                      <><div className="font-bold text-gain">{eth(c.mint_revenue_eth)}</div>
                         <div className="font-mono text-[10px] text-muted">{compactUsd(c.mint_revenue_usd)}</div></>
                     ) : <span className="text-muted">n/a</span>}
                   </td>

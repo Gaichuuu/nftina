@@ -37,3 +37,14 @@ export function placeholderGradient(seed: string): string {
   for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) % 360;
   return `radial-gradient(circle at 40% 30%, hsl(${h} 60% 38%), hsl(${(h + 45) % 360} 70% 12%))`;
 }
+
+export function longDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const at = (opt: Intl.DateTimeFormatOptions) =>
+    d.toLocaleDateString("en-US", { ...opt, timeZone: "UTC" });
+  const day = Number(at({ day: "numeric" }));
+  const rem = day % 100;
+  const suffix = rem >= 11 && rem <= 13 ? "th" : ["th", "st", "nd", "rd"][day % 10] ?? "th";
+  return `${at({ month: "long" })} ${day}${suffix}, ${at({ year: "numeric" })}`;
+}
