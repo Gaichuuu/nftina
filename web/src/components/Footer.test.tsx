@@ -8,5 +8,5 @@ it("shows the estimates-from-public-data disclaimer", () => {
 
 it("dates the data as a point-in-time snapshot", () => {
   render(<Footer />);
-  expect(screen.getByText(/captured as a snapshot on \w+ \d+, \d{4}/i)).toBeInTheDocument();
+  expect(screen.getByText(/captured as a snapshot on \w+ \d+(st|nd|rd|th), \d{4}/i)).toBeInTheDocument();
 });

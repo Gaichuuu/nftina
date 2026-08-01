@@ -653,7 +653,7 @@ def build_wallet_names(identities, opensea=None, overrides=None):
     for a, e in curated_overrides(overrides).items():
         if e.get("name"):
             out[a] = e["name"]                   # hand-curated name beats every source
-    return out
+    return dict(sorted(out.items()))
 
 
 def build_wallet_avatars(opensea=None, overrides=None):
@@ -667,7 +667,7 @@ def build_wallet_avatars(opensea=None, overrides=None):
     for a, e in curated_overrides(overrides).items():
         if e.get("avatar_file"):
             out[a] = f"{MEDIA_CDN_BASE}/wallets/{e['avatar_file']}"
-    return out
+    return dict(sorted(out.items()))          # stable key order, see build_wallet_names
 
 
 def build_flippers(flippers_list, identities, total_gains_eth, total_gains_usd,
@@ -787,8 +787,18 @@ def build_utility(slug, products, media, daily_usd=None, eth_price_usd=None):
             "price_eth": eth_price,
             "note": p.get("note", ""),
             "image": utility_image_url(entry),
+            "fit": fits_whole(entry),
         })
     return rows
+
+
+def fits_whole(entry):
+    """True when a utility tile's art must be fitted whole rather than cropped to fill.
+    Two cases, both a centred subject on a transparent field that cropping would cut:
+    token images, and every GIF."""
+    entry = entry or {}
+    return (str(entry.get("source_name", "")).startswith("data/media/tokens/")
+            or str(entry.get("file", "")).lower().endswith(".gif"))
 
 
 def build_content(slug, authored, floor_usd=None, products=None, media=None,
@@ -801,16 +811,22 @@ def build_content(slug, authored, floor_usd=None, products=None, media=None,
         loss_pct = round((floor_usd - unit) / unit * 100, 1) if unit else None
         content = {**content,
                    "off_chain_basis": {**basis, "floor_usd": floor_usd, "loss_pct": loss_pct}}
-    img = content.get("overview_image")
-    if img:
-        if img.startswith("http"):
-            url = img
-        elif "/" in img:
-            url = f"{MEDIA_CDN_BASE}/{img}"
-        else:
-            url = f"{MEDIA_CDN_BASE}/overview/{img}"
-        content = {**content, "overview_image": url}
+    for key in ("overview_image", "overview_video"):
+        val = content.get(key)
+        if val:
+            content = {**content, key: overview_media_url(val)}
     return content
+
+
+def overview_media_url(val):
+    """Authored overview media resolves three ways: an absolute URL passes through,
+    a path with a directory is CDN-relative (e.g. 'tokens/valentines/x.png'), and a
+    bare filename lives in the CDN's 'overview/' folder."""
+    if val.startswith("http"):
+        return val
+    if "/" in val:
+        return f"{MEDIA_CDN_BASE}/{val}"
+    return f"{MEDIA_CDN_BASE}/overview/{val}"
 
 
 def build_coin_strip(limit=12):
@@ -933,8 +949,7 @@ def build_findings(flow_summary, summary, acquisitions, payout_ledger,
             "note": "Fresh MetaZoo-funded wallets, no ENS/history. Traced forward, "
                     "roughly 97% of this ETH cashed out to a centralized exchange "
                     "(overwhelmingly Coinbase, one branch to FTX); the rest commingled "
-                    "into an active trading wallet. The personal account behind each "
-                    "exchange deposit is KYC-gated and not attributable on-chain.",
+                    "into an active trading wallet.",
         },
     }
 

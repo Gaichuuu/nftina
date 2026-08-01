@@ -1,10 +1,8 @@
 import Container from "@/components/Container";
 import { summary } from "@/data/bundled";
+import { longDate } from "@/lib/format";
 
-const SNAPSHOT = summary.generated_at
-  ? new Date(summary.generated_at).toLocaleDateString("en-US",
-      { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })
-  : null;
+const SNAPSHOT = summary.generated_at ? longDate(summary.generated_at) : null;
 
 export default function Footer() {
   // const year = new Date().getFullYear();

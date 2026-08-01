@@ -37,10 +37,10 @@ CONTRACTS = {
         "notes":     "Squonk Baby ($0.99, 25) + River Dino ($4.99) etc., lazy-minted in the "
                      "shared Mintable Gasless Store (0x8c5acf6d…) on Ethereum L1. The prior "
                      "'IMX L2 / not on Etherscan' AND 'same contract as genesis' assumptions "
-                     "were BOTH wrong (F14). Tokens fetched via fetch_shared (distributor "
-                     "0x3dd341…, creator-encoded IDs; article F26). Primary itself is sub-$5 "
+                     "were BOTH wrong. Tokens fetched via fetch_shared (distributor "
+                     "0x3dd341…, creator-encoded IDs; article). Primary itself is sub-$5 "
                      "fiat (off-chain, 0 on-chain mint value) — but NOT economically negligible "
-                     "overall (Plan 5/F27): 385 creator-encoded tokens (352 MZG-classified, 33 "
+                     "overall: 385 creator-encoded tokens (352 MZG-classified, 33 "
                      "unresolved/no-name metadata), 148 secondary sales / 134.85 ETH validated "
                      "non-phantom volume via validate_sales (50 sales >=1 ETH, 0 phantom).",
         "shared": True,                  # shared Mintable store
@@ -56,7 +56,9 @@ CONTRACTS = {
     "genesis_2021": {
         # OWN dedicated ERC-721 contract (OpenSea slug "metazoo-games"),
         # name()='MetaZoo Games', symbol()='MetaZoo Games NFT Store', ERC-721, creator
-        # 0x3dd34166… (Mintable deployer that also funded MetaZoo deployer 0x77b9…).
+        # 0x3dd34166… - MetaZoo's own Genesis-era operator wallet. It deployed this
+        # contract via a factory, minted all 595, then paid 1.4543 ETH to MetaZoo
+        # deployer 0x77b9… and 0.2 ETH into the coin_tokens mint funnel.
         # NOT the Mintable Gasless Store (that's mintable_early, 0x8c5acf6d…) — separate.
         "address":   "0xa0529c325e2594dcc599ba6e39aa4d6b28834c53",
         "standard":  "erc721",
@@ -67,7 +69,7 @@ CONTRACTS = {
                      "Holders got 2x Token NFT allowlist slots; physical serialized promo "
                      "cards sent July 2023. Dedicated ERC-721 (~595, not 875); sampled #580 "
                      "'MZG Bigfoot', #300 'MZG Piasa Bird'. Later RE-ISSUED with updated art "
-                     "as ERC-1155 on OPENSTORE — see genesis_reissue_1155 (F14).",
+                     "as ERC-1155 on OPENSTORE — see genesis_reissue_1155.",
         "include_in_loss_calc": True,
     },
 
@@ -134,8 +136,8 @@ CONTRACTS = {
         "mint_date": "2021-12",
         "notes":     "3 confirmed New Year's Tournament trophies (1st/2nd/3rd Place, Jan 2022). "
                      "Named 'MetaZoo Games New Years Tournament {1st,2nd,3rd} Place Trophy', "
-                     "created by 0x3dd341… (Mintable store operator). Gifted; $0 primary revenue. "
-                     "Fetched via fetch_shared with curated token_ids (F16 corrected).",
+                     "created by 0x3dd341… MetaZoo Genesis deployer. Gifted; $0 primary revenue. "
+                     "Fetched via fetch_shared with curated token_ids .",
         "shared": True,                  # OPENSTORE storefront
         "include_in_loss_calc": False,   # gifted
         "distributor": "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6",
@@ -157,7 +159,7 @@ CONTRACTS = {
         "address":   "0xa986559aacf60a82fab3ef59940febea8027be0c",
         "standard":  "erc1155",
         "name":      "MetaZoo Valentines (MZV)",
-        "supply":    6,           # token IDs 1–6 (F16); IDs 7–11 are Wilderness (same contract)
+        "supply":    6,           # token IDs 1–6 IDs 7–11 are Wilderness (same contract)
         "mint_date": "2022-02",
         # This whole-contract fetch (all 11 token IDs) is the canonical entry for 0xa986559a
         "valentines_token_ids": ["1", "2", "3", "4", "5", "6"],
@@ -181,6 +183,11 @@ CONTRACTS = {
         "supply":    5000,
         "mint_date": "2022-07-15",
         "notes":     "The first PFP collection, 'MetaZoo Games Beasties' (a.k.a. PFP 1.0). "
+                     "Minted with MANIFOLD, the contract source header reads "
+                     "'@author: manifold.xyz' and imports @manifoldxyz/libraries-solidity, "
+                     "and MetaZoo announced the Manifold partnership"
+                     "2022-04-12 ('MetaZoo's first PFP NFT in May! "
+                     "12 unique characters' == the 12 distinct Base cryptids here). "
                      "Art by Jett Yates. Blind sale — buyers didn't know which "
                      "Beastie until reveal July 22 2022 at 12pm EST. "
                      "Allow List mint: Jul 15 at 0.1 ETH (Token holders + "
@@ -196,7 +203,7 @@ CONTRACTS = {
         "name":      "MetaZoo Beastie PFPs — Series 2",
         "supply":    None,
         "mint_date": None,
-        "notes":     "PHANTOM ENTRY (F14): a full deployer + OpenSea/Manifold sweep found NO "
+        "notes":     "PHANTOM ENTRY: a full deployer + OpenSea/Manifold sweep found NO "
                      "separate 'Beasties Series 2' contract. Only Beasties S1 (0x44a46fc7…) "
                      "exists; the actual 'second' PFP drop is pfp_2 (0xf279e4d18a…). "
                      "Retain-or-remove is a modeling decision; kept here as a documented dead end.",
@@ -233,7 +240,7 @@ CONTRACTS = {
         "supply":    None,
         "mint_date": None,
         "notes":     "Shared Sandbox ASSETS contract (ERC-1155, mainnet). CONFIRMED MetaZoo x Steve "
-                     "Aoki set of 6 (F17, owner-supplied OpenSea URLs), near-sequential token IDs "
+                     "Aoki set of 6 (owner-supplied OpenSea URLs), near-sequential token IDs "
                      "55464657…688755669011/012/014/016/017/036 = Sam Sinclair, Space Penguins, "
                      "Chupacabra, Mothman (supply 200), Loveland Frogman, White Thang. This vindicates "
                      "the ORIGINAL 'Mothman/Frogman/Space Penguins' claim — an interim 'unverified' "
@@ -317,7 +324,7 @@ CONTRACTS = {
                      "the OpenSea Shared Storefront (OPENSTORE 0x495f9472…). On OpenSea these "
                      "surface under the 'metazoo-games-beasties' collection. Distinct from the "
                      "dedicated ERC-721 genesis_2021 (0xa0529c32…). Token-ID-filtered fetch via "
-                     "scripts.fetch_shared (F16): 17 tokens, all creator==distributor 0x77b9, "
+                     "scripts.fetch_shared: 17 tokens, all creator==distributor 0x77b9, "
                      "airdropped (0 primary revenue). Fetch stores data/raw/genesis_reissue_1155_*.",
         "shared": True,                  # OPENSTORE storefront
         "include_in_loss_calc": True,
@@ -367,13 +374,33 @@ AOKI_WALLETS = [
 METAZOO_WALLETS = [
     # Etherscan "MetaZoo: Deployer"; deployed MetaZooGamesBeasties (0x44a46fc7…).
     "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
-    # metazoodev.eth — 4th MetaZoo wallet (F14): deployed the MZOO ERC-20
+    # metazoodev.eth — 4th MetaZoo wallet: deployed the MZOO ERC-20
     # (0xde41fa349c4e07dc93efe889f2d6c2fad96b1595, "MetaZoo"/"MZOO", 2023-03-16).
     "0x79109a93db158f16f4c8936217ce46f21ed5dc2b",
+    # Genesis-era operator. Not Etherscan-tagged, unlike the two above, so it is
+    # here on behavioural evidence: it created the Genesis contract 0xa0529c32 and minted
+    # all 595, is the configured distributor for genesis_2021 + mintable_early + the
+    # tournament trophies, paid 1.4543 ETH to 0x77b9 and 0.2 ETH into the coin_tokens
+    # mint funnel. 18 lifetime txs, 4.23 ETH in / 1.73 out.
+    "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6",
 ]
 
 # The MetaZoo main deployer 0xec843e… (METAZOO_DEPLOYER) is added to the trace seed
 # separately in trace_flows.main(); it need not be duplicated here.
+
+# The THREE treasury EOAs the USD audit reconciles (received = paid + gas + still-held).
+# Deliberately its OWN list, not derived from METAZOO_WALLETS: that list is the display
+# ⚑ flag + trace seed and grows whenever any MetaZoo-controlled wallet is identified,
+# whereas this one is the narrow set of wallets that actually took mint proceeds and paid
+# them out. Deriving it from METAZOO_WALLETS silently broke the reconciliation to +2.48 ETH
+# when the Genesis ops wallet 0x3dd341 was added (it is an ops wallet, ~4 ETH lifetime,
+# not a treasury). Adding a wallet here changes the published headline — re-run
+# `python -m scripts.audit_treasury_usd` and check `reconciles_eth` stays ≈0.
+TREASURY_WALLETS = [
+    METAZOO_DEPLOYER,                              # 0xec843e… coin_tokens creator
+    "0x77b94a55684c95d59a8f56a234b6e555fc79997c",  # Etherscan "MetaZoo: Deployer"
+    "0x79109a93db158f16f4c8936217ce46f21ed5dc2b",  # metazoodev.eth
+]
 
 # Aoki wallet CLUSTER — EOAs with large bidirectional ETH flow to the 0xa6d3 hub
 # and shared NFT-trading behavior (CryptoPunks/OpenSea). Strong candidates but NOT
@@ -609,7 +636,7 @@ SITE_COLLECTIONS = [
      "parent": "valentines", "token_ids": ["7", "8", "9", "10", "11"]},
     {"slug": "tournament_prizes",    "name": "MetaZoo Tournament Prizes",    "source": "own",
      "note": "Three gifted 1/1 New Year's Tournament trophies (1st/2nd/3rd place) on the "
-             "OPENSTORE shared contract, minted by the MetaZoo/Mintable deployer 0x3dd341…. "
+             "OPENSTORE shared contract, minted by the MetaZoo Genesis deployer 0x3dd341…. "
              "Fetched via fetch_shared; economics are minimal (gifted prizes)."},
     {"slug": "mothman_1of1",         "name": "MetaZoo Mothman 1/1",          "source": "subset",
      "parent": "aoki", "token_ids": ["1017"]},

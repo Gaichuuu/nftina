@@ -155,6 +155,15 @@ That works because two build outputs are tracked on purpose: `site/data/` (the f
 
 Out of git: `data/raw/` (the only thing that genuinely needs API keys to rebuild), the rest of `data/media/` (token art, served from the CDN), and `web/dist/` plus the `web/public/` copies of the two tracked sources.
 
+Common tasks, all from `web/`:
+
+```bash
+npm run dev            # local dev server
+npm run verify         # tests + full build, the pre-deploy gate
+npm run deploy:site    # build and publish the site
+npm run check:live     # health-check the deployed site (routes, redirects, headers, cert)
+```
+
 ---
 
 ## Legal

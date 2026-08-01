@@ -559,6 +559,20 @@ def test_curated_overrides_are_optional_and_partial():
     assert b.build_wallet_avatars(opensea, only_name) == {"0xa": "https://p/a.png"}
 
 
+def test_wallet_maps_are_key_sorted_so_the_tracked_json_stays_stable():
+    """merge_profiles unions two key sets, whose iteration order varies per run under
+    hash randomization. Without sorting, adding one wallet rewrites every line of the
+    tracked site/data map and buries the real change in thousands of reordered ones."""
+    opensea = {"0xC": {"username": "c", "pfp": "https://p/c.png"},
+               "0xA": {"username": "a", "pfp": "https://p/a.png"},
+               "0xB": {"username": "b", "pfp": "https://p/b.png"}}
+    overrides = {"0xD": {"name": "d", "avatar_file": "d.png"}}
+    names = b.build_wallet_names({}, opensea, overrides)
+    avatars = b.build_wallet_avatars(opensea, overrides)
+    assert list(names) == sorted(names) == ["0xa", "0xb", "0xc", "0xd"]
+    assert list(avatars) == sorted(avatars) == ["0xa", "0xb", "0xc", "0xd"]
+
+
 def test_enrich_collections_display_off_chain_loss_and_1155_pieces():
     cols = [
         {"collection": "pfp_2", "secondary_volume_eth": 5.0, "royalty_eth": 0.1,
@@ -1060,3 +1074,37 @@ def test_validate_products_rejects_a_malformed_date():
 
 def test_validate_products_accepts_an_absent_date():
     b.validate_products([{"id": "x", "collection": "c"}], {"c"})
+
+
+def test_overview_media_url_resolves_three_authored_forms():
+    """Absolute URLs pass through, a path with a directory is CDN-relative, and a
+    bare filename lives in the CDN's overview/ folder."""
+    from scripts.build_site_data import MEDIA_CDN_BASE, overview_media_url
+
+    assert overview_media_url("https://cdn.example/a.png") == "https://cdn.example/a.png"
+    assert overview_media_url("tokens/valentines/x.png") == f"{MEDIA_CDN_BASE}/tokens/valentines/x.png"
+    assert overview_media_url("w_640.webp") == f"{MEDIA_CDN_BASE}/overview/w_640.webp"
+
+
+def test_build_content_resolves_overview_video_like_the_image():
+    from scripts.build_site_data import MEDIA_CDN_BASE, build_content
+
+    out = build_content("mothman_1of1", {"mothman_1of1": {
+        "overview": [], "overview_image": "tokens/m/x.jpg",
+        "overview_video": "collections/m.mp4"}})
+    assert out["overview_image"] == f"{MEDIA_CDN_BASE}/tokens/m/x.jpg"
+    assert out["overview_video"] == f"{MEDIA_CDN_BASE}/collections/m.mp4"
+
+
+def test_fits_whole_flags_token_art_and_every_gif():
+    """Utility tiles fit token art and GIFs, and crop product photos. Both signals come
+    from the media manifest, so no per-product authoring is needed."""
+    from scripts.build_site_data import fits_whole
+
+    assert fits_whole({"source_name": "data/media/tokens/coin_tokens/x.gif"}) is True
+    assert fits_whole({"source_name": "promo.gif", "file": "software_malfunction.gif"}) is True
+    assert fits_whole({"source_name": "dim-mak-hq.jpg", "file": "dim_mak_box.jpg"}) is False
+    assert fits_whole({"source_name": "data/media/overview/ws_x.webp",
+                       "file": "beasties_free_mint.webp"}) is False
+    assert fits_whole({}) is False
+    assert fits_whole(None) is False
