@@ -123,7 +123,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
                 <th className="px-2.5 py-3 text-right">SOLD</th>
                 <th className="px-2.5 py-3 text-right"
                     title="Net tokens moved in/out via non-sale transfer (airdrops, gifts)">XFERS</th>
-                <th className={`min-w-32 px-4 py-3 text-right ${GROUP_L}`}>NET</th>
+                <th className={`min-w-24 px-4 py-3 text-right ${GROUP_L}`}>NET</th>
               </tr>
             </thead>
             <tbody>
