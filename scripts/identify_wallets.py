@@ -12,6 +12,7 @@ import argparse
 import json
 import os
 import time
+from collections import defaultdict
 from pathlib import Path
 
 import requests
@@ -125,11 +126,22 @@ def _make_call_fn(rate_delay: float = 0.1):
 
 
 def graph_wallets() -> list:
-    """Every node in the flow-trace graph, biggest total volume first."""
+    """Every node in the flow-trace graph, biggest edge volume first.
+
+    Ranked by summing each node's incident EDGES: the per-node
+    total_in/out_eth fields are 0.0 for every unexpanded leaf (most of the
+    graph), so ranking on them mostly sorts a constant."""
     if not TREASURY_FLOWS.exists():
         return []
-    nodes = json.loads(TREASURY_FLOWS.read_text()).get("nodes", [])
-    nodes = sorted(nodes, key=lambda n: -(n.get("total_in_eth", 0.0) + n.get("total_out_eth", 0.0)))
+    graph = json.loads(TREASURY_FLOWS.read_text())
+    volume = defaultdict(float)
+    for e in graph.get("edges", []):
+        amt = e.get("eth_in", 0.0) + e.get("eth_out", 0.0)
+        for end in ("from", "to"):
+            if e.get(end):
+                volume[e[end].lower()] += amt
+    nodes = sorted(graph.get("nodes", []),
+                   key=lambda n: -volume.get((n.get("address") or "").lower(), 0.0))
     return [n["address"].lower() for n in nodes if n.get("address")]
 
 

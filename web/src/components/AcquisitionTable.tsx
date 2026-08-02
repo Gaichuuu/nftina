@@ -62,8 +62,7 @@ export default function AcquisitionTable({ acq }: { acq: Findings["acquisitions"
           {underwater.map((b, i) => {
             const ex = examples.find((e) => e.contract === b.contract) ?? examples[i];
             const stat = (
-              <div className="flex flex-col justify-center rounded-sm border bg-panel px-2.5 py-3.5 text-center"
-                   style={{ borderColor: "rgba(255,107,107,.35)" }}>
+              <div className="flex flex-col justify-center rounded-sm border border-loss/35 bg-panel px-2.5 py-3.5 text-center">
                 <div className="text-[26px] font-extrabold leading-none tabular-nums text-loss">{pct(b.loss_pct!)}</div>
                 <div className="mt-1 truncate text-[11px] font-bold text-ink">{displayName(b.name)}</div>
                 <div className="font-mono text-[9.5px] tabular-nums text-muted">

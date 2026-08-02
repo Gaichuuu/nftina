@@ -21,18 +21,26 @@ encoding(){ curl -sSI -H 'Accept-Encoding: gzip' "$1" | tr -d '\r' \
 
 echo "== $SITE"
 
-# --- routes ---
-ROUTES=(/ /collections/ /where-did-the-money-go/)
-for slug in genesis_2021 genesis_reissue_1155 coin_tokens beasties_s1 pfp_2 \
-            valentines wilderness tournament_prizes mothman_1of1 sandbox; do
-  ROUTES+=("/collections/$slug/")
-done
-n=0
-for r in "${ROUTES[@]}"; do
-  c=$(code "$SITE$r")
-  if [[ "$c" == "200" ]]; then n=$((n+1)); else bad "route $r -> $c"; fi
-done
-[[ $n -eq ${#ROUTES[@]} ]] && ok "all ${#ROUTES[@]} routes return 200"
+# --- routes  ---
+ROUTES=()
+while IFS= read -r p; do
+  [[ "$p" == */ ]] || p="$p/"
+  ROUTES+=("$p")
+done < <(curl -sS "$SITE/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' \
+         | sed -E 's#<loc>https?://[^/]+##; s#</loc>##; s#^$#/#')
+MIN_ROUTES=13
+if [[ ${#ROUTES[@]} -eq 0 ]]; then
+  bad "sitemap.xml missing or empty - cannot enumerate routes"
+else
+  [[ ${#ROUTES[@]} -ge $MIN_ROUTES ]] \
+    || bad "sitemap lists only ${#ROUTES[@]} routes (expected >= $MIN_ROUTES) - prerender dropped routes"
+  n=0
+  for r in "${ROUTES[@]}"; do
+    c=$(code "$SITE$r")
+    if [[ "$c" == "200" ]]; then n=$((n+1)); else bad "route $r -> $c"; fi
+  done
+  [[ $n -eq ${#ROUTES[@]} ]] && ok "all ${#ROUTES[@]} sitemap routes return 200"
+fi
 
 # --- content actually prerendered ---
 curl -sS "$SITE/" | grep -q "Holders lost" \
@@ -47,8 +55,9 @@ ok "share card, icons, sitemap and robots.txt present"
 
 # --- redirects ---
 if [[ "$SITE" == https://* ]]; then
-  [[ "$(code "http://$HOST/")" == "301" ]] \
-    && ok "http -> https redirects" || bad "http:// does not redirect (got $(code "http://$HOST/"))"
+  c=$(code "http://$HOST/")
+  [[ "$c" == "301" ]] \
+    && ok "http -> https redirects" || bad "http:// does not redirect (got $c)"
   [[ "$(redirect "https://www.$HOST/")" == "https://$HOST/" ]] \
     && ok "www -> apex redirects" || bad "www does not redirect to apex"
   [[ "$(redirect "http://$HOST/collections/")" == *"/collections/" ]] \
@@ -75,13 +84,12 @@ fi
 
 # --- certificate ---
 if [[ "$SITE" == https://* ]]; then
-  subj=$(echo | openssl s_client -connect "$HOST:443" -servername "$HOST" 2>/dev/null \
-         | openssl x509 -noout -subject 2>/dev/null)
+  pem=$(echo | openssl s_client -connect "$HOST:443" -servername "$HOST" 2>/dev/null)
+  subj=$(printf '%s' "$pem" | openssl x509 -noout -subject 2>/dev/null)
   if [[ "$subj" == *sni.dreamhost.com* ]]; then
     bad "serving DreamHost's fallback certificate - the vhost is gone"
   elif [[ -n "$subj" ]]; then
-    days=$(echo | openssl s_client -connect "$HOST:443" -servername "$HOST" 2>/dev/null \
-           | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
+    days=$(printf '%s' "$pem" | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
     ok "certificate valid (expires $days)"
   else
     bad "could not read the certificate"

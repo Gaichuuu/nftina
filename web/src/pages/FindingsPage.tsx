@@ -19,13 +19,11 @@ export default function FindingsPage() {
       <section style={{ background: "radial-gradient(90% 130% at 82% 20%, #241238, #0c0912 64%)" }}>
         <Container className="pb-10 pt-12">
       <header className="max-w-180">
-        {/* <div className="eyebrow text-loss">The investigation</div> */}
         <h1 className="text-[40px] font-black leading-none tracking-[-0.03em] text-ink sm:text-[52px]">
           Where did the money go?
         </h1>
         <p className="mt-4 max-w-180 text-pretty text-[15px] leading-[1.6] text-dim">
-          The most common question about MetaZoo's finances. Every figure below is reconstructed
-          from public transactions.
+          One of the great MetaZoo mysteries. Now, with the power of the blockchain, we're able to reconstruct the financial flow of money from public transactions.
         </p>
       </header>
 
@@ -49,8 +47,7 @@ export default function FindingsPage() {
 
       {/* profited */}
       <section className="mt-4">
-        {/* <div className="eyebrow text-gain">Who profited</div> */}
-        <h2 className="mb-5 text-[28px] font-black tracking-tight">
+        <h2 className="section-h2 mb-5">
           Flippers extracted {eth(flippers.total_gains_eth)} / {compactUsd(flippers.total_gains_usd)}
         </h2>
         <FlipperTable flippers={flippers} />
@@ -58,8 +55,7 @@ export default function FindingsPage() {
 
       {/* ledger */}
       <section className="mt-16">
-        {/* <div className="eyebrow text-loss">Payout ledger</div> */}
-        <h2 className="mb-5 text-[28px] font-black tracking-tight">
+        <h2 className="section-h2 mb-5">
           Treasury payout ledger
         </h2>
         <LedgerTable rows={payout_ledger} />
@@ -71,8 +67,7 @@ export default function FindingsPage() {
 
       {/* acquisitions */}
       <section className="mt-16">
-        {/* <div className="eyebrow text-hypeB">What the money became</div> */}
-        <h2 className="mb-5 text-[28px] font-black tracking-tight">
+        <h2 className="section-h2 mb-5">
           Aoki goes on a manic {compactUsd(acquisitions.total_usd)} NFT buying spree
         </h2>
         <AcquisitionTable acq={acquisitions} />
@@ -82,10 +77,9 @@ export default function FindingsPage() {
       </section>
 
       {/* insiders */}
-      <h2 className="mt-16 mb-5 text-[28px] font-black tracking-tight">
+      <h2 className="section-h2 mt-16 mb-5">
       Insider cash-out</h2>
-      <section className="mt-0 rounded-md bg-panel p-6"
-               style={{ border: "1px solid rgba(255,92,240,.4)" }}>
+      <section className="mt-0 rounded-md border border-hypeA/40 bg-panel p-6">
         <div className="eyebrow text-loss">
           {eth(insider.eth)} → {insider.exchange} · <span className="text-ink">unknown</span> on-chain
         </div>
@@ -98,7 +92,7 @@ export default function FindingsPage() {
                 return (
                   <div key={r.recipient_addr || i}
                        className="rounded-sm border border-line bg-panel3 p-3.5 transition-colors
-                                  hover:border-[rgba(255,92,240,.4)]">
+                                  hover:border-hypeA/40">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         {r.recipient_addr && <WalletAvatar addr={r.recipient_addr} size={22} />}

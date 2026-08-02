@@ -1,6 +1,7 @@
 """Treasury USD audit: value every treasury inflow at its receipt date and every
 outflow at its spend date, then quantify what holding ETH through the crash cost.
 """
+from bisect import bisect_right
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
@@ -71,13 +72,14 @@ def weekly_balances(ledger: list, daily: dict) -> list:
         net_by_week[week_start(e["date"])] += e["eth"] if e["direction"] == "in" else -e["eth"]
     first = datetime.strptime(min(net_by_week), "%Y-%m-%d").date()
     last = datetime.strptime(max(net_by_week), "%Y-%m-%d").date()
+    days = sorted(daily)
     out, bal, wk = [], 0.0, first
     while wk <= last:
         key = wk.isoformat()
         bal += net_by_week.get(key, 0.0)
         end = (wk + timedelta(days=6)).isoformat()
-        closes = [d for d in daily if d <= end]
-        mark = daily[max(closes)] if closes else 0.0
+        i = bisect_right(days, end)
+        mark = daily[days[i - 1]] if i else 0.0
         out.append({"week": key, "eth_balance": round(bal, 6),
                     "usd_mark": round(bal * mark, 2)})
         wk += timedelta(days=7)

@@ -8,7 +8,7 @@ const DIST = join(ROOT, "dist");
 const SITE_DATA = join(ROOT, "..", "site", "data");
 const SITE = "https://metazoonfts.com";
 
-const { render } = await import(
+const { render, compactUsd, compactUsdDown } = await import(
   pathToFileURL(join(DIST, "server", "entry-server.js")).href
 );
 
@@ -18,15 +18,6 @@ const collections = JSON.parse(
 );
 const summary = JSON.parse(readFileSync(join(SITE_DATA, "summary.json"), "utf8"));
 
-const compactUsd = (n) => {
-  const a = Math.abs(n);
-  return a >= 1e6 ? `$${(a / 1e6).toFixed(1)}M`
-    : a >= 1e3 ? `$${Math.floor(a / 1e3)}K` : `$${Math.round(a)}`;
-};
-const compactUsdDown = (n) => {
-  const a = Math.abs(n);
-  return a >= 1e6 ? `$${(Math.floor(a / 1e5) / 10).toFixed(1)}M` : compactUsd(n);
-};
 const ogImageAlt =
   `MetaZoo raised ${compactUsd(summary.total_mint_revenue_usd)}. ` +
   `Holders lost ${compactUsdDown(summary.total_loss_usd)}.`;

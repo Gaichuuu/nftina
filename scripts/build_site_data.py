@@ -603,8 +603,11 @@ def build_sandbox3d(entries):
 
 def build_usd_audit(audit):
     """site/data passthrough of the treasury USD audit; None -> null on disk so
-    the frontend's static import always resolves."""
-    return audit
+    the frontend's static import always resolves. The `weekly` series is dropped
+    while the frontend's weekly chart is parked"""
+    if not audit:
+        return audit
+    return {k: v for k, v in audit.items() if k != "weekly"}
 
 
 def merge_profiles(web3bio=None, opensea=None):

@@ -83,14 +83,22 @@ def test_decode_addr_zero_is_none():
 
 def test_graph_wallets_returns_flow_nodes_biggest_volume_first(tmp_path, monkeypatch):
     """Flow-graph nodes were never resolved because displayed_wallets only read the
-    holders/flippers tables (F56/F57). They are the investigation-relevant wallets,
-    so they must be in the resolve set, highest-volume first."""
+    holders/flippers tables. They are the investigation-relevant wallets,
+    so they must be in the resolve set, highest-volume first: ranked by their
+    incident EDGES."""
     flows = tmp_path / "treasury_flows.json"
-    flows.write_text(json.dumps({"nodes": [
-        {"address": "0xSMALL", "total_in_eth": 1.0, "total_out_eth": 0.0},
-        {"address": "0xBIG", "total_in_eth": 900.0, "total_out_eth": 100.0},
-        {"address": "0xMID", "total_in_eth": 5.0, "total_out_eth": 5.0},
-    ]}))
+    flows.write_text(json.dumps({
+        "nodes": [
+            {"address": "0xSMALL", "total_in_eth": 0.0, "total_out_eth": 0.0},
+            {"address": "0xBIG", "total_in_eth": 0.0, "total_out_eth": 0.0},
+            {"address": "0xMID", "total_in_eth": 5.0, "total_out_eth": 5.0},
+        ],
+        "edges": [
+            {"from": "0xHUB", "to": "0xBIG", "eth_in": 900.0, "eth_out": 100.0},
+            {"from": "0xHUB", "to": "0xMID", "eth_in": 5.0, "eth_out": 5.0},
+            {"from": "0xHUB", "to": "0xSMALL", "eth_in": 1.0, "eth_out": 0.0},
+        ],
+    }))
     monkeypatch.setattr(idf, "TREASURY_FLOWS", flows)
     assert idf.graph_wallets() == ["0xbig", "0xmid", "0xsmall"]
 

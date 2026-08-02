@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { cdnResized } from "@/lib/format";
 
-export default function LoopMedia({ image, video, alt, className }:
-  { image?: string | null; video?: string | null; alt: string; className?: string }) {
+export default function LoopMedia({ image, video, alt, className, width }:
+  { image?: string | null; video?: string | null; alt: string; className?: string;
+    width?: number }) {
   const [imgFailed, setImgFailed] = useState(false);
   const [vidFailed, setVidFailed] = useState(false);
+  const img = image && width ? cdnResized(image, width) : image;
 
   if (video && !vidFailed) {
     return (
-      <video src={video} poster={image ?? undefined} autoPlay loop muted playsInline
+      <video src={video} poster={img ?? undefined} autoPlay loop muted playsInline
              preload="metadata" aria-label={alt} className={className}
              onError={() => setVidFailed(true)} />
     );
   }
-  if (image && !imgFailed) {
+  if (img && !imgFailed) {
     return (
-      <img src={image} alt={alt} loading="lazy" className={className}
+      <img src={img} alt={alt} loading="lazy" className={className}
            onError={() => setImgFailed(true)} />
     );
   }

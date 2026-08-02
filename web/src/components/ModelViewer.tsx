@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import Spinner from "./Spinner";
 
 type NetworkInfo = { saveData?: boolean; effectiveType?: string };
 
@@ -100,8 +101,7 @@ export default function ModelViewer(
       {!loaded && (
         <div role="status" aria-label="Loading 3D model"
              className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-          <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-hypeB
-                           [animation-duration:.8s]" />
+          <Spinner />
         </div>
       )}
       {picker && anims.length > 1 && (

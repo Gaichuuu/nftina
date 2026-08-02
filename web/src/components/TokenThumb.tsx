@@ -1,5 +1,5 @@
 import type { TokenRow } from "@/data/schemas";
-import { usd, osAssetUrl, cdnResized } from "@/lib/format";
+import { usd, osAssetUrl } from "@/lib/format";
 import LoopMedia from "./LoopMedia";
 
 export default function TokenThumb({ t, contract }:
@@ -9,7 +9,7 @@ export default function TokenThumb({ t, contract }:
   const body = (
     <>
       <div className="aspect-square w-full">
-        <LoopMedia image={t.image && cdnResized(t.image, 420)} video={t.video}
+        <LoopMedia image={t.image} width={420} video={t.video}
                    alt={t.name ?? `token ${t.token_id}`}
                    className="h-full w-full object-cover" />
       </div>

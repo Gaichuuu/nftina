@@ -3,6 +3,7 @@ import { fetchWalletProfile, type WalletProfile } from "@/data/runtime";
 import { collectionNames, coinStrip } from "@/data/bundled";
 import { addrForName, loadIdentities, useWalletIdentities } from "@/data/identities";
 import { cdnResized } from "@/lib/format";
+import Spinner from "./Spinner";
 import WalletProfileView from "./WalletProfileView";
 
 type State = { status: "idle" | "loading" | "done"; profile?: WalletProfile | null };
@@ -52,8 +53,7 @@ export default function WalletLookup() {
 
       {s.status === "loading" && (
         <div className="mt-8 flex flex-col items-center gap-3">
-          <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-hypeB
-                           [animation-duration:.8s]" />
+          <Spinner />
           <span className="font-mono text-[12px] text-muted">Thinking…</span>
         </div>
       )}

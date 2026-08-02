@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { summary, findings, collections, SLUGS } from "@/data/bundled";
 import { eth, compactUsd, compactUsdDown } from "@/lib/format";
@@ -7,13 +6,10 @@ import { StatCell, StatStrip } from "@/components/StatCell";
 import WalletLookup from "@/components/WalletLookup";
 // import VolumeChart from "@/components/VolumeChart";
 import CollectionTile from "@/components/CollectionTile";
-import ModelViewer from "@/components/ModelViewer";
-import { DEFAULT_MODEL as DEFAULT_HERO, randomModel, type Model3d } from "@/lib/heroModel";
+import RandomModel from "@/components/RandomModel";
+import { DEFAULT_MODEL as DEFAULT_HERO } from "@/lib/heroModel";
 
 export default function HomePage() {
-  const [hero, setHero] = useState<Model3d | null>(null);
-  useEffect(() => { setHero(randomModel()); }, []);
-
   return (
     <div>
       {/* HERO */}
@@ -21,7 +17,6 @@ export default function HomePage() {
                style={{ background: "radial-gradient(90% 120% at 78% 20%, #241238, #0c0912 64%)" }}>
         <Container className="relative z-5 pt-12">
           <div className="anim-rise max-w-170">
-            {/* <div className="eyebrow text-hypeB">On-chain post-mortem</div> */}
             <h1 className="text-balance text-[44px] font-black leading-[0.97] tracking-[-0.035em] text-ink sm:text-[72px]">
               MetaZoo raised <span className="text-hypeB">{compactUsd(summary.total_mint_revenue_usd)}</span>.
             </h1>
@@ -50,12 +45,7 @@ export default function HomePage() {
                  style={{ background: "radial-gradient(50% 45% at 55% 42%, rgba(139,233,255,.16), transparent 70%)",
                           animation: "glowpulse 7s ease-in-out infinite" }} />
             <div className="pointer-events-auto h-full w-full">
-              {hero ? (
-                <ModelViewer src={hero.model} poster={hero.image ?? undefined} alt={hero.name} randomAnimation />
-              ) : DEFAULT_HERO.image && (
-                <img src={DEFAULT_HERO.image} alt={DEFAULT_HERO.name}
-                     className="h-full w-full object-contain" />
-              )}
+              <RandomModel />
             </div>
           </div>
         )}
@@ -101,8 +91,7 @@ export default function HomePage() {
       {/* COLLECTIONS */}
       <Container className="pb-12 pt-8">
         <div className="mt-3">
-          {/* <div className="eyebrow text-hypeB">Ten collections</div> */}
-          <h2 className="mb-5.5 text-[28px] font-black tracking-tight">MetaZoo NFT collections</h2>
+          <h2 className="section-h2 mb-5.5">MetaZoo NFT collections</h2>
         </div>
         <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-5">
           {SLUGS.map((s) => {

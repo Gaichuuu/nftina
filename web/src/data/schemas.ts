@@ -169,7 +169,8 @@ export const UsdAudit = z.object({
     depreciation_gap_usd: z.number(),
   }),
   by_class: z.object({ in: z.record(z.string(), UsdClass), out: z.record(z.string(), UsdClass) }),
-  weekly: z.array(z.object({ week: z.string(), eth_balance: z.number(), usd_mark: z.number() })),
+  weekly: z.array(z.object({ week: z.string(), eth_balance: z.number(), usd_mark: z.number() }))
+    .optional(),
   method: z.object({ wallets: z.array(z.string()), valuation: z.string(),
                      caveats: z.array(z.string()) }),
 }).nullable();

@@ -4,7 +4,7 @@ import type { Collection } from "@/data/schemas";
 import { floorLabelFor } from "@/data/collectionUiConfig";
 import Bar from "@/components/Bar";
 import LoopMedia from "@/components/LoopMedia";
-import { eth, compactUsd, tileGradient, cdnResized } from "@/lib/format";
+import { eth, compactUsd, tileGradient } from "@/lib/format";
 import Container from "@/components/Container";
 import TableScroller from "@/components/TableScroller";
 import { StatCell, StatStrip } from "@/components/StatCell";
@@ -13,7 +13,7 @@ function Thumb({ c }: { c: Collection }) {
   return (
     <div className="h-11 w-11 shrink-0 overflow-hidden rounded-sm"
          style={{ background: tileGradient }}>
-      <LoopMedia image={c.image && cdnResized(c.image, 96)} video={c.video} alt={c.name}
+      <LoopMedia image={c.image} width={96} video={c.video} alt={c.name}
                  className="h-full w-full object-cover" />
     </div>
   );
@@ -34,12 +34,11 @@ export default function CollectionsPage() {
       {/* hero */}
       <section style={{ background: "radial-gradient(90% 130% at 82% 20%, #241238, #0c0912 64%)" }}>
         <Container className="pt-12">
-          {/* <div className="eyebrow text-hypeB">The catalogue</div> */}
           <h1 className="text-[40px] font-black leading-none tracking-[-0.03em] text-ink sm:text-[52px]">
             MetaZoo NFT collections
           </h1>
           <p className="mt-4 max-w-140 text-pretty text-[15px] leading-[1.6] text-dim">
-            Every contract MetaZoo minted, ranked by the volume that moved through the secondary markets.
+            Every contract MetaZoo minted, ranked by its volume that moved through the secondary markets.
           </p>
           <div className="mt-8">
             <StatStrip className="grid-cols-2 sm:grid-cols-4">
@@ -97,7 +96,7 @@ export default function CollectionsPage() {
                   </td>
                   <td className="px-4 py-3.25">
                     <div className="flex items-center gap-2.5">
-                      <Bar value={c.secondary_volume_eth} max={secMax} min={1.5} />
+                      <Bar value={c.secondary_volume_eth} max={secMax} />
                       <span className="min-w-20 whitespace-nowrap text-right text-dim2">
                         {c.secondary_volume_eth > 0 ? (
                           <><div>{eth(c.secondary_volume_eth)}</div>

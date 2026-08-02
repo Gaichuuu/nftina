@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Collection } from "@/data/schemas";
 import { hideLossPctFor } from "@/data/collectionUiConfig";
-import { pct, eth, tileGradient, cdnResized } from "@/lib/format";
+import { pct, eth, tileGradient } from "@/lib/format";
 import LoopMedia from "./LoopMedia";
 
 export default function CollectionTile({ c }: { c: Collection }) {
@@ -13,7 +13,7 @@ export default function CollectionTile({ c }: { c: Collection }) {
                      hover:-translate-y-0.75 hover:border-[rgba(139,233,255,.5)] hover:bg-[#1a1326]">
       <div className="aspect-square w-full overflow-hidden rounded-sm"
            style={{ background: tileGradient }}>
-        <LoopMedia image={c.image && cdnResized(c.image, 480)} video={c.video} alt={c.name}
+        <LoopMedia image={c.image} width={480} video={c.video} alt={c.name}
                    className="h-full w-full object-cover" />
       </div>
       <div className="mt-2.5 truncate text-[12px] font-bold text-ink">{c.name}</div>

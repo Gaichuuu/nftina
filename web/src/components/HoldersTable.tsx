@@ -103,7 +103,7 @@ export default function HoldersTable({ slug }: { slug: string }) {
                   <td className="px-4 py-3.25">
                     <div className="flex items-center gap-2">
                       <span className="min-w-6.5 text-right font-bold text-ink">{e.tokens_held}</span>
-                      <Bar value={e.tokens_held} max={heldMax} variant="own" min={4}
+                      <Bar value={e.tokens_held} max={heldMax} variant="own"
                            className="w-16 shrink-0" />
                     </div>
                   </td>

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { CollectionContent, UtilityProduct } from "@/data/schemas";
 import { usd, ethUsd, placeholderGradient, cdnResized } from "@/lib/format";
 import { isShowcase3d } from "@/data/collectionUiConfig";
-import { DEFAULT_MODEL, randomModel, type Model3d } from "@/lib/heroModel";
+import { DEFAULT_MODEL } from "@/lib/heroModel";
 import LoopMedia from "./LoopMedia";
-import ModelViewer from "./ModelViewer";
+import RandomModel from "./RandomModel";
 
 function inline(raw: string) {
   const parts = raw.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
@@ -63,18 +63,11 @@ function ProductTile({ p }: { p: UtilityProduct }) {
 }
 
 function ShowcaseModel() {
-  const [pick, setPick] = useState<Model3d | null>(null);
-  useEffect(() => { setPick(randomModel()); }, []);
-  const model = pick ?? DEFAULT_MODEL;
-  if (!model) return null;
+  if (!DEFAULT_MODEL) return null;
   return (
     <div className="aspect-square w-full overflow-hidden rounded-md border border-line"
          style={{ background: "radial-gradient(60% 55% at 50% 45%, rgba(139,233,255,.14), transparent 72%)" }}>
-      {pick
-        ? <ModelViewer src={model.model} poster={model.image ?? undefined} alt={model.name}
-                       randomAnimation />
-        : model.image && <img src={model.image} alt={model.name}
-                              className="h-full w-full object-contain" />}
+      <RandomModel />
     </div>
   );
 }

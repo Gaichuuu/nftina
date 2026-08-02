@@ -1,12 +1,13 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import type { WalletProfile } from "@/data/runtime";
-import { eth, usd, etherscanAddr, tileGradient, cdnResized } from "@/lib/format";
+import { eth, usd, etherscanAddr, tileGradient } from "@/lib/format";
 import { collections } from "@/data/bundled";
 import { walletName, hasWalletName, useWalletIdentities } from "@/data/identities";
 import Bar from "./Bar";
 import LoopMedia from "./LoopMedia";
 import NetPnl, { Signed } from "./NetPnl";
+import { StatStrip } from "./StatCell";
 import WalletAvatar from "./WalletAvatar";
 import XferCell from "./XferCell";
 
@@ -76,8 +77,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
           </a>
         </div>
         {o && (
-          <div className="grid w-full grid-cols-1 gap-px overflow-hidden rounded-[10px] border
-                          border-line bg-line min-[480px]:grid-cols-3 lg:w-auto lg:min-w-90">
+          <StatStrip className="w-full grid-cols-1 min-[480px]:grid-cols-3 lg:w-auto lg:min-w-90">
             <Metric label="On-chain P&L">
               <Signed v={o.net_pnl_eth} fmt={eth} className="text-[18px] font-extrabold" />
               <Signed v={o.net_pnl_usd ?? 0} fmt={usd} className="font-mono text-[11px] opacity-75" />
@@ -104,7 +104,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
                 <div className="text-[18px] font-extrabold text-muted">—</div>
               )}
             </Metric>
-          </div>
+          </StatStrip>
         )}
       </div>
 
@@ -142,7 +142,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
                             className="group flex items-center gap-2 no-underline">
                         <span className="inline-block h-6 w-6 shrink-0 overflow-hidden rounded-[6px]"
                               style={{ background: tileGradient }}>
-                          <LoopMedia image={logos[c.slug] && cdnResized(logos[c.slug]!, 64)} alt={c.name}
+                          <LoopMedia image={logos[c.slug]} width={64} alt={c.name}
                                      className="h-full w-full object-cover" />
                         </span>
                         <span className={`font-bold transition-colors group-hover:text-hypeB ${e ? "text-ink" : "text-muted"}`}>
@@ -154,7 +154,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
                         <span className="min-w-5.5 text-right font-bold text-ink">
                           {e?.tokens_held ?? 0}
                         </span>
-                        <Bar value={e?.tokens_held ?? 0} max={heldMax} variant="own" min={6}
+                        <Bar value={e?.tokens_held ?? 0} max={heldMax} variant="own"
                              className="w-14 shrink-0" />
                       </div>
                     </td>

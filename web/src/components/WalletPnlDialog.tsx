@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWalletProfile, type WalletProfile } from "@/data/runtime";
 import { collectionNames } from "@/data/bundled";
+import Spinner from "./Spinner";
 import WalletProfileView from "./WalletProfileView";
 
 export default function WalletPnlDialog({ address, onClose }: { address: string; onClose: () => void }) {
@@ -34,8 +35,7 @@ export default function WalletPnlDialog({ address, onClose }: { address: string;
         </div>
         {profile === "loading" && (
           <div className="flex flex-col items-center gap-3 py-12">
-            <span className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-hypeB
-                             [animation-duration:.8s]" />
+            <Spinner />
             <span className="font-mono text-[12px] text-muted">Loading…</span>
           </div>
         )}
