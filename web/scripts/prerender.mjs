@@ -34,7 +34,7 @@ function buildRoutes() {
     {
       url: "/",
       title: "MetaZoo NFTs",
-      desc: "Check your wallet's MetaZoo NFT profit & loss report.",
+      desc: "Check your wallet profit & loss and see how you rank.",
       priority: "1.0",
     },
     {
