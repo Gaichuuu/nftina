@@ -33,7 +33,7 @@ function buildRoutes() {
   const routes = [
     {
       url: "/",
-      title: "metazoonfts.com",
+      title: "MetaZoo NFTs",
       desc: "Check your wallet's MetaZoo NFT profit & loss report.",
       priority: "1.0",
     },
