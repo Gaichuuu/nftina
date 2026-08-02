@@ -79,7 +79,8 @@ export default function FindingsPage() {
       {/* insiders */}
       <h2 className="section-h2 mt-16 mb-5">
       Insider cash-out</h2>
-      <section className="mt-0 rounded-md border border-hypeA/40 bg-panel p-6">
+      <section className="mt-0 rounded-md border border-hypeA/40 bg-panel p-6 max-sm:-mx-5
+                          max-sm:rounded-none max-sm:border-x-0 max-sm:px-5">
         <div className="eyebrow text-loss">
           {eth(insider.eth)} → {insider.exchange} · <span className="text-ink">unknown</span> on-chain
         </div>

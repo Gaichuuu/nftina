@@ -29,7 +29,8 @@ export default function WalletLookup() {
 
   const p = s.profile;
   return (
-    <div className="rounded-2xl border border-line px-4 py-7 text-center sm:px-8 sm:py-9"
+    <div className="rounded-2xl border border-line px-4 py-7 text-center max-sm:-mx-5 max-sm:rounded-none
+                    max-sm:border-x-0 sm:px-8 sm:py-9"
          style={{ background: "radial-gradient(120% 140% at 50% 0%, #1c1030, #0f0b16 70%)" }}>
       <div className="mb-5 flex flex-wrap items-center justify-center" aria-hidden>
         {coinStrip.map((c) => (

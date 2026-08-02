@@ -39,7 +39,7 @@ export default function HomePage() {
         {/* HERO MODEL */}
         {DEFAULT_HERO && (
           <div className="pointer-events-none relative z-1 mx-auto mt-4 h-65 w-full max-w-90
-                          max-sm:mt-0 max-sm:h-50
+                          max-sm:-mb-6 max-sm:mt-0 max-sm:h-50
                           lg:absolute lg:right-2.5 lg:-top-17.5 lg:mx-0 lg:mt-0 lg:h-160 lg:w-190 lg:max-w-none">
             <div className="absolute inset-0"
                  style={{ background: "radial-gradient(50% 45% at 55% 42%, rgba(139,233,255,.16), transparent 70%)",
@@ -51,7 +51,7 @@ export default function HomePage() {
         )}
         {/* STATS */}
         <div className="relative z-5 pb-14">
-          <Container className="pt-11">
+          <Container className="pt-11 max-sm:pt-4">
             <StatStrip className="anim-rise-stagger grid-cols-2 sm:grid-cols-4">
               <StatCell bg="bg-bg" tone="hype" big={eth(findings.legs.aoki_eth)}
                         sub={compactUsd(findings.legs.aoki_usd)} label="→ Sent to Aoki" />
