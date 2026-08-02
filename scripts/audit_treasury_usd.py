@@ -270,7 +270,7 @@ def main() -> None:
                    "exchange_deposit = plausibly converted; a deposit is not proof of a sale.",
                    "Unlabeled counterparties aggregate under other_in/other_out.",
                    "royalties (in) = NFT royalty / OpenSea creator-earnings reaching "
-                   "the treasury via the F36-traced distributor 0xd909 (Wyvern, from "
+                   "the treasury via the traced distributor 0xd909 (Wyvern, from "
                    "OpenSea payout 0x0b7a43) and the Seaport splitter 0xcbbec; ~80% of "
                    "the ~79.6 ETH Coin Tokens royalty attributed at sale. A small part "
                    "of the 0xd909 flow is non-royalty seed, so it is a close proxy.",
@@ -282,7 +282,8 @@ def main() -> None:
                    "wallets hold ~%.2f ETH on-chain today. Because the treasury spent "
                    "ETH near-immediately (not held through the crash), the idle-"
                    "depreciation loss is small." % balgas["total_held_eth"],
-               ]}}
+               ]
+               }}
     dest = root / "public" / "data" / "treasury_usd_audit.json"
     dest.write_text(json.dumps(out, indent=2))
     print(f"[audit] {len(ledger)} ledger entries -> {dest}")
@@ -295,10 +296,10 @@ def main() -> None:
     print(f"  idle-depreciation gap ≈ ${h['depreciation_gap_usd']:,.0f}")
     try:
         summary = json.loads((root / "public" / "data" / "summary.json").read_text())
-        print(f"  [anchor] F19 total_mint_revenue_usd = "
+        print(f"  [anchor] total_mint_revenue_usd = "
               f"${summary.get('total_mint_revenue_usd', 0):,.0f} "
               f"vs audit mint_proceeds ${by_class['in'].get('mint_proceeds', {}).get('usd', 0):,.0f} "
-              f"(differences = withdrawal timing + wallets outside the treasury set; explain in F28)")
+              f"(differences = withdrawal timing + wallets outside the treasury set)")
     except FileNotFoundError:
         pass
 

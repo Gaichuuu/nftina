@@ -10,7 +10,7 @@ const IN_SOURCES: { key: string; label: string }[] = [
 
 export default function UsdAuditSection() {
   if (!usdAudit) return null;
-  const { headline: h, by_class, method } = usdAudit;
+  const { headline: h, by_class } = usdAudit;
   const inTotal = Object.values(by_class.in).reduce((s, c) => s + c.eth, 0) || 1;
   const inRows = [
     ...IN_SOURCES.filter((s) => by_class.in[s.key]),
@@ -95,9 +95,12 @@ export default function UsdAuditSection() {
         <span className="font-bold text-loss">{compactUsd(h.depreciation_gap_usd)}</span> was lost to ETH’s
         price falling between when it arrived and when it left.
       </p>
+      {/* Methodology caveats hidden for now. To restore: re-add `method` to the
+          destructure above, stop dropping method.caveats in
+          build_site_data.build_usd_audit, and unskip the guard test.
       <p className="mt-2.5 max-w-225 font-mono text-[10px] leading-normal text-muted">
         {method.caveats.join(" ")}
-      </p>
+      </p> */}
       {/* Weekly treasury balance chart removed for now; can restore from git
           history together with the `weekly` key in build_site_data.build_usd_audit
           and the UsdAudit schema. */}

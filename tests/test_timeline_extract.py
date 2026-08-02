@@ -1,4 +1,4 @@
-"""Timeline-capture extraction (F44's second archive source).
+"""Timeline-capture extraction (the second, independent Wayback source).
 
 The fixture is a trimmed but VERBATIM slice of a real Wayback capture
 (web.archive.org/web/20220713175134id_/https://twitter.com/steveaoki): two

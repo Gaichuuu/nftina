@@ -201,7 +201,7 @@ def test_count_cross_kind_collisions():
 
 
 def test_insider_wallets_match_payout_ledger():
-    """Drift guard (F42): the audit's hardcoded INSIDER_WALLETS is kept separate from
+    """Drift guard: the audit's hardcoded INSIDER_WALLETS is kept separate from
     labels.json on purpose (labels.json `type` drives trace-recursion)."""
     from scripts.audit_treasury_usd import INSIDER_WALLETS
     ledger_path = Path(__file__).resolve().parents[1] / "data" / "evidence" / "payout_ledger.json"

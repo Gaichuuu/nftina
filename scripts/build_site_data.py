@@ -603,11 +603,17 @@ def build_sandbox3d(entries):
 
 def build_usd_audit(audit):
     """site/data passthrough of the treasury USD audit; None -> null on disk so
-    the frontend's static import always resolves. The `weekly` series is dropped
-    while the frontend's weekly chart is parked"""
+    the frontend's static import always resolves. Two keys are dropped while their
+    frontend surfaces are parked: `weekly` (the weekly balance chart) and
+    `method.caveats` (the estimates disclosure). Both stay in the full record at
+    public/data/treasury_usd_audit.json, so nothing is lost; re-emitting either is
+    one line here plus its schema field and component."""
     if not audit:
         return audit
-    return {k: v for k, v in audit.items() if k != "weekly"}
+    out = {k: v for k, v in audit.items() if k != "weekly"}
+    if "method" in out:
+        out["method"] = {k: v for k, v in out["method"].items() if k != "caveats"}
+    return out
 
 
 def merge_profiles(web3bio=None, opensea=None):

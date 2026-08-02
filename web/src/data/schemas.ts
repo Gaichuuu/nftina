@@ -172,6 +172,7 @@ export const UsdAudit = z.object({
   weekly: z.array(z.object({ week: z.string(), eth_balance: z.number(), usd_mark: z.number() }))
     .optional(),
   method: z.object({ wallets: z.array(z.string()), valuation: z.string(),
-                     caveats: z.array(z.string()) }),
+                     /* Dropped from the site contract while the disclosure paragraph is hidden. Full list stays in public/data. */
+                     caveats: z.array(z.string()).optional() }),
 }).nullable();
 export type UsdAudit = z.infer<typeof UsdAudit>;

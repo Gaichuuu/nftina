@@ -56,7 +56,7 @@ def check_held_exceeds_supply(rows, supply):
 
 
 def check_realized_without_sale(rows):
-    """Realized P&L is applied once per authoritative sale (M2). A nonzero
+    """Realized P&L is applied once per authoritative sale. A nonzero
     realized figure on a wallet that never sold means it came from somewhere else."""
     return [{"wallet": r["wallet"], "realized_pnl_eth": r["realized_pnl_eth"]}
             for r in rows
@@ -104,7 +104,8 @@ def check_loss_without_basis(rows):
 
 def check_sign_divergence(rows):
     """ETH and USD P&L disagreeing in sign is CORRECT under at-event valuation
-    (F51) and is listed for visibility, never as a defect."""
+    (cost basis priced at purchase, proceeds at sale) and is listed for
+    visibility, never as a defect."""
     return [{"wallet": r["wallet"], "realized_pnl_eth": r["realized_pnl_eth"],
              "realized_pnl_usd": r.get("realized_pnl_usd", 0.0)}
             for r in rows

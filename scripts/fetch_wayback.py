@@ -1,8 +1,8 @@
 """Recover deleted tweets from the Wayback Machine.
 
-  --target metazoo       reconstruct the DELETED @MetaZooGames account (F7)
+  --target metazoo       reconstruct the DELETED @MetaZooGames account
   --target aoki-deleted  find Aoki MetaZoo tweets that are archived but no longer
-                         live on X (F8) — archived set minus the live set
+                         live on X — archived set minus the live set
 
 Resumable: results are saved incrementally; re-running skips tweet ids already done.
 Wayback is slow/flaky, so expect a long run and partial recovery.

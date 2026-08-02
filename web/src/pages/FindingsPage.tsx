@@ -23,7 +23,7 @@ export default function FindingsPage() {
           Where did the money go?
         </h1>
         <p className="mt-4 max-w-180 text-pretty text-[15px] leading-[1.6] text-dim">
-          One of the great MetaZoo mysteries. Now, with the power of the blockchain, we're able to reconstruct the financial flow of money from public transactions.
+          One of the great MetaZoo mysteries. With the power of the blockchain, we're able to reconstruct the financial flow of money from public transactions.
         </p>
       </header>
 

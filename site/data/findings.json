@@ -2066,6 +2066,6 @@
  "insider": {
   "eth": 269.25,
   "exchange": "Coinbase",
-  "note": "Fresh MetaZoo-funded wallets, no ENS/history. Traced forward, ~97% of this ETH cashed out to a centralized exchange (overwhelmingly Coinbase, one branch to FTX); the rest commingled into an active trading wallet."
+  "note": "Fresh MetaZoo-funded wallets, no ENS/history. Traced forward, roughly 97% of this ETH cashed out to a centralized exchange (overwhelmingly Coinbase, one branch to FTX); the rest commingled into an active trading wallet."
  }
 }

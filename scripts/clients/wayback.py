@@ -69,7 +69,7 @@ def extract_timeline_tweets(html: str, page_handle: str = None) -> list:
     for crawlers). That makes profile captures a second, independent source, and
     the ONLY one that reaches retweets: `twitter.com/<retweeter>/status/<rt id>`
     redirects to the original, so a retweet's own URL is never archived under the
-    retweeter, while a timeline capture labels it "<Name> Retweeted" (F44).
+    retweeter, while a timeline capture labels it "<Name> Retweeted".
 
     Returns [{tweet_id, author, timestamp, text, retweeted_by, quoted_id, media}], with
     quoted/retweeted tweets captured under their OWN author and id. A capture that

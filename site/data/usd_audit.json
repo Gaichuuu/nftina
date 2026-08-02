@@ -56,14 +56,6 @@
    "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
    "0x79109a93db158f16f4c8936217ce46f21ed5dc2b"
   ],
-  "valuation": "Binance daily close (data/raw/eth_usd_daily.json); inflows at receipt date, outflows (and gas) at spend date, still-held balance at current price $1,885/ETH",
-  "caveats": [
-   "On-chain NFT-side only: physical-card fiat revenue never touched these wallets.",
-   "exchange_deposit = plausibly converted; a deposit is not proof of a sale.",
-   "Unlabeled counterparties aggregate under other_in/other_out.",
-   "royalties (in) = NFT royalty / OpenSea creator-earnings reaching the treasury via the F36-traced distributor 0xd909 (Wyvern, from OpenSea payout 0x0b7a43) and the Seaport splitter 0xcbbec; ~80% of the ~79.6 ETH Coin Tokens royalty attributed at sale. A small part of the 0xd909 flow is non-royalty seed, so it is a close proxy.",
-   "mint_proceeds is ~20-30% below full reconstructed mint revenue per collection; the remainder went to an unidentified payee outside this audit's 3-wallet treasury seed.",
-   "The received\u2212paid residual is almost entirely GAS (transaction fees the value-ledger doesn't track), not ETH still held: the wallets hold ~0.08 ETH on-chain today. Because the treasury spent ETH near-immediately (not held through the crash), the idle-depreciation loss is small."
-  ]
+  "valuation": "Binance daily close (data/raw/eth_usd_daily.json); inflows at receipt date, outflows (and gas) at spend date, still-held balance at current price $1,885/ETH"
  }
 }

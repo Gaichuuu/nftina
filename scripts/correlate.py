@@ -9,7 +9,7 @@ Sources (whichever exist in data/raw/):
   tweets_timeline_recovered.json tweets read out of archived PROFILE captures
                                  (Wayback), the only source that reaches retweets
                                  and tweets whose own status URL was never
-                                 snapshotted. See FINDINGS F44.
+                                 snapshotted.
 
 Outputs public/data/tweets_timeline.json and tweets_summary.json."""
 import json

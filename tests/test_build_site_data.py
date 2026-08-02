@@ -825,17 +825,21 @@ def test_build_usd_audit_passthrough_and_null():
     from scripts.build_site_data import build_usd_audit
     assert build_usd_audit(None) is None
     doc = {"headline": {"received_eth": 1.0}, "by_class": {"in": {}, "out": {}},
-           "method": {"wallets": [], "valuation": "x", "caveats": []}}
+           "method": {"wallets": [], "valuation": "x"}}
     assert build_usd_audit(doc) == doc
 
 
-def test_build_usd_audit_drops_weekly_while_the_chart_is_parked():
+def test_build_usd_audit_drops_parked_keys():
+    """`weekly` (chart) and `method.caveats` (disclosure paragraph) are both parked
+    on the frontend, so neither ships in the site contract. Both remain in the full
+    record at public/data/treasury_usd_audit.json."""
     from scripts.build_site_data import build_usd_audit
     doc = {"headline": {}, "by_class": {"in": {}, "out": {}},
            "weekly": [{"week": "2021-12-06", "eth_balance": 1.0, "usd_mark": 2.0}],
-           "method": {"wallets": [], "valuation": "x", "caveats": []}}
+           "method": {"wallets": [], "valuation": "x", "caveats": ["estimates only"]}}
     out = build_usd_audit(doc)
     assert "weekly" not in out
+    assert "caveats" not in out["method"]
     assert out["headline"] == {} and out["method"]["valuation"] == "x"
 
 

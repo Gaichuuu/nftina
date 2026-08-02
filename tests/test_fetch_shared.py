@@ -1,5 +1,5 @@
 """Tests for the token-ID-filtered fetch of MetaZoo collections inside shared
-contracts (F16): Etherscan.token_transfers_for_holder + Alchemy.sales_for_tokens."""
+contracts: Etherscan.token_transfers_for_holder + Alchemy.sales_for_tokens."""
 from scripts.clients.etherscan import Etherscan, ZERO
 from scripts.clients.alchemy import Alchemy
 
