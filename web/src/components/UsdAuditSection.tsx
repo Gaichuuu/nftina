@@ -21,7 +21,7 @@ export default function UsdAuditSection() {
   return (
     <section className="mt-16">
       <h2 className="section-h2 mb-5">
-        Where the treasury’s money came from
+        Treasury money in
       </h2>
       <StatStrip className="grid-cols-1 sm:grid-cols-3">
         {inRows.map((r) => {
@@ -55,7 +55,7 @@ export default function UsdAuditSection() {
         return (
           <>
             <h2 className="section-h2 mb-5 mt-14">
-              Where the treasury’s money went
+              Treasury money out
             </h2>
             <StatStrip className={`grid-cols-2 max-sm:[&>*:nth-child(odd):last-child]:col-span-2 ${
               ["sm:grid-cols-1", "sm:grid-cols-1", "sm:grid-cols-2", "sm:grid-cols-3",

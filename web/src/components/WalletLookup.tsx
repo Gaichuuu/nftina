@@ -35,7 +35,7 @@ export default function WalletLookup() {
       <div className="mb-5 flex flex-wrap items-center justify-center" aria-hidden>
         {coinStrip.map((c) => (
           <img key={c.token_id} src={cdnResized(c.image, 160)} alt="" loading="lazy"
-               className="-mx-1.5 h-13 w-13 rounded-full sm:h-19 sm:w-19" />
+               className="-mx-2 h-10 w-10 rounded-full sm:-mx-1.5 sm:h-19 sm:w-19" />
         ))}
       </div>
       <h2 className="text-[24px] font-black tracking-tight sm:text-[32px]">Check your wallet profit &amp; loss</h2>

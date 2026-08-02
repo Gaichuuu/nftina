@@ -13,7 +13,7 @@ export default function Bar(
                   boxShadow: "inset 0 0 0 1px rgba(255,255,255,.06)" }}>
       <span className="anim-growbar block h-full"
             style={{ width: `${value > 0 ? (value / max) * 100 : 0}%`,
-                     minWidth: value > 0 ? 10 : 0,
+                     minWidth: value > 0 ? 20 : 0,
                      background: GRADIENTS[variant] }} />
     </div>
   );
