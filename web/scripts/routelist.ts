@@ -11,20 +11,20 @@ export function buildRoutes(): Route[] {
   const routes: Route[] = [
     {
       url: "/",
-      title: "metazoonfts.com · MetaZoo NFT losses, on-chain",
-      desc: "On-chain evidence of the MetaZoo NFT collapse: holder losses, MetaZoo's take, and the ETH trail to Steve Aoki.",
+      title: "metazoonfts.com",
+      desc: "Check your wallet's MetaZoo NFT profit & loss report.",
       priority: "1.0",
     },
     {
       url: "/collections",
-      title: "The Collections · every MetaZoo NFT drop, ranked · metazoonfts.com",
-      desc: "All ten MetaZoo NFT collections ranked by on-chain secondary volume: mints, mint revenue, royalties, and floor.",
+      title: "MetaZoo NFT Collections",
+      desc: "Every contract MetaZoo minted, ranked by its volume that moved through the secondary markets.",
       priority: "0.8",
     },
     {
       url: "/where-did-the-money-go",
-      title: "Findings · where did the money go? · metazoonfts.com",
-      desc: "The full on-chain money trail: MetaZoo treasury → Aoki → blue-chip NFTs, and insider cash-out.",
+      title: "Findings · where did the money go?",
+      desc: "One of the great MetaZoo mysteries. Using the power of the blockchain, we're able to reconstruct the flow of money from public transactions.",
       priority: "0.9",
     },
   ];
@@ -32,8 +32,8 @@ export function buildRoutes(): Route[] {
   for (const c of collections) {
     routes.push({
       url: `/collections/${c.collection}`,
-      title: `${c.name} · losses & holders · metazoonfts.com`,
-      desc: `${c.name}: on-chain mints, secondary volume, MetaZoo royalties, and the holders who lost the most.`,
+      title: `${c.name}`,
+      desc: `See the collection's tokens, holders, overview, and utility.`,
       priority: "0.7",
     });
   }
