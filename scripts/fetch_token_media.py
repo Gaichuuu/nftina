@@ -23,6 +23,7 @@ import requests
 from scripts.config import CONTRACTS, SITE_COLLECTIONS, MEDIA_CDN_BASE, SANDBOX_TOKEN_IDS
 from scripts.clients.alchemy import Alchemy, pick_image_url, normalize_ipfs
 from scripts.fetch_chain import is_shared_or_subset
+from scripts.image_shrink import shrink_image
 
 ROOT = Path(__file__).parent.parent
 MEDIA = ROOT / "data" / "media"
@@ -211,12 +212,43 @@ def fetch_collection(client: Alchemy, slug: str, limit: int = 0) -> dict:
         if e["file"] in seen:
             continue
         seen.add(e["file"])
+        if (MEDIA / "tokens" / slug / f"{os.path.splitext(e['file'])[0]}.webp").exists():
+            continue
         jobs.append((e["source"], MEDIA / "tokens" / slug / e["file"]))
     ok = _download_jobs(jobs)
+    shrink_token_art(entries, MEDIA / "tokens" / slug)
     (INDEX / "tokens").mkdir(parents=True, exist_ok=True)
     (INDEX / "tokens" / f"{slug}.json").write_text(json.dumps(entries, indent=1))
     print(f"[{slug}] {len(entries)} tokens -> {len(seen)} distinct images, {ok} on disk")
     return entries
+
+
+def shrink_token_art(entries: dict, dest_dir: Path) -> int:
+    """Replace each oversized raster in `dest_dir` with an image_shrink WebP
+    and point `entries` at it, so full-size originals never reach the CDN."""
+    def one(fname: str) -> str | None:
+        stem, ext = os.path.splitext(fname)
+        src, webp = dest_dir / fname, dest_dir / f"{stem}.webp"
+        if ext == ".webp":
+            return None
+        if webp.exists():
+            src.unlink(missing_ok=True)
+            return webp.name
+        if not src.exists():
+            return None
+        res = shrink_image(src.read_bytes())
+        if res is None:
+            return None
+        webp.write_bytes(res[0])
+        src.unlink()
+        return webp.name
+
+    files = sorted({e["file"] for e in entries.values()})
+    with cf.ThreadPoolExecutor(max_workers=WORKERS) as ex:
+        renamed = {f: new for f, new in zip(files, ex.map(one, files)) if new}
+    for e in entries.values():
+        e["file"] = renamed.get(e["file"], e["file"])
+    return len(renamed)
 
 
 def acq_key(contract: str, token_id: str) -> str:

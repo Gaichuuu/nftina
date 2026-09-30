@@ -111,3 +111,32 @@ def test_sniff_ext_detects_svg():
     assert sniff_ext(b'\xef\xbb\xbf<svg></svg>') == ".svg"          # UTF-8 BOM
     assert sniff_ext(b"\x89PNG\r\n\x1a\n") == ".png"                # still PNG
     assert sniff_ext(b"<html><body>not an image</body>") == ""     # HTML != SVG
+
+
+def _png_file(path, size):
+    import io
+    from PIL import Image
+    bio = io.BytesIO()
+    Image.new("RGBA", size, (1, 2, 3, 255)).save(bio, "PNG")
+    path.write_bytes(bio.getvalue())
+
+
+def test_shrink_token_art_replaces_oversized_png_with_webp(tmp_path):
+    from scripts.fetch_token_media import shrink_token_art
+    _png_file(tmp_path / "big.png", (2700, 2700))
+    _png_file(tmp_path / "small.png", (400, 400))
+    entries = {"1": {"file": "big.png"}, "2": {"file": "big.png"}, "3": {"file": "small.png"}}
+    assert shrink_token_art(entries, tmp_path) == 1
+    assert entries["1"]["file"] == entries["2"]["file"] == "big.webp"
+    assert entries["3"]["file"] == "small.png"
+    assert (tmp_path / "big.webp").exists() and not (tmp_path / "big.png").exists()
+    assert (tmp_path / "small.png").exists()
+
+
+def test_shrink_token_art_reuses_existing_webp(tmp_path):
+    from scripts.fetch_token_media import shrink_token_art
+    (tmp_path / "big.webp").write_bytes(b"already shrunk")
+    entries = {"1": {"file": "big.png"}}
+    assert shrink_token_art(entries, tmp_path) == 1
+    assert entries["1"]["file"] == "big.webp"
+    assert (tmp_path / "big.webp").read_bytes() == b"already shrunk"
