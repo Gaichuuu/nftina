@@ -17,7 +17,7 @@ export default function CollectionPage() {
   const [tab, setTab] = useState("Tokens");
   if (!c) return <div className="p-16 text-center text-dim">No such collection.</div>;
   const content = contentFor(slug);
-  const TABS = tabsFor(slug, content.utility.length > 0);
+  const TABS = tabsFor(slug, content.utility.length > 0 || !!content.utility_intro);
   const special = isShowcase3d(slug);
   return (
     <div>

@@ -14,11 +14,6 @@
     "hash": "7569c5c8",
     "source_name": "CN1 box.jpg"
   },
-  "dim_mak_box": {
-    "file": "dim_mak_box.jpg",
-    "hash": "5e709b9a",
-    "source_name": "dim-mak-hq.jpg"
-  },
   "genesis_reissue_airdrop": {
     "file": "genesis_reissue_airdrop.gif",
     "hash": "e8bf43b2",
@@ -73,6 +68,11 @@
     "file": "software_malfunction.gif",
     "hash": "1f117399",
     "source_name": "Mysterious Software Malfunction.gif"
+  },
+  "token_nft_promo": {
+    "file": "token_nft_promo.jpg",
+    "hash": "28f2bf5c",
+    "source_name": "token-nft-promo.jpg"
   },
   "ufo_booster_box": {
     "file": "ufo_booster_box.jpg",

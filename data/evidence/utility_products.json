@@ -25,15 +25,6 @@
     "image_file": "data/media/tokens/coin_tokens/b867049a78650f37.gif"
   },
   {
-    "id": "dim_mak_box",
-    "collection": "coin_tokens",
-    "date": "2021-12-17",
-    "name": "MetaZoo x Dim Mak box",
-    "price_usd": 50,
-    "note": "Randomly seeded with Nightfall, Cryptid Nation 1st Edition, and Kickstarter booster packs.",
-    "image_file": "dim-mak-hq.jpg"
-  },
-  {
     "id": "cn2_booster_box",
     "collection": "coin_tokens",
     "date": "2021-12-29",
@@ -68,6 +59,14 @@
     "price_usd": 100,
     "note": "Gold NFT sticker on top of the shrink wrap.",
     "image_file": "WN box.jpg"
+  },
+  {
+    "id": "token_nft_promo",
+    "collection": "coin_tokens",
+    "date": "2022-04-04",
+    "name": "Token NFT Promo",
+    "note": "An exclusive serialized promo card of the corresponding Token NFT.",
+    "image_file": "token-nft-promo.jpg"
   },
   {
     "id": "nft_gilding",

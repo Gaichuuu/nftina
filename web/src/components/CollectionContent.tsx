@@ -110,11 +110,18 @@ export default function CollectionContentView(
     );
   }
   const products = content.utility;
-  if (!products.length)
+  if (!products.length && !content.utility_intro)
     return <div className="py-16 text-center font-mono text-[12px] text-muted">no utility items yet.</div>;
   return (
-    <div className="grid grid-cols-2 gap-4 py-7 sm:grid-cols-3 lg:grid-cols-5">
-      {products.map((p) => <ProductTile key={p.id} p={p} />)}
+    <div className="py-7">
+      {content.utility_intro && (
+        <p className="max-w-3xl text-[15px] leading-[1.7] text-dim2">{inline(content.utility_intro)}</p>
+      )}
+      {products.length > 0 && (
+        <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5${content.utility_intro ? " mt-6" : ""}`}>
+          {products.map((p) => <ProductTile key={p.id} p={p} />)}
+        </div>
+      )}
     </div>
   );
 }

@@ -122,13 +122,6 @@ export default function HoldersTable({ slug }: { slug: string }) {
         {Math.min(shown, sorted.length).toLocaleString()} / {sorted.length.toLocaleString()} wallets
       </div>
       {shown < sorted.length && <div ref={sentinelRef} aria-hidden className="h-px" />}
-      <p className="mt-2 font-mono text-[10px] leading-normal text-muted">
-        Every wallet that held, minted, bought, or sold in this collection. Owned = minted + bought
-        + transfers − sold, where transfers are non-sale moves in/out (airdrops, gifts). Net = realized
-        P&amp;L (sales minus cost) minus unrealized loss (held tokens vs current floor) minus gas fees paid,
-        valued when the ETH moved. The bar shows tokens still owned. Rows link to Etherscan;
-        the P&amp;L button opens the wallet's full breakdown.
-      </p>
       {pnlWallet && <WalletPnlDialog address={pnlWallet} onClose={() => setPnlWallet(null)} />}
     </div>
   );

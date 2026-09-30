@@ -42,6 +42,20 @@ test("utility mode with no products shows a fallback line", () => {
   expect(screen.getByText(/no utility items yet/i)).toBeInTheDocument();
 });
 
+test("utility mode renders the authored intro above the tiles, bold lead-in included", () => {
+  render(<CollectionContentView mode="Utility" content={{ overview: [], utility: [PRODUCT],
+    utility_intro: "**General utility:** Early access." }} />);
+  expect(screen.getByText("General utility:").tagName).toBe("STRONG");
+  expect(screen.getByText(/Early access\./)).toBeInTheDocument();
+});
+
+test("utility mode with an intro but no products shows the intro, not the fallback", () => {
+  render(<CollectionContentView mode="Utility" content={{ overview: [], utility: [],
+    utility_intro: "**General utility:** Free holiday product." }} />);
+  expect(screen.getByText("General utility:")).toBeInTheDocument();
+  expect(screen.queryByText(/no utility items yet/i)).not.toBeInTheDocument();
+});
+
 test("empty content shows a fallback line", () => {
   render(<CollectionContentView mode="Overview"
     content={{ overview: [], utility: [] }} />);

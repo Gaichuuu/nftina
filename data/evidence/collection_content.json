@@ -1,5 +1,6 @@
 {
   "coin_tokens": {
+    "utility_intro": "**General utility:** Early access to MetaZoo products before the rest of the community.",
     "overview": [
       "Presale for whitelisted addresses: 29 Nov, 11am EST to 2 Dec, 11am EST.",
       "Public Sale: 2 Dec, 12pm EST to 12am EST.",
@@ -168,6 +169,7 @@
     "overview_image": "tokens/wilderness/0e6f8dae9e747d8a.png"
   },
   "tournament_prizes": {
+    "utility_intro": "**General utility:** Free MetaZoo holiday product every year.",
     "overview": [
       "On January 1st, 2022, MetaZoo Games hosted the New Year's Tabletop Simulator tournament, where 1/1 NFT prizes were awarded:",
       "- 1st Place: Gold 1-of-1 MetaZoo Games Token NFT",

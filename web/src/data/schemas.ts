@@ -138,6 +138,7 @@ export type PrimarySale = z.infer<typeof PrimarySale>;
 export const CollectionContent = z.object({
   overview: z.array(z.string()),
   utility: z.array(UtilityProduct),
+  utility_intro: z.string().nullable().optional(),
   off_chain_basis: OffChainBasis.optional(),
   primary_sale: PrimarySale.optional(),
   overview_image: z.string().nullable().optional(),

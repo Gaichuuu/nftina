@@ -1,4 +1,5 @@
 {
+ "utility_intro": "**General utility:** Early access to MetaZoo products before the rest of the community.",
  "overview": [
   "Presale for whitelisted addresses: 29 Nov, 11am EST to 2 Dec, 11am EST.",
   "Public Sale: 2 Dec, 12pm EST to 12am EST.",
@@ -55,15 +56,6 @@
    "fit": true
   },
   {
-   "id": "dim_mak_box",
-   "name": "MetaZoo x Dim Mak box",
-   "price_usd": 50,
-   "price_eth": null,
-   "note": "Randomly seeded with Nightfall, Cryptid Nation 1st Edition, and Kickstarter booster packs.",
-   "image": "https://gaichu.b-cdn.net/nftina/utility/dim_mak_box.jpg?v=5e709b9a",
-   "fit": false
-  },
-  {
    "id": "cn2_booster_box",
    "name": "Cryptid Nation 2nd Edition booster box",
    "price_usd": 100,
@@ -97,6 +89,15 @@
    "price_eth": null,
    "note": "Gold NFT sticker on top of the shrink wrap.",
    "image": "https://gaichu.b-cdn.net/nftina/utility/wilderness_booster_box.jpg?v=5325d104",
+   "fit": false
+  },
+  {
+   "id": "token_nft_promo",
+   "name": "Token NFT Promo",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "An exclusive serialized promo card of the corresponding Token NFT.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/token_nft_promo.jpg?v=28f2bf5c",
    "fit": false
   },
   {
