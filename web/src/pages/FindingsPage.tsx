@@ -1,5 +1,5 @@
 import { findings } from "@/data/bundled";
-import { eth, usd, compactUsd, etherscanAddr } from "@/lib/format";
+import { eth, usd, compactUsd } from "@/lib/format";
 import Container from "@/components/Container";
 import { StatCell, StatStrip } from "@/components/StatCell";
 import LedgerTable from "@/components/LedgerTable";
@@ -7,11 +7,13 @@ import AcquisitionTable from "@/components/AcquisitionTable";
 import FlipperTable from "@/components/FlipperTable";
 import WalletAvatar from "@/components/WalletAvatar";
 import UsdAuditSection from "@/components/UsdAuditSection";
+import { AddrLink, LinkedText } from "@/components/AddrLink";
+import KnownWalletsTable from "@/components/KnownWalletsTable";
 
 const EXCHANGE_RE = /coinbase|ftx|binance|kraken/i;
 
 export default function FindingsPage() {
-  const { legs, flippers, payout_ledger, acquisitions, insider } = findings;
+  const { legs, flippers, payout_ledger, acquisitions, insider, known_wallets } = findings;
   const insiderRows = payout_ledger.filter((r) => r.kind === "insider");
   return (
     <div>
@@ -89,7 +91,6 @@ export default function FindingsPage() {
           <>
             <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {insiderRows.map((r, i) => {
-                const full = /^0x[0-9a-fA-F]{40}$/.test(r.recipient_addr);
                 return (
                   <div key={r.recipient_addr || i}
                        className="rounded-sm border border-line bg-panel3 p-3.5 transition-colors
@@ -102,17 +103,8 @@ export default function FindingsPage() {
                       </div>
                       <span className="font-mono text-[10px] text-muted">{r.date}</span>
                     </div>
-                    {full ? (
-                      <a href={etherscanAddr(r.recipient_addr)} target="_blank" rel="noopener noreferrer"
-                         className="mt-2 block break-all font-mono text-[10.5px] text-dim
-                                    transition-colors hover:text-hypeA">
-                        {r.recipient_addr}
-                      </a>
-                    ) : (
-                      <div className="mt-2 break-all font-mono text-[10.5px] text-muted">
-                        {r.recipient_addr || r.recipient}
-                      </div>
-                    )}
+                    <AddrLink addr={r.recipient_addr || r.recipient}
+                              className="mt-2 block text-[10.5px]" />
                     <div className="mt-2 text-[16px] font-extrabold leading-none tabular-nums text-loss">{eth(r.eth)}</div>
                     <div className="font-mono text-[11px] tabular-nums text-dim">{usd(r.usd)}</div>
                     {r.endpoint && (
@@ -122,7 +114,7 @@ export default function FindingsPage() {
                           ? "text-hypeA" : "text-dim"}>{r.endpoint}</span>
                       </div>
                     )}
-                    {r.note && <div className="mt-1.5 text-[10px] leading-[1.4] text-muted">{r.note}</div>}
+                    {r.note && <div className="mt-1.5 text-[10px] leading-[1.4] text-muted"><LinkedText text={r.note} /></div>}
                   </div>
                 );
               })}
@@ -132,6 +124,14 @@ export default function FindingsPage() {
       </section>
 
       <UsdAuditSection />
+
+      {/* known wallets */}
+      {known_wallets.length > 0 && (
+        <section className="mt-16">
+          <h2 className="section-h2 mb-5">Known wallets</h2>
+          <KnownWalletsTable wallets={known_wallets} />
+        </section>
+      )}
       </Container>
     </div>
   );

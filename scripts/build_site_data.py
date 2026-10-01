@@ -19,6 +19,7 @@ PUBLIC_DATA = ROOT / "public" / "data"
 RAW = ROOT / "data" / "raw"
 SITE_DATA = ROOT / "site" / "data"
 PAYOUT_LEDGER_PATH = ROOT / "data" / "evidence" / "payout_ledger.json"
+KNOWN_WALLETS_PATH = ROOT / "data" / "evidence" / "known_wallets.json"
 CONTENT_PATH = ROOT / "data" / "evidence" / "collection_content.json"
 WALLET_IDENTITIES_PATH = ROOT / "data" / "evidence" / "wallet_identities.json"
 WALLET_OVERRIDES_PATH = ROOT / "data" / "evidence" / "wallet_overrides.json"
@@ -906,7 +907,8 @@ def _acquisitions_block(acquisitions, with_holdings, with_image):
 def build_findings(flow_summary, summary, acquisitions, payout_ledger,
                    acq_media=None, eth_price_usd=0.0, holdings=None, audit=None,
                    secondary_volume_usd=0.0, royalties_usd=0.0, flippers=None,
-                   acq_collection_art=None, pfp2_offchain_revenue_usd=0.0):
+                   acq_collection_art=None, pfp2_offchain_revenue_usd=0.0,
+                   known_wallets=None):
     insider_rows = [r for r in payout_ledger if r.get("kind") == "insider"]
     insider_eth = round(sum(r["eth"] for r in insider_rows), 2)
     insider_usd = round(sum(r.get("usd", 0.0) for r in insider_rows), 2)
@@ -950,6 +952,7 @@ def build_findings(flow_summary, summary, acquisitions, payout_ledger,
                                  "realized_losses_eth": 0.0, "count_profitable": 0,
                                  "identified_in_top": 0, "top": []},
         "payout_ledger": payout_ledger,
+        "known_wallets": known_wallets or [],
         "pfp2_offchain_revenue_usd": round(pfp2_offchain_revenue_usd, 2),
         "acquisitions": _acquisitions_block(acquisitions, with_holdings, with_image),
         "insider": {
@@ -1202,7 +1205,9 @@ def main():
                               secondary_volume_usd=secondary_volume_usd,
                               royalties_usd=royalties_usd, flippers=flippers_block,
                               acq_collection_art=acq_collection_art,
-                              pfp2_offchain_revenue_usd=pfp2_offchain_revenue_usd))
+                              pfp2_offchain_revenue_usd=pfp2_offchain_revenue_usd,
+                              known_wallets=(load_json(KNOWN_WALLETS_PATH)
+                                             if KNOWN_WALLETS_PATH.exists() else None)))
 
     write_json(SITE_DATA / "usd_audit.json", build_usd_audit(audit))
 

@@ -88,6 +88,12 @@ export const Flippers = z.object({
 });
 export type Flippers = z.infer<typeof Flippers>;
 
+export const KnownWallet = z.object({
+  address: z.string(), role: z.enum(["aoki", "metazoo", "insider", "contract"]),
+  name: z.string(), basis: z.string(),
+});
+export type KnownWallet = z.infer<typeof KnownWallet>;
+
 export const Findings = z.object({
   legs: z.object({ secondary_volume_eth: z.number(), secondary_volume_usd: z.number(),
     royalties_eth: z.number(), royalties_usd: z.number(),
@@ -95,6 +101,7 @@ export const Findings = z.object({
     insider_eth: z.number(), insider_usd: z.number(), eth_price_usd: z.number() }),
   flippers: Flippers,
   payout_ledger: z.array(LedgerRow),
+  known_wallets: z.array(KnownWallet).default([]),
   acquisitions: z.object({ total_eth: z.number(), total_usd: z.number(), total_purchases: z.number(),
     by_collection: z.array(BlueChip),
     underwater: z.array(BlueChip).optional(),

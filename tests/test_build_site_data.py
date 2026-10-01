@@ -1,3 +1,4 @@
+import re
 from datetime import datetime, timezone
 
 from scripts import build_site_data as b
@@ -329,6 +330,48 @@ def test_build_findings_assembles_legs_and_insider_sum():
     assert out["insider"]["exchange"] == "Coinbase"
     assert out["payout_ledger"] == ledger
     assert len(out["acquisitions"]["top_items"]) == 24   # capped
+
+
+def test_build_findings_known_wallets_passthrough_and_default():
+    args = ({"metazoo_to_aoki_eth": 1.0},
+            {"secondary_volume_eth": 1.0, "royalties_to_metazoo_eth": 1.0},
+            {"total_eth": 1, "total_usd": 1, "total_purchases": 1,
+             "by_collection": [], "top_items": []}, [])
+    rows = [{"address": "0x" + "a" * 40, "role": "aoki", "name": "x", "basis": "y"}]
+    assert b.build_findings(*args, known_wallets=rows)["known_wallets"] == rows
+    assert b.build_findings(*args)["known_wallets"] == []
+
+
+def test_known_wallets_cover_config_and_ledger_with_full_addresses():
+    """The published known-wallets table must list every confirmed Aoki and MetaZoo
+    wallet plus every insider in the payout ledger, each as a full linkable address."""
+    import json
+    from scripts import config
+    if not b.KNOWN_WALLETS_PATH.exists():
+        pytest.skip("known_wallets.json not present in this checkout")
+    rows = json.loads(b.KNOWN_WALLETS_PATH.read_text())
+    addrs = [r["address"] for r in rows]
+    assert len(addrs) == len(set(addrs))
+    for r in rows:
+        assert re.fullmatch(r"0x[0-9a-f]{40}", r["address"]), r
+        assert r["role"] in {"aoki", "metazoo", "insider", "contract"}, r
+        assert r["name"] and r["basis"], r
+    by_role = lambda role: {r["address"] for r in rows if r["role"] == role}
+    assert by_role("aoki") == {a.lower() for a in config.AOKI_WALLETS}
+    assert by_role("metazoo") == {a.lower() for a in
+                                  [config.METAZOO_DEPLOYER, *config.METAZOO_WALLETS]}
+    ledger = json.loads(b.PAYOUT_LEDGER_PATH.read_text())
+    assert by_role("insider") == {r["recipient_addr"].lower() for r in ledger
+                                  if r["kind"] == "insider"}
+
+
+def test_payout_ledger_addresses_are_full_length():
+    """Every ledger address is published as an Etherscan link, so a truncated one
+    (e.g. "0xd909681f") would render a broken link."""
+    import json
+    for r in json.loads(b.PAYOUT_LEDGER_PATH.read_text()):
+        assert r["recipient_addr"] == "" or re.fullmatch(r"0x[0-9a-fA-F]{40}",
+                                                         r["recipient_addr"]), r
 
 
 def test_build_findings_legs_usd_and_holdings():
