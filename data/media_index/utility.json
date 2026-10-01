@@ -74,6 +74,16 @@
     "hash": "28f2bf5c",
     "source_name": "token-nft-promo.jpg"
   },
+  "tournament_christmas_box": {
+    "file": "tournament_christmas_box.jpg",
+    "hash": "2dc3fa70",
+    "source_name": "christmas-promo-box.jpg"
+  },
+  "tournament_valentines_box": {
+    "file": "tournament_valentines_box.webp",
+    "hash": "751cc311",
+    "source_name": "valentines-heart-box.webp"
+  },
   "ufo_booster_box": {
     "file": "ufo_booster_box.jpg",
     "hash": "855400fa",

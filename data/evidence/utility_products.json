@@ -34,6 +34,22 @@
     "image_file": "CN1 box.jpg"
   },
   {
+    "id": "tournament_christmas_box",
+    "collection": "tournament_prizes",
+    "date": "2022-01-01",
+    "name": "MetaZoo Christmas promo box",
+    "note": "Product sent to the prize holders.",
+    "image_file": "christmas-promo-box.jpg"
+  },
+  {
+    "id": "tournament_valentines_box",
+    "collection": "tournament_prizes",
+    "date": "2022-02-01",
+    "name": "MetaZoo Valentine's Day box",
+    "note": "Product sent to the prize holders.",
+    "image_file": "valentines-heart-box.webp"
+  },
+  {
     "id": "valentines_box",
     "collection": "coin_tokens",
     "date": "2022-02-04",

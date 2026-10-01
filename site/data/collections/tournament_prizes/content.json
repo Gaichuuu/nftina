@@ -13,5 +13,24 @@
   "**Mint platform: OpenSea shared storefront**"
  ],
  "overview_image": "https://gaichu.b-cdn.net/nftina/overview/mzq_416241fd0fee73d3.gif",
- "utility": []
+ "utility": [
+  {
+   "id": "tournament_christmas_box",
+   "name": "MetaZoo Christmas promo box",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "Product sent to the prize holders.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/tournament_christmas_box.jpg?v=2dc3fa70",
+   "fit": false
+  },
+  {
+   "id": "tournament_valentines_box",
+   "name": "MetaZoo Valentine's Day box",
+   "price_usd": null,
+   "price_eth": null,
+   "note": "Product sent to the prize holders.",
+   "image": "https://gaichu.b-cdn.net/nftina/utility/tournament_valentines_box.webp?v=751cc311",
+   "fit": false
+  }
+ ]
 }
