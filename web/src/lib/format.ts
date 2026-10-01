@@ -27,6 +27,7 @@ export function pct(n: number): string { return sign(`${Math.round(n)}%`); }
 export const osAssetUrl = (contract: string, tokenId: string) =>
   `https://opensea.io/assets/ethereum/${contract}/${tokenId}`;
 export const etherscanAddr = (a: string) => `https://etherscan.io/address/${a}`;
+export const etherscanTx = (h: string) => `https://etherscan.io/tx/${h}`;
 export const tileGradient = "radial-gradient(circle at 40% 30%,#3a2358,#160a24)";
 export function cdnResized(url: string, width: number): string {
   if (!url.includes(".b-cdn.net/") || url.endsWith(".svg")) return url;

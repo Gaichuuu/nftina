@@ -166,14 +166,14 @@
    "recipient": "Aoki (in-kind, 1 Coin Token)",
    "recipient_addr": "",
    "kind": "aoki_inkind",
-   "note": "sent from the MetaZoo treasury 0x77b94a55 on the MetaZoo x Dim Mak collab release day. priced at the December median 0.20 \u039e (~0.2 \u039e total)."
+   "note": "sent from the MetaZoo treasury 0x77b94a55684c95d59a8f56a234b6e555fc79997c on the MetaZoo x Dim Mak collab release day. priced at the December median 0.20 \u039e (~0.2 \u039e total)."
   },
   {
    "date": "2021-12-24",
    "eth": 16.0,
    "usd": 64741,
    "recipient": "splitter contract",
-   "recipient_addr": "0xd909681f",
+   "recipient_addr": "0xd909681f6c474e14d5aff4b75513989e68ad5265",
    "kind": "splitter",
    "note": "revenue machinery"
   },
@@ -184,7 +184,7 @@
    "recipient": "Aoki (main)",
    "recipient_addr": "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4",
    "kind": "aoki",
-   "note": "payment sent 3 days after a celebrity poker night hosted at Aoki home on 2022-01-08, where MetaZoo Coin Tokens were allegedly discussed (tx 0xe8fe9524)"
+   "note": "payment sent 3 days after a celebrity poker night hosted at Aoki home on 2022-01-08, where MetaZoo Coin Tokens were allegedly discussed (tx 0xe8fe95242c9a8d90b63296b142aa328317d2fdc4f77c043e8cdcdf00234d78dd)"
   },
   {
    "date": "2022-01-11",
@@ -193,7 +193,7 @@
    "recipient": "Aoki (in-kind, 9 Coin Tokens)",
    "recipient_addr": "",
    "kind": "aoki_inkind",
-   "note": "same day as the 89.77 \u039e payment above. transfers from 0x77b94a55, IDs 994-998/1000-1001/1003-1004. priced at the January median 0.435 \u039e (~3.9 \u039e total)."
+   "note": "same day as the 89.77 \u039e payment above. transfers from 0x77b94a55684c95d59a8f56a234b6e555fc79997c, IDs 994-998/1000-1001/1003-1004. priced at the January median 0.435 \u039e (~3.9 \u039e total)."
   },
   {
    "date": "2022-07-27",
@@ -203,7 +203,7 @@
    "recipient_addr": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
    "kind": "insider",
    "endpoint": "Coinbase",
-   "note": "after the Beasties mint; forwarded via 0x3c3308e3 to Coinbase deposit addresses"
+   "note": "after the Beasties mint; forwarded via 0x3c3308e34441c473e16147ee728e3235161afbf6 to Coinbase deposit addresses"
   },
   {
    "date": "2022-07-27",
@@ -233,6 +233,92 @@
    "kind": "insider",
    "endpoint": "Coinbase",
    "note": "MetaZoo shutdown day; sent straight to Coinbase 10"
+  }
+ ],
+ "known_wallets": [
+  {
+   "address": "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4",
+   "role": "aoki",
+   "name": "Steve Aoki (main)",
+   "basis": "Etherscan public name tag \"Steve Aoki\". Received the 89.77 ETH payment on 2022-01-11."
+  },
+  {
+   "address": "0xa6d3a33a1c66083859765b9d6e407d095a908193",
+   "role": "aoki",
+   "name": "Steve Aoki (creator / royalty hub)",
+   "basis": "Minted the AOKI collection, is its EIP-2981 royalty recipient, and consigned the Mothman 1/1 at Sotheby's."
+  },
+  {
+   "address": "0xec843e7364ca9234271efc12e7626a7a9bdc5400",
+   "role": "metazoo",
+   "name": "MetaZoo: Deployer (Coin Tokens)",
+   "basis": "Etherscan name tag \"MetaZoo: Deployer\". Created the Coin Tokens contract on 2021-11-29."
+  },
+  {
+   "address": "0x77b94a55684c95d59a8f56a234b6e555fc79997c",
+   "role": "metazoo",
+   "name": "MetaZoo: Deployer (treasury)",
+   "basis": "Etherscan name tag \"MetaZoo: Deployer\". Deployed the Beasties contract; paid all five insider wallets below."
+  },
+  {
+   "address": "0x79109a93db158f16f4c8936217ce46f21ed5dc2b",
+   "role": "metazoo",
+   "name": "metazoodev.eth",
+   "basis": "ENS name metazoodev.eth. Deployed the MZOO ERC-20 token on 2023-03-16."
+  },
+  {
+   "address": "0x3dd341664b2ffeedf9be108d4fa926dedfa9a0d6",
+   "role": "metazoo",
+   "name": "MetaZoo Genesis operator",
+   "basis": "Created the Genesis 2021 contract and minted all 595 tokens. Identified by behaviour, not by a name tag."
+  },
+  {
+   "address": "0x4b2144e59f7e286d8e7b7a4cbbb94b042e2b791f",
+   "role": "contract",
+   "name": "metaZooSale (Coin Tokens mint funnel)",
+   "basis": "Verified contract name metaZooSale. Coin Tokens buyers paid here; forwarded to the treasury."
+  },
+  {
+   "address": "0x88524a9b2c23d869cba3466d1ce6457fb102e214",
+   "role": "contract",
+   "name": "PercentSplitETH (Beasties mint funnel)",
+   "basis": "Verified contract name PercentSplitETH. Beasties buyers paid here; forwarded to the treasury."
+  },
+  {
+   "address": "0xd909681f6c474e14d5aff4b75513989e68ad5265",
+   "role": "contract",
+   "name": "MetaZoo royalty distributor",
+   "basis": "Received MetaZoo's OpenSea creator earnings and forwarded ~58.6 ETH to the treasury."
+  },
+  {
+   "address": "0xccc55c38603ad1a1dc54db871166fa90f78edd11",
+   "role": "insider",
+   "name": "Insider #1 (distribution)",
+   "basis": "Received 104.45 ETH from the treasury on 2021-12-06; cashed out to Coinbase. Owner unknown."
+  },
+  {
+   "address": "0xe693fbc0df4db03d3b75017b7a423dd38d49487c",
+   "role": "insider",
+   "name": "Insider #2 (cluster)",
+   "basis": "Received 17.93 ETH from the treasury in two payments; cashed out to Coinbase and FTX. Owner unknown."
+  },
+  {
+   "address": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
+   "role": "insider",
+   "name": "Insider #3 (cash-out)",
+   "basis": "Received 130 ETH from the treasury on 2022-07-27; forwarded to Coinbase. Owner unknown."
+  },
+  {
+   "address": "0x08b96fad98c2366f6e483de584167dd695d30c27",
+   "role": "insider",
+   "name": "Insider #4 (cluster)",
+   "basis": "Received 7.37 ETH from the treasury on 2022-07-27; commingled in an active trading wallet. Owner unknown."
+  },
+  {
+   "address": "0x2f7eb4f5d083c5607f1f1ec278728323a84acc6b",
+   "role": "insider",
+   "name": "Insider #5 (shutdown day)",
+   "basis": "Created on MetaZoo's shutdown day, 2024-01-29; received 9.5 ETH and sent it straight to Coinbase. Owner unknown."
   }
  ],
  "pfp2_offchain_revenue_usd": 238100.0,

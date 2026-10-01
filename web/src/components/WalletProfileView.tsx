@@ -8,6 +8,7 @@ import Bar from "./Bar";
 import LoopMedia from "./LoopMedia";
 import NetPnl, { Signed } from "./NetPnl";
 import { StatStrip } from "./StatCell";
+import ExternalIcon from "./ExternalIcon";
 import WalletAvatar from "./WalletAvatar";
 import XferCell from "./XferCell";
 
@@ -73,7 +74,7 @@ export default function WalletProfileView({ p }: { p: WalletProfile }) {
           <a href={etherscanAddr(p.address)} target="_blank" rel="noopener noreferrer"
              className="block break-all font-mono text-[13px] text-dim2 no-underline
                         transition-colors hover:text-hypeB">
-            {p.address}
+            {p.address}<ExternalIcon />
           </a>
         </div>
         {o && (

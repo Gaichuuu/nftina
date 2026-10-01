@@ -35,14 +35,14 @@
     "recipient": "Aoki (in-kind, 1 Coin Token)",
     "recipient_addr": "",
     "kind": "aoki_inkind",
-    "note": "sent from the MetaZoo treasury 0x77b94a55 on the MetaZoo x Dim Mak collab release day. priced at the December median 0.20 \u039e (~0.2 \u039e total)."
+    "note": "sent from the MetaZoo treasury 0x77b94a55684c95d59a8f56a234b6e555fc79997c on the MetaZoo x Dim Mak collab release day. priced at the December median 0.20 \u039e (~0.2 \u039e total)."
   },
   {
     "date": "2021-12-24",
     "eth": 16.0,
     "usd": 64741,
     "recipient": "splitter contract",
-    "recipient_addr": "0xd909681f",
+    "recipient_addr": "0xd909681f6c474e14d5aff4b75513989e68ad5265",
     "kind": "splitter",
     "note": "revenue machinery"
   },
@@ -53,7 +53,7 @@
     "recipient": "Aoki (main)",
     "recipient_addr": "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4",
     "kind": "aoki",
-    "note": "payment sent 3 days after a celebrity poker night hosted at Aoki home on 2022-01-08, where MetaZoo Coin Tokens were allegedly discussed (tx 0xe8fe9524)"
+    "note": "payment sent 3 days after a celebrity poker night hosted at Aoki home on 2022-01-08, where MetaZoo Coin Tokens were allegedly discussed (tx 0xe8fe95242c9a8d90b63296b142aa328317d2fdc4f77c043e8cdcdf00234d78dd)"
   },
   {
     "date": "2022-01-11",
@@ -62,7 +62,7 @@
     "recipient": "Aoki (in-kind, 9 Coin Tokens)",
     "recipient_addr": "",
     "kind": "aoki_inkind",
-    "note": "same day as the 89.77 \u039e payment above. transfers from 0x77b94a55, IDs 994-998/1000-1001/1003-1004. priced at the January median 0.435 \u039e (~3.9 \u039e total)."
+    "note": "same day as the 89.77 \u039e payment above. transfers from 0x77b94a55684c95d59a8f56a234b6e555fc79997c, IDs 994-998/1000-1001/1003-1004. priced at the January median 0.435 \u039e (~3.9 \u039e total)."
   },
   {
     "date": "2022-07-27",
@@ -72,7 +72,7 @@
     "recipient_addr": "0x37eccdcbc448e07cb19331277aebf9b13ec5a6a3",
     "kind": "insider",
     "endpoint": "Coinbase",
-    "note": "after the Beasties mint; forwarded via 0x3c3308e3 to Coinbase deposit addresses"
+    "note": "after the Beasties mint; forwarded via 0x3c3308e34441c473e16147ee728e3235161afbf6 to Coinbase deposit addresses"
   },
   {
     "date": "2022-07-27",

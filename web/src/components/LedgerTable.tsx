@@ -1,5 +1,7 @@
 import type { LedgerRow } from "@/data/schemas";
-import { eth, usd, shortAddr } from "@/lib/format";
+import { eth, usd, shortAddr, etherscanAddr } from "@/lib/format";
+import { LinkedText } from "./AddrLink";
+import ExternalIcon from "./ExternalIcon";
 import Bar from "./Bar";
 import TableScroller from "./TableScroller";
 
@@ -32,8 +34,15 @@ export default function LedgerTable({ rows }: { rows: LedgerRow[] }) {
                 </div>
               </td>
               <td className={`max-w-105 px-4 py-3.25 ${isAoki ? "font-bold text-hypeB" : "text-dim"}`}>
-                {r.recipient}{r.recipient_addr && <span className="font-mono font-normal text-muted"> {shortAddr(r.recipient_addr)}</span>}
-                {r.note && <span className="block text-[11px] font-normal leading-normal text-muted">{r.note}</span>}
+                {r.recipient}{r.recipient_addr && <>{" "}<a href={etherscanAddr(r.recipient_addr)}
+                  target="_blank" rel="noopener noreferrer" title={`${r.recipient_addr} · view on Etherscan`}
+                  className="font-mono font-normal text-muted transition-colors hover:text-hypeA">
+                  {shortAddr(r.recipient_addr)}<ExternalIcon /></a></>}
+                {r.note && (
+                  <span className="mt-0.5 block text-[11px] font-normal leading-normal text-muted">
+                    <LinkedText text={r.note} />
+                  </span>
+                )}
               </td>
             </tr>
           );
